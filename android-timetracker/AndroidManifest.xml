@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.ser1.timetracker" android:sharedUserId="net.ser1.timetracker" 
+    android:versionName="2010.3" android:versionCode="13">
+ <application android:icon="@drawable/icon" android:label="@string/app_name">
+
+  <activity android:name=".Tasks" android:label="Time Tracker">
+   <intent-filter>
+    <action android:name="android.intent.action.MAIN" />
+    <category android:name="android.intent.category.LAUNCHER" />
+   </intent-filter>
+  </activity>
+    
+  <activity android:name=".TaskTimes" android:label="Task Times">
+   <intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+   </intent-filter>
+  </activity>
+    
+  <activity android:name=".EditTime" android:label="Edit Time">
+   <intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+   </intent-filter>
+  </activity>
+    
+  <activity android:name=".Report" android:label="Report">
+   <intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+   </intent-filter>
+  </activity>
+    
+  <activity android:name=".Preferences" android:label="Preferences">
+      <intent-filter>
+          <action android:name="android.intent.action.VIEW"/>
+          <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+  </activity>
+  
+  </application>
+  <uses-permission android:name="android.permission.VIBRATE"/>
+<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="15" />
+</manifest>
