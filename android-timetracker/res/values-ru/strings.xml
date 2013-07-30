@@ -10,7 +10,7 @@
 
     <string name="delete_ok">Удалить</string>
     <string name="delete_task_title">Удалить Задачу</string>
-    <string name="delete_task_message">Вы уверены, что хотите удалить '%s' и все её записи временных интервалов?</string>
+    <string name="delete_task_message">Вы уверены, что хотите удалить \'%s\' и все её записи временных интервалов?</string>
     <string name="add_task_title">Добавить задачу</string>
     <string name="change_view_title">Изменить вид</string>
     <string name="generate_report_title">Отчёт</string>
@@ -23,7 +23,7 @@
     <string name="end_time_label">Время Окончания</string>
     <string name="end_not_greater_than_start">Время окончания должно быть больше, чем время начала</string>
     <string name="range_error_title">Ошибка Временного Интервала</string>
-    <string name="report_title">Отчёт за неделю с %s по %s </string>
+    <string name="report_title">Отчёт за неделю с %1$s по %2$s </string>
     <string name="week">Неделя %s</string>
     <string name="title">TimeTracker (%s)</string>
     <string name="help">Помощь</string>

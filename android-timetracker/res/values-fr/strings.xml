@@ -11,7 +11,7 @@
 
     <string name="delete_ok">Effacer</string>
     <string name="delete_task_title">Effacer tâche</string>
-    <string name="delete_task_message">Voulez-vous vraiment effacer '%s' et les données associées ?</string>
+    <string name="delete_task_message">Voulez-vous vraiment effacer \'%s\' et les données associées ?</string>
     <string name="add_task_title">Ajouter tâche</string>
     <string name="change_view_title">Changer la vue</string>
     <string name="generate_report_title">Rapport</string>
@@ -24,7 +24,7 @@
     <string name="end_time_label">Heure de fin</string>
     <string name="end_not_greater_than_start">L´heure de fin doit être après l´heure de début</string>
     <string name="range_error_title">Erreur dans la période</string>
-    <string name="report_title">Rapport pour la semaine %s à %s </string>
+    <string name="report_title">Rapport pour la semaine %1$s à %1$s </string>
     <string name="week">Semaine %s</string>
     <string name="title">TimeTracker (%s)</string>
     <string name="help">Aide</string>
@@ -32,7 +32,7 @@
     <string name="move_time">Assigner cette durée à une autre tâche</string>
     <string name="edit_task">Modifier la tâche</string>
     <string name="delete_task">Supprimer la tâche</string>
-    <string name="show_times">Affichage l'heure</string>
+    <string name="show_times">Affichage l\'heure</string>
 
     <!--    Preferences strings    -->
     <string name="preferences">Préférences</string>
@@ -57,7 +57,7 @@
     <string name="sound_disabled">Son désactivé</string>
     <string name="vibrate_enabled">Vibration activée</string>
     <string name="vibrate_disabled">Vibration desactivée</string>
-    <string name="time_display">Affichage de l'heure</string>
+    <string name="time_display">Affichage de l\'heure</string>
     <string name="standard_time">Standard (HH:MM)</string>
     <string name="decimal_time">Décimal (HH.hh)</string>
 
