@@ -1,0 +1,34 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Exception during delete dialog + rotate
+desc: The thread trace is useless; it is happening outside of the app.
+type: :bugfix
+component: TimeTracker
+release: "2009.3"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2009-01-29 02:38:56.444458 Z
+references: []
+
+id: 0b0995fa7e11bfc5a0e19a0cd4b3274c0aef3928
+log_events: 
+- - 2009-01-29 02:38:56.445076 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-01-29 02:43:24.591348 Z
+  - Sean Russell <ser@ser1.net>
+  - commented
+  - |-
+    As far as I can tell, it only happens in the delete dialog in the
+    task list.  All other dialogs are fine, as well as the delete dialog
+    in the time list.
+- - 2009-02-02 02:53:17.372026 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.3 from unassigned
+  - ""
+- - 2009-02-02 03:02:48.646259 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - This may pop up in other dialogs
+trac_id: 120

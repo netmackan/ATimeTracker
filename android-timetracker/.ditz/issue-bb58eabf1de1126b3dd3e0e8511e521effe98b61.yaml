@@ -1,0 +1,22 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add option to round to nearest X
+desc: |-
+  X is user defineable (start with 1/4 hour, fixed)
+  Should work only on display, not on data store
+  Should work in both decimal and standard time displays
+type: :feature
+component: TimeTracker
+release: Promoted
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2010-01-24 21:58:18.123550 Z
+references: []
+
+id: bb58eabf1de1126b3dd3e0e8511e521effe98b61
+log_events: 
+- - 2010-01-24 21:58:19.011448 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+trac_id: 79

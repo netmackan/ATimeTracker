@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add support for exporting to CSV times for a single task
+desc: Only add this if there's a request.
+type: :feature
+component: TimeTracker
+release: 
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2009-01-17 16:10:12.205801 Z
+references: 
+- timetracker-63
+id: a22b8e74a615a8ddfb3a6f4c5929d89e92f8bc35
+log_events: 
+- - 2009-01-17 16:10:12.206447 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-01-17 16:12:46.354335 Z
+  - Sean Russell <ser@ser1.net>
+  - added reference 1
+  - ""
+trac_id: 64

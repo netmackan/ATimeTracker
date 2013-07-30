@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Make fonts bigger in task & time lists
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-12-02 16:06:00.758239 Z
+references: []
+
+id: fd5443442b60d9ca00a20fcea06dafc7560a7cff
+log_events: 
+- - 2008-12-02 16:06:01.012861 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-12-02 19:28:31.022224 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.4 from unassigned
+  - ""
+- - 2008-12-03 03:12:29.618401 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 37

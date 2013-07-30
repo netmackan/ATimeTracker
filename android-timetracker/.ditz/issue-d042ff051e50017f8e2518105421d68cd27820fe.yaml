@@ -1,0 +1,21 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Ordering of tasks changes/incorrect on Task Start/Stop
+desc: |-
+  5 tasks added to list - in either portrait or landscape mode selecting a task to start it re-orders the list - selecting the "ticked" task to stop it seems to select the wrong task, and so stops the original task but starts another one automatically.
+  
+  Sorry if the description doesn't make as much sense - will try and get it loaded onto the Android Emulator to get screenshots!
+  
+  Running 2009.3 from Market
+type: :bugfix
+component: TimeTracker Android
+release: 
+reporter: www.google.com/accounts/o8/id?id=aitoawnnlxvfxtufubmec4bei2puxypk2bab7w4
+status: :unstarted
+disposition: 
+creation_time: 2009-02-05 09:17:44 Z
+references: []
+
+id: d042ff051e50017f8e2518105421d68cd27820fe
+log_events: []
+
+trac_id: 8

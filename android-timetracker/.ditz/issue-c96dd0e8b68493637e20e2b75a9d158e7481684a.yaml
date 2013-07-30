@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Exception is thrown when exporting to CSV while a task is active
+desc: ""
+type: :bugfix
+component: TimeTracker
+release: "2009.2"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2009-01-29 02:40:19.700009 Z
+references: []
+
+id: c96dd0e8b68493637e20e2b75a9d158e7481684a
+log_events: 
+- - 2009-01-29 02:40:19.700634 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-01-29 02:40:32.417043 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - ""
+trac_id: 29

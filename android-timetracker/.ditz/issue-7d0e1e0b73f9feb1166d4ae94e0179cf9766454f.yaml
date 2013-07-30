@@ -1,0 +1,31 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add ability to show times
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.3"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-21 02:39:06.290150 Z
+references: []
+
+id: 7d0e1e0b73f9feb1166d4ae94e0179cf9766454f
+log_events: 
+- - 2008-11-21 02:39:07.273747 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-23 17:40:03.537182 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.3 from unassigned
+  - ""
+- - 2008-11-25 14:03:06.012383 Z
+  - Sean Russell <ser@ser1.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2008-11-25 14:28:47.054952 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 114

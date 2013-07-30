@@ -1,0 +1,43 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Ignore times < 1m
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :wontfix
+creation_time: 2008-11-23 02:37:10.606118 Z
+references: []
+
+id: c938b8c47b2dcc95c33a1bb54372208b05aeab15
+log_events: 
+- - 2008-11-23 02:37:12.257477 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-23 17:39:00.491897 Z
+  - Sean Russell <ser@ser1.net>
+  - unassigned from release 2008.2
+  - ""
+- - 2008-11-23 17:40:08.096102 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.3 from unassigned
+  - ""
+- - 2008-11-23 22:50:28.386923 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.4 from 2008.3
+  - ""
+- - 2008-11-25 14:24:53.153615 Z
+  - Sean Russell <ser@ser1.net>
+  - changed title
+  - ""
+- - 2008-11-29 03:22:04.486536 Z
+  - Sean Russell <ser@ser1.net>
+  - commented
+  - Bind this to the update period
+- - 2008-12-02 14:31:31.936188 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition wontfix
+  - I'm not sure that this is needed.
+trac_id: 138

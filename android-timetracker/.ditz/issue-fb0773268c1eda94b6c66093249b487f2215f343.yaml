@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Export to Google docs
+desc: ""
+type: :feature
+component: TimeTracker
+release: Promoted
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2009-10-03 04:06:20.243898 Z
+references: []
+
+id: fb0773268c1eda94b6c66093249b487f2215f343
+log_events: 
+- - 2009-10-03 04:06:20.244500 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-11-22 12:35:03.226618 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release Promoted from unassigned
+  - ""
+trac_id: 121

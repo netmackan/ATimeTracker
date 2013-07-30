@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Get the version information from one common place
+desc: ""
+type: :task
+component: TimeTracker
+release: "2009.1"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2009-01-07 01:42:55.929493 Z
+references: []
+
+id: 5534ec4931da6ae461e4613f6e89367653d91366
+log_events: 
+- - 2009-01-07 01:42:57.031489 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-01-07 02:31:57.826847 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.1 from 2009.2
+  - ""
+- - 2009-01-07 02:32:04.715589 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - ""
+trac_id: 48

@@ -1,0 +1,31 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Fix the background color issue
+desc: The way I'm highlighting active tasks interferes with the scroll wheel selection of tasks.
+type: :feature
+component: TimeTracker
+release: "2008.3"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-25 01:15:04.259122 Z
+references: []
+
+id: 28ad4d9c3b218ea69cc60d04c207254cd0dde62d
+log_events: 
+- - 2008-11-25 01:15:04.600250 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-25 01:17:16.417045 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.3 from unassigned
+  - ""
+- - 2008-11-25 01:33:56.339247 Z
+  - Sean Russell <ser@ser1.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2008-11-25 02:08:47.013010 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 130

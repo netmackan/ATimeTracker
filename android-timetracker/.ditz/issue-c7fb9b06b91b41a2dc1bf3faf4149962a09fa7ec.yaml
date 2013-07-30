@@ -1,0 +1,19 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Empty cell instead of "00:00" in report makes it more readable
+desc: |-
+  It's hard to get a overview of the report on the device when there is a lot of days with "00:00". Perhaps it would be better to just leave the field empty then?
+  
+  This might have some implications for the application processing the CSV-file if the user exports it. But most spreadsheet applications will probably threat an empty cell as 0 anyway.
+type: :feature
+component: TimeTracker Android
+release: 
+reporter: me.yahoo.com/netmackan#322c8
+status: :unstarted
+disposition: 
+creation_time: 2009-09-19 15:17:04 Z
+references: []
+
+id: c7fb9b06b91b41a2dc1bf3faf4149962a09fa7ec
+log_events: []
+
+trac_id: 14

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Translation by Wilfried Kopp -->
+<resources>
+    <string name="app_name">TimeTracker</string>
+    
+    <string name="start">Démarrer</string>
+    <string name="task_name">Nom de la tâche</string>
+    <string name="add_task_ok">Ajouter tâche</string>
+    <string name="task_name_required">Le nom de la tâche est requis</string>
+    <string name="start_time_required">L´heure de début est requis</string>
+
+    <string name="delete_ok">Effacer</string>
+    <string name="delete_task_title">Effacer tâche</string>
+    <string name="delete_task_message">Voulez-vous vraiment effacer '%s' et les données associées ?</string>
+    <string name="add_task_title">Ajouter tâche</string>
+    <string name="change_view_title">Changer la vue</string>
+    <string name="generate_report_title">Rapport</string>
+    <string name="select_range">Choisir la période...</string>
+    <string name="done">Retour aux tâches</string>
+    <string name="add_time_title">Ajouter période</string>
+    <string name="delete_time_message">Voulez-vous vraiment effacer cette période ?</string>
+    <string name="delete_time_title">Effacer la période</string>
+    <string name="start_time_label">Heure de début</string>
+    <string name="end_time_label">Heure de fin</string>
+    <string name="end_not_greater_than_start">L´heure de fin doit être après l´heure de début</string>
+    <string name="range_error_title">Erreur dans la période</string>
+    <string name="report_title">Rapport pour la semaine %s à %s </string>
+    <string name="week">Semaine %s</string>
+    <string name="title">TimeTracker (%s)</string>
+    <string name="help">Aide</string>
+    <string name="export_view">Exporter</string>
+    <string name="move_time">Assigner cette durée à une autre tâche</string>
+    <string name="edit_task">Modifier la tâche</string>
+    <string name="delete_task">Supprimer la tâche</string>
+    <string name="show_times">Affichage l'heure</string>
+
+    <!--    Preferences strings    -->
+    <string name="preferences">Préférences</string>
+    <!-- Preference titles -->
+    <string name="week_start_day">Premier jour de la semaine</string>
+    <string name="hour_mode">Mode 12/24</string>
+    <string name="font_size">Taille de police</string>
+    <string name="concurrency">Tâche concurentes multiples</string>
+    <string name="sound">Son</string>
+    <string name="vibrate">Vibrer</string>
+    <!-- Preference values -->
+    <string name="sunday">Dimanche</string>
+    <string name="monday">Lundi</string>
+    <string name="civilian">1:00 PM</string>
+    <string name="military">13:00</string>
+    <string name="small_font">Petit</string>
+    <string name="medium_font">Moyen</string>
+    <string name="large_font">Grand</string>
+    <string name="concurrent">Les tâche peuvent s´executer simultanément</string>
+    <string name="exclusive">Une seule tâche à la fois</string>
+    <string name="sound_enabled">Son activé</string>
+    <string name="sound_disabled">Son désactivé</string>
+    <string name="vibrate_enabled">Vibration activée</string>
+    <string name="vibrate_disabled">Vibration desactivée</string>
+    <string name="time_display">Affichage de l'heure</string>
+    <string name="standard_time">Standard (HH:MM)</string>
+    <string name="decimal_time">Décimal (HH.hh)</string>
+
+    <!-- About dialog strings -->
+    <string name="version">Version %s</string>
+    <string name="author">Sean E. Russell</string>
+    <string name="donate"><b>Si vous appréciez cette application, achetez la et supportez son développement futur ! (Cliquez ici)</b></string>
+    <string name="purpose">TimeTracker vous aide à enregistrer le temps passé à vos activités. Par exemple, pour enregistrer le temps passé à chaque tâche lors d´un projet professionnel. Il offre la possibilité d´afficher, d´éditer, et de filtrer les entrées et dispose d´une fonction de rapport.</string>
+    <string name="usage">
+    Instructions détaillées à http://trac.germane-software.com/TimeTracker\n\n
+    • Créer des tâches à l´aide des menus\n
+    • Cliquer sur une tâche pour démarrer l´enregistrement, cliquez de nouveau pour l´arrêter\n
+    • Utilisez le menu contextuel sur une tâche pour afficher les détails\n
+    • Changer les options de configuration à l´aide du menu\n
+    • Afficher un rapport hebdomadaire à l´aide du menu\n
+    \n
+    Cliquer sur une autre tâche bascule l´enregistrement sur cette autre tâche.\n
+    \n
+    Le menu contextuel d´une tâche permet d´éditer la tâche (changer son nom), effacer la tâche (y compris les données associées!), ou afficher le détail des enregistrements de la tâche.\n
+    \n
+    <b>Afficher les enregistrements</b>\n
+    \n
+    Le détail des enregsitrements est filtré sur la même période que la sélection faites depuis la vue principale. Donc si vous choisissez d´afficher les durées sur <i>cette semaine</i> et que vous ouvrez le détails des enregistrements, vous verrez uniquement les données de cette semaine. Utilisez le menu <i>Ajouter période</i> pour ajouter des enregistrements manuellement.  Utilisez le menu contextuel afin d´effacer ou éditer une période.\n
+    \n
+    <b>Note:</b> TimeTracker ne vous empechera pas de créer des périodes qui se recouvrent pour la tâche courante ou une autre.
+    </string>
+    <string name="credits"><b>Credits</b>\n
+    \n
+    L´icône de l´application TimeTracker a été emprunté à l´excellent librairie d´icônes glyFX de PerthWeb Pty Ltd (www.glyfx.com).\n
+    Tranduction en Russe par Денис Гладкий\n
+    Tranduction en Français par Wilfried Kopp
+	</string>
+    <string name="export_csv_success">Exporté avec succès du CSV vers la carte SD sous timetracker.db</string>
+    <string name="export_csv_fail">Erreur lors de l´exportation CSV. Impossible de créer le fichier. La carte SD est-elle présente ?</string>
+    <string name="success">Succès</string>
+    <string name="failure">Erreur</string>
+    <string name="set_start_day_of_week">Définir le premier jour de la semaine</string>
+    <string name="more">Plus...</string>
+    <string name="backup_success">La base de données a bien été sauvegardée sur la carte SD sous timetracker.db</string>
+    <string name="restore_success">Restauration effectuée. %s
+    </string>
+    <string name="restore_failed">Restauration erreur. Veuillez faire part de cette erreur au développeur.  %s</string>
+</resources>

@@ -1,0 +1,340 @@
+/*
+:Author: David Goodger
+:Contact: goodger@users.sourceforge.net
+:date: $Date$
+:version: $Revision$
+:copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+*/
+
+div.document .first {
+  margin-top: 0 }
+
+div.document .last {
+  margin-bottom: 0 }
+
+div.document a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+div.document dd {
+  margin-bottom: 0.5em }
+
+div.document div.abstract {
+  margin: 2em 5em }
+
+div.document div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.document div.attention,
+div.document div.caution,
+div.document div.danger,
+div.document div.error,
+div.document div.hint,
+div.document div.important,
+div.document div.note,
+div.document div.tip,
+div.document div.warning,
+div.document div.admonition {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.document div.attention p.admonition-title,
+div.document div.caution p.admonition-title,
+div.document div.danger p.admonition-title,
+div.document div.error p.admonition-title,
+div.document div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.document div.hint p.admonition-title,
+div.document div.important p.admonition-title,
+div.document div.note p.admonition-title,
+div.document div.tip p.admonition-title,
+div.document div.admonition p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.document div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.document div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.document div.figure {
+  margin-left: 2em }
+
+div.document div.footer,
+div.document div.header {
+  font-size: smaller }
+
+div.document div.sidebar {
+  margin-left: 1em ;
+  border: medium outset ;
+  padding: 0em 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.document div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.document div.system-messages {
+  margin: 5em }
+
+div.document div.system-messages h1 {
+  color: red }
+
+div.document div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.document div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.document div.topic {
+  margin: 2em }
+
+div.document h1.title {
+  text-align: center }
+
+div.document h2.subtitle {
+  text-align: center }
+
+div.document hr {
+  width: 75% }
+
+div.document ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+div.document ol.arabic {
+  list-style: decimal }
+
+div.document ol.loweralpha {
+  list-style: lower-alpha }
+
+div.document ol.upperalpha {
+  list-style: upper-alpha }
+
+div.document ol.lowerroman {
+  list-style: lower-roman }
+
+div.document ol.upperroman {
+  list-style: upper-roman }
+
+div.document p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+div.document p.caption {
+  font-style: italic }
+
+div.document p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+div.document p.label {
+  white-space: nowrap }
+
+div.document p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: darkred ;
+  text-align: center }
+
+div.document p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+div.document p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+div.document p.topic-title {
+  font-weight: bold }
+
+div.document pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+div.document pre.line-block {
+  font-family: serif ;
+  font-size: 100% }
+
+div.document pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em ;
+  background-color: #eeeeee }
+
+div.document span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+div.document span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+div.document span.interpreted {
+  font-family: sans-serif }
+
+div.document span.option {
+  white-space: nowrap }
+
+div.document span.option-argument {
+  font-style: italic }
+
+div.document span.pre {
+  white-space: pre }
+
+div.document span.problematic {
+  color: red }
+
+div.document table {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+div.document table.citation {
+  border-left: solid thin gray ;
+  padding-left: 0.5ex }
+
+div.document table.docinfo {
+  margin: 2em 4em }
+
+div.document table.footnote {
+  border-left: solid thin black ;
+  padding-left: 0.5ex }
+
+div.document td,
+div.document th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+div.document th.docinfo-name,
+div.document th.field-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap }
+
+div.document h1 tt,
+div.document h2 tt,
+div.document h3 tt,
+div.document h4 tt,
+div.document h5 tt,
+div.document h6 tt {
+  font-size: 100% }
+
+div.document tt {
+  background-color: #eeeeee }
+
+div.document ul.auto-toc {
+  list-style-type: none }
+
+/*
+:Author: Fred L. Drake, Jr.
+:date: $Date$
+:version: $Revision$
+
+This stylesheet combines some ideas from the two stylesheets
+distributed with docutils and enhances them for Zope 3 documentation.
+*/
+
+div.document {
+  margin: 0px 1em 1em 4em;
+  padding: 0px; }
+
+div.document a {
+  text-decoration: none; }
+
+div.document a[href] {
+  text-decoration: underline; }
+
+div.document h1.title {
+  background-image: url("zope3logo.gif");
+  background-position: -6px -4px;
+  background-repeat: no-repeat;
+  font-size: 150%;
+  min-height: 50px; }
+
+div.document div.section {
+  margin: 0px 0px 1.5em 0px; }
+
+div.document div.section h1 {
+  background-color: rgb(230,230,230);
+  margin-left: -2em;
+  padding: 0.2em;
+  padding-left: 0.35em;
+  padding-top: 0.35em;
+  /* This grey underline make this more visually distinctive on LCD
+     monitors, which often don't have enough contrast. */
+  border-right: thin solid rgb(180,180,180);
+  border-bottom: thin solid rgb(180,180,180); }
+
+div.document div.section div.section div.section h3 {
+  margin-bottom: 0em; }
+
+div.document h1 {
+  font-family: sans-serif;
+  font-size: 135%; }
+
+div.document h2 {
+  font-family: sans-serif;
+  font-size: 120%; }
+
+div.document h3 {
+  font-family: sans-serif;
+  font-size: 105%; }
+
+div.document h4 {
+  font-family: sans-serif;
+  font-size: 100%; }
+
+div.document h5 {
+  font-family: sans-serif;
+  font-size: 100%; }
+
+div.document h6 {
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 100%; }
+
+div.document hr {
+  width: 75%; }
+
+div.document .literal .pre {
+  background-color: white;
+  font-family: lucidatypewriter, "lucida typewriter", sans-serif; }
+
+div.document .literal-block {
+  border: thin solid rgb(180,180,180);
+  font-family: lucidatypewriter, "lucida typewriter", monospace;
+  font-size: 80%;
+  padding: 0.5em; }
+
+div.document table.table {
+  margin-left: 2em;
+  margin-right: 2em; }
+
+div.document table.table thead {
+  background-color: rgb(230,230,230); }
+
+/* docutils uses the "option" class with both "col" and "span"
+   elements, so we have to be explicit here */
+div.document .option-list span.option {
+  font-weight: bold; }
+
+div.document .option-list kbd {
+  font-family: inherit; }

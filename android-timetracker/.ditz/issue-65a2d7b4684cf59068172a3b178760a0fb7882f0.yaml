@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add editing times
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.3"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-25 14:28:19.842194 Z
+references: []
+
+id: 65a2d7b4684cf59068172a3b178760a0fb7882f0
+log_events: 
+- - 2008-11-25 14:28:20.153957 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-26 13:27:34.119533 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 16

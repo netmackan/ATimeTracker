@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Import from Google docs
+desc: http://code.google.com/apis/documents/docs/3.0/developers_guide_protocol.html#UploadingDocs
+type: :feature
+component: TimeTracker
+release: Promoted
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2009-10-03 04:06:59.231902 Z
+references: []
+
+id: 900e695b35c71d9769197c2ad9dea73200d91746
+log_events: 
+- - 2009-10-03 04:06:59.232526 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-11-22 12:35:12.702638 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release Promoted from unassigned
+  - ""
+trac_id: 65

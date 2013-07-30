@@ -1,0 +1,38 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Time Entries Self-Delete
+desc: |+
+  Changing the date of a time entry causes it to become deleted.
+  Changing the time of an entry seems to cause its deletion after some delay.
+  
+  Reproduction: (date change)
+  Start and stop a timing even for a project.
+  Use "show times" then "Edit time"
+  change the month day number
+  press ok, then back
+  any time added by the entry will not be displayed in the project total
+  using "show times" again reveals that the time entry is missing.
+  
+  Reproduction: (time change)
+  create a time entry as above, (but change only the time)
+  Later, after exiting and reentering the app, and through a process that is unclear, the entry will become deleted at some later time. (perhaps as the local time changes through midnight? I will experiment more and post here if I find a better way of reproducing it. It does not happen immediately.)
+  
+  
+  os version 1.5 cupcake is in use on a g1 for all of this.
+  
+  
+type: :bugfix
+component: TimeTracker Android
+release: 
+reporter: test222.myopenid.com
+status: :unstarted
+disposition: 
+creation_time: 2009-06-11 06:48:33 Z
+references: []
+
+id: f655ca5485acca31808e859ed427dfb68333026e
+log_events: 
+- - 2010-01-26 13:46:39 Z
+  - www.google.com/accounts/o8/id?id=aitoawkx8pndhvjyausyrhg8m8md8txy_7sju_w
+  - commented
+  - Haven't evaluated this yet, so no milestone set.
+trac_id: 9

@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Crashes when "edit task" dialog is showing, and the screen is flipped
+desc: ""
+type: :bugfix
+component: TimeTracker
+release: "2009.2"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :reorg
+creation_time: 2009-01-18 13:45:34.127860 Z
+references: []
+
+id: c647788b2ac96cc37f7ad6c16c46c6554381b37e
+log_events: 
+- - 2009-01-18 13:45:34.128542 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-01-29 02:27:33.463972 Z
+  - Sean Russell <ser@ser1.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2009-01-29 02:39:22.273560 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition reorg
+  - Unable to reproduce
+trac_id: 142

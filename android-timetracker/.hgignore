@@ -1,0 +1,9 @@
+syntax: glob
+
+bin/*
+bugs/*
+.classpath
+.project
+gen
+*~
+nbproject/*

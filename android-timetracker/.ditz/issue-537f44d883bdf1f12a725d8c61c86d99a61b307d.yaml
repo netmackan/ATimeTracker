@@ -1,0 +1,21 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Import tasks from an import file
+desc: |-
+  Might need to also add the ability to deprecate or otherwise hide completed
+  tasks from list and report.
+type: :feature
+component: TimeTracker
+release: 
+reporter: Paul McMillan <paul@mcmillan.ws>
+status: :unstarted
+disposition: 
+creation_time: 2010-01-12 10:53:01.967763 Z
+references: []
+
+id: 537f44d883bdf1f12a725d8c61c86d99a61b307d
+log_events: 
+- - 2010-01-12 10:53:01.968390 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+trac_id: 88

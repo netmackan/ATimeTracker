@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Make the report buttons stick to the bottom
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-29 14:46:56.849975 Z
+references: []
+
+id: 571dd07fac39b3b9403132ee6daf7121ab623b79
+log_events: 
+- - 2008-11-29 14:46:57.120320 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-30 03:20:36.127331 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 101

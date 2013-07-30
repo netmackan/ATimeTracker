@@ -1,0 +1,19 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add desktop client
+desc: ""
+type: :feature
+component: TimeTracker
+release: 
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2008-11-23 17:42:00.977508 Z
+references: []
+
+id: 74ce2eb2b5a409b81f6179c29807679a22c684d6
+log_events: 
+- - 2008-11-23 17:42:03.469190 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+trac_id: 97

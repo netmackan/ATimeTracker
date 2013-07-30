@@ -1,0 +1,24 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: French spelling corrections, and localization fixes
+desc: "1. \xC3\xA0 l'excellente librarie\n\
+  2. Aujourd'hui (not Aujourd'Hui)\n\
+  3. Export avec succ\xC3\xA8s (not Export\xC3\xA8)\n\
+  4. Context menu: Affichage lheure -> Affichage des heures\n\
+  Localize \"Task\" and \"Week days\" in the report\n\
+  Localize \"copying\" in the backup-to-SD dialog"
+type: :bugfix
+component: TimeTracker
+release: "2010.4"
+reporter: Wilfried Kopp <chevdor@gmail.com>
+status: :unstarted
+disposition: 
+creation_time: 2010-01-20 01:43:24.330834 Z
+references: []
+
+id: 000eb0e9bd1de3904ebc8a4d2f71fafcd86bae2d
+log_events: 
+- - 2010-01-20 01:43:25.702721 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+trac_id: 145

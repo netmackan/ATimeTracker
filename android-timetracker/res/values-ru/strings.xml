@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TimeTracker</string>
+    
+    <string name="start">Старт</string>
+    <string name="task_name">Название задачи</string>
+    <string name="add_task_ok">Добавить задачу</string>
+    <string name="task_name_required">Требуется указать название задачи</string>
+    <string name="start_time_required">Требуется указать время старта</string>
+
+    <string name="delete_ok">Удалить</string>
+    <string name="delete_task_title">Удалить Задачу</string>
+    <string name="delete_task_message">Вы уверены, что хотите удалить '%s' и все её записи временных интервалов?</string>
+    <string name="add_task_title">Добавить задачу</string>
+    <string name="change_view_title">Изменить вид</string>
+    <string name="generate_report_title">Отчёт</string>
+    <string name="select_range">Выбрать интервал...</string>
+    <string name="done">Вернуться к задачам</string>
+    <string name="add_time_title">Добавить новый временной интервал</string>
+    <string name="delete_time_message">Вы уверены, что хотите удалить этот временной интервал?</string>
+    <string name="delete_time_title">Удалить Временной Интервал</string>
+    <string name="start_time_label">Время Начала</string>
+    <string name="end_time_label">Время Окончания</string>
+    <string name="end_not_greater_than_start">Время окончания должно быть больше, чем время начала</string>
+    <string name="range_error_title">Ошибка Временного Интервала</string>
+    <string name="report_title">Отчёт за неделю с %s по %s </string>
+    <string name="week">Неделя %s</string>
+    <string name="title">TimeTracker (%s)</string>
+    <string name="help">Помощь</string>
+    <string name="export_view">Экспорт</string>
+    <string name="move_time">Назначить время для задачи</string>
+    <string name="edit_task">Редактирование задачи</string>
+    <string name="delete_task">Удалить задачу</string>
+    <string name="show_times">Показать Времена</string>
+
+    <!--    Preferences strings    -->
+    <string name="preferences">Настройки</string>
+    <!-- Preference titles -->
+    <string name="week_start_day">Первый день недели</string>
+    <string name="hour_mode">12/24 часовой режим</string>
+    <string name="font_size">Размер шрифта</string>
+    <string name="concurrency">Несколько одновременно запущенных задач</string>
+    <string name="sound">Звук</string>
+    <string name="vibrate">Вибрация</string>
+    <!-- Preference values -->
+    <string name="sunday">Воскресенье</string>
+    <string name="monday">Понедельник</string>
+    <string name="civilian">1:00 PM</string>
+    <string name="military">13:00</string>
+    <string name="small_font">Маленький</string>
+    <string name="medium_font">Средний</string>
+    <string name="large_font">Большой</string>
+    <string name="concurrent">Задачи могут быть запущены одновременно</string>
+    <string name="exclusive">Только одна задача может быть запущена</string>
+    <string name="sound_enabled">Звук включён</string>
+    <string name="sound_disabled">Звук отключен</string>
+    <string name="vibrate_enabled">Вибрация включена</string>
+    <string name="vibrate_disabled">Вибрация выключена</string>
+    <string name="time_display">Формат времени</string>
+    <string name="standard_time">стандартный (ЧЧ:ММ)</string>
+    <string name="decimal_time">Десятичная дробь (ЧЧ.чч)</string>
+
+    <!-- About dialog strings -->
+    <string name="version">Версия %s</string>
+    <string name="author">Sean E. Russell</string>
+    <string name="donate"><b>Если вам понравилось приложение, внесите пожертвование и поддержите дальнейшую разработку! (Кликните здесь)</b></string>
+    <string name="purpose">TimeTracker помогает вам вести учёт времени, которое
+		вы тратите на различную активность. Например, вы можете записывать сколько времени вы проводите на работе.
+		Приложение позволяет вам просматривать, редактировать и фильтровать временные интервалы. Оно так же
+		позволяет вам создавать отчёты в виде таблиц.</string>
+    <string name="usage">
+	Подробные инструкции вы можете найти на http://trac.germane-software.com/TimeTracker\n\n
+    • Задачи создаются через меню\n
+    • Нажмите на задачу для начала отсчёта времени; нажмите ещё раз, что бы остановить\n
+    • Используйте контекстное меню задачи для просмотра списка временных интервалов\n
+    • Настройки изменяются через меню\n
+    • Отчёт за неделю создаётся через меню\n
+    \n
+	Нажатие на другую задачу переключает отсчёт времени на неё.\n
+    \n
+    Контекстное меню задачи позволяет вам редактировать (изменять имя), удалять
+    (включая всю историю для выбранной задачи!) или просматривать её журнал времён.\n
+    \n
+    <b>Просмотр Журнала Времён</b>\n
+    \n
+	Журнал времён задачи установлен на тот же отрезок времени, который вы выбрали
+	для главного вида задачи. Поэтому, если вы создадите фильтр задачи на <i>Эту Неделю</i>
+	и откроете журнал времён, то вы увидите времена на эту неделю. Для ручной вставки
+	времён в журнал используйте пункт меню <i>Добавить Время</i>. Используйте контекстное меню временного интервала
+	, чтобы удалить или отредактировать его.\n
+    \n
+    <b>Обратите внимание</b>, что TimeTracker не защитит вас от создания временных интервалов, пересекающиеся с
+    интервалами в другой (или этой же) задаче.
+    </string>
+    <string name="credits"><b>Разработка</b>\n
+    \n
+    Иконка для TimeTracker взята из превосходной библиотеки glyFX,
+    созданной PerthWeb Pty Ltd (www.glyfx.com).\n
+    Перевод на русский выполнил Денис Гладкий\n
+    Перевод на французкий язык выполнил Вильфрид Копп
+    </string>
+    <string name="export_csv_success">Экспорт CSV на карту памяти завершён.
+        Файл timetracker.db</string>
+    <string name="export_csv_fail">Не удалось экспортировать в CSV. Не могу создать файл.
+        Проверьте, что SD карта вставлена.</string>
+    <string name="success">Успех</string>
+    <string name="failure">Неудача</string>
+    <string name="set_start_day_of_week">Установите день с которого начинается неделя</string>
+    <string name="more">Ещё...</string>
+    <string name="backup_success">Сохранение резервной копии базы данных завершилось. Файл timetracker.db</string>
+    <string name="restore_success">Успешное восстановление из резервной копии. %s
+    </string>
+    <string name="restore_failed">Не удалось восстановить базу данных. Пожалуйста, сообщите об этой ошибке. %s</string>
+</resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TimeTracker</string>
+    
+    <string name="start">Start</string>
+    <string name="task_name">Task name</string>
+    <string name="add_task_ok">Add task</string>
+    <string name="task_name_required">The task name is required</string>
+    <string name="start_time_required">The start time is required</string>
+
+    <string name="delete_ok">Delete</string>
+    <string name="delete_task_title">Delete Task</string>
+    <string name="delete_task_message">Are you sure you want to delete '%s' and all of it's time records?</string>
+    <string name="add_task_title">Add task</string>
+    <string name="change_view_title">Change view</string>
+    <string name="generate_report_title">Report</string>
+    <string name="select_range">Select range...</string>
+    <string name="done">Return to tasks</string>
+    <string name="add_time_title">Add a new time range</string>
+    <string name="delete_time_message">Are you sure you want to delete this time range?</string>
+    <string name="delete_time_title">Delete Time Range</string>
+    <string name="start_time_label">Start Time</string>
+    <string name="end_time_label">End Time</string>
+    <string name="end_not_greater_than_start">The end time must be greater than the start time</string>
+    <string name="range_error_title">Time Range Error</string>
+    <string name="report_title">Report for the week %s to %s </string>
+    <string name="week">Week %s</string>
+    <string name="title">TimeTracker (%s)</string>
+    <string name="help">Help</string>
+    <string name="export_view">Export</string>
+    <string name="move_time">Assign time to other task</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="show_times">Show Times</string>
+
+    <!--    Preferences strings    -->
+    <string name="preferences">Preferences</string>
+    <!-- Preference titles -->
+    <string name="week_start_day">Week start day</string>
+    <string name="hour_mode">12/24 hour mode</string>
+    <string name="font_size">Font size</string>
+    <string name="concurrency">Multiple concurrently running tasks</string>
+    <string name="sound">Sound</string>
+    <string name="vibrate">Vibrate</string>
+    <!-- Preference values -->
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="civilian">1:00 PM</string>
+    <string name="military">13:00</string>
+    <string name="small_font">Small</string>
+    <string name="medium_font">Medium</string>
+    <string name="large_font">Large</string>
+    <string name="concurrent">Tasks can run at the same time</string>
+    <string name="exclusive">Only one task can run at a time</string>
+    <string name="sound_enabled">Sound enabled</string>
+    <string name="sound_disabled">Sound disabled</string>
+    <string name="vibrate_enabled">Vibrate enabled</string>
+    <string name="vibrate_disabled">Vibrate disabled</string>
+    <string name="time_display">Time display</string>
+    <string name="standard_time">Standard (HH:MM)</string>
+    <string name="decimal_time">Decimal (HH.hh)</string>
+
+    <!-- About dialog strings -->
+    <string name="version">Version %s</string>
+    <string name="author">Sean E. Russell</string>
+    <string name="donate"><b>If you like this app, please purchase it and support future development! (Click here)</b></string>
+    <string name="purpose">TimeTracker helps you record the amount of time you spend on
+        activities; for example, for recording time in a time sheet at work.  It
+        provides ways to view, edit, and filter times, and provides a 
+        time sheet report as well.</string>
+    <string name="usage">
+    Detailed instructions are at http://trac.germane-software.com/TimeTracker\n\n
+    • Create some tasks using the menu\n
+    • Tap a task to start timing; tap it again to stop timing\n
+    • Use the context menu for a task to list times\n
+    • Change configuration options with the menu\n
+    • View a weekly report with the menu\n
+    \n
+    Tapping a different task switches timing to the other task.\n
+    \n
+    The task context menu allows you to edit tasks (change their names), delete tasks
+    (including all of the time history for that task!), or view the time log for that
+    task.\n
+    \n
+    <b>Time Log view</b>\n
+    \n
+    The time log for a task is filtered on the same range that you selected for the
+    main task view, so if you filtered the task view for <i>This Week</i> and you open
+    the time log, then you'll only see times for this week.  Use the <i>Add Time</i> 
+    menu item to manually insert times into the time log.  Use the context menu
+    for a time to delete or edit a time range.\n
+    \n
+    <b>Note</b> that TimeTracker will not prevent you from creating times that overlap
+    with times in other (or the same) task.
+    </string>
+    <string name="credits"><b>Credits</b>\n
+    \n
+    The TimeTracker application icon was borrowed from
+    the excellent glyFX icon library by PerthWeb Pty Ltd (www.glyfx.com).\n
+    Russian translation by Denis Gladkiy\n
+    French translation by Wilfried Kopp
+    </string>
+    <string name="export_csv_success">Successfully exported CSV to memory card 
+        as timetracker.db</string>
+    <string name="export_csv_fail">Failed to export CSV.  Couldn't create the file.
+        Is an SD card inserted?</string>
+    <string name="success">Success</string>
+    <string name="failure">Fail</string>
+    <string name="set_start_day_of_week">Set the day the week starts</string>
+    <string name="more">More...</string>
+    <string name="backup_success">Successfully backed up the database to the
+        memory card as timetracker.db</string>
+    <string name="restore_success">Successfully restored the database backup. %s
+    </string>
+    <string name="restore_failed">The database restore failed.  Please report
+    this an an error.  %s</string>
+</resources>

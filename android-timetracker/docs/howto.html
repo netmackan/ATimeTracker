@@ -1,0 +1,197 @@
+<html>
+    <head>
+        <title>TimeTracker Documentation</title>
+    </head>
+    <body>
+        <h1 align="center">TimeTracker</h1>
+        <h3 align="center">Version 2010.3</h3>
+        <h2 align="center">Sean E. Russell</h2>
+        
+        <p><strong>If you like this app, please <a href="donate.html">contribute</a> and 
+        support future development!</strong></p>
+        
+        <p>TimeTracker helps you record the amount of time you spend on
+        activities; for example, for recording time in a time sheet at work.  It
+        provides ways to view, edit, and filter times, and provides a 
+        time sheet report as well.</p>
+
+
+        <hr/>        
+        <h2>The Task view (the main page)</h2>
+        <p>The main application view is the task view.  This shows all of the tasks
+        and a sum of their times for a selected date range.  This is the main
+        view where time is tracked.</p>
+        <p>Tasks are added by using the Task view menu's 
+            <a href="#add_task">Add Task</a> option.</p>
+        <p>To start the timer for a task, tap on the task in the task list.  To
+            stop timing, tap it again; or, tap a different task to switch timing to 
+            the other task. <em>Two tasks can not be running at the same time.</em>
+            </p>
+        <p>The <i>Change View</i> menu item can be used to change the range
+            of times summed for the tasks.  Options are:
+            <ul>
+                <li>Today</li>
+                <li>Yesterday</li>
+                <li>This week</li>
+                <li>Last week</li>
+                <li>All times</li>
+                <li>Select a range</li>
+            </ul> 
+            Times are filtered by their <em>start</em> date; if a time event 
+            crosses a day boundary into a day that is out of the currently 
+            selected view range, the <em>entire</em> range will still be included
+            in the sum; however, none of that time will appear on the next day,
+            so times will only appear once.  
+        </p>
+        <div style="border: 1px solid black; padding: 10px; background:lightblue; margin: 20px;">
+            For example, if the view is set to
+            <i>Yesterday</i> and there is a time event that started at 23:00 on
+            that day and stops at 01:00 today, then the 2 hours will be included
+            in the sum of that task for this view.  If the the view is then
+            switched to <i>Today</i> then that time range will not be included 
+            in this view.
+        </div>
+        <p>A report of the times for the week can be displayed using the
+            <a href="#report">Report</a> option of the main menu.</p>
+        <p>To view a log of the times for a task (for the currently selected view), 
+            the <a href="#time_list">Time list</a> option can be selected from the
+            context menu (press-hold on a task) of the task.</p>
+        <p>Tasks can be deleted using the <a href="#delete_task">Delete task</a>
+            context menu item.</p>
+        <p>Finally, a task's name can be edited using the <a href="#edit_task">Edit
+        task</a> context menu item.</p> 
+
+
+        <hr/>
+        <h2>The Task view main menu (the menu button)</h2>
+        The main task view menu contains the following options:
+        <ul>
+            <li>Add task</li>
+            <li>Change view</li>
+            <li>Report</li>
+            <li>Help</li>
+        </ul>
+        <h3><a name="add_task">Add task</a></h3>
+            This opens a dialog asking for the task name, and adds a new task to 
+            the task list.  Cancel this dialog to abort the addition.
+            
+        <h3><a name="change_view">Change view</a></h3>
+            The <i>Change view</i> menu item can be used to change the range
+            of times summed for the tasks.  Options are:
+            <ul>
+                <li>Today</li>
+                <li>Yesterday</li>
+                <li>This week</li>
+                <li>Last week</li>
+                <li>All times</li>
+                <li>Select a range</li>
+            </ul>
+            <a name="span_example">Times</a> are filtered by their <em>start</em> 
+            date; if a time event crosses a day boundary into a day that is out 
+            of the currently 
+            selected view range, the <em>entire</em> range will still be included
+            in the sum; however, none of that time will appear on the next day,
+            so times will only appear once.  
+            <div style="border: 1px solid black; padding: 10px; background:lightblue; margin: 20px;">
+            For example, if the view is set to
+            <i>Yesterday</i> and there is a time event that started at 23:00 on
+            that day and stops at 01:00 today, then the 2 hours will be included
+            in the sum of that task for this view.  If the the view is then
+            switched to <i>Today</i> then that time range will not be included 
+            in this view.
+            </div>
+            
+        <h3>Report</h3>
+            Opens the <a href="#report">Report view</a>.
+            
+        <h3>Help</h3>
+            Opens a dialog showing the application version and author information,
+            as well as a more brief version of this documentation.
+
+
+        <hr/>
+        <h2>The Task view context menu (press-hold on a task)</h2>
+        The context menu for each task contains the following options:
+        <ul>
+            <li>Edit task</li>
+            <li>Delete task</li>
+            <li>Show times</li>
+        </ul>
+        <h3>Edit task</h3>
+            Opens a dialog that can be used to change the name of a task.
+        <h3>Delete task</h3>
+            Deletes a task, and all of the times for the task.
+            <br/><strong>This action can not be undone!</strong><br/>
+            A confirmation dialog will be displayed before the task is deleted;
+            cancel the confirmation dialog to abort the action.
+        <h3>Show times</h3>
+            Opens the <a href="#time_list">Time log</a> for the task.
+       
+       
+        <hr/>
+        <h2><a name="report">The Report view</a> (weekly sum of all tasks)</h2>
+        <p>Use the <i>Report</i> menu item to view a report of the daily time 
+        sums per task for an entire week.  The right-most column lists the totals
+        per task for the week; the bottom-most row lists the totals of all tasks
+        for the day.  Each cell shows the total for a task, for a day.</p>
+        <p>The currently running time is included in the display, but is not
+        updated in real-time.</p>
+        
+      
+        <hr/>
+        <h2><a name="time_list">The Time log</a></h2>
+            The Time log displays a detailed list of times for a single task. 
+            The list is filtered on the same range view that is currently 
+            selected for the main task view; if it is set to <i>Today</i>, then
+            only times for today will be shown.
+            
+            <p>As is the case for the main Task view, if a time range spans days
+            that are not in the selected view, then it will be displayed for the
+            view on which the time starts.  See the <a href="#span_example">example</a> 
+            in the Task view for more information.</p> 
+
+
+        <hr/>
+        <h2>The Time log view main menu (the menu button)</h2>
+            The menu for the Time log contains a single entry for adding a new
+            time range.
+            <p>Use the <i>Add Time</i> option to
+            manually insert times into the time log.</p>  
+            <p><strong>Note</strong> that TimeTracker will not
+            prevent you from creating times that overlap with times in other, or 
+            the same, task.</p>
+            
+
+        <hr/>
+        <h2>The Time log view context menu (press-hold on a time)</h2>
+        The Time log context menu contains the following options:
+        <ul>
+        <li>Edit time</li>
+        <li>Delete time</li>
+        </ul>
+        <h3>Edit time</h3>
+        This option can be used to adjust the start and end time of a time range.
+        This option can also be more simply invoked by clicking on one of the 
+        times in the list.
+        <h3>Delete time</h3>
+        A time can be removed by using this option.  A confirmation dialog gives 
+        the user the option of aborting the action.
+    
+    
+        <hr/>
+        <h2>Bug tracker</h2>
+            You can visit the development
+            <a href="http://ditz.germane-software.com/TimeTracker">bug tracker</a>
+            page to see a list of known bugs and future enhancements.  Email
+            the author, using the application managers "Mail Author" option,
+            to submit bug reports.  I can't fix 'em if I don't know about 'em.
+            
+    
+        <hr/>
+        <h2>Credits</h2>
+            The TimeTracker application icon was borrowed from
+            the excellent glyFX icon library by 
+            <a href="http://www.glyfx.com">PerthWeb Pty Ltd</a>.
+    
+    </body>
+</html>

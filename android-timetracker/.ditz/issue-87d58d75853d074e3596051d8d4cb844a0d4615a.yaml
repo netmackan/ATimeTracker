@@ -1,0 +1,19 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add "go to today" to report
+desc: ""
+type: :feature
+component: TimeTracker
+release: 
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2008-11-29 02:32:07.487351 Z
+references: []
+
+id: 87d58d75853d074e3596051d8d4cb844a0d4615a
+log_events: 
+- - 2008-11-29 02:32:07.893599 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+trac_id: 141

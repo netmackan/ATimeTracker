@@ -1,0 +1,43 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add ability to filter time display based on date range
+desc: |-
+  Options should be:
+  * Today
+  * Yesterday
+  * Pay period
+  * Last pay period
+  * Select range
+type: :feature
+component: TimeTracker
+release: "2008.3"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-23 17:59:18.999811 Z
+references: []
+
+id: fd2d4d5b4c1c2b4e6e0c94fcd1ff87f821a7bbbd
+log_events: 
+- - 2008-11-23 17:59:19.411334 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-23 17:59:47.567540 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.4 from unassigned
+  - ""
+- - 2008-11-23 20:34:58.360997 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.3 from 2008.4
+  - ""
+- - 2008-11-23 22:50:09.216093 Z
+  - Sean Russell <ser@ser1.net>
+  - commented
+  - |-
+    Today, yesterday, this week, last week, and "all" are complete.  Only thing left on
+    this item is "select range."
+- - 2008-11-24 00:22:20.402540 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - Added the ability to filter by range, and fixed a bug in the week selection.
+trac_id: 53

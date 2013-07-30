@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Remove the priorities
+desc: Duh.  Just, duh.
+type: :feature
+component: TimeTracker
+release: "2008.3"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-23 17:57:40.543061 Z
+references: []
+
+id: d47ce0e878450aed87ffd082555ebdb514614130
+log_events: 
+- - 2008-11-23 17:57:40.957784 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-23 18:36:34.584002 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 89

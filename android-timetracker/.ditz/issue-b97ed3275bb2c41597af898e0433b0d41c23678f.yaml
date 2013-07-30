@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Some headers are missing (on days with 1 time and current running?)
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-12-02 02:26:54.379794 Z
+references: []
+
+id: b97ed3275bb2c41597af898e0433b0d41c23678f
+log_events: 
+- - 2008-12-02 02:26:54.625905 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-12-02 02:56:06.990744 Z
+  - Sean Russell <ser@ser1.net>
+  - commented
+  - The last time?
+- - 2008-12-02 02:57:31.709340 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 132

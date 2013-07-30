@@ -1,0 +1,31 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Times are still f'ed up
+desc: This might still be a timezone issue.
+type: :feature
+component: TimeTracker
+release: "2008.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-27 13:41:17.180320 Z
+references: []
+
+id: 1c0d83a250b213e2a00e76d51ca0c475d0b9de07
+log_events: 
+- - 2008-11-27 13:41:18.087351 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-28 11:50:43.756672 Z
+  - Sean Russell <ser@ser1.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2008-11-29 00:01:36.900252 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.4 from 2008.3
+  - ""
+- - 2008-11-30 04:07:11.610727 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 84

@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Home screen widget to start/stop most recent task
+desc: ""
+type: :feature
+component: TimeTracker
+release: Promoted
+reporter: Mike Ashelby <mike.ashelby@gmail.com>
+status: :unstarted
+disposition: 
+creation_time: 2010-01-12 10:56:37.475761 Z
+references: []
+
+id: 6bd92a17b1902ef1f247b76f0aa006dab30e33f1
+log_events: 
+- - 2010-01-12 10:56:37.476390 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2010-01-12 11:42:45.799734 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release Promoted from unassigned
+  - ""
+trac_id: 134

@@ -1,0 +1,35 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Deleting times sometimes causes a force close
+desc: |-
+  [exec] E/AndroidRuntime(  219): java.lang.IndexOutOfBoundsException
+       [exec] E/AndroidRuntime(  219):    at java.util.ArrayList.remove(ArrayList.java:542)
+       [exec] E/AndroidRuntime(  219):    at net.ser1.timetracker.TaskTimes$TimesAdapter.deleteTimeRange(TaskTimes.java:238)
+       [exec] E/AndroidRuntime(  219):    at net.ser1.timetracker.TaskTimes$ClickListener.onClick(TaskTimes.java
+type: :bugfix
+component: TimeTracker
+release: "2009.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2009-02-06 02:55:51.302953 Z
+references: 
+- TimeTracker-104
+id: a1a6a8f2cb0aa5c0d899e61887877231275290f2
+log_events: 
+- - 2009-02-06 02:55:51.303604 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-03-04 14:22:15.157262 Z
+  - Sean Russell <ser@ser1.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2009-03-04 15:05:12.661478 Z
+  - Sean Russell <ser@ser1.net>
+  - added reference 1
+  - ""
+- - 2009-03-04 15:05:18.109484 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - ""
+trac_id: 139

@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Fancify the time display
+desc: Put in date separators
+type: :feature
+component: TimeTracker
+release: "2008.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-25 13:48:30.917325 Z
+references: []
+
+id: 18865b8824f967c472469ccc9c917b01f4529cc0
+log_events: 
+- - 2008-11-25 13:48:31.308802 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-25 14:29:13.084252 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.4 from unassigned
+  - ""
+- - 2008-11-30 16:42:05.044552 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 62

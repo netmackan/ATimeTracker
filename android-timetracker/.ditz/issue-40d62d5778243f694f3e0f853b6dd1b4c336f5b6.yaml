@@ -1,0 +1,19 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Ability to change the sort order of tasks
+desc: Need more info
+type: :feature
+component: TimeTracker
+release: 
+reporter: Wilfried Kopp <chevdor@gmail.com>
+status: :unstarted
+disposition: 
+creation_time: 2010-01-12 10:55:21.379774 Z
+references: []
+
+id: 40d62d5778243f694f3e0f853b6dd1b4c336f5b6
+log_events: 
+- - 2010-01-12 10:55:21.380398 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+trac_id: 61

@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add ability to edit task name
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.2"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-21 02:38:29.678384 Z
+references: []
+
+id: 4458641eb27f930cfed3dbed072ff04c59ccf645
+log_events: 
+- - 2008-11-21 02:38:30.765074 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-23 17:28:18.252410 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 67

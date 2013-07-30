@@ -1,0 +1,22 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Reduce the size of the DB
+desc: |-
+  Options:
+  * Add option to "archive" times to the SD card, removing them from the phone memeory DB
+  * Add option to relocate the DB to the SD card.
+type: :feature
+component: TimeTracker
+release: 
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2008-12-12 03:37:53.147750 Z
+references: []
+
+id: 0b47f632a383e39ddc9ccc0c7cc13bf093e96821
+log_events: 
+- - 2008-12-12 03:37:53.520355 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+trac_id: 77

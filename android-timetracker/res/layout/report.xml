@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:orientation="vertical"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent">
+ 
+    <ScrollView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+ 
+        <TableLayout android:id="@+id/report"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:stretchColumns="0"
+                     android:collapseColumns="0">
+        </TableLayout>
+    </ScrollView>
+    
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|bottom">
+        
+        <ImageButton android:id="@+id/decrement_week" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:src="@android:drawable/ic_media_rew" />
+        <TextView android:id="@+id/week"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20dip"
+            android:layout_marginRight="30dip"
+            android:layout_marginLeft="30dip"
+            android:text="@string/week"/>
+        <ImageButton android:id="@+id/increment_week" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:src="@android:drawable/ic_media_ff" />
+    </LinearLayout>
+</LinearLayout>

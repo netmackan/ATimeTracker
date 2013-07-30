@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: "Preference: max time alarm"
+desc: |-
+  User wants an alarm that triggers when some time-based event occurs --
+  such as a task time exceeds some amount, or the total for the day exceeds
+  some amount.  This is to help people remember to stop their times.
+  Could also be location-based.
+type: :feature
+component: TimeTracker
+release: 
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2010-01-22 12:46:04.859247 Z
+references: []
+
+id: e4f07c0a3c594af438efe0e6e838bf3ecfdc6b74
+log_events: 
+- - 2010-01-22 12:46:05.777396 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+trac_id: 27

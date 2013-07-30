@@ -1,0 +1,42 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add an "about" dialog
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-24 00:31:38.812716 Z
+references: []
+
+id: be21b7f92e74a9fabb7f3ece94ba354eeb8a41c9
+log_events: 
+- - 2008-11-24 00:31:39.344623 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-25 01:16:58.440651 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.3 from unassigned
+  - ""
+- - 2008-11-28 14:43:43.330077 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.4 from 2008.3
+  - ""
+- - 2008-12-04 03:15:57.359976 Z
+  - Sean Russell <ser@ser1.net>
+  - commented
+  - |-
+    The "OK" button doesn't work
+    Need some more formatting in the instructions
+    Add a donate URL
+- - 2008-12-04 03:25:28.979110 Z
+  - Sean Russell <ser@ser1.net>
+  - commented
+  - Change the icon
+- - 2008-12-10 02:58:40.868797 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - ""
+trac_id: 68

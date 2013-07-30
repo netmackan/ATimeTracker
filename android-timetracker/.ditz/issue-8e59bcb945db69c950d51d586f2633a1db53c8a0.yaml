@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Allow sending exported report via email, BT
+desc: ""
+type: :feature
+component: TimeTracker
+release: 
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2009-01-09 03:11:59.655842 Z
+references: []
+
+id: 8e59bcb945db69c950d51d586f2633a1db53c8a0
+log_events: 
+- - 2009-01-09 03:12:00.020341 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-01-29 12:38:43.490841 Z
+  - Sean Russell <ser@ser1.net>
+  - commented
+  - BlueTooth won't be possible until Cupcake
+trac_id: 28

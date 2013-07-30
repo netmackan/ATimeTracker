@@ -1,0 +1,19 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Transition between activities by sideways-sliding
+desc: ""
+type: :feature
+component: TimeTracker
+release: 
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2008-11-28 13:44:14.338740 Z
+references: []
+
+id: 26c6b108aabc800967703550aca0fdeb5b3b1095
+log_events: 
+- - 2008-11-28 13:44:14.583758 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+trac_id: 91

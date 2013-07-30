@@ -1,0 +1,31 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Reduce time steps to 1 minute
+desc: Add a class-level 'step'
+type: :feature
+component: TimeTracker
+release: "2008.2"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-21 02:39:42.520944 Z
+references: []
+
+id: 38bd515505da09af0ff7779e5002674813c7bec7
+log_events: 
+- - 2008-11-21 02:39:43.323382 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-21 02:47:00.181633 Z
+  - Sean Russell <ser@ser1.net>
+  - changed description
+  - ""
+- - 2008-11-21 03:07:17.800085 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.2 from unassigned
+  - ""
+- - 2008-11-23 02:46:38.621174 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 25

@@ -1,0 +1,39 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Split existing task and insert a new task
+desc: |-
+  This is for the case where user would like to re-assign some time from an
+  existing task to another task.  It is a convenience function, where user
+  can select a task to split, create a new task, and have the old task split
+  in half and bounding the new task.
+type: :feature
+component: TimeTracker
+release: Promoted
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2009-01-11 12:42:25.267012 Z
+references: []
+
+id: 8c04e0b3f3a3158f76b0716e1ce4b201f12d872e
+log_events: 
+- - 2009-01-11 12:42:25.586905 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-01-17 16:19:20.973963 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.2 from unassigned
+  - ""
+- - 2009-01-18 00:59:24.173903 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.3 from 2009.2
+  - ""
+- - 2009-02-02 14:57:30.883924 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.4 from 2009.3
+  - ""
+- - 2009-03-04 16:46:44.430824 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release Promoted from 2009.4
+  - ""
+trac_id: 113

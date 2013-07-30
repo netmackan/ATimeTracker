@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Ant build file, with rules for signing and installing
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2009.1"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-12-02 19:11:13.932070 Z
+references: []
+
+id: b225f33f9f44bed70ccc93c08e6b856e2ec2dd6b
+log_events: 
+- - 2008-12-02 19:11:14.152779 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-01-17 16:18:48.720245 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.1 from unassigned
+  - ""
+- - 2009-01-17 16:18:55.498065 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - ""
+trac_id: 128

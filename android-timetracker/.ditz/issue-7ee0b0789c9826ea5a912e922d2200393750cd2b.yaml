@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Reverse sort order of CSV export
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2009.3"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2009-01-28 14:55:20.508352 Z
+references: []
+
+id: 7ee0b0789c9826ea5a912e922d2200393750cd2b
+log_events: 
+- - 2009-01-28 14:55:20.508983 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-01-29 12:39:32.315885 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.3 from unassigned
+  - ""
+- - 2009-01-31 17:06:27.897806 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - ""
+trac_id: 149

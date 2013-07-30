@@ -1,0 +1,29 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Include currently running task in the TimeView
+desc: Ensure that editing and deleting work properly
+type: :feature
+component: TimeTracker
+release: "2008.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-12-04 01:50:52.118564 Z
+references: []
+
+id: be0b214cfe3a222a9bcfffead05733d61f8cfe15
+log_events: 
+- - 2008-12-04 01:50:53.113607 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-12-04 01:51:22.143245 Z
+  - Sean Russell <ser@ser1.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2008-12-04 02:54:12.371554 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - |-
+    Need to decide whether to have the currently running task updated in this view or not.
+    Currently, it isn't.  Also, does the same work need to be done for the report view?
+trac_id: 85

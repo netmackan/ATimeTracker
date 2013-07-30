@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Report times are in the previous day
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.3"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-29 03:19:28.110387 Z
+references: []
+
+id: b2c18d469ebf4fe64227e7d65029b7797a7ed0de
+log_events: 
+- - 2008-11-29 03:19:28.404653 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-29 17:05:22.960960 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 58

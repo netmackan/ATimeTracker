@@ -1,0 +1,407 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add a sound when a time is started or stopped
+desc: Suggested by Jesse Henriques
+type: :feature
+component: TimeTracker
+release: "2009.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2009-01-07 01:31:50.875738 Z
+references: []
+
+id: 7d51e38adcbb1ae79eb35a6c7186fe35afecb079
+log_events: 
+- - 2009-01-07 01:31:51.491006 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-01-07 01:39:56.162961 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.2 from unassigned
+  - ""
+- - 2009-01-18 00:59:22.953528 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.3 from 2009.2
+  - ""
+- - 2009-02-02 14:57:21.195643 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.4 from 2009.3
+  - ""
+- - 2009-02-06 12:12:21.396327 Z
+  - Sean Russell <ser@ser1.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2009-02-25 12:39:49.168412 Z
+  - Sean Russell <ser@ser1.net>
+  - commented
+  - And vibrate on check
+- - 2009-03-04 12:59:43.054423 Z
+  - Sean Russell <ser@ser1.net>
+  - commented
+  - Added the vibrate.
+- - 2009-03-04 14:02:52.696647 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - ""
+- - 2010-01-29 16:00:30 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-29 16:00:31 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-29 16:00:32 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-29 16:00:33 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-29 16:00:34 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-29 16:00:35 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:00:48 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:00:49 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:00:50 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:00:51 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:00:52 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:00:53 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:00:54 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:00:55 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:00:56 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:00:57 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:00:58 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:00:59 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:19 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:20 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:23 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:24 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:25 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:26 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:27 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:28 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:29 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:30 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:31 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:32 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:33 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:34 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:35 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:36 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:37 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:38 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:39 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:40 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:41 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:42 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:08:43 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:08:44 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:14:55 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:14:56 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:05 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:06 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:07 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:08 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:09 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:10 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:11 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:12 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:13 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:14 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:15 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:16 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:17 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:18 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:19 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:20 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:21 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:22 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:23 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:24 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:25 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:26 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:27 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:28 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:29 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:30 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:31 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:32 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:33 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:34 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:35 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:36 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:37 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:38 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:39 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:40 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:41 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:42 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:43 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:44 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:45 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:46 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:47 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:48 Z
+  - ser
+  - commented
+  - Added the vibrate.
+- - 2010-01-30 03:15:49 Z
+  - ser
+  - commented
+  - And vibrate on check
+- - 2010-01-30 03:15:50 Z
+  - ser
+  - commented
+  - Added the vibrate.
+trac_id: 3

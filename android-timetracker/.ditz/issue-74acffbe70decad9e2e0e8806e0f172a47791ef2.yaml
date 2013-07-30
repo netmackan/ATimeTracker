@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Lazy load times
+desc: ""
+type: :feature
+component: TimeTracker
+release: 
+reporter: Sean Russell <ser@ser1.net>
+status: :unstarted
+disposition: 
+creation_time: 2008-11-25 13:47:59.812354 Z
+references: []
+
+id: 74acffbe70decad9e2e0e8806e0f172a47791ef2
+log_events: 
+- - 2008-11-25 13:48:00.173529 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-25 14:29:02.828084 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.4 from unassigned
+  - ""
+trac_id: 36

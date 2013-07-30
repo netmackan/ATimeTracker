@@ -1,0 +1,35 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: When application first starts -- very first time -- show the About dialog
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2009.2"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-12-10 12:34:15.341028 Z
+references: []
+
+id: fa2e45a0eb14c54b7f21fe870533f0bb07fba86c
+log_events: 
+- - 2008-12-10 12:34:15.686293 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-12-10 14:11:08.056332 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.5 from unassigned
+  - ""
+- - 2008-12-15 02:10:20.330365 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.1 from 2008.5
+  - ""
+- - 2009-01-18 01:02:48.707102 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.2 from 2009.1
+  - ""
+- - 2009-01-29 11:47:56.482975 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - ""
+trac_id: 102

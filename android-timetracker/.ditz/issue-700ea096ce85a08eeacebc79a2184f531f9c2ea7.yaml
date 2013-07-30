@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Easy increments (+/-15, +-30)
+desc: ""
+type: :feature
+component: TimeTracker
+release: Promoted
+reporter: PETER MUELLER <wlpm04@motorola.com>
+status: :unstarted
+disposition: 
+creation_time: 2010-01-12 10:45:33.367771 Z
+references: []
+
+id: 700ea096ce85a08eeacebc79a2184f531f9c2ea7
+log_events: 
+- - 2010-01-12 10:45:33.368413 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2010-01-12 11:35:16.311851 Z
+  - Sean Russell <ser@ser1.net>
+  - edited description, reporter
+  - ""
+- - 2010-01-12 11:42:04.003726 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release Promoted from unassigned
+  - ""
+trac_id: 117

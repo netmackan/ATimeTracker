@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Adding task that gets inserted at top of list doesn't add header
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-12-02 14:13:21.991065 Z
+references: []
+
+id: 1b89a855d399eaa9d65ed53b256460b018d58a55
+log_events: 
+- - 2008-12-02 14:13:22.282850 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-12-02 14:29:11.153207 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 83

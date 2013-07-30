@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: More detailed reports
+desc: ""
+type: :feature
+component: TimeTracker
+release: 
+reporter: Adam Nelson <anelsonserv@gmail.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-01-12 14:10:06.203054 Z
+references: []
+
+id: 3bdb887e6e6351c3aaf4f78919ec8edf7bb91093
+log_events: 
+- - 2010-01-12 14:10:06.464859 Z
+  - Adam Nelson <anelsonserv@gmail.com>
+  - created
+  - ""
+- - 2010-01-18 12:40:06.605296 Z
+  - Sean Russell <ser@ser1.net>
+  - commented
+  - |-
+    Adam said, in clarification: "I need to have multiple reports because I
+    work for my self sometimes now it all ends up in one report with the total
+    for the day and the total for the week.  I need to be able to separate them
+    for billing."
+trac_id: 131

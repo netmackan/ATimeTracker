@@ -1,0 +1,31 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Change behavior of "return" button
+desc: |-
+  In Android, the "back" button means "save and return", whereas in Timetracker, it currently means "abort."
+  This is counter to the Android standards for button behavior, so it should be changed.
+  This means that all dialogs with "Save" buttons need to be changed to have "Discard" buttons,
+  and the "back" button action should be to save and return.
+type: :bugfix
+component: TimeTracker
+release: "2010.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :in_progress
+disposition: 
+creation_time: 2009-10-03 04:08:50.923895 Z
+references: []
+
+id: 4338908e4d1a37db3783452820d8c03a8f4e4f79
+log_events: 
+- - 2009-10-03 04:08:50.924534 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2010-01-11 14:24:44.515723 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2010.4 from 2009.5
+  - ""
+- - 2010-01-24 22:02:19.903593 Z
+  - Sean Russell <ser@ser1.net>
+  - changed status from unstarted to in_progress
+  - ""
+trac_id: 125

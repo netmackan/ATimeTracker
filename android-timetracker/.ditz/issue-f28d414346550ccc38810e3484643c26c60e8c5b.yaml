@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Adding a new task doesn't insert into the correct position.
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.3"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-23 17:38:43.423927 Z
+references: []
+
+id: f28d414346550ccc38810e3484643c26c60e8c5b
+log_events: 
+- - 2008-11-23 17:38:44.136490 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-23 17:40:12.094058 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2008.3 from unassigned
+  - ""
+- - 2008-11-23 19:55:29.393092 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 108

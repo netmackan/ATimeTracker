@@ -1,0 +1,32 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: The changes for the day of week broke the time display (on Monday)
+desc: ""
+type: :bugfix
+component: TimeTracker
+release: "2009.3"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2009-02-02 14:03:54.682661 Z
+references: []
+
+id: f13d58cd282004dd07f856caeafe5866b842a0f3
+log_events: 
+- - 2009-02-02 14:03:54.698672 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-02-02 14:56:38.390623 Z
+  - Sean Russell <ser@ser1.net>
+  - changed status from unstarted to in_progress
+  - |-
+    This is a bug in Android, in which the Calendar class doesn't conform to the reference
+    platform in some situations.  In particular, using set() to change the DAY_OF_WEEK
+    rolls the date back a week too far.
+    A bug report has been filed on Android, #1898
+    http://code.google.com/p/android/issues/detail?id=1898&q=seanerussell&colspec=ID%20Type%20Version%20Security%20Status%20Owner%20Summary
+- - 2009-02-02 14:56:54.081484 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - Implemented a work-around.
+trac_id: 30

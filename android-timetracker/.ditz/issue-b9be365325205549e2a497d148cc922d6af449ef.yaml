@@ -1,0 +1,19 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Write a note for the logged time range
+desc: |-
+  It would be nice to be able to add some text describing the logged time. 
+  
+  You would either write some text when you start logging but most likely it would be more important to be able to add the text afterwards. This could be done on the "Edit Time"  page or under a new "Edit note".
+type: :feature
+component: TimeTracker Android
+release: 
+reporter: me.yahoo.com/netmackan#322c8
+status: :unstarted
+disposition: 
+creation_time: 2009-09-19 15:10:21 Z
+references: []
+
+id: b9be365325205549e2a497d148cc922d6af449ef
+log_events: []
+
+trac_id: 13

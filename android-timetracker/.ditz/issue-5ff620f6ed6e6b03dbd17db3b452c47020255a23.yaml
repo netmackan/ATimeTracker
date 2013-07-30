@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add deleting times
+desc: ""
+type: :feature
+component: TimeTracker
+release: "2008.3"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-25 14:28:08.326984 Z
+references: []
+
+id: 5ff620f6ed6e6b03dbd17db3b452c47020255a23
+log_events: 
+- - 2008-11-25 14:28:08.566929 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-11-26 13:27:23.931982 Z
+  - Sean Russell <ser@ser1.net>
+  - closed issue with disposition fixed
+  - ""
+trac_id: 59

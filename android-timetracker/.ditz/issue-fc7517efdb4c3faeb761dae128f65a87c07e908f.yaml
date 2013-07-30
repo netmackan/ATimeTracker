@@ -1,0 +1,29 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Change view (%s) -- need to fill in %s
+desc: ""
+type: :bugfix
+component: TimeTracker
+release: "2009.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2009-02-14 16:53:28.782817 Z
+references: []
+
+id: fc7517efdb4c3faeb761dae128f65a87c07e908f
+log_events: 
+- - 2009-02-14 16:53:28.783471 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-03-04 14:03:57.025318 Z
+  - Sean Russell <ser@ser1.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2009-03-04 14:08:58.366056 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - |-
+    Can't easily fill in the %s because of using the dialog builder, so
+    removed and rephrased the entry.
+trac_id: 90

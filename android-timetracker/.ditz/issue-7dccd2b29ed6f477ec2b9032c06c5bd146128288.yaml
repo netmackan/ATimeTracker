@@ -1,0 +1,41 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Range select appears to be broken
+desc: ""
+type: :bugfix
+component: TimeTracker
+release: "2009.4"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2009-01-17 13:24:21.013258 Z
+references: []
+
+id: 7dccd2b29ed6f477ec2b9032c06c5bd146128288
+log_events: 
+- - 2009-01-17 13:24:21.013929 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2009-01-17 16:19:45.231613 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.2 from unassigned
+  - ""
+- - 2009-01-18 00:59:25.325298 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.3 from 2009.2
+  - ""
+- - 2009-02-02 04:01:00.953656 Z
+  - Sean Russell <ser@ser1.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2009-02-02 14:57:10.932103 Z
+  - Sean Russell <ser@ser1.net>
+  - assigned to release 2009.4 from 2009.3
+  - ""
+- - 2009-02-03 13:29:09.369019 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - |-
+    The dialog infrastructure of Android (or the documentation thereof) sucks.
+    There's no elegant way to chain dialogs.
+trac_id: 137

@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Use a checkbox instead of the font highlighting
+desc: Suggested in the comments
+type: :feature
+component: TimeTracker
+release: "2008.5"
+reporter: Sean Russell <ser@ser1.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-12-11 11:53:09.070330 Z
+references: []
+
+id: 4943aa942a399ae09be636c691918777328ea0ad
+log_events: 
+- - 2008-12-11 11:53:10.199790 Z
+  - Sean Russell <ser@ser1.net>
+  - created
+  - ""
+- - 2008-12-12 02:42:57.999577 Z
+  - Sean Russell <ser@ser1.net>
+  - closed with disposition fixed
+  - ""
+trac_id: 133
