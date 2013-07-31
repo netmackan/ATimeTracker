@@ -18,10 +18,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-
 /**
- * TimeTracker 
- * ©2008, 2009 Sean Russell
+ * TimeTracker ©2008, 2009 Sean Russell
+ *
  * @author Sean Russell <ser@germane-software.com>
  */
 package com.markuspage.android.atimetracker;
@@ -62,11 +61,11 @@ public class EditTime extends Activity implements OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
-        DatePicker startDate = (DatePicker)findViewById(R.id.start_date);
-        TimePicker startTime = (TimePicker)findViewById(R.id.start_time);
-        
+        DatePicker startDate = (DatePicker) findViewById(R.id.start_date);
+        TimePicker startTime = (TimePicker) findViewById(R.id.start_time);
+
         Calendar sd = Calendar.getInstance();
-        sd.setFirstDayOfWeek( Calendar.MONDAY );
+        sd.setFirstDayOfWeek(Calendar.MONDAY);
         if (!getIntent().getExtras().getBoolean(CLEAR)) {
             sd.setTimeInMillis(getIntent().getExtras().getLong(START_DATE));
         }
@@ -76,10 +75,10 @@ public class EditTime extends Activity implements OnClickListener {
         startTime.setCurrentMinute(sd.get(Calendar.MINUTE));
 
         if (!editingRunning) {
-            DatePicker endDate = (DatePicker)findViewById(R.id.end_date);
-            TimePicker endTime = (TimePicker)findViewById(R.id.end_time);
+            DatePicker endDate = (DatePicker) findViewById(R.id.end_date);
+            TimePicker endTime = (TimePicker) findViewById(R.id.end_time);
             Calendar ed = Calendar.getInstance();
-            ed.setFirstDayOfWeek( Calendar.MONDAY );
+            ed.setFirstDayOfWeek(Calendar.MONDAY);
             if (getIntent().getExtras().getBoolean(CLEAR)) {
                 ed = sd;
             } else {
@@ -93,19 +92,19 @@ public class EditTime extends Activity implements OnClickListener {
     }
 
     public void onClick(View v) {
-        DatePicker startDate = (DatePicker)findViewById(R.id.start_date);
-        TimePicker startTime = (TimePicker)findViewById(R.id.start_time);
+        DatePicker startDate = (DatePicker) findViewById(R.id.start_date);
+        TimePicker startTime = (TimePicker) findViewById(R.id.start_time);
         Calendar s = Calendar.getInstance();
-        s.setFirstDayOfWeek( Calendar.MONDAY );
+        s.setFirstDayOfWeek(Calendar.MONDAY);
         s.set(startDate.getYear(), startDate.getMonth(), startDate.getDayOfMonth(),
                 startTime.getCurrentHour(), startTime.getCurrentMinute());
         getIntent().putExtra(START_DATE, s.getTime().getTime());
 
         if (!editingRunning) {
-            DatePicker endDate = (DatePicker)findViewById(R.id.end_date);
-            TimePicker endTime = (TimePicker)findViewById(R.id.end_time);
+            DatePicker endDate = (DatePicker) findViewById(R.id.end_date);
+            TimePicker endTime = (TimePicker) findViewById(R.id.end_time);
             Calendar e = Calendar.getInstance();
-            e.setFirstDayOfWeek( Calendar.MONDAY );
+            e.setFirstDayOfWeek(Calendar.MONDAY);
             e.set(endDate.getYear(), endDate.getMonth(), endDate.getDayOfMonth(),
                     endTime.getCurrentHour(), endTime.getCurrentMinute());
             if (e.compareTo(s) < 1) {
@@ -114,7 +113,7 @@ public class EditTime extends Activity implements OnClickListener {
             }
             getIntent().putExtra(END_DATE, e.getTime().getTime());
         }
-        
+
         setResult(Activity.RESULT_OK, getIntent());
         finish();
     }
@@ -122,11 +121,11 @@ public class EditTime extends Activity implements OnClickListener {
     @Override
     protected Dialog onCreateDialog(int id) {
         return new AlertDialog.Builder(this)
-            .setTitle(R.string.range_error_title)
-            .setIcon(android.R.drawable.stat_sys_warning)
-            .setCancelable(true)
-            .setMessage(R.string.end_not_greater_than_start)
-            .setPositiveButton(android.R.string.ok, null)
-            .create();
+                .setTitle(R.string.range_error_title)
+                .setIcon(android.R.drawable.stat_sys_warning)
+                .setCancelable(true)
+                .setMessage(R.string.end_not_greater_than_start)
+                .setPositiveButton(android.R.string.ok, null)
+                .create();
     }
 }

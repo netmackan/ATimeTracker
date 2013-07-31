@@ -18,46 +18,47 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-
 /**
- * TimeTracker 
- * ©2008, 2009 Sean Russell
+ * TimeTracker ©2008, 2009 Sean Russell
+ *
  * @author Sean Russell <ser@germane-software.com>
  */
 package com.markuspage.android.atimetracker;
 
 import static com.markuspage.android.atimetracker.TimeRange.NULL;
 
-public class Task implements Comparable<Task>{
+public class Task implements Comparable<Task> {
+
     private String taskName;
     private int id;
     private long startTime = NULL;
     private long endTime = NULL;
     private long collapsed;
-    
+
     /**
      * Constructs a new task.
-     * @param name The title of the task.  Must not be null.
-     * @param id The ID of the task.  Must not be null
+     *
+     * @param name The title of the task. Must not be null.
+     * @param id The ID of the task. Must not be null
      */
-    public Task( String name, int id ) {
+    public Task(String name, int id) {
         taskName = name;
         this.id = id;
-        collapsed = 0;        
+        collapsed = 0;
     }
-    
+
     public int getId() {
         return id;
     }
-    
+
     public String getTaskName() {
         return taskName;
     }
-    
+
     public void setTaskName(String taskName) {
         this.taskName = taskName;
     }
-    
+
     public long getTotal() {
         long sum = 0;
         if (startTime != NULL && endTime == NULL) {
@@ -65,15 +66,15 @@ public class Task implements Comparable<Task>{
         }
         return sum + collapsed;
     }
-    
-    public void setCollapsed( long collapsed ) {
+
+    public void setCollapsed(long collapsed) {
         this.collapsed = collapsed;
     }
-    
+
     public long getCollapsed() {
         return collapsed;
     }
-    
+
     public void start() {
         if (endTime != NULL || startTime == NULL) {
             startTime = System.currentTimeMillis();
@@ -103,8 +104,8 @@ public class Task implements Comparable<Task>{
     public void setEndTime(long endTime) {
         this.endTime = endTime;
     }
-    
-    public boolean equals( Task other ) {
+
+    public boolean equals(Task other) {
         return other != null && other.getId() == id;
     }
 

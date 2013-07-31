@@ -44,7 +44,11 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
     private ProgressDialog progressDialog;
     private Tasks callback;
     private boolean cancel = false;
-    public enum Result { SUCCESS, FAILURE };
+
+    public enum Result {
+
+        SUCCESS, FAILURE
+    };
     public static final int PRIMARY = 0, SECONDARY = 1, SETMAX = 2;
     private Result result;
     private String message = null;
@@ -69,7 +73,7 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
         readCursor = dest.query(TASK_TABLE, TASK_COLUMNS, null, null, null, null, "rowid");
         List<Task> toReorder = readTasks(readCursor);
 
-        int step = (int)(100.0 / tasks.size());
+        int step = (int) (100.0 / tasks.size());
 //        publishProgress(SETMAX, tasks.size());
 
         // For each task in the backup DB, see if there's a matching task in the
@@ -79,7 +83,9 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
             boolean matchedTask = false;
             publishProgress(PRIMARY, step);
             for (Task o : toReorder) {
-                if (cancel) return null;
+                if (cancel) {
+                    return null;
+                }
                 if (t.getTaskName().equals(o.getTaskName())) {
                     copyTimes(source, t.getId(), dest, o.getId());
                     toReorder.remove(o);
@@ -104,7 +110,7 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
 
     @Override
     protected void onProgressUpdate(Integer... vs) {
-        switch(vs[0]) {
+        switch (vs[0]) {
             case PRIMARY:
                 if (vs[1] == 0) {
                     progressDialog.setProgress(0);
@@ -140,10 +146,12 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
         Cursor dest = destDb.query(RANGES_TABLE, DBHelper.RANGE_COLUMNS,
                 DBHelper.TASK_ID + " = ?", new String[]{String.valueOf(destId)}, null, null, null);
         List<TimeRange> destTimes = new ArrayList<TimeRange>();
-        int step = (int)(100.0 / (dest.getCount() + source.getCount()));
+        int step = (int) (100.0 / (dest.getCount() + source.getCount()));
         if (dest.moveToFirst()) {
             do {
-                if (cancel) return;
+                if (cancel) {
+                    return;
+                }
                 publishProgress(SECONDARY, step);
                 if (!dest.isNull(1)) {
                     destTimes.add(new TimeRange(dest.getLong(0), dest.getLong(1)));
@@ -154,7 +162,9 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
         if (source.moveToFirst()) {
             ContentValues values = new ContentValues();
             do {
-                if (cancel) return;
+                if (cancel) {
+                    return;
+                }
                 publishProgress(SECONDARY, step);
                 final long start = source.getLong(0);
                 long end = source.getLong(1);
@@ -174,13 +184,14 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
     }
 
     private void copyTask(SQLiteDatabase sourceDb, Task t, SQLiteDatabase destDb) {
-        if (cancel) return;
+        if (cancel) {
+            return;
+        }
         ContentValues values = new ContentValues();
         values.put(NAME, t.getTaskName());
         long id = destDb.insert(TASK_TABLE, null, values);
         copyTimes(sourceDb, t.getId(), destDb, (int) id);
     }
-
 
     private List<Task> readTasks(Cursor readCursor) {
         List<Task> tasks = new ArrayList<Task>();

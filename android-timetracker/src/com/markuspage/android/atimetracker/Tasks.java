@@ -18,10 +18,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-
 /**
- * TimeTracker 
- * ©2008, 2009 Sean Russell
+ * TimeTracker ©2008, 2009 Sean Russell
+ *
  * @author Sean Russell <ser@germane-software.com>
  */
 package com.markuspage.android.atimetracker;
@@ -74,7 +73,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -88,7 +86,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -101,25 +98,25 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 /**
  * Manages and displays a list of tasks, providing the ability to edit and
  * display individual task items.
+ *
  * @author ser
  */
 public class Tasks extends ListActivity {
+
     public static final String TIMETRACKERPREF = "timetracker.pref";
     protected static final String FONTSIZE = "font-size";
     protected static final String MILITARY = "military-time";
     protected static final String CONCURRENT = "concurrent-tasks";
     protected static final String SOUND = "sound-enabled";
     protected static final String VIBRATE = "vibrate-enabled";
-
     protected static final String START_DAY = "start_day";
     protected static final String START_DATE = "start_date";
     protected static final String END_DATE = "end_date";
     protected static final String VIEW_MODE = "view_mode";
     protected static final String REPORT_DATE = "report_date";
-	protected static final String TIMEDISPLAY = "time_display";
-	
+    protected static final String TIMEDISPLAY = "time_display";
     /**
-     * Defines how each task's time is displayed 
+     * Defines how each task's time is displayed
      */
     private static final String FORMAT = "%02d:%02d";
     private static final String DECIMAL_FORMAT = "%02d.%02d";
@@ -140,7 +137,7 @@ public class Tasks extends ListActivity {
      */
     private TimerTask updater;
     /**
-     * The currently active task (the one that is currently being timed).  There
+     * The currently active task (the one that is currently being timed). There
      * can be only one.
      */
     private boolean running = false;
@@ -157,27 +154,24 @@ public class Tasks extends ListActivity {
     private Vibrator vibrateAgent;
     private ProgressDialog progressDialog = null;
     private boolean decimalFormat = false;
-    
     /**
-     * A list of menu options, including both context and options menu items 
+     * A list of menu options, including both context and options menu items
      */
     protected static final int ADD_TASK = 0,
-            EDIT_TASK = 1,  DELETE_TASK = 2,  REPORT = 3,  SHOW_TIMES = 4,
-            CHANGE_VIEW = 5,  SELECT_START_DATE = 6,  SELECT_END_DATE = 7,
-            HELP = 8,  EXPORT_VIEW = 9,  SUCCESS_DIALOG = 10,  ERROR_DIALOG = 11,
-            SET_WEEK_START_DAY = 12,  MORE = 13,  BACKUP = 14, PREFERENCES = 15,
+            EDIT_TASK = 1, DELETE_TASK = 2, REPORT = 3, SHOW_TIMES = 4,
+            CHANGE_VIEW = 5, SELECT_START_DATE = 6, SELECT_END_DATE = 7,
+            HELP = 8, EXPORT_VIEW = 9, SUCCESS_DIALOG = 10, ERROR_DIALOG = 11,
+            SET_WEEK_START_DAY = 12, MORE = 13, BACKUP = 14, PREFERENCES = 15,
             PROGRESS_DIALOG = 16;
-        // TODO: This could be done better...
+    // TODO: This could be done better...
     private static final String dbPath = "/data/data/com.markuspage.android.atimetracker/databases/timetracker.db";
     private static final String dbBackup = "/sdcard/timetracker.db";
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //android.os.Debug.waitForDebugger();
-        preferences = getSharedPreferences( TIMETRACKERPREF,MODE_PRIVATE);
+        preferences = getSharedPreferences(TIMETRACKERPREF, MODE_PRIVATE);
         fontSize = preferences.getInt(FONTSIZE, 16);
         concurrency = preferences.getBoolean(CONCURRENT, false);
         if (preferences.getBoolean(MILITARY, true)) {
@@ -197,7 +191,6 @@ public class Tasks extends ListActivity {
         }
         if (updater == null) {
             updater = new TimerTask() {
-
                 @Override
                 public void run() {
                     if (running) {
@@ -218,15 +211,15 @@ public class Tasks extends ListActivity {
                 // ignore this.  There's nothing the user can do about it.
                 Logger.getLogger("TimeTracker").log(Level.SEVERE,
                         "Failed to set up audio player: "
-                        +illegalStateException.getMessage());
+                        + illegalStateException.getMessage());
             }
         }
         decimalFormat = preferences.getBoolean(TIMEDISPLAY, false);
         registerForContextMenu(getListView());
-        if (adapter.tasks.size() == 0) {
+        if (adapter.tasks.isEmpty()) {
             showDialog(HELP);
         }
-        vibrateAgent = (Vibrator)getSystemService(VIBRATOR_SERVICE);
+        vibrateAgent = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         vibrateClick = preferences.getBoolean(VIBRATE, true);
     }
 
@@ -240,10 +233,12 @@ public class Tasks extends ListActivity {
 
     @Override
     protected void onStop() {
-        if (adapter != null)
+        if (adapter != null) {
             adapter.close();
-        if (clickPlayer != null)
+        }
+        if (clickPlayer != null) {
             clickPlayer.release();
+        }
         super.onStop();
     }
 
@@ -300,7 +295,6 @@ public class Tasks extends ListActivity {
     }
     private AlertDialog operationSucceed;
     private AlertDialog operationFailed;
-
     private String exportMessage;
     private String baseTitle;
 
@@ -340,11 +334,11 @@ public class Tasks extends ListActivity {
                 return openAboutDialog();
             case SUCCESS_DIALOG:
                 operationSucceed = new AlertDialog.Builder(Tasks.this)
-                    .setTitle(R.string.success)
-                    .setIcon(android.R.drawable.stat_notify_sdcard)
-                    .setMessage(exportMessage)
-                    .setPositiveButton(android.R.string.ok, null)
-                    .create();
+                        .setTitle(R.string.success)
+                        .setIcon(android.R.drawable.stat_notify_sdcard)
+                        .setMessage(exportMessage)
+                        .setPositiveButton(android.R.string.ok, null)
+                        .create();
                 return operationSucceed;
             case ERROR_DIALOG:
                 operationFailed = new AlertDialog.Builder(Tasks.this)
@@ -362,7 +356,6 @@ public class Tasks extends ListActivity {
                 return progressDialog;
             case MORE:
                 return new AlertDialog.Builder(Tasks.this).setItems(R.array.moreMenu, new DialogInterface.OnClickListener() {
-
                     public void onClick(DialogInterface dialog, int which) {
                         DBBackup backup;
                         System.err.println("IN CLICK");
@@ -397,16 +390,18 @@ public class Tasks extends ListActivity {
                                         exportMessage = ex.getLocalizedMessage();
                                         showDialog(ERROR_DIALOG);
                                     } finally {
-                                        try { 
-                                            if (in != null) { 
+                                        try {
+                                            if (in != null) {
                                                 in.close();
-                                            }  
-                                        } catch (IOException ignored) {}
-                                        try { 
+                                            }
+                                        } catch (IOException ignored) {
+                                        }
+                                        try {
                                             if (out != null) {
                                                 out.close();
-                                            } 
-                                        } catch (IOException ignored) {}
+                                            }
+                                        } catch (IOException ignored) {
+                                        }
                                     }
                                 }
                                 break;
@@ -419,7 +414,7 @@ public class Tasks extends ListActivity {
                                 break;
                             case 4: // PREFERENCES
                                 Intent intent = new Intent(Tasks.this, Preferences.class);
-                                startActivityForResult(intent,PREFERENCES);
+                                startActivityForResult(intent, PREFERENCES);
                                 break;
                             case 5: // HELP:
                                 showDialog(HELP);
@@ -428,13 +423,12 @@ public class Tasks extends ListActivity {
                                 break;
                         }
                     }
-
                 }).create();
         }
         return null;
     }
 
-     protected void perform(String message, int success_string, int fail_string) {
+    protected void perform(String message, int success_string, int fail_string) {
         if (message != null) {
             exportMessage = getString(success_string, message);
             if (operationSucceed != null) {
@@ -451,16 +445,15 @@ public class Tasks extends ListActivity {
     }
 
     /**
-     * Creates a progressDialog to change the dates for which task times are shown.
-     * Offers a short selection of pre-defined defaults, and the option to
-     * choose a range from a progressDialog.
-     * 
+     * Creates a progressDialog to change the dates for which task times are
+     * shown. Offers a short selection of pre-defined defaults, and the option
+     * to choose a range from a progressDialog.
+     *
      * @see arrays.xml
      * @return the progressDialog to be displayed
      */
     private Dialog openChangeViewDialog() {
         return new AlertDialog.Builder(Tasks.this).setItems(R.array.views, new DialogInterface.OnClickListener() {
-
             public void onClick(DialogInterface dialog, int which) {
                 SharedPreferences.Editor ed = preferences.edit();
                 ed.putInt(VIEW_MODE, which);
@@ -469,45 +462,43 @@ public class Tasks extends ListActivity {
                     Calendar calInstance = Calendar.getInstance();
                     new DatePickerDialog(Tasks.this,
                             new DatePickerDialog.OnDateSetListener() {
+                        public void onDateSet(DatePicker view, int year,
+                                int monthOfYear, int dayOfMonth) {
+                            Calendar start = Calendar.getInstance();
+                            start.set(Calendar.YEAR, year);
+                            start.set(Calendar.MONTH, monthOfYear);
+                            start.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                            start.set(Calendar.HOUR, start.getMinimum(Calendar.HOUR));
+                            start.set(Calendar.MINUTE, start.getMinimum(Calendar.MINUTE));
+                            start.set(Calendar.SECOND, start.getMinimum(Calendar.SECOND));
+                            start.set(Calendar.MILLISECOND, start.getMinimum(Calendar.MILLISECOND));
+                            SharedPreferences.Editor ed = preferences.edit();
+                            ed.putLong(START_DATE, start.getTime().getTime());
+                            ed.commit();
 
+                            new DatePickerDialog(Tasks.this,
+                                    new DatePickerDialog.OnDateSetListener() {
                                 public void onDateSet(DatePicker view, int year,
                                         int monthOfYear, int dayOfMonth) {
-                                    Calendar start = Calendar.getInstance();
-                                    start.set(Calendar.YEAR, year);
-                                    start.set(Calendar.MONTH, monthOfYear);
-                                    start.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                                    start.set(Calendar.HOUR, start.getMinimum(Calendar.HOUR));
-                                    start.set(Calendar.MINUTE, start.getMinimum(Calendar.MINUTE));
-                                    start.set(Calendar.SECOND, start.getMinimum(Calendar.SECOND));
-                                    start.set(Calendar.MILLISECOND, start.getMinimum(Calendar.MILLISECOND));
+                                    Calendar end = Calendar.getInstance();
+                                    end.set(Calendar.YEAR, year);
+                                    end.set(Calendar.MONTH, monthOfYear);
+                                    end.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                                    end.set(Calendar.HOUR, end.getMaximum(Calendar.HOUR));
+                                    end.set(Calendar.MINUTE, end.getMaximum(Calendar.MINUTE));
+                                    end.set(Calendar.SECOND, end.getMaximum(Calendar.SECOND));
+                                    end.set(Calendar.MILLISECOND, end.getMaximum(Calendar.MILLISECOND));
                                     SharedPreferences.Editor ed = preferences.edit();
-                                    ed.putLong(START_DATE, start.getTime().getTime());
+                                    ed.putLong(END_DATE, end.getTime().getTime());
                                     ed.commit();
-
-                                    new DatePickerDialog(Tasks.this,
-                                            new DatePickerDialog.OnDateSetListener() {
-
-                                                public void onDateSet(DatePicker view, int year,
-                                                        int monthOfYear, int dayOfMonth) {
-                                                    Calendar end = Calendar.getInstance();
-                                                    end.set(Calendar.YEAR, year);
-                                                    end.set(Calendar.MONTH, monthOfYear);
-                                                    end.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                                                    end.set(Calendar.HOUR, end.getMaximum(Calendar.HOUR));
-                                                    end.set(Calendar.MINUTE, end.getMaximum(Calendar.MINUTE));
-                                                    end.set(Calendar.SECOND, end.getMaximum(Calendar.SECOND));
-                                                    end.set(Calendar.MILLISECOND, end.getMaximum(Calendar.MILLISECOND));
-                                                    SharedPreferences.Editor ed = preferences.edit();
-                                                    ed.putLong(END_DATE, end.getTime().getTime());
-                                                    ed.commit();
-                                                    Tasks.this.switchView(5);  // Update the list view
-                                                }
-                                            },
-                                            year,
-                                            monthOfYear,
-                                            dayOfMonth).show();
+                                    Tasks.this.switchView(5);  // Update the list view
                                 }
                             },
+                                    year,
+                                    monthOfYear,
+                                    dayOfMonth).show();
+                        }
+                    },
                             calInstance.get(Calendar.YEAR),
                             calInstance.get(Calendar.MONTH),
                             calInstance.get(Calendar.DAY_OF_MONTH)).show();
@@ -561,7 +552,7 @@ public class Tasks extends ListActivity {
         setTitle();
         getListView().invalidate();
     }
-    
+
     private void setTitle() {
         long total = 0;
         for (Task t : adapter.tasks) {
@@ -571,8 +562,9 @@ public class Tasks extends ListActivity {
     }
 
     /**
-     * Constructs a progressDialog for defining a new task.  If accepted, creates a new
-     * task.  If cancelled, closes the progressDialog with no affect.
+     * Constructs a progressDialog for defining a new task. If accepted, creates
+     * a new task. If cancelled, closes the progressDialog with no affect.
+     *
      * @return the progressDialog to display
      */
     private Dialog openNewTaskDialog() {
@@ -580,7 +572,6 @@ public class Tasks extends ListActivity {
         final View textEntryView = factory.inflate(R.layout.edit_task, null);
         return new AlertDialog.Builder(Tasks.this) //.setIcon(R.drawable.alert_dialog_icon)
                 .setTitle(R.string.add_task_title).setView(textEntryView).setPositiveButton(R.string.add_task_ok, new DialogInterface.OnClickListener() {
-
             public void onClick(DialogInterface dialog, int whichButton) {
                 EditText textView = (EditText) textEntryView.findViewById(R.id.task_edit_name_edit);
                 String name = textView.getText().toString();
@@ -591,8 +582,10 @@ public class Tasks extends ListActivity {
     }
 
     /**
-     * Constructs a progressDialog for editing task attributes.  If accepted, alters
-     * the task being edited.  If cancelled, dismissed the progressDialog with no effect.
+     * Constructs a progressDialog for editing task attributes. If accepted,
+     * alters the task being edited. If cancelled, dismissed the progressDialog
+     * with no effect.
+     *
      * @return the progressDialog to display
      */
     private Dialog openEditTaskDialog() {
@@ -602,7 +595,6 @@ public class Tasks extends ListActivity {
         LayoutInflater factory = LayoutInflater.from(this);
         final View textEntryView = factory.inflate(R.layout.edit_task, null);
         return new AlertDialog.Builder(Tasks.this).setView(textEntryView).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-
             public void onClick(DialogInterface dialog, int whichButton) {
                 EditText textView = (EditText) textEntryView.findViewById(R.id.task_edit_name_edit);
                 String name = textView.getText().toString();
@@ -616,8 +608,9 @@ public class Tasks extends ListActivity {
     }
 
     /**
-     * Constructs a progressDialog asking for confirmation for a delete request.  If
-     * accepted, deletes the task.  If cancelled, closes the progressDialog.
+     * Constructs a progressDialog asking for confirmation for a delete request.
+     * If accepted, deletes the task. If cancelled, closes the progressDialog.
+     *
      * @return the progressDialog to display
      */
     private Dialog openDeleteTaskDialog() {
@@ -627,7 +620,6 @@ public class Tasks extends ListActivity {
         String formattedMessage = getString(R.string.delete_task_message,
                 selectedTask.getTaskName());
         return new AlertDialog.Builder(Tasks.this).setTitle(R.string.delete_task_title).setIcon(android.R.drawable.stat_sys_warning).setCancelable(true).setMessage(formattedMessage).setPositiveButton(R.string.delete_ok, new DialogInterface.OnClickListener() {
-
             public void onClick(DialogInterface dialog, int whichButton) {
                 adapter.deleteTask(selectedTask);
                 Tasks.this.getListView().invalidate();
@@ -784,27 +776,30 @@ public class Tasks extends ListActivity {
      * expensive) if we want to re-use code.  Notice that a call to this method
      * actually filters down through four methods before it returns.
      */
-    static String formatTotal( boolean decimalFormat, long ttl ) {
-    	return formatTotal( decimalFormat, FORMAT, ttl );
+    static String formatTotal(boolean decimalFormat, long ttl) {
+        return formatTotal(decimalFormat, FORMAT, ttl);
     }
-    static String formatTotal( boolean decimalFormat, String format, long ttl ) {
+
+    static String formatTotal(boolean decimalFormat, String format, long ttl) {
         long hours = ttl / MS_H;
         long hours_in_ms = hours * MS_H;
         long minutes = (ttl - hours_in_ms) / MS_M;
-    	long minutes_in_ms = minutes * MS_M;
+        long minutes_in_ms = minutes * MS_M;
         long seconds = (ttl - hours_in_ms - minutes_in_ms) / MS_S;
-        return formatTotal( decimalFormat, format, hours, minutes, seconds );    	
+        return formatTotal(decimalFormat, format, hours, minutes, seconds);
     }
-    static String formatTotal( boolean decimalFormat, long hours, long minutes, long seconds ) {
-    	return formatTotal(decimalFormat,FORMAT,hours,minutes,seconds);
+
+    static String formatTotal(boolean decimalFormat, long hours, long minutes, long seconds) {
+        return formatTotal(decimalFormat, FORMAT, hours, minutes, seconds);
     }
-    static String formatTotal( boolean decimalFormat, String format, long hours, long minutes, long seconds ) {
+
+    static String formatTotal(boolean decimalFormat, String format, long hours, long minutes, long seconds) {
         if (decimalFormat) {
-        	format = DECIMAL_FORMAT;
-        	minutes = Math.round((D_M * minutes) + (D_S * seconds));
-        	seconds = 0;
+            format = DECIMAL_FORMAT;
+            minutes = Math.round((D_M * minutes) + (D_S * seconds));
+            seconds = 0;
         }
-        return String.format(format, hours, minutes, seconds);            	    	
+        return String.format(format, hours, minutes, seconds);
     }
 
     private class TaskAdapter extends BaseAdapter {
@@ -844,12 +839,13 @@ public class Tasks extends ListActivity {
         }
 
         /**
-         * Java doesn't understand tuples, so the return value
-         * of this is a hack.
+         * Java doesn't understand tuples, so the return value of this is a
+         * hack.
+         *
          * @param start
          * @param end
-         * @return a String pair hack, where the second item is null
-         * for false, and non-null for true
+         * @return a String pair hack, where the second item is null for false,
+         * and non-null for true
          */
         private String[] makeWhereClause(Calendar start, Calendar end) {
             String query = "AND " + START + " < %d AND " + START + " >= %d";
@@ -857,8 +853,8 @@ public class Tasks extends ListActivity {
             today.setFirstDayOfWeek(preferences.getInt(START_DAY, 0) + 1);
             today.set(Calendar.HOUR_OF_DAY, 12);
             for (int field : new int[]{Calendar.HOUR_OF_DAY, Calendar.MINUTE,
-                        Calendar.SECOND,
-                        Calendar.MILLISECOND}) {
+                Calendar.SECOND,
+                Calendar.MILLISECOND}) {
                 for (Calendar d : new Calendar[]{today, start, end}) {
                     d.set(field, d.getMinimum(field));
                 }
@@ -866,20 +862,20 @@ public class Tasks extends ListActivity {
             end.add(Calendar.DAY_OF_MONTH, 1);
             currentRangeStart = start.getTimeInMillis();
             currentRangeEnd = end.getTimeInMillis();
-            boolean loadCurrentTask = today.compareTo(start) != -1 &&
-                    today.compareTo(end) != 1;
+            boolean loadCurrentTask = today.compareTo(start) != -1
+                    && today.compareTo(end) != 1;
             query = String.format(query, end.getTimeInMillis(), start.getTimeInMillis());
             return new String[]{query, loadCurrentTask ? query : null};
         }
 
         /**
-         * Load tasks, given a filter.  This overwrites any currently
-         * loaded tasks in the "tasks" data structure.
-         * 
+         * Load tasks, given a filter. This overwrites any currently loaded
+         * tasks in the "tasks" data structure.
+         *
          * @param whereClause A SQL where clause limiting the range of dates to
-         *        load.  This must be a clause against the ranges table.
-         * @param loadCurrent Whether or not to include data for currently active
-         *        tasks.
+         * load. This must be a clause against the ranges table.
+         * @param loadCurrent Whether or not to include data for currently
+         * active tasks.
          */
         private void loadTasks(String whereClause, boolean loadCurrent) {
             tasks.clear();
@@ -887,7 +883,7 @@ public class Tasks extends ListActivity {
             SQLiteDatabase db = dbHelper.getReadableDatabase();
             Cursor c = db.query(TASK_TABLE, TASK_COLUMNS, null, null, null, null, null);
 
-            Task t = null;
+            Task t;
             if (c.moveToFirst()) {
                 do {
                     int tid = c.getInt(0);
@@ -918,6 +914,7 @@ public class Tasks extends ListActivity {
 
         /**
          * Don't forget to close the cursor!!
+         *
          * @return
          */
         protected Cursor getCurrentRange() {
@@ -932,10 +929,10 @@ public class Tasks extends ListActivity {
                 res = makeWhereClause(start, end);
             }
             SQLiteDatabase db = dbHelper.getReadableDatabase();
-            Cursor r = db.rawQuery("SELECT t.name, r.start, r.end " +
-                    " FROM " + TASK_TABLE + " t, " + RANGES_TABLE + " r " +
-                    " WHERE r." + TASK_ID + " = t.ROWID " + res[0] +
-                    " ORDER BY t.name, r.start ASC", null);
+            Cursor r = db.rawQuery("SELECT t.name, r.start, r.end "
+                    + " FROM " + TASK_TABLE + " t, " + RANGES_TABLE + " r "
+                    + " WHERE r." + TASK_ID + " = t.ROWID " + res[0]
+                    + " ORDER BY t.name, r.start ASC", null);
             return r;
         }
 
@@ -943,8 +940,11 @@ public class Tasks extends ListActivity {
             return new Iterator<Task>() {
                 Iterator<Task> iter = tasks.iterator();
                 Task next = null;
+
                 public boolean hasNext() {
-                    if (next != null) return true;
+                    if (next != null) {
+                        return true;
+                    }
                     while (iter.hasNext()) {
                         Task t = iter.next();
                         if (t.isRunning()) {
@@ -954,6 +954,7 @@ public class Tasks extends ListActivity {
                     }
                     return false;
                 }
+
                 public Task next() {
                     if (hasNext()) {
                         Task t = next;
@@ -965,7 +966,7 @@ public class Tasks extends ListActivity {
 
                 public void remove() {
                     throw new UnsupportedOperationException();
-                }                
+                }
             };
         }
 
@@ -1048,7 +1049,9 @@ public class Tasks extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        if (vibrateClick) vibrateAgent.vibrate(100);
+        if (vibrateClick) {
+            vibrateAgent.vibrate(100);
+        }
         if (playClick) {
             try {
                 //clickPlayer.prepare();
@@ -1059,7 +1062,7 @@ public class Tasks extends ListActivity {
                 // ignore this.  There's nothing the user can do about it.
                 Logger.getLogger("TimeTracker").log(Level.INFO,
                         "Failed to play audio: "
-                        +exception.getMessage());
+                        + exception.getMessage());
             }
         }
 
@@ -1078,7 +1081,7 @@ public class Tasks extends ListActivity {
                     timer.removeCallbacks(updater);
                     // Disable currently running tasks
                     for (Iterator<Task> iter = adapter.findCurrentlyActive();
-                         iter.hasNext();) {
+                            iter.hasNext();) {
                         Task t = iter.next();
                         t.stop();
                         adapter.updateTask(t);
@@ -1093,7 +1096,9 @@ public class Tasks extends ListActivity {
                 if (selected.isRunning()) {
                     selected.stop();
                     running = adapter.findCurrentlyActive().hasNext();
-                    if (!running) timer.removeCallbacks(updater);
+                    if (!running) {
+                        timer.removeCallbacks(updater);
+                    }
                 } else {
                     selected.start();
                     if (!running) {
@@ -1136,7 +1141,7 @@ public class Tasks extends ListActivity {
                         // ignore this.  There's nothing the user can do about it.
                         Logger.getLogger("TimeTracker").log(Level.SEVERE,
                                 "Failed to set up audio player: "
-                                +illegalStateException.getMessage());
+                                + illegalStateException.getMessage());
                     }
                 }
             }
@@ -1147,7 +1152,7 @@ public class Tasks extends ListActivity {
                 fontSize = preferences.getInt(FONTSIZE, 16);
             }
             if (extras.getBoolean(TIMEDISPLAY)) {
-            	decimalFormat = preferences.getBoolean(TIMEDISPLAY, false);
+                decimalFormat = preferences.getBoolean(TIMEDISPLAY, false);
             }
         }
 
@@ -1156,7 +1161,7 @@ public class Tasks extends ListActivity {
         }
     }
 
-    protected void finishedCopy( DBBackup.Result result, String message ) {
+    protected void finishedCopy(DBBackup.Result result, String message) {
         if (result == DBBackup.Result.SUCCESS) {
             switchView(preferences.getInt(VIEW_MODE, 0));
             message = dbBackup;
