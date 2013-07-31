@@ -3,7 +3,7 @@
  * ©2008, 2009 Sean Russell
  * @author Sean Russell <ser@germane-software.com>
  */
-package net.ser1.timetracker;
+package com.markuspage.android.atimetracker;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

@@ -1,4 +1,4 @@
-package net.ser1.timetracker;
+package com.markuspage.android.atimetracker;
 
 import java.io.OutputStream;
 import java.io.PrintStream;

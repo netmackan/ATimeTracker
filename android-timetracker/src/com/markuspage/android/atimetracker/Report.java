@@ -1,16 +1,16 @@
-package net.ser1.timetracker;
+package com.markuspage.android.atimetracker;
 
-import static net.ser1.timetracker.DBHelper.END;
-import static net.ser1.timetracker.DBHelper.NAME;
-import static net.ser1.timetracker.DBHelper.RANGES_TABLE;
-import static net.ser1.timetracker.DBHelper.RANGE_COLUMNS;
-import static net.ser1.timetracker.DBHelper.START;
-import static net.ser1.timetracker.DBHelper.TASK_COLUMNS;
-import static net.ser1.timetracker.DBHelper.TASK_ID;
-import static net.ser1.timetracker.DBHelper.TASK_NAME;
-import static net.ser1.timetracker.DBHelper.TASK_TABLE;
-import static net.ser1.timetracker.Tasks.REPORT_DATE;
-import static net.ser1.timetracker.Tasks.START_DAY;
+import static com.markuspage.android.atimetracker.DBHelper.END;
+import static com.markuspage.android.atimetracker.DBHelper.NAME;
+import static com.markuspage.android.atimetracker.DBHelper.RANGES_TABLE;
+import static com.markuspage.android.atimetracker.DBHelper.RANGE_COLUMNS;
+import static com.markuspage.android.atimetracker.DBHelper.START;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_COLUMNS;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_ID;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_NAME;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_TABLE;
+import static com.markuspage.android.atimetracker.Tasks.REPORT_DATE;
+import static com.markuspage.android.atimetracker.Tasks.START_DAY;
 
 import java.io.File;
 import java.io.FileNotFoundException;

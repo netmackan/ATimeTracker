@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.ser1.timetracker;
+package com.markuspage.android.atimetracker;
 
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -11,13 +11,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import java.util.ArrayList;
 import java.util.List;
-import static net.ser1.timetracker.DBHelper.TASK_TABLE;
-import static net.ser1.timetracker.DBHelper.TASK_COLUMNS;
-import static net.ser1.timetracker.DBHelper.RANGES_TABLE;
-import static net.ser1.timetracker.DBHelper.TASK_ID;
-import static net.ser1.timetracker.DBHelper.START;
-import static net.ser1.timetracker.DBHelper.END;
-import static net.ser1.timetracker.DBHelper.NAME;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_TABLE;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_COLUMNS;
+import static com.markuspage.android.atimetracker.DBHelper.RANGES_TABLE;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_ID;
+import static com.markuspage.android.atimetracker.DBHelper.START;
+import static com.markuspage.android.atimetracker.DBHelper.END;
+import static com.markuspage.android.atimetracker.DBHelper.NAME;
 
 /**
  *

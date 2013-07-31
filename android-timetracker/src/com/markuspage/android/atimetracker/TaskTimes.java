@@ -3,17 +3,17 @@
  * ©2008, 2009 Sean Russell
  * @author Sean Russell <ser@germane-software.com>
  */
-package net.ser1.timetracker;
+package com.markuspage.android.atimetracker;
 
-import static net.ser1.timetracker.DBHelper.END;
-import static net.ser1.timetracker.DBHelper.RANGES_TABLE;
-import static net.ser1.timetracker.DBHelper.RANGE_COLUMNS;
-import static net.ser1.timetracker.DBHelper.START;
-import static net.ser1.timetracker.DBHelper.TASK_ID;
-import static net.ser1.timetracker.EditTime.END_DATE;
-import static net.ser1.timetracker.EditTime.START_DATE;
-import static net.ser1.timetracker.TimeRange.NULL;
-import static net.ser1.timetracker.DBHelper.TASK_NAME;
+import static com.markuspage.android.atimetracker.DBHelper.END;
+import static com.markuspage.android.atimetracker.DBHelper.RANGES_TABLE;
+import static com.markuspage.android.atimetracker.DBHelper.RANGE_COLUMNS;
+import static com.markuspage.android.atimetracker.DBHelper.START;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_ID;
+import static com.markuspage.android.atimetracker.EditTime.END_DATE;
+import static com.markuspage.android.atimetracker.EditTime.START_DATE;
+import static com.markuspage.android.atimetracker.TimeRange.NULL;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_NAME;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

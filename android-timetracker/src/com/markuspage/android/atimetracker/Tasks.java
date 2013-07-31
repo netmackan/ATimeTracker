@@ -3,19 +3,19 @@
  * ©2008, 2009 Sean Russell
  * @author Sean Russell <ser@germane-software.com>
  */
-package net.ser1.timetracker;
+package com.markuspage.android.atimetracker;
 
-import static net.ser1.timetracker.DBHelper.END;
-import static net.ser1.timetracker.DBHelper.NAME;
-import static net.ser1.timetracker.DBHelper.RANGES_TABLE;
-import static net.ser1.timetracker.DBHelper.RANGE_COLUMNS;
-import static net.ser1.timetracker.DBHelper.START;
-import static net.ser1.timetracker.DBHelper.TASK_COLUMNS;
-import static net.ser1.timetracker.DBHelper.TASK_ID;
-import static net.ser1.timetracker.DBHelper.TASK_TABLE;
-import static net.ser1.timetracker.Report.weekEnd;
-import static net.ser1.timetracker.Report.weekStart;
-import static net.ser1.timetracker.TimeRange.NULL;
+import static com.markuspage.android.atimetracker.DBHelper.END;
+import static com.markuspage.android.atimetracker.DBHelper.NAME;
+import static com.markuspage.android.atimetracker.DBHelper.RANGES_TABLE;
+import static com.markuspage.android.atimetracker.DBHelper.RANGE_COLUMNS;
+import static com.markuspage.android.atimetracker.DBHelper.START;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_COLUMNS;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_ID;
+import static com.markuspage.android.atimetracker.DBHelper.TASK_TABLE;
+import static com.markuspage.android.atimetracker.Report.weekEnd;
+import static com.markuspage.android.atimetracker.Report.weekStart;
+import static com.markuspage.android.atimetracker.TimeRange.NULL;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -147,7 +147,7 @@ public class Tasks extends ListActivity {
             SET_WEEK_START_DAY = 12,  MORE = 13,  BACKUP = 14, PREFERENCES = 15,
             PROGRESS_DIALOG = 16;
         // TODO: This could be done better...
-    private static final String dbPath = "/data/data/net.ser1.timetracker/databases/timetracker.db";
+    private static final String dbPath = "/data/data/com.markuspage.android.atimetracker/databases/timetracker.db";
     private static final String dbBackup = "/sdcard/timetracker.db";
 
 
@@ -376,8 +376,16 @@ public class Tasks extends ListActivity {
                                         exportMessage = ex.getLocalizedMessage();
                                         showDialog(ERROR_DIALOG);
                                     } finally {
-                                        try { in.close(); } catch (IOException ioe) { }
-                                        try { out.close(); } catch (IOException ioe) { }
+                                        try { 
+                                            if (in != null) { 
+                                                in.close();
+                                            }  
+                                        } catch (IOException ignored) {}
+                                        try { 
+                                            if (out != null) {
+                                                out.close();
+                                            } 
+                                        } catch (IOException ignored) {}
                                     }
                                 }
                                 break;
@@ -645,7 +653,7 @@ public class Tasks extends ListActivity {
     private Dialog openAboutDialog() {
         String versionName = "";
         try {
-            PackageInfo pkginfo = this.getPackageManager().getPackageInfo("net.ser1.timetracker", 0);
+            PackageInfo pkginfo = this.getPackageManager().getPackageInfo("com.markuspage.android.atimetracker", 0);
             versionName = pkginfo.versionName;
         } catch (NameNotFoundException nnfe) {
             // Denada

@@ -3,7 +3,7 @@
  * ©2008, 2009 Sean Russell
  * @author Sean Russell <ser@germane-software.com>
  */
-package net.ser1.timetracker;
+package com.markuspage.android.atimetracker;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

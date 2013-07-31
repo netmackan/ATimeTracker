@@ -3,9 +3,9 @@
  * ©2008, 2009 Sean Russell
  * @author Sean Russell <ser@germane-software.com>
  */
-package net.ser1.timetracker;
+package com.markuspage.android.atimetracker;
 
-import static net.ser1.timetracker.TimeRange.NULL;
+import static com.markuspage.android.atimetracker.TimeRange.NULL;
 
 public class Task implements Comparable<Task>{
     private String taskName;
