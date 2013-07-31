@@ -658,15 +658,6 @@ public class Tasks extends ListActivity {
 
         TextView version = (TextView) about.findViewById(R.id.version);
         version.setText(formattedVersion);
-        TextView donate = (TextView) about.findViewById(R.id.donate);
-        donate.setClickable(true);
-        donate.setOnClickListener(new OnClickListener() {
-
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.germane-software.com/donate.html"));
-                startActivity(intent);
-            }
-        });
         TextView links = (TextView) about.findViewById(R.id.usage);
         Linkify.addLinks(links, Linkify.ALL);
         links = (TextView) about.findViewById(R.id.credits);

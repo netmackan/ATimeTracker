@@ -44,11 +44,4 @@
         </LinearLayout>
     </ScrollView>
 
-    <TextView android:id="@+id/donate"
-              android:text="@string/donate"
-              android:layout_height="wrap_content"
-              android:layout_width="wrap_content"
-              android:gravity="center_horizontal"
-              android:paddingTop="10px"
-              android:textColor="#22EE77"/>
 </LinearLayout>

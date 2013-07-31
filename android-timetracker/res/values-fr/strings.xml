@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Translation by Wilfried Kopp -->
 <resources>
-    <string name="app_name">TimeTracker</string>
+    <string name="app_name">A Time Tracker</string>
     
     <string name="start">Démarrer</string>
     <string name="task_name">Nom de la tâche</string>
@@ -15,7 +15,7 @@
     <string name="add_task_title">Ajouter tâche</string>
     <string name="change_view_title">Changer la vue</string>
     <string name="generate_report_title">Rapport</string>
-    <string name="select_range">Choisir la période...</string>
+    <string name="select_range">Choisir la période…</string>
     <string name="done">Retour aux tâches</string>
     <string name="add_time_title">Ajouter période</string>
     <string name="delete_time_message">Voulez-vous vraiment effacer cette période ?</string>
@@ -26,7 +26,7 @@
     <string name="range_error_title">Erreur dans la période</string>
     <string name="report_title">Rapport pour la semaine %1$s à %1$s </string>
     <string name="week">Semaine %s</string>
-    <string name="title">TimeTracker (%s)</string>
+    <string name="title">A Time Tracker (%s)</string>
     <string name="help">Aide</string>
     <string name="export_view">Exporter</string>
     <string name="move_time">Assigner cette durée à une autre tâche</string>
@@ -63,11 +63,10 @@
 
     <!-- About dialog strings -->
     <string name="version">Version %s</string>
-    <string name="author">Sean E. Russell</string>
-    <string name="donate"><b>Si vous appréciez cette application, achetez la et supportez son développement futur ! (Cliquez ici)</b></string>
+    <string name="author">Open Source Time Tracker</string>
     <string name="purpose">TimeTracker vous aide à enregistrer le temps passé à vos activités. Par exemple, pour enregistrer le temps passé à chaque tâche lors d´un projet professionnel. Il offre la possibilité d´afficher, d´éditer, et de filtrer les entrées et dispose d´une fonction de rapport.</string>
     <string name="usage">
-    Instructions détaillées à http://trac.germane-software.com/TimeTracker\n\n
+    Instructions détaillées à https://github.com/netmackan/ATimeTracker\n\n
     • Créer des tâches à l´aide des menus\n
     • Cliquer sur une tâche pour démarrer l´enregistrement, cliquez de nouveau pour l´arrêter\n
     • Utilisez le menu contextuel sur une tâche pour afficher les détails\n
@@ -86,6 +85,7 @@
     </string>
     <string name="credits"><b>Credits</b>\n
     \n
+    Based on TimeTracker+ by Sean E. Russell.\n
     L´icône de l´application TimeTracker a été emprunté à l´excellent librairie d´icônes glyFX de PerthWeb Pty Ltd (www.glyfx.com).\n
     Tranduction en Russe par Денис Гладкий\n
     Tranduction en Français par Wilfried Kopp
@@ -95,7 +95,7 @@
     <string name="success">Succès</string>
     <string name="failure">Erreur</string>
     <string name="set_start_day_of_week">Définir le premier jour de la semaine</string>
-    <string name="more">Plus...</string>
+    <string name="more">Plus…</string>
     <string name="backup_success">La base de données a bien été sauvegardée sur la carte SD sous timetracker.db</string>
     <string name="restore_success">Restauration effectuée. %s
     </string>

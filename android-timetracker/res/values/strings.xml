@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TimeTracker</string>
+    <string name="app_name">A Time Tracker</string>
     
     <string name="start">Start</string>
     <string name="task_name">Task name</string>
@@ -14,7 +14,7 @@
     <string name="add_task_title">Add task</string>
     <string name="change_view_title">Change view</string>
     <string name="generate_report_title">Report</string>
-    <string name="select_range">Select range...</string>
+    <string name="select_range">Select range…</string>
     <string name="done">Return to tasks</string>
     <string name="add_time_title">Add a new time range</string>
     <string name="delete_time_message">Are you sure you want to delete this time range?</string>
@@ -25,7 +25,7 @@
     <string name="range_error_title">Time Range Error</string>
     <string name="report_title">Report for the week %1$s to %2$s</string>
     <string name="week">Week %s</string>
-    <string name="title">TimeTracker (%s)</string>
+    <string name="title">A Time Tracker (%s)</string>
     <string name="help">Help</string>
     <string name="export_view">Export</string>
     <string name="move_time">Assign time to other task</string>
@@ -62,14 +62,13 @@
 
     <!-- About dialog strings -->
     <string name="version">Version %s</string>
-    <string name="author">Sean E. Russell</string>
-    <string name="donate"><b>If you like this app, please purchase it and support future development! (Click here)</b></string>
+    <string name="author">Open Source Time Tracker</string>
     <string name="purpose">TimeTracker helps you record the amount of time you spend on
         activities; for example, for recording time in a time sheet at work.  It
         provides ways to view, edit, and filter times, and provides a 
         time sheet report as well.</string>
     <string name="usage">
-    Detailed instructions are at http://trac.germane-software.com/TimeTracker\n\n
+    Detailed instructions are at https://github.com/netmackan/ATimeTracker\n\n
     • Create some tasks using the menu\n
     • Tap a task to start timing; tap it again to stop timing\n
     • Use the context menu for a task to list times\n
@@ -95,6 +94,7 @@
     </string>
     <string name="credits"><b>Credits</b>\n
     \n
+    Based on TimeTracker+ by Sean E. Russell.\n
     The TimeTracker application icon was borrowed from
     the excellent glyFX icon library by PerthWeb Pty Ltd (www.glyfx.com).\n
     Russian translation by Denis Gladkiy\n
@@ -107,7 +107,7 @@
     <string name="success">Success</string>
     <string name="failure">Fail</string>
     <string name="set_start_day_of_week">Set the day the week starts</string>
-    <string name="more">More...</string>
+    <string name="more">More…</string>
     <string name="backup_success">Successfully backed up the database to the
         memory card as timetracker.db</string>
     <string name="restore_success">Successfully restored the database backup. %s

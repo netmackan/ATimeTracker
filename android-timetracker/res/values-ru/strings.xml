@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TimeTracker</string>
+    <string name="app_name">A Time Tracker</string>
     
     <string name="start">Старт</string>
     <string name="task_name">Название задачи</string>
@@ -14,7 +14,7 @@
     <string name="add_task_title">Добавить задачу</string>
     <string name="change_view_title">Изменить вид</string>
     <string name="generate_report_title">Отчёт</string>
-    <string name="select_range">Выбрать интервал...</string>
+    <string name="select_range">Выбрать интервал…</string>
     <string name="done">Вернуться к задачам</string>
     <string name="add_time_title">Добавить новый временной интервал</string>
     <string name="delete_time_message">Вы уверены, что хотите удалить этот временной интервал?</string>
@@ -25,7 +25,7 @@
     <string name="range_error_title">Ошибка Временного Интервала</string>
     <string name="report_title">Отчёт за неделю с %1$s по %2$s </string>
     <string name="week">Неделя %s</string>
-    <string name="title">TimeTracker (%s)</string>
+    <string name="title">A Time Tracker (%s)</string>
     <string name="help">Помощь</string>
     <string name="export_view">Экспорт</string>
     <string name="move_time">Назначить время для задачи</string>
@@ -62,14 +62,13 @@
 
     <!-- About dialog strings -->
     <string name="version">Версия %s</string>
-    <string name="author">Sean E. Russell</string>
-    <string name="donate"><b>Если вам понравилось приложение, внесите пожертвование и поддержите дальнейшую разработку! (Кликните здесь)</b></string>
+    <string name="author">Open Source Time Tracker</string>
     <string name="purpose">TimeTracker помогает вам вести учёт времени, которое
 		вы тратите на различную активность. Например, вы можете записывать сколько времени вы проводите на работе.
 		Приложение позволяет вам просматривать, редактировать и фильтровать временные интервалы. Оно так же
 		позволяет вам создавать отчёты в виде таблиц.</string>
     <string name="usage">
-	Подробные инструкции вы можете найти на http://trac.germane-software.com/TimeTracker\n\n
+	Подробные инструкции вы можете найти на https://github.com/netmackan/ATimeTracker\n\n
     • Задачи создаются через меню\n
     • Нажмите на задачу для начала отсчёта времени; нажмите ещё раз, что бы остановить\n
     • Используйте контекстное меню задачи для просмотра списка временных интервалов\n
@@ -94,6 +93,7 @@
     </string>
     <string name="credits"><b>Разработка</b>\n
     \n
+    Based on TimeTracker+ by Sean E. Russell.\n
     Иконка для TimeTracker взята из превосходной библиотеки glyFX,
     созданной PerthWeb Pty Ltd (www.glyfx.com).\n
     Перевод на русский выполнил Денис Гладкий\n
@@ -106,7 +106,7 @@
     <string name="success">Успех</string>
     <string name="failure">Неудача</string>
     <string name="set_start_day_of_week">Установите день с которого начинается неделя</string>
-    <string name="more">Ещё...</string>
+    <string name="more">Ещё…</string>
     <string name="backup_success">Сохранение резервной копии базы данных завершилось. Файл timetracker.db</string>
     <string name="restore_success">Успешное восстановление из резервной копии. %s
     </string>
