@@ -46,6 +46,7 @@ import java.util.TreeMap;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -114,6 +115,7 @@ public class Report extends Activity implements OnClickListener {
     private SQLiteDatabase db;
     private int startDay;
     private boolean decimalTime = false;
+    private SharedPreferences mPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +127,10 @@ public class Report extends Activity implements OnClickListener {
 
         Calendar c = Calendar.getInstance();
         c.setFirstDayOfWeek(Calendar.MONDAY);
-        c.setTimeInMillis(getIntent().getExtras().getLong(REPORT_DATE));
+        mPrefs = getSharedPreferences("Report", MODE_PRIVATE);
+        long reportDate = mPrefs.getLong(REPORT_DATE, System.currentTimeMillis());
+        c.setTimeInMillis(reportDate);
+
         startDay = getIntent().getExtras().getInt(START_DAY);
         weekStart = weekStart(c, startDay);
         weekEnd = weekEnd(c, startDay);
@@ -342,7 +347,11 @@ public class Report extends Activity implements OnClickListener {
     @Override
     protected void onPause() {
         super.onPause();
-        db.close();
+        SharedPreferences.Editor ed = mPrefs.edit();
+        long reportDate = weekStart.getTimeInMillis();
+        ed.putLong(REPORT_DATE, reportDate);
+        ed.commit();
+        db.close();        
     }
     private static final int DKYELLOW = Color.argb(150, 100, 100, 0);
 
@@ -496,7 +505,7 @@ public class Report extends Activity implements OnClickListener {
         fillInTasksAndRanges();
         weekView.setText(getString(R.string.week, WEEK_FORMAT.format(weekStart.getTime())));
     }
-
+    
     private void fillInTasksAndRanges() {
         // Iterate over each task and set the day values, and accumulate the day 
         // and week totals
