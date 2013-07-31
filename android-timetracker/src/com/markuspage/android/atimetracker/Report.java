@@ -58,6 +58,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -108,7 +109,7 @@ public class Report extends Activity implements OnClickListener {
     private static final int PAD = 2;
     private static final int RPAD = 4;
     private static final String FORMAT = "%02d:%02d";
-    private TextView weekView;
+    private Button weekView;
     private static final SimpleDateFormat WEEK_FORMAT = new SimpleDateFormat("w");
     private static final SimpleDateFormat TITLE_FORMAT = new SimpleDateFormat("EEE, MMM d");
     private DBHelper dbHelper;
@@ -145,10 +146,11 @@ public class Report extends Activity implements OnClickListener {
         dbHelper = new DBHelper(this);
         db = dbHelper.getReadableDatabase();
 
-        weekView = (TextView) findViewById(R.id.week);
+        weekView = (Button) findViewById(R.id.week);
         weekView.setText(getString(R.string.week, WEEK_FORMAT.format(c.getTime())));
 
         ((ImageButton) findViewById(R.id.decrement_week)).setOnClickListener(this);
+        ((Button) findViewById(R.id.week)).setOnClickListener(this);
         ((ImageButton) findViewById(R.id.increment_week)).setOnClickListener(this);
 
         createReport(mainReport);
@@ -491,6 +493,13 @@ public class Report extends Activity implements OnClickListener {
                 weekStart.add(Calendar.WEEK_OF_YEAR, 1);
                 weekEnd.add(Calendar.WEEK_OF_YEAR, 1);
                 break;
+            case R.id.week:
+                long now = System.currentTimeMillis();
+                Calendar c = Calendar.getInstance();
+                c.setFirstDayOfWeek(Calendar.MONDAY);
+                c.setTimeInMillis(now);
+                weekStart = weekStart(c, startDay);
+                weekEnd = weekEnd(c, startDay);
             case R.id.decrement_week:
                 weekStart.add(Calendar.WEEK_OF_YEAR, -1);
                 weekEnd.add(Calendar.WEEK_OF_YEAR, -1);
