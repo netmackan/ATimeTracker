@@ -101,11 +101,14 @@ public class Report extends Activity implements OnClickListener {
             return calEnum;
         }
     }
+    
+    private static final String ZERO_TIME = "  :  ";
+    
     /**
      * Defines how each task's time is displayed
      */
     private Calendar weekStart, weekEnd;
-    private Map<Integer, TextView[]> dateViews = new TreeMap<Integer, TextView[]>();
+    private final Map<Integer, TextView[]> dateViews = new TreeMap<Integer, TextView[]>();
     private static final int PAD = 2;
     private static final int RPAD = 4;
     private static final String FORMAT = "%02d:%02d";
@@ -415,6 +418,7 @@ public class Report extends Activity implements OnClickListener {
                     TextView dayTime = new TextView(this);
                     arryForDay[i] = dayTime;
                     dayTime.setPadding(PAD, PAD, RPAD, PAD);
+                    dayTime.setGravity(Gravity.CENTER_HORIZONTAL);
                     if (i % 2 == 1) {
                         dayTime.setBackgroundColor(Color.DKGRAY);
                     }
@@ -424,6 +428,7 @@ public class Report extends Activity implements OnClickListener {
                 TextView total = new TextView(this);
                 arryForDay[7] = total;
                 total.setPadding(PAD, PAD, RPAD, PAD);
+                total.setGravity(Gravity.CENTER_HORIZONTAL);
                 total.setTypeface(Typeface.SANS_SERIF, Typeface.ITALIC);
                 total.setBackgroundColor(DKYELLOW);
                 row.addView(total, new TableRow.LayoutParams());
@@ -533,11 +538,12 @@ public class Report extends Activity implements OnClickListener {
                 for (int i = 0; i < 7; i++) {
                     weekTotal += days[i];
                     dayTotals[i] += days[i];
-                    arryForDay[i].setText(Tasks.formatTotal(decimalTime, FORMAT, days[i]));
+                    
+                    arryForDay[i].setText(days[i] == 0L ? ZERO_TIME : Tasks.formatTotal(decimalTime, FORMAT, days[i]));
                 }
                 // Set the week total.  Since this value can be more than 24 hours,
                 // we have to format it by hand:
-                arryForDay[7].setText(Tasks.formatTotal(decimalTime, FORMAT, weekTotal));
+                arryForDay[7].setText(weekTotal == 0L ? ZERO_TIME : Tasks.formatTotal(decimalTime, FORMAT, weekTotal));
                 dayTotals[7] += weekTotal;
             } while (c.moveToNext());
         }
