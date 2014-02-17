@@ -59,6 +59,9 @@
     <string name="time_display">Time display</string>
     <string name="standard_time">Standard (HH:MM)</string>
     <string name="decimal_time">Decimal (HH.hh)</string>
+    <string name="round_report_time">Round report times</string>
+    <string name="round_no">No</string>
+    <string name="round_minutes">Round to %d minutes</string>
 
     <!-- About dialog strings -->
     <string name="version">Version %s</string>

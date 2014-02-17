@@ -400,7 +400,7 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
 
             public void setTimeRange(TimeRange t) {
                 dateRange.setText(t.toString());
-                total.setText(Tasks.formatTotal(decimalFormat, t.getTotal()));
+                total.setText(Tasks.formatTotal(decimalFormat, t.getTotal(), 0));
                 /* If the following is added, then the timer to update the
                  * display must also be added
                  if (t.getEnd() == NULL) {

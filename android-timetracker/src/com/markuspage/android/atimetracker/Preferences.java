@@ -59,11 +59,15 @@ public class Preferences extends ListActivity implements OnClickListener {
     private static final String PREFERENCENAME = "preference-name";
     private static final String VALUETYPE = "value-type";
     private static final int CHOOSE_DAY = 0;
+    private static final int CHOOSE_ROUNDING = 1;
     private SharedPreferences applicationPreferences;
     private List<Map<String, String>> prefs;
     private SimpleAdapter adapter;
     protected final String PREFS_ACTION = "PrefsAction";
     private Map<String, Integer> fontMap;
+    private static final int[] ROUND = new int[] { 0, 15, 30, 60 };
+    private final String[] ROUND_NAMES = new String[ROUND.length];
+    private HashMap<String, String> roundPref = new HashMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +113,23 @@ public class Preferences extends ListActivity implements OnClickListener {
         addBooleanPreference(R.string.time_display, Tasks.TIMEDISPLAY,
                 R.string.decimal_time, R.string.standard_time);
 
+        // Round times in report
+        for (int i = 0; i < ROUND.length; i++) {
+            if (ROUND[i] == 0) {
+                ROUND_NAMES[i] = getString(R.string.round_no);
+            } else {
+                ROUND_NAMES[i] = getString(R.string.round_minutes, ROUND[i]);
+            }
+        }
+        roundPref = new HashMap<String, String>();
+
+        roundPref.put(PREFERENCE, getString(R.string.round_report_time));
+        final int roundTimes = applicationPreferences.getInt(Tasks.ROUND_REPORT_TIMES, 0);
+        roundPref.put(CURRENT, roundTimes == 0 ? getString(R.string.round_no) : getString(R.string.round_minutes, roundTimes));
+        roundPref.put(CURRENTVALUE, String.valueOf(roundTimes));
+        roundPref.put(VALUETYPE, INT);
+        roundPref.put(PREFERENCENAME, Tasks.ROUND_REPORT_TIMES);
+        prefs.add(roundPref);
         adapter = new SimpleAdapter(this,
                 prefs,
                 R.layout.preferences_row,
@@ -161,13 +182,15 @@ public class Preferences extends ListActivity implements OnClickListener {
         }
         pref.put(CURRENTVALUE, String.valueOf(fontSize));
     }
-
+    
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Map<String, String> pref = prefs.get((int) id);
 
         if (pref.get(PREFERENCENAME).equals(Tasks.START_DAY)) {
             showDialog(CHOOSE_DAY);
+        } else if (pref.get(PREFERENCENAME).equals(Tasks.ROUND_REPORT_TIMES)) {
+            showDialog(CHOOSE_ROUNDING);
         } else {
 
             String current = pref.get(CURRENT);
@@ -230,6 +253,15 @@ public class Preferences extends ListActivity implements OnClickListener {
                         Map<String, String> startDay = prefs.get(DAY_OF_WEEK_PREF_IDX);
                         startDay.put(CURRENT, DAYS_OF_WEEK[whichChoice]);
                         startDay.put(CURRENTVALUE, String.valueOf(whichChoice));
+                        adapter.notifyDataSetChanged();
+                        Preferences.this.getListView().invalidate();
+                    }
+                }).create();
+            case CHOOSE_ROUNDING:
+                return new AlertDialog.Builder(this).setItems(ROUND_NAMES, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface iface, int whichChoice) {
+                        roundPref.put(CURRENT, ROUND_NAMES[whichChoice]);
+                        roundPref.put(CURRENTVALUE, String.valueOf(ROUND[whichChoice]));
                         adapter.notifyDataSetChanged();
                         Preferences.this.getListView().invalidate();
                     }

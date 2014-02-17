@@ -120,6 +120,7 @@ public class Report extends Activity implements OnClickListener {
     private int startDay;
     private boolean decimalTime = false;
     private SharedPreferences mPrefs;
+    private int roundMinutes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +144,8 @@ public class Report extends Activity implements OnClickListener {
         String title = getString(R.string.report_title, beginning, ending);
         setTitle(title);
         decimalTime = getIntent().getExtras().getBoolean(Tasks.TIMEDISPLAY);
+        
+        roundMinutes = getIntent().getExtras().getInt(Tasks.ROUND_REPORT_TIMES);
 
         createHeader(mainReport);
 
@@ -539,11 +542,11 @@ public class Report extends Activity implements OnClickListener {
                     weekTotal += days[i];
                     dayTotals[i] += days[i];
                     
-                    arryForDay[i].setText(days[i] == 0L ? ZERO_TIME : Tasks.formatTotal(decimalTime, FORMAT, days[i]));
+                    arryForDay[i].setText(days[i] == 0L ? ZERO_TIME : Tasks.formatTotal(decimalTime, FORMAT, days[i], roundMinutes));
                 }
                 // Set the week total.  Since this value can be more than 24 hours,
                 // we have to format it by hand:
-                arryForDay[7].setText(weekTotal == 0L ? ZERO_TIME : Tasks.formatTotal(decimalTime, FORMAT, weekTotal));
+                arryForDay[7].setText(weekTotal == 0L ? ZERO_TIME : Tasks.formatTotal(decimalTime, FORMAT, weekTotal, roundMinutes));
                 dayTotals[7] += weekTotal;
             } while (c.moveToNext());
         }
@@ -551,9 +554,9 @@ public class Report extends Activity implements OnClickListener {
 
         TextView[] totals = dateViews.get(-1);
         for (int i = 0; i < 7; i++) {
-            totals[i].setText(Tasks.formatTotal(decimalTime, FORMAT, dayTotals[i]));
+            totals[i].setText(Tasks.formatTotal(decimalTime, FORMAT, dayTotals[i], roundMinutes));
         }
-        totals[7].setText(Tasks.formatTotal(decimalTime, FORMAT, dayTotals[7]));
+        totals[7].setText(Tasks.formatTotal(decimalTime, FORMAT, dayTotals[7], roundMinutes));
     }
 
     /**

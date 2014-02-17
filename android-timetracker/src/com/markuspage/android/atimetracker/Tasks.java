@@ -115,6 +115,7 @@ public class Tasks extends ListActivity {
     protected static final String VIEW_MODE = "view_mode";
     protected static final String REPORT_DATE = "report_date";
     protected static final String TIMEDISPLAY = "time_display";
+    protected static final String ROUND_REPORT_TIMES = "round_report_times";
     /**
      * Defines how each task's time is displayed
      */
@@ -310,6 +311,7 @@ public class Tasks extends ListActivity {
                 intent.putExtra(REPORT_DATE, System.currentTimeMillis());
                 intent.putExtra(START_DAY, preferences.getInt(START_DAY, 0) + 1);
                 intent.putExtra(TIMEDISPLAY, decimalFormat);
+                intent.putExtra(ROUND_REPORT_TIMES, preferences.getInt(ROUND_REPORT_TIMES, 0));
                 startActivity(intent);
                 break;
             default:
@@ -558,7 +560,7 @@ public class Tasks extends ListActivity {
         for (Task t : adapter.tasks) {
             total += t.getTotal();
         }
-        setTitle(baseTitle + " " + formatTotal(decimalFormat, total));
+        setTitle(baseTitle + " " + formatTotal(decimalFormat, total, 0));
     }
 
     /**
@@ -740,7 +742,7 @@ public class Tasks extends ListActivity {
             total.setTextSize(fontSize);
             total.setGravity(Gravity.RIGHT);
             total.setTransformationMethod(SingleLineTransformationMethod.getInstance());
-            total.setText(formatTotal(decimalFormat, t.getTotal()));
+            total.setText(formatTotal(decimalFormat, t.getTotal(), 0));
             addView(total, new LinearLayout.LayoutParams(
                     LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT, 0f));
 
@@ -752,7 +754,7 @@ public class Tasks extends ListActivity {
             taskName.setTextSize(fontSize);
             total.setTextSize(fontSize);
             taskName.setText(t.getTaskName());
-            total.setText(formatTotal(decimalFormat, t.getTotal()));
+            total.setText(formatTotal(decimalFormat, t.getTotal(), 0));
             markupSelectedTask(t);
         }
 
@@ -776,24 +778,28 @@ public class Tasks extends ListActivity {
      * expensive) if we want to re-use code.  Notice that a call to this method
      * actually filters down through four methods before it returns.
      */
-    static String formatTotal(boolean decimalFormat, long ttl) {
-        return formatTotal(decimalFormat, FORMAT, ttl);
+    static String formatTotal(boolean decimalFormat, long ttl, long roundMinutes) {
+        return formatTotal(decimalFormat, FORMAT, ttl, roundMinutes);
     }
 
-    static String formatTotal(boolean decimalFormat, String format, long ttl) {
+    static String formatTotal(boolean decimalFormat, String format, long ttl, long roundMinutes) {
+        if (roundMinutes > 0) {
+            long totalMinutes = ttl / MS_M;
+            ttl = roundMinutes * Math.round((float) totalMinutes / roundMinutes) * MS_M;
+        }
         long hours = ttl / MS_H;
         long hours_in_ms = hours * MS_H;
         long minutes = (ttl - hours_in_ms) / MS_M;
         long minutes_in_ms = minutes * MS_M;
         long seconds = (ttl - hours_in_ms - minutes_in_ms) / MS_S;
-        return formatTotal(decimalFormat, format, hours, minutes, seconds);
+        return formatTotal(decimalFormat, format, hours, minutes, seconds, roundMinutes);
     }
 
-    static String formatTotal(boolean decimalFormat, long hours, long minutes, long seconds) {
-        return formatTotal(decimalFormat, FORMAT, hours, minutes, seconds);
+    static String formatTotal(boolean decimalFormat, long hours, long minutes, long seconds, long roundMinutes) {
+        return formatTotal(decimalFormat, FORMAT, hours, minutes, seconds, roundMinutes);
     }
 
-    static String formatTotal(boolean decimalFormat, String format, long hours, long minutes, long seconds) {
+    static String formatTotal(boolean decimalFormat, String format, long hours, long minutes, long seconds, long roundMinutes) {
         if (decimalFormat) {
             format = DECIMAL_FORMAT;
             minutes = Math.round((D_M * minutes) + (D_S * seconds));
