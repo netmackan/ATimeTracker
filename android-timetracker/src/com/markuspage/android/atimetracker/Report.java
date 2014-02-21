@@ -508,6 +508,7 @@ public class Report extends Activity implements OnClickListener {
                 c.setTimeInMillis(now);
                 weekStart = weekStart(c, startDay);
                 weekEnd = weekEnd(c, startDay);
+                break;
             case R.id.decrement_week:
                 weekStart.add(Calendar.WEEK_OF_YEAR, -1);
                 weekEnd.add(Calendar.WEEK_OF_YEAR, -1);
