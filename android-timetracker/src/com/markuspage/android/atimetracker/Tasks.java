@@ -1121,7 +1121,7 @@ public class Tasks extends ListActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PREFERENCES) {
+        if (requestCode == PREFERENCES && data != null) {
             Bundle extras = data.getExtras();
             if (extras.getBoolean(START_DAY)) {
                 switchView(preferences.getInt(VIEW_MODE, 0));
