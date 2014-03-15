@@ -43,7 +43,7 @@ import android.text.format.DateUtils;
  *
  * @author ser
  */
-public class Preferences extends ListActivity implements OnClickListener {
+public class Settings extends ListActivity implements OnClickListener {
 
     private static final int DAY_OF_WEEK_PREF_IDX = 0;
     public static final int LARGE = 24;
@@ -254,7 +254,7 @@ public class Preferences extends ListActivity implements OnClickListener {
                         startDay.put(CURRENT, DAYS_OF_WEEK[whichChoice]);
                         startDay.put(CURRENTVALUE, String.valueOf(whichChoice));
                         adapter.notifyDataSetChanged();
-                        Preferences.this.getListView().invalidate();
+                        Settings.this.getListView().invalidate();
                     }
                 }).create();
             case CHOOSE_ROUNDING:
@@ -263,7 +263,7 @@ public class Preferences extends ListActivity implements OnClickListener {
                         roundPref.put(CURRENT, ROUND_NAMES[whichChoice]);
                         roundPref.put(CURRENTVALUE, String.valueOf(ROUND[whichChoice]));
                         adapter.notifyDataSetChanged();
-                        Preferences.this.getListView().invalidate();
+                        Settings.this.getListView().invalidate();
                     }
                 }).create();
             default:

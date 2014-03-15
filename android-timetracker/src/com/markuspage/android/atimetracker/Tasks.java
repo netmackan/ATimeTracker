@@ -415,7 +415,7 @@ public class Tasks extends ListActivity {
                                 backup.execute(backupDb, appDb);
                                 break;
                             case 4: // PREFERENCES
-                                Intent intent = new Intent(Tasks.this, Preferences.class);
+                                Intent intent = new Intent(Tasks.this, Settings.class);
                                 startActivityForResult(intent, PREFERENCES);
                                 break;
                             case 5: // HELP:

@@ -33,16 +33,16 @@
     <string name="delete_task">Удалить задачу</string>
     <string name="show_times">Показать Времена</string>
 
-    <!--    Preferences strings    -->
+    <!--    Settings strings    -->
     <string name="preferences">Настройки</string>
-    <!-- Preference titles -->
+    <!-- Settings titles -->
     <string name="week_start_day">Первый день недели</string>
     <string name="hour_mode">12/24 часовой режим</string>
     <string name="font_size">Размер шрифта</string>
     <string name="concurrency">Несколько одновременно запущенных задач</string>
     <string name="sound">Звук</string>
     <string name="vibrate">Вибрация</string>
-    <!-- Preference values -->
+    <!-- Settings values -->
     <string name="sunday">Воскресенье</string>
     <string name="monday">Понедельник</string>
     <string name="civilian">1:00 PM</string>

@@ -33,16 +33,16 @@
     <string name="delete_task">Delete Task</string>
     <string name="show_times">Show Times</string>
 
-    <!--    Preferences strings    -->
-    <string name="preferences">Preferences</string>
-    <!-- Preference titles -->
+    <!--    Settings strings    -->
+    <string name="preferences">Settings</string>
+    <!-- Settings titles -->
     <string name="week_start_day">Week start day</string>
     <string name="hour_mode">12/24 hour mode</string>
     <string name="font_size">Font size</string>
     <string name="concurrency">Multiple concurrently running tasks</string>
     <string name="sound">Sound</string>
     <string name="vibrate">Vibrate</string>
-    <!-- Preference values -->
+    <!-- Settings values -->
     <string name="sunday">Sunday</string>
     <string name="monday">Monday</string>
     <string name="civilian">1:00 PM</string>

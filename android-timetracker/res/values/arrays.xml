@@ -17,7 +17,7 @@
         <item>Export view to CSV</item>
         <item>Back up to SD card</item>
         <item>Restore from backup</item>
-        <item>Preferences</item>
+        <item>Settings</item>
         <item>Help</item>
     </string-array>
     <string-array name="configuration">

@@ -34,16 +34,16 @@
     <string name="delete_task">Supprimer la tâche</string>
     <string name="show_times">Affichage l\'heure</string>
 
-    <!--    Preferences strings    -->
+    <!--    Settings strings    -->
     <string name="preferences">Préférences</string>
-    <!-- Preference titles -->
+    <!-- Settings titles -->
     <string name="week_start_day">Premier jour de la semaine</string>
     <string name="hour_mode">Mode 12/24</string>
     <string name="font_size">Taille de police</string>
     <string name="concurrency">Tâche concurentes multiples</string>
     <string name="sound">Son</string>
     <string name="vibrate">Vibrer</string>
-    <!-- Preference values -->
+    <!-- Settings values -->
     <string name="sunday">Dimanche</string>
     <string name="monday">Lundi</string>
     <string name="civilian">1:00 PM</string>
