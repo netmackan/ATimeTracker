@@ -41,5 +41,5 @@
   
   </application>
   <uses-permission android:name="android.permission.VIBRATE"/>
-<!--<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="15" />-->
+  <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="14" />
 </manifest>
