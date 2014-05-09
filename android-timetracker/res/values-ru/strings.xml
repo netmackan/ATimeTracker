@@ -9,7 +9,7 @@
     <string name="start_time_required">Требуется указать время старта</string>
 
     <string name="delete_ok">Удалить</string>
-    <string name="delete_task_title">Удалить Задачу</string>
+    <string name="delete_task_title">Удалить задачу</string>
     <string name="delete_task_message">Вы уверены, что хотите удалить \'%s\' и все её записи временных интервалов?</string>
     <string name="add_task_title">Добавить задачу</string>
     <string name="change_view_title">Изменить вид</string>
@@ -18,11 +18,11 @@
     <string name="done">Вернуться к задачам</string>
     <string name="add_time_title">Добавить новый временной интервал</string>
     <string name="delete_time_message">Вы уверены, что хотите удалить этот временной интервал?</string>
-    <string name="delete_time_title">Удалить Временной Интервал</string>
-    <string name="start_time_label">Время Начала</string>
-    <string name="end_time_label">Время Окончания</string>
+    <string name="delete_time_title">Удалить временной интервал</string>
+    <string name="start_time_label">Время начала</string>
+    <string name="end_time_label">Время окончания</string>
     <string name="end_not_greater_than_start">Время окончания должно быть больше, чем время начала</string>
-    <string name="range_error_title">Ошибка Временного Интервала</string>
+    <string name="range_error_title">Ошибка временного интервала</string>
     <string name="report_title">Отчёт за неделю с %1$s по %2$s </string>
     <string name="week">Неделя %s</string>
     <string name="title">A Time Tracker (%s)</string>
@@ -31,7 +31,7 @@
     <string name="move_time">Назначить время для задачи</string>
     <string name="edit_task">Редактирование задачи</string>
     <string name="delete_task">Удалить задачу</string>
-    <string name="show_times">Показать Времена</string>
+    <string name="show_times">Показать времена</string>
 
     <!--    Settings strings    -->
     <string name="preferences">Настройки</string>
@@ -59,6 +59,9 @@
     <string name="time_display">Формат времени</string>
     <string name="standard_time">стандартный (ЧЧ:ММ)</string>
     <string name="decimal_time">Десятичная дробь (ЧЧ.чч)</string>
+    <string name="round_report_time">Округлять время в отчётах</string>
+    <string name="round_no">Нет</string>
+    <string name="round_minutes">Округлять до %d минут</string>
 
     <!-- About dialog strings -->
     <string name="version">Версия %s</string>
@@ -80,23 +83,23 @@
     Контекстное меню задачи позволяет вам редактировать (изменять имя), удалять
     (включая всю историю для выбранной задачи!) или просматривать её журнал времён.\n
     \n
-    <b>Просмотр Журнала Времён</b>\n
+    <b>Просмотр журнала времён</b>\n
     \n
 	Журнал времён задачи установлен на тот же отрезок времени, который вы выбрали
-	для главного вида задачи. Поэтому, если вы создадите фильтр задачи на <i>Эту Неделю</i>
+	для главного вида задачи. Поэтому, если вы создадите фильтр задачи на <i>Эту неделю</i>
 	и откроете журнал времён, то вы увидите времена на эту неделю. Для ручной вставки
-	времён в журнал используйте пункт меню <i>Добавить Время</i>. Используйте контекстное меню временного интервала
-	, чтобы удалить или отредактировать его.\n
+	времён в журнал используйте пункт меню <i>Добавить время</i>. Используйте контекстное меню временного интервала,
+	чтобы удалить или отредактировать его.\n
     \n
     <b>Обратите внимание</b>, что TimeTracker не защитит вас от создания временных интервалов, пересекающиеся с
     интервалами в другой (или этой же) задаче.
     </string>
     <string name="credits"><b>Разработка</b>\n
     \n
-    Based on TimeTracker+ by Sean E. Russell.\n
-    Application icon from Tango Project (tango.freedesktop.org).\n
-    Перевод на русский выполнил Денис Гладкий\n
-    Перевод на французкий язык выполнил Вильфрид Копп
+    Основано на приложении TimeTracker+ за авторством Шона Е. Рассела (Sean E. Russell).\n
+    Иконка приложения из Tango Project (tango.freedesktop.org).\n
+    Перевод на русский выполнил Денис Гладкий (Denis Gladkiy)\n
+    Перевод на французкий язык выполнил Вильфрид Копп (Wilfried Kopp)
     </string>
     <string name="export_csv_success">Экспорт CSV на карту памяти завершён.
         Файл timetracker.db</string>
