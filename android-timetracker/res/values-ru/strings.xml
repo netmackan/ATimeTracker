@@ -99,7 +99,7 @@
     Основано на приложении TimeTracker+ за авторством Шона Е. Рассела (Sean E. Russell).\n
     Иконка приложения из Tango Project (tango.freedesktop.org).\n
     Перевод на русский выполнил Денис Гладкий (Denis Gladkiy)\n
-    Перевод на французкий язык выполнил Вильфрид Копп (Wilfried Kopp)
+    Перевод на французский язык выполнил Вильфрид Копп (Wilfried Kopp)
     </string>
     <string name="export_csv_success">Экспорт CSV на карту памяти завершён.
         Файл timetracker.db</string>
