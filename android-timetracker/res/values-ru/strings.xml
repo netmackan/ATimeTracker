@@ -109,8 +109,8 @@
     <string name="failure">Неудача</string>
     <string name="set_start_day_of_week">Установите день с которого начинается неделя</string>
     <string name="more">Ещё…</string>
-    <string name="backup_success">Сохранение резервной копии базы данных завершилось. Файл timetracker.db</string>
-    <string name="restore_success">Успешное восстановление из резервной копии. %s
-    </string>
+    <string name="backup_success">Сохранение резервной копии базы данных завершилось. Файл %s</string>
+    <string name="restore_success">Успешное восстановление из резервной копии. %s</string>
+    <string name="backup_failed">Не удалось сохранить резервную копию базы данных. Пожалуйста, сообщите об этой ошибке. %s</string>
     <string name="restore_failed">Не удалось восстановить базу данных. Пожалуйста, сообщите об этой ошибке. %s</string>
 </resources>
