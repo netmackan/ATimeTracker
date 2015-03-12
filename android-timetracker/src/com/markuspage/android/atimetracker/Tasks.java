@@ -63,6 +63,9 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -1053,6 +1056,32 @@ public class Tasks extends ListActivity {
         }
     }
 
+    private void setNotification(Task item) {
+
+        Notification.Builder mBuilder = 
+            new Notification.Builder(this)
+            //.setSmallIcon() //TODO
+            .setContentTitle("ATimeTracker")
+            .setOngoing(true)
+            .setContentText("Something is running");
+
+        Intent tasksIntent = new Intent(this, Class.forName("Tasks"));
+
+        PendingIntent taskerPendingIntent = PendingIntent.getActivity(
+            this,
+            0,
+            tasksIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        );
+        mBuilder.setContentIntent(taskerPendingIntent);
+
+        int mNotificationId = 001; // TODO: make this a constant
+        NotificationManager mNotifyMgr = 
+            (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+
+    }
+
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         if (vibrateClick) {
@@ -1072,12 +1101,14 @@ public class Tasks extends ListActivity {
             }
         }
 
+        // Display the notification
+        
+            
         // Stop the update.  If a task is already running and we're stopping
         // the timer, it'll stay stopped.  If a task is already running and 
         // we're switching to a new task, or if nothing is running and we're
         // starting a new timer, then it'll be restarted.
 
-        Object item = getListView().getItemAtPosition(position);
         if (item != null) {
             Task selected = (Task) item;
             if (!concurrency) {
@@ -1097,6 +1128,7 @@ public class Tasks extends ListActivity {
                     selected.start();
                     running = true;
                     timer.post(updater);
+                    this.setNotification(selected);
                 }
             } else {
                 if (selected.isRunning()) {
