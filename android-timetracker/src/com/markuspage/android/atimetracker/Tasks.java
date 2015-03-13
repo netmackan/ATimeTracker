@@ -58,7 +58,9 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.commons.logging.LogFactory;
+//import org.apache.commons.logging.LogFactory;
+
+
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -112,6 +114,7 @@ public class Tasks extends ListActivity {
 
 
 
+
     // For logging
     private static final String TAG = "ATimeTracker.Tasks";
 
@@ -128,7 +131,6 @@ public class Tasks extends ListActivity {
     protected static final String REPORT_DATE = "report_date";
     protected static final String TIMEDISPLAY = "time_display";
     protected static final String ROUND_REPORT_TIMES = "round_report_times";
-    private static final int notificationId = 001;
     /**
      * Defines how each task's time is displayed
      */
@@ -154,7 +156,7 @@ public class Tasks extends ListActivity {
     /**
      * Notification
      **/
-    private Thread notificationThread = null;
+    private TaskNotificationThread notificationThread = null;
     /**
      * The currently active task (the one that is currently being timed). There
      * can be only one.
@@ -176,12 +178,11 @@ public class Tasks extends ListActivity {
     /**
      * A list of menu options, including both context and options menu items
      */
-    protected static final int ADD_TASK = 0,
-            EDIT_TASK = 1, DELETE_TASK = 2, REPORT = 3, SHOW_TIMES = 4,
-            CHANGE_VIEW = 5, SELECT_START_DATE = 6, SELECT_END_DATE = 7,
-            HELP = 8, EXPORT_VIEW = 9, SUCCESS_DIALOG = 10, ERROR_DIALOG = 11,
-            SET_WEEK_START_DAY = 12, MORE = 13, BACKUP = 14, PREFERENCES = 15,
-            PROGRESS_DIALOG = 16;
+    protected static final int ADD_TASK = 0, EDIT_TASK = 1, DELETE_TASK = 2,
+            REPORT = 3, SHOW_TIMES = 4, CHANGE_VIEW = 5, SELECT_START_DATE = 6,
+            SELECT_END_DATE = 7, HELP = 8, EXPORT_VIEW = 9,
+            SUCCESS_DIALOG = 10, ERROR_DIALOG = 11, SET_WEEK_START_DAY = 12,
+            MORE = 13, BACKUP = 14, PREFERENCES = 15, PROGRESS_DIALOG = 16;
     // TODO: This could be done better...
     private static final String dbPath = "/data/data/com.markuspage.android.atimetracker/databases/timetracker.db";
     private static final String dbBackup = "/sdcard/timetracker.db";
@@ -228,9 +229,10 @@ public class Tasks extends ListActivity {
                 clickPlayer.prepareAsync();
             } catch (IllegalStateException illegalStateException) {
                 // ignore this.  There's nothing the user can do about it.
-                Logger.getLogger("TimeTracker").log(Level.SEVERE,
+                Logger.getLogger("TimeTracker").log(
+                        Level.SEVERE,
                         "Failed to set up audio player: "
-                        + illegalStateException.getMessage());
+                                + illegalStateException.getMessage());
             }
         }
         decimalFormat = preferences.getBoolean(TIMEDISPLAY, false);
@@ -241,15 +243,10 @@ public class Tasks extends ListActivity {
         vibrateAgent = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         vibrateClick = preferences.getBoolean(VIBRATE, true);
 
-        Log.d(TAG, "Starting notification thread...");
-
         // Start the notification thread
-        if (this.notificationThread == null ||
-                (this.notificationThread != null &&
-                 ! this.notificationThread.isAlive())){
-            this.notificationThread = new TaskNotificationThread(this, this.adapter);
-            this.notificationThread.start();
-         }
+        this.notificationThread = TaskNotificationThread.getInstance();
+        this.notificationThread.init(this, this.adapter);
+        this.notificationThread.start();
     }
 
     @Override
@@ -838,7 +835,7 @@ public class Tasks extends ListActivity {
         return String.format(format, hours, minutes, seconds);
     }
 
-    private class TaskAdapter extends BaseAdapter {
+    class TaskAdapter extends BaseAdapter {
 
         private DBHelper dbHelper;
         protected ArrayList<Task> tasks;
@@ -1080,161 +1077,6 @@ public class Tasks extends ListActivity {
                 }
             }
             return view;
-        }
-    }
-
-    /**
-     * A thread that will continually update the notification.
-     */
-    class TaskNotificationThread extends Thread{
-
-        private static final long SLEEP_TIME = 1000; // 1 second
-        private Tasks tasksActivity = null;
-        private Tasks.TaskAdapter taskAdapter = null;
-        private NotificationCompat.Builder notificationBuilder = null;
-        private NotificationManager notificationManager = null;
-
-        /**
-         * Construct a new TaskNotificationThread
-         *
-         * @param tasksActivity The TasksActivity that is currently running.
-         * @param taskAdapter The TaskAdapter that is a part of TasksActivity,
-         *      used for obtaining the running tasks.
-         */
-        public TaskNotificationThread (
-                Tasks tasksActivity,
-                Tasks.TaskAdapter taskAdapter){
-            super();
-            this.tasksActivity = tasksActivity;
-            this.taskAdapter = taskAdapter;
-            Log.d(TAG, "Creating notification thread:");
-            Log.d(TAG, "\tActivity: " + tasksActivity);
-            Log.d(TAG, "\tAdapter: " + taskAdapter);
-
-            // Do this once so that we don't get a stack overflow! ;-)
-            this.notificationManager =  getNotificationManager();
-        }
-
-        /**
-         * Initialize a notification builder.
-         *
-         */
-        private void initNotification() {
-
-            Log.d(TAG, "Initializing Notification...");
-
-            this.notificationBuilder = 
-                new NotificationCompat.Builder(this.tasksActivity)
-                .setSmallIcon(R.drawable.icon)
-                .setContentTitle("ATimeTracker")
-                .setOngoing(true);
-
-            Intent tasksIntent = new Intent(this.tasksActivity, Tasks.class);
-
-            PendingIntent taskerPendingIntent = PendingIntent.getActivity(
-                    this.tasksActivity,
-                    0,
-                    tasksIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT
-                    );
-
-            this.notificationBuilder.setContentIntent(taskerPendingIntent);
-
-            NotificationManager mNotifyMgr = getNotificationManager();
-
-            if (mNotifyMgr == null){
-                Log.e(TAG, "Could not get Notification Service!");
-                return;
-            }
-        }
-
-        /**
-         * Convenience method to get the system's notification manager.
-         **/
-        private NotificationManager getNotificationManager(){
-            if (this.notificationManager != null)
-                return this.notificationManager;
-            return (NotificationManager) getSystemService(
-                        Context.NOTIFICATION_SERVICE); 
-        }
-
-        @Override
-        public synchronized void start(){
-            super.start();
-            Log.d(TAG, "START - TaskNotificationThread");
-            this.initNotification();
-        }
-
-        /**
-         * Get a list of the running tasks, get their name, and update the
-         * notification with a list of their names.
-         */
-        public void setNotification(){
-            NotificationManager mNotificationManager = getNotificationManager();
-            Iterator<Task> active = null;
-            Task t = null;
-            String content = null, title = null;
-            int nTasks = 0;
-
-            StringBuilder titleBuilder = new StringBuilder();
-            StringBuilder contentBuilder = new StringBuilder();
-
-            active = this.taskAdapter.findCurrentlyActive();
-
-            // If tasks are running then update the notification
-            if (active.hasNext()) {
-                Log.d(TAG, "Active Tasks:");
-
-                while (active.hasNext()) {
-                    ++nTasks;
-                    t = active.next();
-                    Log.d(TAG, "\t- " + t.getTaskName());
-                    contentBuilder.append("\t- ")
-                        .append(t.getTaskName())
-                        .append("\n");
-                }
-
-                // Construct the content and title
-                titleBuilder.append(String.valueOf(nTasks)).append(
-                        " task");
-                if (nTasks > 1)
-                    titleBuilder.append("s");
-                titleBuilder.append(" running:");
-                //contentBuilder.insert(0, titleBuilder);
-                content = contentBuilder.toString();
-                title = titleBuilder.toString();
-
-                // Set the content and title
-                this.notificationBuilder
-                    .setContentTitle(title)
-                    .setContentText(content);
-
-                // TODO: Watch this, because sometimes we get a
-                // StackOverflowError.
-                mNotificationManager.notify(notificationId,
-                        this.notificationBuilder.build());
-            } else {
-                // Otherwise, cancel the notification.
-                Log.d(TAG, "No active tasks. Not setting notification.");
-                mNotificationManager.cancel(notificationId);
-            }
-
-        }
-
-        @Override
-        public void run(){
-            while (true){
-                setNotification();
-
-                // Finally, go to sleep and call run() again.
-                try {
-                    Log.d(TAG, "Sleeping for " + SLEEP_TIME);
-                    Thread.sleep(TaskNotificationThread.SLEEP_TIME);
-                    run();
-                } catch (InterruptedException e){
-                    Log.w(TAG, "Could not sleep.");
-                }
-            }
         }
     }
 
