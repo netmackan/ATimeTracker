@@ -31,6 +31,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -40,14 +41,21 @@ import android.util.Log;
 public class TaskNotificationThread extends Thread{
 
     private static final long SLEEP_TIME = 1000; // 1 second
-    private static final String TAG = null;
+    private static final String TAG = "ATimeTracker.TaskNotificationThread";
     private static final int notificationId = 001;
     private Tasks tasksActivity = null;
     private Tasks.TaskAdapter taskAdapter = null;
     private NotificationCompat.Builder notificationBuilder = null;
     private NotificationManager notificationManager = null;
+    private SharedPreferences preferences;
 
     private static TaskNotificationThread threadInstance = null;
+
+    // Settings
+    private static final int NOTIFICATION_ALWAYS = 0,
+        NOTIFICATION_ACTIVE = 1,
+        NOTIFICATION_NEVER = 2;
+    private int notificationMode = NOTIFICATION_ALWAYS;
 
     private TaskNotificationThread(){
         super();
@@ -67,8 +75,14 @@ public class TaskNotificationThread extends Thread{
         Log.d(TAG, "\tActivity: " + tasksActivity);
         Log.d(TAG, "\tAdapter: " + taskAdapter);
 
+        preferences = this.tasksActivity.getSharedPreferences(
+                Tasks.TIMETRACKERPREF, Tasks.MODE_PRIVATE); 
+        notificationMode = preferences.getInt(Tasks.NOTIFICATION_MODE,
+                NOTIFICATION_ALWAYS);
+
         // Do this once so that we don't get a stack overflow! ;-)
         this.notificationManager =  getNotificationManager();
+        this.initNotification();
     }
 
     /**
@@ -120,6 +134,14 @@ public class TaskNotificationThread extends Thread{
         }
     }
 
+
+    private synchronized void performSetNotification(String title,
+            String content){
+        notificationBuilder.setContentTitle(title)
+            .setContentText(content);
+        notificationManager.notify();
+    }
+
     /**
      * Get a list of the running tasks, get their name, and update the
      * notification with a list of their names.
@@ -130,13 +152,24 @@ public class TaskNotificationThread extends Thread{
         String content = null, title = null;
         int nTasks = 0;
 
+        // Get the notificationMode in case it changed.
+        notificationMode = preferences.getInt(Tasks.NOTIFICATION_MODE,
+                NOTIFICATION_ALWAYS);
+
+        // This will either be this.notificationBuilder or (if
+        // this.notificationBuilder exists) a new notification builder
+        // to extend.
+
         StringBuilder titleBuilder = new StringBuilder();
         StringBuilder contentBuilder = new StringBuilder();
 
         active = this.taskAdapter.findCurrentlyActive();
 
+        Log.d(TAG, "Running thread...");
+        debugPreferences();
+
         // If tasks are running then update the notification
-        if (active.hasNext()) {
+        if (active.hasNext() && (notificationMode != NOTIFICATION_NEVER)){
             Log.d(TAG, "Active Tasks:");
 
             while (active.hasNext()) {
@@ -167,12 +200,32 @@ public class TaskNotificationThread extends Thread{
             // StackOverflowError.
             this.notificationManager.notify(notificationId,
                     this.notificationBuilder.build());
+        } else if (notificationMode == NOTIFICATION_ALWAYS){
+            titleBuilder.append("No tasks running");
+            contentBuilder.append("Click here to start a task.");
+            this.notificationBuilder
+                .setContentTitle(titleBuilder.toString())
+                .setContentText(contentBuilder.toString());
+            this.notificationManager.notify(notificationId,
+                    this.notificationBuilder.build());
         } else {
-            // Otherwise, cancel the notification.
-            Log.d(TAG, "No active tasks. Not setting notification.");
             this.notificationManager.cancel(notificationId);
+            Log.d(TAG, "No active tasks. Not setting notification.");
         }
+    }
 
+    private void debugPreferences() {
+        switch(notificationMode){
+            case NOTIFICATION_ALWAYS:
+                Log.d(TAG, "\tNotification Mode: ALWAYS");
+                break;
+            case NOTIFICATION_ACTIVE:
+                Log.d(TAG, "\tNotification Mode: ACTIVE");
+                break;
+            case NOTIFICATION_NEVER:
+                Log.d(TAG, "\tNotification Mode: NEVER");
+                break;
+        }
     }
 
     @Override

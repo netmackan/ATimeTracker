@@ -120,6 +120,7 @@ public class Tasks extends ListActivity {
 
     public static final String TIMETRACKERPREF = "timetracker.pref";
     protected static final String FONTSIZE = "font-size";
+    protected static final String NOTIFICATION_MODE = "notification-mode";
     protected static final String MILITARY = "military-time";
     protected static final String CONCURRENT = "concurrent-tasks";
     protected static final String SOUND = "sound-enabled";
@@ -175,6 +176,7 @@ public class Tasks extends ListActivity {
     private Vibrator vibrateAgent;
     private ProgressDialog progressDialog = null;
     private boolean decimalFormat = false;
+
     /**
      * A list of menu options, including both context and options menu items
      */
