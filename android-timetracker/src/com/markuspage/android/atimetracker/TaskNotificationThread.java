@@ -239,7 +239,6 @@ public class TaskNotificationThread extends Thread{
             try {
                 Log.d(TAG, "Sleeping for " + SLEEP_TIME);
                 Thread.sleep(TaskNotificationThread.SLEEP_TIME);
-                run();
             } catch (InterruptedException e){
                 Log.w(TAG, "Could not sleep.");
             }
