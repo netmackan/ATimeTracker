@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Translation by Carlos Manzo -->
+<resources>
+    <string name="app_name">A Time Tracker</string>
+    
+    <string name="start">Inizio</string>
+    <string name="task_name">Nome del compito</string>
+    <string name="add_task_ok">Aggiungere compito</string>
+    <string name="task_name_required">Nome del compito richiesto</string>
+    <string name="start_time_required">Ora di inizio richiesta</string>
+
+    <string name="delete_ok">Cancellare</string>
+    <string name="delete_task_title">Eliminare compito</string>
+    <string name="delete_task_message">Sei sicuro di cancellare \'%s\' e tutti dati collegati?</string>
+    <string name="add_task_title">Aggiungere compito</string>
+    <string name="change_view_title">Cambia vista</string>
+    <string name="generate_report_title">Rapporto</string>
+    <string name="select_range">Seleziona intervallo…</string>
+    <string name="done">Fatto</string>
+    <string name="add_time_title">Aggiungere intervalo</string>
+    <string name="delete_time_message">Cancellare questo orario?</string>
+    <string name="delete_time_title">Cancellare orario</string>
+    <string name="start_time_label">Inizio</string>
+    <string name="end_time_label">Fine</string>
+    <string name="end_not_greater_than_start">Ora di fine non può essere minore a ora di inizio</string>
+    <string name="range_error_title">Errore nel intervallo</string>
+    <string name="report_title">Rapporto settimanale %1$s a %2$s </string>
+    <string name="week">Settimana %s</string>
+    <string name="title">A Time Tracker (%s)</string>
+    <string name="help">Assistenza</string>
+    <string name="export_view">Esportare</string>
+    <string name="move_time">Assegnare tempo per altro compito</string>
+    <string name="edit_task">Modifica compito</string>
+    <string name="delete_task">Cancellare compito</string>
+    <string name="show_times">Mostrare tempi</string>
+
+    <!--    Settings strings    -->
+    <string name="preferences">Impostazioni</string>
+    <!-- Settings titles -->
+    <string name="week_start_day">Giorno d'inizio settimana</string>
+    <string name="hour_mode">Modo 12/24</string>
+    <string name="font_size">Dimensione del carattere</string>
+    <string name="concurrency">Simultaneità dei compiti</string>
+    <string name="sound">Audio</string>
+    <string name="vibrate">Vibrare</string>
+    <!-- Settings values -->
+    <string name="sunday">Domenica</string>
+    <string name="monday">Lunedì</string>
+    <string name="civilian">1:00 PM</string>
+    <string name="military">13:00</string>
+    <string name="small_font">Piccolo</string>
+    <string name="medium_font">Medio</string>
+    <string name="large_font">Grande</string>
+    <string name="concurrent">Attività simultanee</string>
+    <string name="exclusive">Solo un compito alla volta</string>
+    <string name="sound_enabled">Audio attivo</string>
+    <string name="sound_disabled">Audio spento</string>
+    <string name="vibrate_enabled">Vibrazione attiva</string>
+    <string name="vibrate_disabled">Vibrazione spenta</string>
+    <string name="time_display">Formato ora</string>
+    <string name="standard_time">Standard (HH:MM)</string>
+    <string name="decimal_time">Decimale (HH.hh)</string>
+    <string name="round_report_time">Arrotondare tempo</string>
+    <string name="round_no">No</string>
+    <string name="round_minutes">Arrotondare tempo a %d minuti</string>
+
+    <!-- About dialog strings -->
+    <string name="version">Versione %s</string>
+    <string name="author">Open Source Time Tracker</string>
+    <string name="purpose">TimeTracker consente di risparmiare tempo; 
+        per essempio, risparmiare tiempo dedicato a ogni singola attività.
+        Permette di visualizare, editare e filtrare i compiti e anche guardarli 
+        grazie alla funzione di reporting.</string>
+    <string name="usage">
+    Istruzioni dettagliate in https://github.com/netmackan/ATimeTracker\n\n
+    • Creare compiti utilizzando il menu\n
+    • Fare click su un'attività per iniziare il tempo, fare click di nuovo per arrestare\n
+    • Tenere premuto un'attività per vedere i dettagli\n
+    • Personalizzare le impostazioni nel menu\n
+    • Visualizzare un rapporto settimanale con il menu\n
+    \n
+    Clicca un'altra attività per continuare durata della registrazione a un'altra attività.\n
+    \n
+    Il menu contestuale su ogni attività permette editare, cancellare(anche tutti i dati collegati),
+    o far vedere il dettaglio su ogni attività.\n
+    \n
+    <b>Visualizzare rapporti</b>\n
+    \n
+    Il dettaglio dei rapporti sono filtrati attraverso lo stesso periodo selezionato nella vista principale.
+    Se si sceglie di visualizzare i dati in <i>questa settimana</i> e quindi visualizzare il report, si vedono solo i dati di questa settimana.
+    Utilizzare <i>aggiungere tempo</i> per aggiungere ora manualmente. Utilizzare il menu contestuale per eliminare o modificare un intervallo.\n
+    \n
+    <b>Note:</b> TimeTracker non impedisce di creare sovrapposizione della stessa attività o di altre attività o programmi.
+    </string>
+    <string name="credits"><b>Crediti</b>\n
+    \n
+    Basato su TimeTracker+ da Sean E. Russell.\n
+    Icona della applicazione per Tango Project (tango.freedesktop.org).\n
+    Traduzzione in russo da Денис Гладкий\n
+    Traduzzione in Francese da Wilfried Kopp\n
+    Traduzzione in spagnolo e italiano da Carlos Manzo
+	</string>
+    <string name="export_csv_success">CSV esportato con successo sulla scheda SD come timetracker.db</string>
+    <string name="export_csv_fail">Errore sulla esportazione CSV. Non è possibile creare il file. La scheda SD è presente?</string>
+    <string name="success">Successo</string>
+    <string name="failure">Errore</string>
+    <string name="set_start_day_of_week">Definire inizio di settimana</string>
+    <string name="more">Più…</string>
+    <string name="backup_success">Il database viene salvato nella scheda SD come timetracker.db</string>
+    <string name="restore_success">Dati ripristinati. %s
+    </string>
+    <string name="restore_failed">Error di ripristino. Si prega di comunicare al programmatore.  %s</string>
+</resources>
