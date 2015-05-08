@@ -7,3 +7,4 @@ Open Source Time Tracker for Android
 - Application icon from Tango Project (tango.freedesktop.org)
 - Russian translation by Denis Gladkiy
 - French translation by Wilfried Kopp
+- Spanish and Italian translation by Carlos Manzo
