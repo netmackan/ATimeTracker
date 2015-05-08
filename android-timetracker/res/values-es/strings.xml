@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Translation by Carlos Manzo -->
+<resources>
+    <string name="app_name">A Time Tracker</string>
+    
+    <string name="start">Iniciar</string>
+    <string name="task_name">Nombre de la actividad</string>
+    <string name="add_task_ok">Añadir actividad</string>
+    <string name="task_name_required">Nombre de la actividad obligatorio</string>
+    <string name="start_time_required">Hora de la actividad obligatorio</string>
+
+    <string name="delete_ok">Eliminar</string>
+    <string name="delete_task_title">Eliminar actividad</string>
+    <string name="delete_task_message">De verdad quiere eliminar \'%s\' y los datos asociados?</string>
+    <string name="add_task_title">Añadir actividad</string>
+    <string name="change_view_title">Cambiar vista</string>
+    <string name="generate_report_title">Reporte</string>
+    <string name="select_range">Elegir periodo…</string>
+    <string name="done">Regresar a actividad</string>
+    <string name="add_time_title">Añadir periodo</string>
+    <string name="delete_time_message">¿Realmente desea eliminar este periodo?</string>
+    <string name="delete_time_title">Elliminar período</string>
+    <string name="start_time_label">Inicio</string>
+    <string name="end_time_label">Finaliza</string>
+    <string name="end_not_greater_than_start">La hora finaliza no puede ser menor a la hora de inicio</string>
+    <string name="range_error_title">Error del periodo</string>
+    <string name="report_title">Reporte para la semana %1$s a %2$s </string>
+    <string name="week">Semana %s</string>
+    <string name="title">A Time Tracker (%s)</string>
+    <string name="help">Ayuda</string>
+    <string name="export_view">Exportar</string>
+    <string name="move_time">Asignar este tiempo a otra actividad</string>
+    <string name="edit_task">Modificar la actividad</string>
+    <string name="delete_task">Eliminar la actividad</string>
+    <string name="show_times">Mostrar tiempos</string>
+
+    <!--    Settings strings    -->
+    <string name="preferences">Preferencias</string>
+    <!-- Settings titles -->
+    <string name="week_start_day">Primer dia de la semana</string>
+    <string name="hour_mode">Modo 12/24</string>
+    <string name="font_size">Tamaño de fuente</string>
+    <string name="concurrency">Diferentes actividades al mismo tiempo</string>
+    <string name="sound">Sonido</string>
+    <string name="vibrate">Vibrar</string>
+    <!-- Settings values -->
+    <string name="sunday">Domingo</string>
+    <string name="monday">Lunes</string>
+    <string name="civilian">1:00 PM</string>
+    <string name="military">13:00</string>
+    <string name="small_font">Pequeña</string>
+    <string name="medium_font">Media</string>
+    <string name="large_font">Grande</string>
+    <string name="concurrent">Actividades simultáneas</string>
+    <string name="exclusive">Una actividad a la vez</string>
+    <string name="sound_enabled">Sonido activo</string>
+    <string name="sound_disabled">Sonido desactivado</string>
+    <string name="vibrate_enabled">Vibración activada</string>
+    <string name="vibrate_disabled">Vibración desactivada</string>
+    <string name="time_display">Formato hora</string>
+    <string name="standard_time">Estandar (HH:MM)</string>
+    <string name="decimal_time">Decimal (HH.hh)</string>
+    <string name="round_report_time">Arrotondar hora</string>
+    <string name="round_no">No</string>
+    <string name="round_minutes">Arrotondar a %d minutos</string>
+
+    <!-- About dialog strings -->
+    <string name="version">Versión %s</string>
+    <string name="author">Open Source Time Tracker</string>
+    <string name="purpose">TimeTracker le ayuda a ahorrar tiempo en sus
+        actividades; por ejemplo, para guardar el tiempo dedicado a cada tarea de un proyecto profesional.
+        Se ofrece la posibilidad de ver, editar y filtrar las actividadees
+        y cuenta con una función de reporte.</string>
+    <string name="usage">
+    Instrucciones detalladas en https://github.com/netmackan/ATimeTracker\n\n
+    • Cree actividades utilizando el menú \n
+    • Haga clic en una actividad para iniciar el tiempo, haga clic de nuevo para detener\n
+    • Mantenga oprimido sobre una actividad para ver los detalles\n
+    • Personalice las opciones de configuración en el menú\n
+    • Visualice un informe semanal con el menú\n
+    \n
+    Haga clic en otra actividad para continuar el registro de tiempo en otra actividad.\n
+    \n
+    El menú contextual de cada tarea permite editar la actividad (editar nombre),
+    eliminar la actividad (incluyendo datos relacionados!), o mostrar los registros detallados de la
+    actividad.\n
+    \n
+    <b>Mostrar reportes</b>\n
+    \n
+    El detalle de los reportes se filtran a través del mismo periodo que la selección realizada en la vista principal.
+    Si elige mostrar las datos de <i> esta semana </i> para luego ver el reporte, sólo verá los datos de esta semana.
+    Utilice <i> Agregar tiempo </i> para añadir tiempo de forma manual. Utilice el menú contextual para borrar o editar un período.\n
+    \n
+    <b>Nota:</b> TimeTracker no le previene de la creación de horarios superpuestos de la misma actividad o de otras actividades.
+    </string>
+    <string name="credits"><b>Creditos</b>\n
+    \n
+    Basado en TimeTracker+ de Sean E. Russell.\n
+    Icono de la aplicacion por Tango Project (tango.freedesktop.org).\n
+    Traducción en Ruso por Денис Гладкий\n
+    Traducción en Français por Wilfried Kopp\n
+    Traducción en Español e Italiano por Carlos Manzo
+	</string>
+    <string name="export_csv_success">CSV exportado con éxito a la tarjeta SD de timetracker.db</string>
+    <string name="export_csv_fail">Error en la exportación CSV. No se pudo crear el archivo. La tarjeta SD está presente?</string>
+    <string name="success">Exito</string>
+    <string name="failure">Error</string>
+    <string name="set_start_day_of_week">Definir inicio de la semana</string>
+    <string name="more">Más…</string>
+    <string name="backup_success">La base de datos se ha guardado en la tarjeta SD como timetracker.db</string>
+    <string name="restore_success">Datos restaurados. %s
+    </string>
+    <string name="restore_failed">Error de restauración de datos. Por favor comuníquelo al programador.  %s</string>
+</resources>
