@@ -24,7 +24,7 @@
     <string name="end_time_label">Heure de fin</string>
     <string name="end_not_greater_than_start">L´heure de fin doit être après l´heure de début</string>
     <string name="range_error_title">Erreur dans la période</string>
-    <string name="report_title">Rapport pour la semaine %1$s à %1$s </string>
+    <string name="report_title">Rapport pour la semaine %1$s à %2$s </string>
     <string name="week">Semaine %s</string>
     <string name="title">A Time Tracker (%s)</string>
     <string name="help">Aide</string>
