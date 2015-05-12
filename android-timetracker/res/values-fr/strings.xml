@@ -96,8 +96,8 @@
     <string name="failure">Erreur</string>
     <string name="set_start_day_of_week">Définir le premier jour de la semaine</string>
     <string name="more">Plus…</string>
-    <string name="backup_success">La base de données a bien été sauvegardée sur la carte SD sous timetracker.db</string>
-    <string name="restore_success">Restauration effectuée. %s
-    </string>
+    <string name="backup_success">La base de données a bien été sauvegardée sur la carte SD sous %s</string>
+    <string name="restore_success">Restauration effectuée. %s</string>
+    <string name="backup_failed">Erreur. Veuillez faire part de cette erreur au développeur.  %s</string>
     <string name="restore_failed">Restauration erreur. Veuillez faire part de cette erreur au développeur.  %s</string>
 </resources>

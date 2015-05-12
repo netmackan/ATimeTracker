@@ -111,9 +111,11 @@
     <string name="set_start_day_of_week">Set the day the week starts</string>
     <string name="more">More…</string>
     <string name="backup_success">Successfully backed up the database to the
-        memory card as timetracker.db</string>
-    <string name="restore_success">Successfully restored the database backup. %s
-    </string>
+        memory card as %s</string>
+    <string name="restore_success">Successfully restored the database backup
+        from %s</string>
+    <string name="backup_failed">The database back up failed.  Please report
+        this error.  %s</string>
     <string name="restore_failed">The database restore failed.  Please report
-    this an an error.  %s</string>
+        this error.  %s</string>
 </resources>

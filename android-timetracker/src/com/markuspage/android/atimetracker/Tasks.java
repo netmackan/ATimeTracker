@@ -375,7 +375,7 @@ public class Tasks extends ListActivity {
                                     // Find the database
                                     SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup, null, SQLiteDatabase.OPEN_READWRITE);
                                     SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY);
-                                    backup = new DBBackup(Tasks.this, progressDialog);
+                                    backup = new DBBackup(Tasks.this, progressDialog, R.string.backup_success, R.string.backup_failed);
                                     backup.execute(appDb, backupDb);
                                 } else {
                                     InputStream in = null;
@@ -411,7 +411,7 @@ public class Tasks extends ListActivity {
                                 showDialog(Tasks.PROGRESS_DIALOG);
                                 SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup, null, SQLiteDatabase.OPEN_READONLY);
                                 SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
-                                backup = new DBBackup(Tasks.this, progressDialog);
+                                backup = new DBBackup(Tasks.this, progressDialog, R.string.restore_success, R.string.restore_failed);
                                 backup.execute(backupDb, appDb);
                                 break;
                             case 4: // PREFERENCES
@@ -1167,11 +1167,11 @@ public class Tasks extends ListActivity {
         }
     }
 
-    protected void finishedCopy(DBBackup.Result result, String message) {
+    protected void finishedCopy(DBBackup.Result result, String message, int success_string, int fail_string) {
         if (result == DBBackup.Result.SUCCESS) {
             switchView(preferences.getInt(VIEW_MODE, 0));
             message = dbBackup;
         }
-        perform(message, R.string.restore_success, R.string.restore_failed);
+        perform(message, success_string, fail_string);
     }
 }

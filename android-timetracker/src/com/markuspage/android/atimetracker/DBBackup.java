@@ -44,6 +44,8 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
     private ProgressDialog progressDialog;
     private Tasks callback;
     private boolean cancel = false;
+    private int success_string;
+    private int fail_string;
 
     public enum Result {
 
@@ -53,11 +55,13 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
     private Result result;
     private String message = null;
 
-    public DBBackup(Tasks callback, ProgressDialog progress) {
+    public DBBackup(Tasks callback, ProgressDialog progress, int success_string, int fail_string) {
         this.callback = callback;
         progressDialog = progress;
         progressDialog.setProgress(0);
         progressDialog.setSecondaryProgress(0);
+        this.success_string = success_string;
+        this.fail_string = fail_string;
     }
 
     @Override
@@ -105,7 +109,7 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
     @Override
     protected void onPostExecute(Void v) {
         progressDialog.dismiss();
-        callback.finishedCopy(result, message);
+        callback.finishedCopy(result, message, success_string, fail_string);
     }
 
     @Override
