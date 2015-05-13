@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="views">
+        <item>Hoy</item>
+        <item>Esta semana</item>
+        <item>Ayer</item>
+        <item>Semana pasada</item>
+        <item>Todo</item>
+        <item>Elija periodo...</item>
+    </string-array>    
+    <string-array name="startDays">
+        <item>Domingo</item>
+        <item>Lunes</item>
+    </string-array>
+    <string-array name="moreMenu">
+        <item>Cambiar periodo</item>
+        <item>Exportar en CSV</item>
+        <item>Respaldo en SD card</item>
+        <item>Restaurar copia de seguridad</item>
+        <item>Preferencias</item>
+        <item>Ayuda</item>
+    </string-array>
+    <string-array name="configuration">
+        <item>Definir inicio de semana (%s)</item>
+        <item>Definir el formato de la hora (%s)</item>
+        <item>Sonido click (%s)</item>
+        <item>Vibracion click (%s)</item>
+        <item>Seguimiento de tareas concurrentes (%s)</item>
+        <item>Tamaño de fuente (%s)</item>
+        <item>Localización del DB (%s)</item>
+    </string-array>
+</resources>
