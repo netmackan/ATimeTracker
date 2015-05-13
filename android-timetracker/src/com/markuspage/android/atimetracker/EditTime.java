@@ -32,6 +32,7 @@ import java.util.Calendar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -44,10 +45,12 @@ public class EditTime extends Activity implements OnClickListener {
     protected static final String START_DATE = "start-date";
     protected static final String CLEAR = "clear";
     private boolean editingRunning = false;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        preferences = getSharedPreferences(Tasks.TIMETRACKERPREF, MODE_PRIVATE);
         if (getIntent().getExtras().getLong(END_DATE) == NULL) {
             setContentView(R.layout.edit_running_time_range);
             editingRunning = true;
@@ -56,6 +59,11 @@ public class EditTime extends Activity implements OnClickListener {
         }
         findViewById(R.id.accept).setOnClickListener(this);
         findViewById(R.id.time_edit_cancel).setOnClickListener(this);
+        TimePicker startTime = (TimePicker) findViewById(R.id.start_time);
+        TimePicker endTime = (TimePicker) findViewById(R.id.end_time);
+        boolean militaryTime = preferences.getBoolean(Tasks.MILITARY, false);
+        startTime.setIs24HourView(militaryTime);
+        endTime.setIs24HourView(militaryTime);
     }
 
     @Override
