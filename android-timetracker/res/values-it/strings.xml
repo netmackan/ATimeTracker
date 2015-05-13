@@ -88,7 +88,7 @@
     \n
     Il dettaglio dei rapporti sono filtrati attraverso lo stesso periodo selezionato nella vista principale.
     Se si sceglie di visualizzare i dati in <i>questa settimana</i> e quindi visualizzare il report, si vedono solo i dati di questa settimana.
-    Utilizzare <i>aggiungere tempo</i> per aggiungere ora manualmente. Utilizzare il menu contestuale per eliminare o modificare un intervallo.\n
+    Utilizzare <i>aggiungere tempo</i> per aggiungere tempo manualmente. Utilizzare il menu contestuale per eliminare o modificare un intervallo.\n
     \n
     <b>Note:</b> TimeTracker non impedisce di creare sovrapposizione della stessa attività o di altre attività o programmi.
     </string>
