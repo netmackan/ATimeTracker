@@ -2,7 +2,7 @@
 <!-- Translation by Carlos Manzo -->
 <resources>
     <string name="app_name">A Time Tracker</string>
-    
+
     <string name="start">Inizio</string>
     <string name="task_name">Nome del compito</string>
     <string name="add_task_ok">Aggiungere compito</string>
@@ -37,7 +37,7 @@
     <!--    Settings strings    -->
     <string name="preferences">Impostazioni</string>
     <!-- Settings titles -->
-    <string name="week_start_day">Giorno d'inizio settimana</string>
+    <string name="week_start_day">Giorno d´inizio settimana</string>
     <string name="hour_mode">Modo 12/24</string>
     <string name="font_size">Dimensione del carattere</string>
     <string name="concurrency">Simultaneità dei compiti</string>
@@ -74,12 +74,12 @@
     <string name="usage">
     Istruzioni dettagliate in https://github.com/netmackan/ATimeTracker\n\n
     • Creare compiti utilizzando il menu\n
-    • Fare click su un'attività per iniziare il tempo, fare click di nuovo per arrestare\n
-    • Tenere premuto un'attività per vedere i dettagli\n
+    • Fare click su un´attività per iniziare il tempo, fare click di nuovo per arrestare\n
+    • Tenere premuto un´attività per vedere i dettagli\n
     • Personalizzare le impostazioni nel menu\n
     • Visualizzare un rapporto settimanale con il menu\n
     \n
-    Clicca un'altra attività per continuare durata della registrazione a un'altra attività.\n
+    Clicca un´altra attività per continuare la registrazione di un´altra attività.\n
     \n
     Il menu contestuale su ogni attività permette editare, cancellare(anche tutti i dati collegati),
     o far vedere il dettaglio su ogni attività.\n
