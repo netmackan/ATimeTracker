@@ -7,7 +7,7 @@
         <item>Settimana scorsa</item>
         <item>Tutti</item>
         <item>Selezionare intervallo...</item>
-    </string-array>    
+    </string-array>
     <string-array name="startDays">
         <item>Domenica</item>
         <item>Lunedì</item>
@@ -21,7 +21,7 @@
         <item>Assitenza</item>
     </string-array>
     <string-array name="configuration">
-        <item>Imposta l'inizio della settimana (%s)</item>
+        <item>Imposta l´inizio della settimana (%s)</item>
         <item>Imposta formato ora (%s)</item>
         <item>Click sonoro (%s)</item>
         <item>Vibrare quando fai click (%s)</item>
