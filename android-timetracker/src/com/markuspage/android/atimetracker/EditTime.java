@@ -63,7 +63,9 @@ public class EditTime extends Activity implements OnClickListener {
         TimePicker endTime = (TimePicker) findViewById(R.id.end_time);
         boolean militaryTime = preferences.getBoolean(Tasks.MILITARY, false);
         startTime.setIs24HourView(militaryTime);
-        endTime.setIs24HourView(militaryTime);
+        if (endTime != null) {
+            endTime.setIs24HourView(militaryTime);
+        }
     }
 
     @Override
