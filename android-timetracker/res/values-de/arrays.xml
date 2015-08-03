@@ -7,7 +7,7 @@
         <item>Letzte Woche</item>
         <item>Alle</item>
         <item>Zeitbereich auswählen…</item>
-    </string-array>    
+    </string-array>
     <string-array name="startDays">
         <item>Sonntag</item>
         <item>Montag</item>

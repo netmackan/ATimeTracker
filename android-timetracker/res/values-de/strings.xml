@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">A Time Tracker</string>
-    
+
     <string name="start">Start</string>
     <string name="task_name">Aufgabe</string>
     <string name="add_task_ok">Füge Aufgabe hinzu</string>
