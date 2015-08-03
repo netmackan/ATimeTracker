@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">A Time Tracker</string>
+
+    <string name="start">Start</string>
+    <string name="task_name">Aufgabe</string>
+    <string name="add_task_ok">Füge Aufgabe hinzu</string>
+    <string name="task_name_required">Ein Aufgabenname ist erforderlich</string>
+    <string name="start_time_required">Eine Startzeit ist erforderlich</string>
+
+    <string name="delete_ok">Löschen</string>
+    <string name="delete_task_title">Lösche Aufgabe</string>
+    <string name="delete_task_message">Bist du sicher, dass du \'%s\' und alle zugehörigen Zeiten löschen möchtest?</string>
+    <string name="add_task_title">Füge Aufgabe hinzu</string>
+    <string name="change_view_title">Wechsel Ansicht</string>
+    <string name="generate_report_title">Bericht</string>
+    <string name="select_range">Zeitbereich auswählen…</string>
+    <string name="done">Zurück zu Aufgaben</string>
+    <string name="add_time_title">Neue Zeiten hinzufügen</string>
+    <string name="delete_time_message">Bist du sicher, dass du diese Zeiten löschen möchtest?</string>
+    <string name="delete_time_title">Lösche Zeiten</string>
+    <string name="start_time_label">Starte Zeiterfassung</string>
+    <string name="end_time_label">Stoppe Zeiterfassung</string>
+    <string name="end_not_greater_than_start">Die End-Zeit muss größer als die Start-Zeit sein</string>
+    <string name="range_error_title">Zeitbereichsfehler</string>
+    <string name="report_title">Bericht für die Woche vom %1$s bis zum %2$s</string>
+    <string name="week">Woche %s</string>
+    <string name="title">A Time Tracker (%s)</string>
+    <string name="help">Hilfe</string>
+    <string name="export_view">Export</string>
+    <string name="move_time">Weise Zeit einer anderen Aufgabe zu</string>
+    <string name="edit_task">Bearbeite Aufgabe</string>
+    <string name="delete_task">Lösche Aufgabe</string>
+    <string name="show_times">Zeige Zeiten</string>
+
+    <!--    Settings strings    -->
+    <string name="preferences">Einstellungen</string>
+    <!-- Settings titles -->
+    <string name="week_start_day">Start der Woche</string>
+    <string name="hour_mode">12/24-Stunden-Modus</string>
+    <string name="font_size">Schriftgröße</string>
+    <string name="concurrency">Mehrere gleichzeitig laufende Aufgaben</string>
+    <string name="sound">Sound</string>
+    <string name="vibrate">Vibration</string>
+    <!-- Settings values -->
+    <string name="sunday">Sonntag</string>
+    <string name="monday">Montag</string>
+    <string name="civilian">1:00 PM</string>
+    <string name="military">13:00</string>
+    <string name="small_font">Klein</string>
+    <string name="medium_font">Mittel</string>
+    <string name="large_font">Groß</string>
+    <string name="concurrent">Aufgaben können gleichzeitig laufen</string>
+    <string name="exclusive">Nur eine Aufgabe kann gleichzeitig laufen</string>
+    <string name="sound_enabled">Sound aktiviert</string>
+    <string name="sound_disabled">Sound deaktiviert</string>
+    <string name="vibrate_enabled">Vibration aktiviert</string>
+    <string name="vibrate_disabled">Vibration deaktiviert</string>
+    <string name="time_display">Zeitanzeige</string>
+    <string name="standard_time">Standard (HH:MM)</string>
+    <string name="decimal_time">Dezimal (HH.hh)</string>
+    <string name="round_report_time">Berichtszeiten runden</string>
+    <string name="round_no">Kein Runden</string>
+    <string name="round_minutes">Runde auf %d Minuten</string>
+
+    <!-- About dialog strings -->
+    <string name="version">Version %s</string>
+    <string name="author">Open Source Time Tracker</string>
+    <string name="purpose">TimeTracker hilft dir, die Zeiten zu erfassen, die
+        du auf bestimmte Aktivitäten verwendest; z.B. zur Erfassung von Zeiten
+        in einer Tabelle auf der Arbeit.  Die App bietet dir einen Weg, die
+        Zeiten anzusehen, zu bearbeiten und zu filtern, dazu einen Bericht über
+        alle erfassten Zeiten.</string>
+    <string name="usage">
+    Eine detallierte Anleitung findet sich unter
+    https://github.com/netmackan/ATimeTracker\n\n
+    • Erstelle einige Aufgaben über das Menü\n
+    • Drücke auf eine Aufgabe, um die Zeiterfassung zu starten; drücke noch
+       einmal, um sie zu stoppen\n
+    • Nutze das Kontextmenü, um die bereits erfassten Zeiten anzuzeigen\n
+    • Ändere die Einstellungen im Menü\n
+    • Schaue dir einen wöchentlichen Bericht im Menü an\n
+    \n
+    Drückst du auf eine andere Aufgabe, wechselt die Zeiterfassung automatisch
+    zu diesem.\n
+    \n
+    Das Kontextmenü der Aufgabe ermöglicht es, diese umzubenennen, sie zu
+    löschen (inkl. der erfassten Zeiten!), oder die erfassten Zeiten anzusehen.
+    task.\n
+    \n
+    <b>Zeiterfassungsansicht</b>\n
+    \n
+    Die Zeiterfassungsansicht für eine Aufgabe ist nach dem selben Zeitrahmen
+    gefiltert wie du für die Hauptansicht ausgewählt hast. Wenn du die Aufgaben
+    nach dieser Woche gefiltert hast, werden in der Zeiterfassungsansicht
+    ebenfalls nur Zeiten dieser Woche angezeigt. Nutze die Funktion <i>Neue
+    Zeiten hinzufügen</i>, um manuell eine neue Zeiterfassung hinzuzufügen.
+    Nutze das Kontextmenü, um eine Zeiterfassung zu bearbeiten oder zu
+    löschen.\n
+    \n
+    <b>Hinweis</b> TimeTracker wird dich nicht daran hindern, überlappende
+    Zeiten innerhalb einer Aufgabe oder übergreifend zu erfassen!
+    </string>
+    <string name="credits"><b>Credits</b>\n
+    \n
+    Basiert auf TimeTracker+ von Sean E. Russell.\n
+    Applikationslogo stammt vom Tango Project (tango.freedesktop.org).\n
+    Russische Übersetzung von Denis Gladkiy\n
+    Französische Übersetzung von Wilfried Kopp\n
+    Spanische und italienische Übersetzung von Carlos Manzo\n
+    Deutsche Übersetzung von Philip Gillißen
+    </string>
+    <string name="export_csv_success">Erfolgreich als CSV auf den Speicher als
+    'timetracker.db' exportiert</string>
+    <string name="export_csv_fail">Export nach CSV gescheitert.  Die Datei
+    konnte nicht erstellt werden.
+    Ist eine SD-Karte verfügbar?</string>
+    <string name="success">Erfolg</string>
+    <string name="failure">Fehlschlag</string>
+    <string name="set_start_day_of_week">Setze den Wochenstart</string>
+    <string name="more">Mehr…</string>
+    <string name="backup_success">Erfolgreich ein Backup unter %s erstellt.</string>
+    <string name="restore_success">Erfolgreich ein Backup von %s eingespielt.</string>
+    <string name="backup_failed">Das Backup der Datenbank ist fehlgeschlagen.
+    Bitte diesen Fehler melden!  %s</string>
+    <string name="restore_failed">Das Einspielen des Backups ist
+    fehlgeschlagen. Bitte diesen Fehler melden!   %s</string>
+</resources>

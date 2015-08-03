@@ -101,7 +101,8 @@
     Application icon from Tango Project (tango.freedesktop.org).\n
     Russian translation by Denis Gladkiy\n
     French translation by Wilfried Kopp\n
-    Spanish and Italian translation by Carlos Manzo
+    Spanish and Italian translation by Carlos Manzo\n
+    German translation by Philip Gillißen
     </string>
     <string name="export_csv_success">Successfully exported CSV to memory card 
         as timetracker.db</string>
