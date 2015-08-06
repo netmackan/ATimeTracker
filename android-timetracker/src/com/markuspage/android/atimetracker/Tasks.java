@@ -74,6 +74,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.text.method.SingleLineTransformationMethod;
@@ -166,7 +167,7 @@ public class Tasks extends ListActivity {
             PROGRESS_DIALOG = 16;
     // TODO: This could be done better...
     private static final String dbPath = "/data/data/com.markuspage.android.atimetracker/databases/timetracker.db";
-    private static final String dbBackup = "/sdcard/timetracker.db";
+    private final File dbBackup = new File(Environment.getExternalStorageDirectory(), "timetracker.db");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -371,9 +372,9 @@ public class Tasks extends ListActivity {
                                 break;
                             case 2: // COPY DB TO SD
                                 showDialog(Tasks.PROGRESS_DIALOG);
-                                if (new File(dbBackup).exists()) {
+                                if (dbBackup.exists()) {
                                     // Find the database
-                                    SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup, null, SQLiteDatabase.OPEN_READWRITE);
+                                    SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READWRITE);
                                     SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY);
                                     backup = new DBBackup(Tasks.this, progressDialog, R.string.backup_success, R.string.backup_failed);
                                     backup.execute(appDb, backupDb);
@@ -409,7 +410,7 @@ public class Tasks extends ListActivity {
                                 break;
                             case 3: // RESTORE FROM BACKUP
                                 showDialog(Tasks.PROGRESS_DIALOG);
-                                SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup, null, SQLiteDatabase.OPEN_READONLY);
+                                SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
                                 SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
                                 backup = new DBBackup(Tasks.this, progressDialog, R.string.restore_success, R.string.restore_failed);
                                 backup.execute(backupDb, appDb);
@@ -1170,7 +1171,7 @@ public class Tasks extends ListActivity {
     protected void finishedCopy(DBBackup.Result result, String message, int success_string, int fail_string) {
         if (result == DBBackup.Result.SUCCESS) {
             switchView(preferences.getInt(VIEW_MODE, 0));
-            message = dbBackup;
+            message = dbBackup.getAbsolutePath();
         }
         perform(message, success_string, fail_string);
     }
