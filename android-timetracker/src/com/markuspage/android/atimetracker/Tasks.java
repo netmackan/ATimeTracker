@@ -388,11 +388,13 @@ public class Tasks extends ListActivity {
                                         for (int c = in.read(); c != -1; c = in.read()) {
                                             out.write(c);
                                         }
+                                        finishedCopy(DBBackup.Result.SUCCESS, dbBackup.getAbsolutePath(), R.string.backup_success, R.string.backup_failed);
                                     } catch (Exception ex) {
                                         Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, null, ex);
                                         exportMessage = ex.getLocalizedMessage();
                                         showDialog(ERROR_DIALOG);
                                     } finally {
+                                        progressDialog.dismiss();
                                         try {
                                             if (in != null) {
                                                 in.close();
@@ -409,11 +411,11 @@ public class Tasks extends ListActivity {
                                 }
                                 break;
                             case 3: // RESTORE FROM BACKUP
-                                showDialog(Tasks.PROGRESS_DIALOG);
-                                SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
-                                SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
-                                backup = new DBBackup(Tasks.this, progressDialog, R.string.restore_success, R.string.restore_failed);
-                                backup.execute(backupDb, appDb);
+                                        showDialog(Tasks.PROGRESS_DIALOG);
+                                        SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
+                                        SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
+                                        backup = new DBBackup(Tasks.this, progressDialog, R.string.restore_success, R.string.restore_failed);
+                                        backup.execute(backupDb, appDb);
                                 break;
                             case 4: // PREFERENCES
                                 Intent intent = new Intent(Tasks.this, Settings.class);
