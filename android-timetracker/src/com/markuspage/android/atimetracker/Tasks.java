@@ -411,11 +411,23 @@ public class Tasks extends ListActivity {
                                 }
                                 break;
                             case 3: // RESTORE FROM BACKUP
+                                if (dbBackup.exists()) {
+                                    try {
                                         showDialog(Tasks.PROGRESS_DIALOG);
                                         SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
                                         SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
                                         backup = new DBBackup(Tasks.this, progressDialog, R.string.restore_success, R.string.restore_failed);
                                         backup.execute(backupDb, appDb);
+                                    } catch (Exception ex) {
+                                        Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, null, ex);
+                                        exportMessage = ex.getLocalizedMessage();
+                                        showDialog(ERROR_DIALOG);
+                                    }
+                                } else {
+                                    Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, "Backup file does not exist: " + dbBackup.getAbsolutePath());
+                                    exportMessage = getString(R.string.restore_failed, "No backup file: " + dbBackup.getAbsolutePath());
+                                    showDialog(ERROR_DIALOG);
+                                }
                                 break;
                             case 4: // PREFERENCES
                                 Intent intent = new Intent(Tasks.this, Settings.class);
