@@ -53,6 +53,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -929,7 +930,7 @@ public class Tasks extends ListActivity {
             }
             c.close();
             Collections.sort(tasks);
-            running = findCurrentlyActive().hasNext();
+            running = !findCurrentlyActive().isEmpty();
             notifyDataSetChanged();
         }
 
@@ -957,38 +958,14 @@ public class Tasks extends ListActivity {
             return r;
         }
 
-        public Iterator<Task> findCurrentlyActive() {
-            return new Iterator<Task>() {
-                Iterator<Task> iter = tasks.iterator();
-                Task next = null;
-
-                public boolean hasNext() {
-                    if (next != null) {
-                        return true;
-                    }
-                    while (iter.hasNext()) {
-                        Task t = iter.next();
-                        if (t.isRunning()) {
-                            next = t;
-                            return true;
-                        }
-                    }
-                    return false;
+        public List<Task> findCurrentlyActive() {
+            List<Task> activeTasks = new ArrayList<>();
+            for (Task task : tasks) {
+                if (task.isRunning()) {
+                    activeTasks.add(task);
                 }
-
-                public Task next() {
-                    if (hasNext()) {
-                        Task t = next;
-                        next = null;
-                        return t;
-                    }
-                    throw new NoSuchElementException();
-                }
-
-                public void remove() {
-                    throw new UnsupportedOperationException();
-                }
-            };
+            }
+            return activeTasks;
         }
 
         protected void addTask(String taskName) {
@@ -1101,11 +1078,9 @@ public class Tasks extends ListActivity {
                     running = false;
                     timer.removeCallbacks(updater);
                     // Disable currently running tasks
-                    for (Iterator<Task> iter = adapter.findCurrentlyActive();
-                            iter.hasNext();) {
-                        Task t = iter.next();
-                        t.stop();
-                        adapter.updateTask(t);
+                    for (Task task : adapter.findCurrentlyActive()) {
+                        task.stop();
+                        adapter.updateTask(task);
                     }
                 }
                 if (startSelected) {
@@ -1116,7 +1091,7 @@ public class Tasks extends ListActivity {
             } else {
                 if (selected.isRunning()) {
                     selected.stop();
-                    running = adapter.findCurrentlyActive().hasNext();
+                    running = !adapter.findCurrentlyActive().isEmpty();
                     if (!running) {
                         timer.removeCallbacks(updater);
                     }
