@@ -959,7 +959,7 @@ public class Tasks extends ListActivity {
         }
 
         public List<Task> findCurrentlyActive() {
-            List<Task> activeTasks = new ArrayList<>();
+            List<Task> activeTasks = new ArrayList<Task>();
             for (Task task : tasks) {
                 if (task.isRunning()) {
                     activeTasks.add(task);
