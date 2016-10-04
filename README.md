@@ -10,4 +10,4 @@ Open Source Time Tracker for Android
 - Spanish and Italian translation by Carlos Manzo
 
 ### About this fork
-It is intended to work as the adroid front-end for timewarrior.org, first, by providing script(s) to convert exported csv to timewarrior data, eventually, by converting the back-end to timewarrior-native data.
+It is intended to work as the android front-end for timewarrior.org, first, by providing script(s) to convert exported csv to timewarrior data, eventually, by converting the back-end to timewarrior-native data.
