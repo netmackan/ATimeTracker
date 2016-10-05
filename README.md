@@ -12,6 +12,8 @@ Open Source Time Tracker for Android
 ### About this fork
 It is intended to work as the android front-end for timewarrior.org, first, by providing script(s) to convert exported csv to timewarrior data, eventually, by converting the back-end to timewarrior-native data.
 
+![main_screenshot](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main-screen.png)
+
 ![report_screenshot](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/report_screenshot.png)
 
 
