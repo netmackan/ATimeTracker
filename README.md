@@ -13,9 +13,6 @@ Source code on [github](https://github.com/netmackan/ATimeTracker)
 
 Install on android using [fdroid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
 
-### About this fork
-It is intended to work as the android front-end for timewarrior.org, first, by providing script(s) to convert exported csv to timewarrior data, eventually, by converting the back-end to timewarrior-native data.
-
 ### Screenshots
 
 ![main_screenshot](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main-screen.png) ![main-menu_screenshot](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main-screen-menu.png)
