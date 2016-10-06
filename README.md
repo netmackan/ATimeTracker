@@ -9,6 +9,9 @@ Open Source Time Tracker for Android
 - French translation by Wilfried Kopp
 - Spanish and Italian translation by Carlos Manzo
 
+source code: [Github](https://github.com/netmackan/ATimeTracker)
+install on android using [fdroid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
+
 ### About this fork
 It is intended to work as the android front-end for timewarrior.org, first, by providing script(s) to convert exported csv to timewarrior data, eventually, by converting the back-end to timewarrior-native data.
 
