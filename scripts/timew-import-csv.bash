@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# this is an initial script designed to import ATimeTracker exported csv files into timewarrior.net
+
 # [1] Pipe CSV into this script like this:
 #       $ ./csv_to_timew.bash < all.csv
 #     or
