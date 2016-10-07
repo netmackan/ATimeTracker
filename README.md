@@ -9,9 +9,9 @@ Open Source Time Tracker for Android
 - French translation by Wilfried Kopp
 - Spanish and Italian translation by Carlos Manzo
 
-Source code on [github](https://github.com/netmackan/ATimeTracker)
+### Source code on [github](https://github.com/netmackan/ATimeTracker)
 
-Install on android using [fdroid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
+### Install on android using [fdroid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
 
 ### Screenshots
 
