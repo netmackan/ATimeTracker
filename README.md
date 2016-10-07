@@ -15,7 +15,7 @@ Install on android using [fdroid](https://f-droid.org/repository/browse/?fdfilte
 
 ### Screenshots
 
-![main_screenshot](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main_screen.png) ![main-menu_menu_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main-menu_screen.png) ![main_more_menu](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main-more-menu_screen.png)
+![main_screenshot](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main_screen.png) ![main_more_menu](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main-more-menu_screen.png)
 
 ![task-menu_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/task-menu_screen.png) ![task-times_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/task-times_screen.png)
 
