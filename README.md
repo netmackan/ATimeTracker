@@ -13,11 +13,7 @@ A Time Tracker
 
 ### Install on android using [fdroid](http://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
 
-### Read the [How-to](https://cdn.rawgit.com/netmackan/ATimeTracker/master/android-timetracker/docs/howto.html)
-
-/netmackan/ATimeTracker/blob/master/android-timetracker/docs/howto.html)
-
-(http://htmlpreview.github.io/?https://github.com/netmackan/ATimeTracker/blob/master/android-timetracker/docs/howto.html)
+### Read the [How-to](https://cdn.rawgit.com/netmackan/ATimeTracker/master/android-timetracker/docs/howto.html) and [How-to template](https://cdn.rawgit.com/netmackan/ATimeTracker/master/android-timetracker/docs/howto.template.html)
 
 ### Screenshots
 
