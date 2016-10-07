@@ -1,6 +1,6 @@
 A Time Tracker 
 ==============
-Open Source Time Tracker for Android
+*Open Source Time Tracker for Android*
 
 
 - Based on TimeTracker+ by Sean E. Russell.
