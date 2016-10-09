@@ -16,13 +16,13 @@ A Time Tracker
 
 ### Screenshots
 
-![help_screen](../master/screenshots/help_screen.png) ![settings_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/settings_screen.png)
+![help_screen](../master/screenshots/help_screen.png) ![settings_screen](../master/screenshots/settings_screen.png)
 
-![main_screenshot](../master/screenshots/main_screen.png) ![main_more_menu](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main-more-menu_screen.png)
+![main_screenshot](../master/screenshots/main_screen.png) ![main_more_menu](../master/screenshots/main-more-menu_screen.png)
 
-![task-menu_screen](../master/screenshots/task-menu_screen.png) ![task-times_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/task-times_screen.png)
+![task-menu_screen](../master/screenshots/task-menu_screen.png) ![task-times_screen](../master/screenshots/task-times_screen.png)
 
-![change-days_screen](../master/screenshots/change-days_screen.png) ![change-minutes_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/change-minutes_screen.png)
+![change-days_screen](../master/screenshots/change-days_screen.png) ![change-minutes_screen](../master/screenshots/change-minutes_screen.png)
 
 ![report_screen](../master/screenshots/report_screen.png)
 
