@@ -9,11 +9,11 @@ A Time Tracker
 - French translation by Wilfried Kopp
 - Spanish and Italian translation by Carlos Manzo
 
-### Source code on [github](http://github.com/netmackan/ATimeTracker)
+### Source code on [GitHub](https://github.com/netmackan/ATimeTracker)
 
-### Install on android using [fdroid](http://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
+### Install on android using [F-droid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
 
-### Read the [docs](https://github.com/netmackan/ATimeTracker/blob/master/android-timetracker/docs/timetracker.rst)
+### Read the [docs](../blob/master/android-timetracker/docs/timetracker.rst)
 
 ### Screenshots
 
