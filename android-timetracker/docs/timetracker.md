@@ -1,10 +1,8 @@
-.. sectnum::
 
-================================
-          TimeTracker
-================================
-:Version: Version 2010.3 / 2010-01-19
-:Author:  Sean E. Russell
+#  TimeTracker
+
+:Version: (?) Version 2010.3 / 2010-01-19
+:Author:  Sean E. Russell (+?)
 
 TimeTracker helps you record the amount of time you spend on activities; for
 example, for recording time in a time sheet at work. It provides ways to view,
@@ -13,8 +11,7 @@ edit, and filter times, and provides a time sheet report as well.
 .. contents:: 
   :depth: 3
 
-Features
-===========================
+## Features
 
 - Tabular weekly summary report
 - Variable date range views
@@ -26,11 +23,9 @@ Features
 - Week start-day
 - Audio and/or vibrate on start/stop timing
 
-Usage
-===========================
+## Usage
 
-The Task View
--------------
+### The Task View
 
 .. image:: img/tasks.png
 
@@ -47,8 +42,7 @@ task. Two tasks can not be running at the same time.
 Press your device's `Menu` button to get the `Tasks Menu`_, or press-and-hold on
 a task to get the `Task Context Menu`_.
 
-Tasks Menu
-~~~~~~~~~~
+### Tasks Menu
 
 .. image:: img/tasks_menu.png
 
@@ -60,8 +54,7 @@ The Report_ menu option opens the weekly report.
 
 The More_ menu option shows a larger menu.
 
-Task Context Menu
-~~~~~~~~~~~~~~~~~~
+### Task Context Menu
 
 .. image:: img/tasks_context_menu.png
 
@@ -80,8 +73,7 @@ Delete task
 
 .. _More:
 
-Extended Menu (``More...``)
----------------------------
+### Extended Menu (``More...``)
 
 .. image:: img/extended_menu.png
 
@@ -110,8 +102,7 @@ Help
   Shows an "about" dialog, with the TimeTracker+ version and brief help
   information.
 
-Change Date Range
-~~~~~~~~~~~~~~~~~
+### Change Date Range
 
 .. image:: img/change_view.png
 
@@ -140,8 +131,7 @@ the main menu.
 
 .. _Report:
 
-The Report view (weekly sum of all tasks)
------------------------------------------
+### The Report view (weekly sum of all tasks)
 
 .. image:: img/report.png
 
@@ -156,8 +146,7 @@ real-time.
 
 .. _Show times:
 
-The Time log
-------------
+### The Time log
 
 .. image:: img/task_times.png
 
@@ -169,8 +158,7 @@ As is the case for the main Task view, if a time range spans days that are not
 in the selected view, then it will be displayed for the view on which the time
 starts. See the example in the Task view for more information.
 
-The Time log view main menu (the menu button)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### The Time log view main menu (the menu button)
 
 .. image:: img/task_times_menu.png
 
@@ -182,8 +170,7 @@ Note that TimeTracker+ will not prevent you from creating times that overlap
 with times in other, or the same, task.
 
 
-The Time log view context menu (press-hold on a time)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### The Time log view context menu (press-hold on a time)
 
 .. image:: img/task_times_context.png
 
@@ -198,13 +185,13 @@ Delete time
   A time can be removed by using this option. A confirmation dialog gives the
   user the option of aborting the action.
 
-Bugs
-===========
+## Bugs
+
 Please submit bugs by emailing the author.  You can see the list of known bugs
 and planned features at the `TimeTracker ditz page`_.
 
-Credits
-=======
+## Credits
+
 The TimeTracker application icon was borrowed from the excellent glyFX icon
 library by `PerthWeb Pty Ltd`_.
 
