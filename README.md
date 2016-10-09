@@ -23,6 +23,8 @@ A Time Tracker
 
 ![task-menu_screen](../master/screenshots/task-menu_screen.png) ![task-times_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/task-times_screen.png)
 
+![change-days_screen](../master/screenshots/change-days_screen.png) ![change-minutes_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/change-minutes_screen.png)
+
 ![report_screen](../master/screenshots/report_screen.png)
 
 
