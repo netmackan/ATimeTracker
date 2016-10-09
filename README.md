@@ -8,20 +8,22 @@ A Time Tracker
 - French translation by Wilfried Kopp
 - Spanish and Italian translation by Carlos Manzo
 
-### Source code on [github](http://github.com/netmackan/ATimeTracker)
+### Source code on [GitHub](https://github.com/netmackan/ATimeTracker)
 
-### Install on android using [fdroid](http://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
+### Install on android using [F-droid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
 
-### Read the [docs](https://github.com/netmackan/ATimeTracker/blob/master/android-timetracker/docs/timetracker.rst)
+### Read the [docs](../master/android-timetracker/docs/timetracker.rst)
 
 ### Screenshots
 
-![help_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/help_screen.png) ![settings_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/settings_screen.png)
+![help_screen](../master/screenshots/help_screen.png) ![settings_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/settings_screen.png)
 
-![main_screenshot](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main_screen.png) ![main_more_menu](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main-more-menu_screen.png)
+![main_screenshot](../master/screenshots/main_screen.png) ![main_more_menu](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/main-more-menu_screen.png)
 
-![task-menu_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/task-menu_screen.png) ![task-times_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/task-times_screen.png)
+![task-menu_screen](../master/screenshots/task-menu_screen.png) ![task-times_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/task-times_screen.png)
 
-![report_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/report_screen.png)
+![change-days_screen](../master/screenshots/change-days_screen.png) ![change-minutes_screen](https://github.com/linuxcaffe/timew-android/blob/master/screenshots/change-minutes_screen.png)
+
+![report_screen](../master/screenshots/report_screen.png)
 
 
