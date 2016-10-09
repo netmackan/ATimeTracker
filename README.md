@@ -10,7 +10,7 @@ A Time Tracker
 
 ### Source code on [GitHub](https://github.com/netmackan/ATimeTracker)
 
-### Install on android using [F-droid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
+### Install on android using [F-Droid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
 
 ### Read the [docs](../master/android-timetracker/docs/timetracker.rst)
 
