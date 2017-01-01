@@ -12,7 +12,7 @@ A Time Tracker
 
 ### Install on android using [F-Droid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
 
-### Read the [docs](../dev/android-timetracker/docs/timetracker.md)
+### Read the [docs](../master/android-timetracker/docs/timetracker.md)
 
 ### Screenshots
 
