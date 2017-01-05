@@ -33,6 +33,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
@@ -45,6 +46,7 @@ import android.text.format.DateUtils;
  */
 public class Settings extends ListActivity implements OnClickListener {
 
+    private final static String TAG = "ATimeTracker.Settings";
     private static final int DAY_OF_WEEK_PREF_IDX = 0;
     public static final int LARGE = 24;
     public static final int MEDIUM = 20;
@@ -60,6 +62,12 @@ public class Settings extends ListActivity implements OnClickListener {
     private static final String VALUETYPE = "value-type";
     private static final int CHOOSE_DAY = 0;
     private static final int CHOOSE_ROUNDING = 1;
+    
+    // Notification preferences
+    private static final int NOTIFICATION_ALWAYS = 0,
+        NOTIFICATION_ACTIVE = 1,
+        NOTIFICATION_NEVER = 2;
+
     private SharedPreferences applicationPreferences;
     private List<Map<String, String>> prefs;
     private SimpleAdapter adapter;
@@ -68,6 +76,7 @@ public class Settings extends ListActivity implements OnClickListener {
     private static final int[] ROUND = new int[] { 0, 15, 30, 60 };
     private final String[] ROUND_NAMES = new String[ROUND.length];
     private HashMap<String, String> roundPref = new HashMap<String, String>();
+    private HashMap<String, Integer>  notificationMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +118,22 @@ public class Settings extends ListActivity implements OnClickListener {
         fontMap.put(getString(R.string.small_font), SMALL);
         fontMap.put(getString(R.string.medium_font), MEDIUM);
         fontMap.put(getString(R.string.large_font), LARGE);
+
+        pref = new HashMap<String, String>();
+        pref.put(PREFERENCE, getString(R.string.notification));
+        final int notificationMode = applicationPreferences.getInt(
+                Tasks.NOTIFICATION_MODE, NOTIFICATION_ALWAYS);
+        updateNotificationPrefs(pref, notificationMode);
+        pref.put(VALUETYPE, INT);
+        pref.put(PREFERENCENAME, Tasks.NOTIFICATION_MODE);
+        prefs.add(pref);
+        notificationMap = new HashMap<String, Integer>(3);
+        notificationMap.put(getString(R.string.notification_always),
+                NOTIFICATION_ALWAYS);
+        notificationMap.put(getString(R.string.notification_active),
+                NOTIFICATION_ACTIVE);
+        notificationMap.put(getString(R.string.notification_never),
+                NOTIFICATION_NEVER);
 
         addBooleanPreference(R.string.time_display, Tasks.TIMEDISPLAY,
                 R.string.decimal_time, R.string.standard_time);
@@ -160,6 +185,36 @@ public class Settings extends ListActivity implements OnClickListener {
         prefs.add(pref);
     }
 
+    private void updateNotificationPrefs(Map<String, String> pref,
+            int notificationMode){
+        final String notificationAlways = getString(R.string.notification_always);
+        final String notificationActive = getString(R.string.notification_active);
+        final String notificationNever = getString(R.string.notification_never);
+        switch(notificationMode){
+            case NOTIFICATION_ALWAYS:
+                pref.put(CURRENT, notificationAlways);
+                pref.put(DISABLED, notificationNever);
+                pref.put(DISABLEDVALUE, String.valueOf(NOTIFICATION_NEVER));
+                break;
+            case NOTIFICATION_ACTIVE:
+                pref.put(CURRENT, notificationActive);
+                pref.put(DISABLED, notificationAlways);
+                pref.put(DISABLEDVALUE, String.valueOf(NOTIFICATION_ALWAYS));
+                break;
+            case NOTIFICATION_NEVER:
+                pref.put(CURRENT, notificationNever);
+                pref.put(DISABLED, notificationActive);
+                pref.put(DISABLEDVALUE, String.valueOf(NOTIFICATION_ACTIVE));
+                break;
+        }
+        pref.put(CURRENTVALUE, String.valueOf(notificationMode));
+        Log.d(TAG, "Updated preferences...");
+        Log.d(TAG, "\tCurrent: " + pref.get(CURRENT));
+        Log.d(TAG, "\tDisabled: " + pref.get(DISABLED));
+        Log.d(TAG, "\tDisabled Value: " + pref.get(DISABLEDVALUE));
+        Log.d(TAG, "\tCurrent Value: " + String.valueOf(notificationMode));
+    }
+
     private void updateFontPrefs(Map<String, String> pref, int fontSize) {
         final String smallFont = getString(R.string.small_font);
         final String mediumFont = getString(R.string.medium_font);
@@ -201,6 +256,10 @@ public class Settings extends ListActivity implements OnClickListener {
             String disabled_value = pref.get(DISABLEDVALUE);
             pref.put(CURRENTVALUE, disabled_value);
             pref.put(DISABLEDVALUE, current_value);
+
+            if (pref.get(PREFERENCENAME).equals(Tasks.NOTIFICATION_MODE)){
+                updateNotificationPrefs(pref, notificationMap.get(disabled));
+            }
 
             if (pref.get(PREFERENCENAME).equals(Tasks.FONTSIZE)) {
                 updateFontPrefs(pref, fontMap.get(disabled));  // disabled is the new enabled!

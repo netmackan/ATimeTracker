@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">A Time Tracker</string>
-    
+    <!-- -->
     <string name="start">Start</string>
     <string name="task_name">Task name</string>
     <string name="add_task_ok">Add task</string>
     <string name="task_name_required">The task name is required</string>
     <string name="start_time_required">The start time is required</string>
-
     <string name="delete_ok">Delete</string>
     <string name="delete_task_title">Delete Task</string>
     <string name="delete_task_message">Are you sure you want to delete \'%s\' and all of it\'s time records?</string>
@@ -42,6 +41,7 @@
     <string name="concurrency">Multiple concurrently running tasks</string>
     <string name="sound">Sound</string>
     <string name="vibrate">Vibrate</string>
+    <string name="notification">Show Notification</string>
     <!-- Settings values -->
     <string name="sunday">Sunday</string>
     <string name="monday">Monday</string>
@@ -56,6 +56,9 @@
     <string name="sound_disabled">Sound disabled</string>
     <string name="vibrate_enabled">Vibrate enabled</string>
     <string name="vibrate_disabled">Vibrate disabled</string>
+    <string name="notification_always">Always</string>
+    <string name="notification_active">When 1 or more tasks are selected</string>
+    <string name="notification_never">Never</string>
     <string name="time_display">Time display</string>
     <string name="standard_time">Standard (HH:MM)</string>
     <string name="decimal_time">Decimal (HH.hh)</string>

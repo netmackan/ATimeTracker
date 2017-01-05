@@ -59,11 +59,19 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//import org.apache.commons.logging.LogFactory;
+
+
+
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+//import android.app.Notification;
+import android.app.NotificationManager;
+import android.support.v4.app.NotificationCompat;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -80,6 +88,7 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.text.method.SingleLineTransformationMethod;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -105,8 +114,15 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
  */
 public class Tasks extends ListActivity {
 
+
+
+
+    // For logging
+    private static final String TAG = "ATimeTracker.Tasks";
+
     public static final String TIMETRACKERPREF = "timetracker.pref";
     protected static final String FONTSIZE = "font-size";
+    protected static final String NOTIFICATION_MODE = "notification-mode";
     protected static final String MILITARY = "military-time";
     protected static final String CONCURRENT = "concurrent-tasks";
     protected static final String SOUND = "sound-enabled";
@@ -139,6 +155,11 @@ public class Tasks extends ListActivity {
      * The call-back that actually updates the display.
      */
     private TimerTask updater;
+
+    /**
+     * Notification
+     **/
+    private TaskNotificationThread notificationThread = null;
     /**
      * The currently active task (the one that is currently being timed). There
      * can be only one.
@@ -157,15 +178,15 @@ public class Tasks extends ListActivity {
     private Vibrator vibrateAgent;
     private ProgressDialog progressDialog = null;
     private boolean decimalFormat = false;
+
     /**
      * A list of menu options, including both context and options menu items
      */
-    protected static final int ADD_TASK = 0,
-            EDIT_TASK = 1, DELETE_TASK = 2, REPORT = 3, SHOW_TIMES = 4,
-            CHANGE_VIEW = 5, SELECT_START_DATE = 6, SELECT_END_DATE = 7,
-            HELP = 8, EXPORT_VIEW = 9, SUCCESS_DIALOG = 10, ERROR_DIALOG = 11,
-            SET_WEEK_START_DAY = 12, MORE = 13, BACKUP = 14, PREFERENCES = 15,
-            PROGRESS_DIALOG = 16;
+    protected static final int ADD_TASK = 0, EDIT_TASK = 1, DELETE_TASK = 2,
+            REPORT = 3, SHOW_TIMES = 4, CHANGE_VIEW = 5, SELECT_START_DATE = 6,
+            SELECT_END_DATE = 7, HELP = 8, EXPORT_VIEW = 9,
+            SUCCESS_DIALOG = 10, ERROR_DIALOG = 11, SET_WEEK_START_DAY = 12,
+            MORE = 13, BACKUP = 14, PREFERENCES = 15, PROGRESS_DIALOG = 16;
     // TODO: This could be done better...
     private static final String dbPath = "/data/data/com.markuspage.android.atimetracker/databases/timetracker.db";
     private final File dbBackup = new File(Environment.getExternalStorageDirectory(), "timetracker.db");
@@ -212,9 +233,10 @@ public class Tasks extends ListActivity {
                 clickPlayer.prepareAsync();
             } catch (IllegalStateException illegalStateException) {
                 // ignore this.  There's nothing the user can do about it.
-                Logger.getLogger("TimeTracker").log(Level.SEVERE,
+                Logger.getLogger("TimeTracker").log(
+                        Level.SEVERE,
                         "Failed to set up audio player: "
-                        + illegalStateException.getMessage());
+                                + illegalStateException.getMessage());
             }
         }
         decimalFormat = preferences.getBoolean(TIMEDISPLAY, false);
@@ -224,6 +246,11 @@ public class Tasks extends ListActivity {
         }
         vibrateAgent = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         vibrateClick = preferences.getBoolean(VIBRATE, true);
+
+        // Start the notification thread
+        this.notificationThread = TaskNotificationThread.getInstance();
+        this.notificationThread.init(this, this.adapter);
+        this.notificationThread.start();
     }
 
     @Override
@@ -300,6 +327,8 @@ public class Tasks extends ListActivity {
     private AlertDialog operationFailed;
     private String exportMessage;
     private String baseTitle;
+
+    private Object notificationBuilder;
 
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
@@ -824,7 +853,7 @@ public class Tasks extends ListActivity {
         return String.format(format, hours, minutes, seconds);
     }
 
-    private class TaskAdapter extends BaseAdapter {
+    class TaskAdapter extends BaseAdapter {
 
         private DBHelper dbHelper;
         protected ArrayList<Task> tasks;
@@ -1045,6 +1074,7 @@ public class Tasks extends ListActivity {
         }
     }
 
+
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         if (vibrateClick) {
@@ -1064,12 +1094,15 @@ public class Tasks extends ListActivity {
             }
         }
 
+        // Display the notification
+        
+        Object item = getListView().getItemAtPosition(position);
+            
         // Stop the update.  If a task is already running and we're stopping
         // the timer, it'll stay stopped.  If a task is already running and 
         // we're switching to a new task, or if nothing is running and we're
         // starting a new timer, then it'll be restarted.
 
-        Object item = getListView().getItemAtPosition(position);
         if (item != null) {
             Task selected = (Task) item;
             if (!concurrency) {
