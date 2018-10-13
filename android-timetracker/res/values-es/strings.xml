@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Translation by Carlos Manzo -->
 <resources>
     <string name="app_name">A Time Tracker</string>
     
@@ -24,7 +23,7 @@
     <string name="end_time_label">Finaliza</string>
     <string name="end_not_greater_than_start">La hora finaliza no puede ser menor a la hora de inicio</string>
     <string name="range_error_title">Error del periodo</string>
-    <string name="report_title">Reporte para la semana %1$s a %2$s </string>
+    <string name="report_title">Reporte para la semana %1$s a %2$s</string>
     <string name="week">Semana %s</string>
     <string name="title">A Time Tracker (%s)</string>
     <string name="help">Ayuda</string>
@@ -67,40 +66,31 @@
     <!-- About dialog strings -->
     <string name="version">Versión %s</string>
     <string name="author">Open Source Time Tracker</string>
-    <string name="purpose">TimeTracker le ayuda a ahorrar tiempo en sus
-        actividades; por ejemplo, para guardar el tiempo dedicado a cada tarea de un proyecto profesional.
-        Se ofrece la posibilidad de ver, editar y filtrar las actividadees
-        y cuenta con una función de reporte.</string>
-    <string name="usage">
-    Instrucciones detalladas en https://github.com/netmackan/ATimeTracker\n\n
-    • Cree actividades utilizando el menú \n
-    • Haga clic en una actividad para iniciar el tiempo, haga clic de nuevo para detener\n
-    • Mantenga oprimido sobre una actividad para ver los detalles\n
-    • Personalice las opciones de configuración en el menú\n
-    • Visualice un informe semanal con el menú\n
-    \n
-    Haga clic en otra actividad para continuar el registro de tiempo en otra actividad.\n
-    \n
-    El menú contextual de cada tarea permite editar la actividad (editar nombre),
-    eliminar la actividad (incluyendo datos relacionados!), o mostrar los registros detallados de la
-    actividad.\n
-    \n
-    <b>Mostrar reportes</b>\n
-    \n
-    El detalle de los reportes se filtran a través del mismo periodo que la selección realizada en la vista principal.
-    Si elige mostrar las datos de <i> esta semana </i> para luego ver el reporte, sólo verá los datos de esta semana.
-    Utilice <i> Agregar tiempo </i> para añadir tiempo de forma manual. Utilice el menú contextual para borrar o editar un período.\n
-    \n
-    <b>Nota:</b> TimeTracker no le previene de la creación de horarios superpuestos de la misma actividad o de otras actividades.
-    </string>
-    <string name="credits"><b>Creditos</b>\n
-    \n
-    Basado en TimeTracker+ de Sean E. Russell.\n
-    Icono de la aplicacion por Tango Project (tango.freedesktop.org).\n
-    Traducción en Ruso por Денис Гладкий\n
-    Traducción en Français por Wilfried Kopp\n
-    Traducción en Español e Italiano por Carlos Manzo
-	</string>
+    <string name="purpose">TimeTracker le ayuda a ahorrar tiempo en sus         actividades; por ejemplo, para guardar el tiempo dedicado a cada tarea de un proyecto profesional.         Se ofrece la posibilidad de ver, editar y filtrar las actividadees         y cuenta con una función de reporte.</string>
+    <string name="usage">Instrucciones detalladas en https://github.com/netmackan/ATimeTracker\n
+  \n
+       • Cree actividades utilizando el menú \n
+       • Haga clic en una actividad para iniciar el tiempo, haga clic de nuevo para detener\n
+       • Mantenga oprimido sobre una actividad para ver los detalles\n
+       • Personalice las opciones de configuración en el menú\n
+       • Visualice un informe semanal con el menú\n
+       \n
+       Haga clic en otra actividad para continuar el registro de tiempo en otra actividad.\n
+       \n
+       El menú contextual de cada tarea permite editar la actividad (editar nombre),     eliminar la actividad (incluyendo datos relacionados!), o mostrar los registros detallados de la     actividad.\n
+       \n
+       <b >Mostrar reportes</b>\n
+       \n
+       El detalle de los reportes se filtran a través del mismo periodo que la selección realizada en la vista principal.     Si elige mostrar las datos de <i > esta semana </i> para luego ver el reporte, sólo verá los datos de esta semana.     Utilice <i > Agregar tiempo </i> para añadir tiempo de forma manual. Utilice el menú contextual para borrar o editar un período.\n
+       \n
+       <b >Nota:</b> TimeTracker no le previene de la creación de horarios superpuestos de la misma actividad o de otras actividades.</string>
+    <string name="credits"><b >Creditos</b>\n
+       \n
+       Basado en TimeTracker+ de Sean E. Russell.\n
+       Icono de la aplicacion por Tango Project (tango.freedesktop.org).\n
+       Traducción en Ruso por Денис Гладкий\n
+       Traducción en Français por Wilfried Kopp\n
+       Traducción en Español e Italiano por Carlos Manzo</string>
     <string name="export_csv_success">CSV exportado con éxito a la tarjeta SD de timetracker.db</string>
     <string name="export_csv_fail">Error en la exportación CSV. No se pudo crear el archivo. La tarjeta SD está presente?</string>
     <string name="success">Exito</string>
@@ -108,7 +98,7 @@
     <string name="set_start_day_of_week">Definir inicio de la semana</string>
     <string name="more">Más…</string>
     <string name="backup_success">La base de datos se ha guardado en la tarjeta SD como timetracker.db</string>
-    <string name="restore_success">Datos restaurados. %s
-    </string>
+    <string name="restore_success">Datos restaurados. %s</string>
+    <string name="backup_failed">El respaldo de la base de datos ha fallado. Por favor reporte este error. %s</string>
     <string name="restore_failed">Error de restauración de datos. Por favor comuníquelo al programador.  %s</string>
 </resources>
