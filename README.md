@@ -8,9 +8,15 @@ A Time Tracker
 - French translation by Wilfried Kopp
 - Spanish and Italian translation by Carlos Manzo
 
+[![Build Status](https://travis-ci.com/netmackan/ATimeTracker.svg?branch=master)](https://travis-ci.com/netmackan/ATimeTracker)
+[![License](https://img.shields.io/badge/license-GPLv2%2B-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html)
+
 ### Source code on [GitHub](https://github.com/netmackan/ATimeTracker)
 
-### Install on android using [F-Droid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
+### Install on Android using [F-Droid](https://f-droid.org/packages/com.markuspage.android.atimetracker/)
+
+<a href="https://f-droid.org/packages/com.markuspage.android.atimetracker/">
+<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
 
 ### Read the [docs](../master/docs/timetracker.md)
 
@@ -43,6 +49,7 @@ Open the android-timetracker project and/or the app subproject.
 #### Building from Command Line
 
 ```
+export ANDROID_HOME=/home/user/Android/Sdk/
 cd android-timetracker
 ./gradlew build
 ```
