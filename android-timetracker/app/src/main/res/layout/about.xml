@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:orientation="vertical"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     android:id="@+id/about_dialog">
+
+    <TextView android:text="@string/app_name"
+              android:layout_height="wrap_content"
+              android:layout_width="fill_parent"
+              android:textSize="24sp"
+              android:textStyle="italic"
+              android:typeface="serif"
+              android:gravity="center_horizontal"/>
+    <TextView android:id="@+id/version"
+              android:layout_height="wrap_content"
+              android:layout_width="fill_parent"
+              android:textSize="14sp"
+              android:gravity="center_horizontal"/>
+    <TextView android:text="@string/author"
+              android:layout_height="wrap_content"
+              android:layout_width="fill_parent"
+              android:textSize="18sp"
+              android:gravity="center_horizontal"
+              android:textStyle="italic"/>
+               
+    <ScrollView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      android:paddingLeft="5sp"
+                      android:paddingRight="5sp">
+            <TextView android:id="@+id/usage"
+                      android:text="@string/usage"
+                      android:layout_height="wrap_content"
+                      android:layout_width="fill_parent"/>
+            <TextView android:id="@+id/credits"
+                      android:text="@string/credits"
+                      android:paddingTop="10px"
+                      android:layout_height="wrap_content"
+                      android:layout_width="fill_parent"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -12,7 +12,7 @@ A Time Tracker
 
 ### Install on android using [F-Droid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
 
-### Read the [docs](../master/android-timetracker/docs/timetracker.md)
+### Read the [docs](../master/docs/timetracker.md)
 
 ### Screenshots
 
@@ -27,3 +27,22 @@ A Time Tracker
 ![report_screen](../master/screenshots/report_screen.png)
 
 
+### Development
+
+#### Android Studio
+
+Open the android-timetracker project.
+
+#### NetBeans IDE
+
+Use the https://github.com/NBANDROIDTEAM/NBANDROID-V2 plugin "Gradle-Android-support".
+
+Open the android-timetracker project and/or the app subproject.
+
+
+#### Building from Command Line
+
+```
+cd android-timetracker
+./gradlew build
+```

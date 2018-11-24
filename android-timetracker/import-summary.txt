@@ -1,0 +1,62 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* ant.properties
+* build.xml
+* docs/
+* docs/design/
+* docs/design/Grouping.rst
+* docs/howto.html
+* docs/howto.template.html
+* docs/img/
+* docs/img/change_view.png
+* docs/img/extended_menu.png
+* docs/img/preferences.png
+* docs/img/report.png
+* docs/img/running_task.png
+* docs/img/task_times.png
+* docs/img/task_times_context.png
+* docs/img/task_times_menu.png
+* docs/img/tasks.png
+* docs/img/tasks_context_menu.png
+* docs/img/tasks_menu.png
+* docs/style.css
+* docs/timetracker.md
+* docs/timetracker.rst
+* docs/timetracker.template.rst
+* gpl-2.0.txt
+* nbandroid/
+* nbandroid/private.properties
+* proguard-project.txt
+* tango-appointment-new.svg
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
