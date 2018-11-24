@@ -45,6 +45,7 @@ Open the android-timetracker project and/or the app subproject.
 #### Building from Command Line
 
 ```
+export ANDROID_HOME=/home/user/Android/Sdk/
 cd android-timetracker
 ./gradlew build
 ```
