@@ -1,5 +1,8 @@
 /app/private/
 /android-timetracker/app/build/
-/studio-conv/.nb-gradle/
-/studio-conv/app/build/
 /android-timetracker/.nb-gradle/
+/android-timetracker/.idea/workspace.xml
+/android-timetracker/.idea/*.iws
+/android-timetracker/.idea/tasks.xml
+/android-timetracker/.idea/caches
+/android-timetracker/.gradle
