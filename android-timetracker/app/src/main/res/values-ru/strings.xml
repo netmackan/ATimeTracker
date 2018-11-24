@@ -8,6 +8,11 @@
     <string name="task_name_required">Требуется указать название задачи</string>
     <string name="start_time_required">Требуется указать время старта</string>
 
+    <string name="change_date_range">Изменить интервал дат</string>
+    <string name="export_view_to_csv">Экспорт в CSV</string>
+    <string name="back_up_to_sd_card">Сохранить на SD карту</string>
+    <string name="restore_from_backup">Восстановить</string>
+
     <string name="delete_ok">Удалить</string>
     <string name="delete_task_title">Удалить задачу</string>
     <string name="delete_task_message">Вы уверены, что хотите удалить \'%s\' и все её записи временных интервалов?</string>

@@ -9,6 +9,11 @@
     <string name="task_name_required">Nombre de la actividad obligatorio</string>
     <string name="start_time_required">Hora de la actividad obligatorio</string>
 
+    <string name="change_date_range">Cambiar periodo</string>
+    <string name="export_view_to_csv">Exportar en CSV</string>
+    <string name="back_up_to_sd_card">Respaldo en SD card</string>
+    <string name="restore_from_backup">Restaurar copia de seguridad</string>
+
     <string name="delete_ok">Eliminar</string>
     <string name="delete_task_title">Eliminar actividad</string>
     <string name="delete_task_message">De verdad quiere eliminar \'%s\' y los datos asociados?</string>

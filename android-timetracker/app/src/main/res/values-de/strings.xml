@@ -8,6 +8,11 @@
     <string name="task_name_required">Ein Aufgabenname ist erforderlich</string>
     <string name="start_time_required">Eine Startzeit ist erforderlich</string>
 
+    <string name="change_date_range">Zeitbereich ändern</string>
+    <string name="export_view_to_csv">Ansicht nach CSV exportieren</string>
+    <string name="back_up_to_sd_card">Auf Speicher sichern</string>
+    <string name="restore_from_backup">Von Speicher wiederherstellen</string>
+
     <string name="delete_ok">Löschen</string>
     <string name="delete_task_title">Lösche Aufgabe</string>
     <string name="delete_task_message">Bist du sicher, dass du \'%s\' und alle zugehörigen Zeiten löschen möchtest?</string>

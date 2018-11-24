@@ -9,6 +9,11 @@
     <string name="task_name_required">Nome del compito richiesto</string>
     <string name="start_time_required">Ora di inizio richiesta</string>
 
+    <string name="change_date_range">Cambia intervallo</string>
+    <string name="export_view_to_csv">Esportare vista a CSV</string>
+    <string name="back_up_to_sd_card">Backup nella SD card</string>
+    <string name="restore_from_backup">Rirpistina backup</string>
+
     <string name="delete_ok">Cancellare</string>
     <string name="delete_task_title">Eliminare compito</string>
     <string name="delete_task_message">Sei sicuro di cancellare \'%s\' e tutti dati collegati?</string>

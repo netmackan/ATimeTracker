@@ -9,6 +9,11 @@
     <string name="task_name_required">Le nom de la tâche est requis</string>
     <string name="start_time_required">L´heure de début est requis</string>
 
+    <string name="change_date_range">Changer la période</string>
+    <string name="export_view_to_csv">Exporter en CSV</string>
+    <string name="back_up_to_sd_card">Backup vers SD card</string>
+    <string name="restore_from_backup">Restorer depuis backup</string>
+
     <string name="delete_ok">Effacer</string>
     <string name="delete_task_title">Effacer tâche</string>
     <string name="delete_task_message">Voulez-vous vraiment effacer \'%s\' et les données associées ?</string>

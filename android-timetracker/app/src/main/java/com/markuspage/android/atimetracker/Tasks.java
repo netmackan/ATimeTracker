@@ -52,9 +52,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -164,8 +162,8 @@ public class Tasks extends ListActivity {
             EDIT_TASK = 1, DELETE_TASK = 2, REPORT = 3, SHOW_TIMES = 4,
             CHANGE_VIEW = 5, SELECT_START_DATE = 6, SELECT_END_DATE = 7,
             HELP = 8, EXPORT_VIEW = 9, SUCCESS_DIALOG = 10, ERROR_DIALOG = 11,
-            SET_WEEK_START_DAY = 12, MORE = 13, BACKUP = 14, PREFERENCES = 15,
-            PROGRESS_DIALOG = 16;
+            SET_WEEK_START_DAY = 12, BACKUP = 14, PREFERENCES = 15,
+            PROGRESS_DIALOG = 16, RESTORE = 17;
     // TODO: This could be done better...
     private static final String dbPath = "/data/data/com.markuspage.android.atimetracker/databases/timetracker.db";
     private final File dbBackup = new File(Environment.getExternalStorageDirectory(), "timetracker.db");
@@ -263,7 +261,12 @@ public class Tasks extends ListActivity {
         super.onCreateOptionsMenu(menu);
         menu.add(0, ADD_TASK, 0, R.string.add_task_title).setIcon(android.R.drawable.ic_menu_add);
         menu.add(0, REPORT, 1, R.string.generate_report_title).setIcon(android.R.drawable.ic_menu_week);
-        menu.add(0, MORE, 2, R.string.more).setIcon(android.R.drawable.ic_menu_more);
+        menu.add(0, CHANGE_VIEW, 2, R.string.change_date_range);
+        menu.add(0, EXPORT_VIEW, 3, R.string.export_view_to_csv);
+        menu.add(0, BACKUP, 4, R.string.back_up_to_sd_card);
+        menu.add(0, RESTORE, 5, R.string.restore_from_backup);
+        menu.add(0, PREFERENCES, 6, R.string.preferences).setIcon(android.R.drawable.ic_menu_preferences);
+        menu.add(0, HELP, 7, R.string.help).setIcon(android.R.drawable.ic_menu_help);
         return true;
     }
 
@@ -305,7 +308,12 @@ public class Tasks extends ListActivity {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
             case ADD_TASK:
-            case MORE:
+            case CHANGE_VIEW:
+            case EXPORT_VIEW:
+            case BACKUP:
+            case RESTORE:
+            case PREFERENCES:
+            case HELP:
                 showDialog(item.getItemId());
                 break;
             case REPORT:
@@ -358,90 +366,77 @@ public class Tasks extends ListActivity {
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 progressDialog.setCancelable(false);
                 return progressDialog;
-            case MORE:
-                return new AlertDialog.Builder(Tasks.this).setItems(R.array.moreMenu, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        DBBackup backup;
-                        System.err.println("IN CLICK");
-                        switch (which) {
-                            case 0: // CHANGE_VIEW:
-                                showDialog(CHANGE_VIEW);
-                                break;
-                            case 1: // EXPORT_VIEW:
-                                String fname = export();
-                                perform(fname, R.string.export_csv_success, R.string.export_csv_fail);
-                                break;
-                            case 2: // COPY DB TO SD
-                                showDialog(Tasks.PROGRESS_DIALOG);
-                                if (dbBackup.exists()) {
-                                    // Find the database
-                                    SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READWRITE);
-                                    SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY);
-                                    backup = new DBBackup(Tasks.this, progressDialog, R.string.backup_success, R.string.backup_failed);
-                                    backup.execute(appDb, backupDb);
-                                } else {
-                                    InputStream in = null;
-                                    OutputStream out = null;
+            case EXPORT_VIEW: {
+                String fname = export();
+                perform(fname, R.string.export_csv_success, R.string.export_csv_fail);
+                break;
+            }
+            case BACKUP: { // COPY DB TO SD
+                showDialog(Tasks.PROGRESS_DIALOG);
+                if (dbBackup.exists()) {
+                    // Find the database
+                    SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READWRITE);
+                    SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY);
+                    DBBackup backup = new DBBackup(Tasks.this, progressDialog, R.string.backup_success, R.string.backup_failed);
+                    backup.execute(appDb, backupDb);
+                } else {
+                    InputStream in = null;
+                    OutputStream out = null;
 
-                                    try {
-                                        in = new BufferedInputStream(new FileInputStream(dbPath));
-                                        out = new BufferedOutputStream(new FileOutputStream(dbBackup));
-                                        for (int c = in.read(); c != -1; c = in.read()) {
-                                            out.write(c);
-                                        }
-                                        finishedCopy(DBBackup.Result.SUCCESS, dbBackup.getAbsolutePath(), R.string.backup_success, R.string.backup_failed);
-                                    } catch (Exception ex) {
-                                        Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, null, ex);
-                                        exportMessage = ex.getLocalizedMessage();
-                                        showDialog(ERROR_DIALOG);
-                                    } finally {
-                                        progressDialog.dismiss();
-                                        try {
-                                            if (in != null) {
-                                                in.close();
-                                            }
-                                        } catch (IOException ignored) {
-                                        }
-                                        try {
-                                            if (out != null) {
-                                                out.close();
-                                            }
-                                        } catch (IOException ignored) {
-                                        }
-                                    }
-                                }
-                                break;
-                            case 3: // RESTORE FROM BACKUP
-                                if (dbBackup.exists()) {
-                                    try {
-                                        showDialog(Tasks.PROGRESS_DIALOG);
-                                        SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
-                                        SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
-                                        backup = new DBBackup(Tasks.this, progressDialog, R.string.restore_success, R.string.restore_failed);
-                                        backup.execute(backupDb, appDb);
-                                    } catch (Exception ex) {
-                                        Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, null, ex);
-                                        exportMessage = ex.getLocalizedMessage();
-                                        showDialog(ERROR_DIALOG);
-                                    }
-                                } else {
-                                    Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, "Backup file does not exist: " + dbBackup.getAbsolutePath());
-                                    exportMessage = getString(R.string.restore_failed, "No backup file: " + dbBackup.getAbsolutePath());
-                                    showDialog(ERROR_DIALOG);
-                                }
-                                break;
-                            case 4: // PREFERENCES
-                                Intent intent = new Intent(Tasks.this, Settings.class);
-                                startActivityForResult(intent, PREFERENCES);
-                                break;
-                            case 5: // HELP:
-                                showDialog(HELP);
-                                break;
-                            default:
-                                break;
+                    try {
+                        in = new BufferedInputStream(new FileInputStream(dbPath));
+                        out = new BufferedOutputStream(new FileOutputStream(dbBackup));
+                        for (int c = in.read(); c != -1; c = in.read()) {
+                            out.write(c);
+                        }
+                        finishedCopy(DBBackup.Result.SUCCESS, dbBackup.getAbsolutePath(), R.string.backup_success, R.string.backup_failed);
+                    } catch (Exception ex) {
+                        Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, null, ex);
+                        exportMessage = ex.getLocalizedMessage();
+                        showDialog(ERROR_DIALOG);
+                    } finally {
+                        progressDialog.dismiss();
+                        try {
+                            if (in != null) {
+                                in.close();
+                            }
+                        } catch (IOException ignored) {
+                        }
+                        try {
+                            if (out != null) {
+                                out.close();
+                            }
+                        } catch (IOException ignored) {
                         }
                     }
-                }).create();
+                }
+                break;
+            }
+            case RESTORE: { // RESTORE FROM BACKUP
+                if (dbBackup.exists()) {
+                    try {
+                        showDialog(Tasks.PROGRESS_DIALOG);
+                        SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
+                        SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
+                        DBBackup backup = new DBBackup(Tasks.this, progressDialog, R.string.restore_success, R.string.restore_failed);
+                        backup.execute(backupDb, appDb);
+                    } catch (Exception ex) {
+                        Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, null, ex);
+                        exportMessage = ex.getLocalizedMessage();
+                        showDialog(ERROR_DIALOG);
+                    }
+                } else {
+                    Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, "Backup file does not exist: " + dbBackup.getAbsolutePath());
+                    exportMessage = getString(R.string.restore_failed, "No backup file: " + dbBackup.getAbsolutePath());
+                    showDialog(ERROR_DIALOG);
+                }
+                break;
+            }
+            case PREFERENCES: { // PREFERENCES
+                Intent intent = new Intent(Tasks.this, Settings.class);
+                startActivityForResult(intent, PREFERENCES);
+                break;
+            }
         }
         return null;
     }
