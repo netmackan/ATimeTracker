@@ -1,4 +1,5 @@
 /app/private/
+/android-timetracker/build/
 /android-timetracker/app/build/
 /android-timetracker/.nb-gradle/
 /android-timetracker/.idea/workspace.xml
