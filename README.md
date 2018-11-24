@@ -8,6 +8,8 @@ A Time Tracker
 - French translation by Wilfried Kopp
 - Spanish and Italian translation by Carlos Manzo
 
+[![Build Status](https://travis-ci.com/netmackan/ATimeTracker.svg?branch=master)](https://travis-ci.com/netmackan/ATimeTracker)
+
 ### Source code on [GitHub](https://github.com/netmackan/ATimeTracker)
 
 ### Install on android using [F-Droid](https://f-droid.org/repository/browse/?fdfilter=atimetracker&fdid=com.markuspage.android.atimetracker)
