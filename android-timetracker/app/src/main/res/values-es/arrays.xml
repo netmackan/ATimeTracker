@@ -13,14 +13,6 @@
         <item>Domingo</item>
         <item>Lunes</item>
     </string-array>
-    <string-array name="moreMenu">
-        <item>Cambiar periodo</item>
-        <item>Exportar en CSV</item>
-        <item>Respaldo en SD card</item>
-        <item>Restaurar copia de seguridad</item>
-        <item>Preferencias</item>
-        <item>Ayuda</item>
-    </string-array>
     <string-array name="configuration">
         <item>Definir inicio de semana (%s)</item>
         <item>Definir el formato de la hora (%s)</item>

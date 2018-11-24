@@ -12,14 +12,6 @@
         <item>Воскресенье</item>
         <item>Понедельник</item>
     </string-array>
-    <string-array name="moreMenu">
-        <item>Изменить интервал дат</item>
-        <item>Экспорт в CSV</item>
-        <item>Сохранить на SD карту</item>
-        <item>Восстановить</item>
-        <item>Настройки</item>
-        <item>Помощь</item>
-    </string-array>
     <string-array name="configuration">
         <item>Установить начало недели (%s)</item>
         <item>Установить формат времени (%s)</item>

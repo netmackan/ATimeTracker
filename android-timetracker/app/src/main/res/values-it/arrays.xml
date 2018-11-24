@@ -12,14 +12,6 @@
         <item>Domenica</item>
         <item>Lunedì</item>
     </string-array>
-    <string-array name="moreMenu">
-        <item>Cambia intervallo</item>
-        <item>Esportare vista a CSV</item>
-        <item>Backup nella SD card</item>
-        <item>Rirpistina backup</item>
-        <item>Impostazioni</item>
-        <item>Assitenza</item>
-    </string-array>
     <string-array name="configuration">
         <item>Imposta l\'inizio della settimana (%s)</item>
         <item>Imposta formato ora (%s)</item>

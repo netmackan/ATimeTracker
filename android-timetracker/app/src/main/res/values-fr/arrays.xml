@@ -12,14 +12,6 @@
         <item>Dimanche</item>
         <item>Lundi</item>
     </string-array>
-    <string-array name="moreMenu">
-        <item>Changer la période</item>
-        <item>Exporter en CSV</item>
-        <item>Backup vers SD card</item>
-        <item>Restorer depuis backup</item>
-        <item>Préférences</item>
-        <item>Aide</item>
-    </string-array>
     <string-array name="configuration">
         <item>Définir le début de semaine (%s)</item>
         <item>Définir le format pour l´heure (%s)</item>

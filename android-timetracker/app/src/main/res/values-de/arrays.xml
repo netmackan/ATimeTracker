@@ -12,14 +12,6 @@
         <item>Sonntag</item>
         <item>Montag</item>
     </string-array>
-    <string-array name="moreMenu">
-        <item>Zeitbereich ändern</item>
-        <item>Ansicht nach CSV exportieren</item>
-        <item>Auf Speicher sichern</item>
-        <item>Von Speicher wiederherstellen</item>
-        <item>Einstellungen</item>
-        <item>Hilfe</item>
-    </string-array>
     <string-array name="configuration">
         <item>Setze Start der Woche %s</item>
         <item>Setze Zeitformat (%s)</item>
