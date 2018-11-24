@@ -27,3 +27,22 @@ A Time Tracker
 ![report_screen](../master/screenshots/report_screen.png)
 
 
+### Development
+
+#### Android Studio
+
+Open the android-timetracker project.
+
+#### NetBeans IDE
+
+Use the NBANDROIDTEAM/NBANDROID-V2 plugin "Gradle-Android-support".
+
+Open the android-timetracker project and/or the app subproject.
+
+
+#### Building from Command Line
+
+```
+cd android-timetracker
+./gradlew build
+```
