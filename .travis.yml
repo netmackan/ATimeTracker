@@ -9,4 +9,5 @@ android:
 before_install:
   - yes | sdkmanager "platforms;android-27"
 script:
-   - ./android-timetracker/gradlew build connectedCheck
+   - cd ./android-timetracker
+   - ./gradlew build connectedCheck
