@@ -35,7 +35,7 @@ Open the android-timetracker project.
 
 #### NetBeans IDE
 
-Use the NBANDROIDTEAM/NBANDROID-V2 plugin "Gradle-Android-support".
+Use the https://github.com/NBANDROIDTEAM/NBANDROID-V2 plugin "Gradle-Android-support".
 
 Open the android-timetracker project and/or the app subproject.
 
