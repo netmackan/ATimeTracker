@@ -1,1 +1,5 @@
 /app/private/
+/android-timetracker/app/build/
+/studio-conv/.nb-gradle/
+/studio-conv/app/build/
+/android-timetracker/.nb-gradle/
