@@ -1,0 +1,6 @@
+* Russian translation update + fixes (#21)
+* Spanish and Italian translations (#32)
+* Edit time/Add no time range dialog don't respect 24h format (#26)
+* Export view to CSV exports times 1pm and later incorrectly (#29)
+* "Restore finished" message after backup (#4)
+* Fix typos in Russian translation: "французкий" (#23)

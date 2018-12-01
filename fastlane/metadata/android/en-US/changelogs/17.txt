@@ -1,0 +1,5 @@
+* Surpress screen saver when in report view.
+* Shorten 00:00 in report view.
+* Option to round the values in the report.
+* Report Activity forgets current week when paused.
+* Current week off by one.

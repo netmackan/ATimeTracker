@@ -1,0 +1,1 @@
+Easily start/stop time tracking for activities.
