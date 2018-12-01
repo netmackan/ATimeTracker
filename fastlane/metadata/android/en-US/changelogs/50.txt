@@ -1,0 +1,4 @@
+* #88, #94 Move all menu items to Settings/context menu on main screen
+* #97 Improve F-Droid listing
+* #100, #101: Change to Gradle for building and project structure
+* #103: Add Travis building
