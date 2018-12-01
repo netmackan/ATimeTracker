@@ -1,0 +1,4 @@
+* Now allows installation onto external storage (#17).
+* No longer requires "read phone state and identity" permission (#15).
+* Settings activity now more correctly named (#11).
+* Fixed a "force close" when pressing back in Settings activity (#10).

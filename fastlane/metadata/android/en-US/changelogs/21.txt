@@ -1,0 +1,1 @@
+* 14-May-2015 update causes application to crash when editing an ongoing task (#34)
