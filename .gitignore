@@ -8,3 +8,4 @@
 /android-timetracker/.idea/caches
 /android-timetracker/.gradle
 /android-timetracker/local.properties
+/android-timetracker/app/private/cache/retriever/catalog.xml
