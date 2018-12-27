@@ -1,7 +1,7 @@
 /*
  * A Time Tracker - Open Source Time Tracker for Android
  *
- * Copyright (C) 2013, 2014, 2015  Markus Kilås <markus@markuspage.com>
+ * Copyright (C) 2013, 2014, 2015, 2016, 2018  Markus Kilås <markus@markuspage.com>
  * Copyright (C) 2008, 2009, 2010  Sean Russell <ser@germane-software.com>
  *
  * This program is free software; you can redistribute it and/or
