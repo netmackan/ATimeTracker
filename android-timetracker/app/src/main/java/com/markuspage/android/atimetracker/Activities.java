@@ -30,9 +30,6 @@ import static com.markuspage.android.atimetracker.DBHelper.NAME;
 import static com.markuspage.android.atimetracker.DBHelper.RANGES_TABLE;
 import static com.markuspage.android.atimetracker.DBHelper.RANGE_COLUMNS;
 import static com.markuspage.android.atimetracker.DBHelper.START;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_COLUMNS;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_ID;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_TABLE;
 import static com.markuspage.android.atimetracker.Report.weekEnd;
 import static com.markuspage.android.atimetracker.Report.weekStart;
 import static com.markuspage.android.atimetracker.TimeRange.NULL;
@@ -94,14 +91,17 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_ID;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_COLUMNS;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_TABLE;
 
 /**
- * Manages and displays a list of tasks, providing the ability to edit and
- * display individual task items.
+ * Manages and displays a list of activities, providing the ability to edit and
+ * display individual activity items.
  *
  * @author ser
  */
-public class Tasks extends ListActivity {
+public class Activities extends ListActivity {
 
     public static final String TIMETRACKERPREF = "timetracker.pref";
     protected static final String FONTSIZE = "font-size";
@@ -117,7 +117,7 @@ public class Tasks extends ListActivity {
     protected static final String TIMEDISPLAY = "time_display";
     protected static final String ROUND_REPORT_TIMES = "round_report_times";
     /**
-     * Defines how each task's time is displayed
+     * Defines how each activity's time is displayed
      */
     private static final String FORMAT = "%02d:%02d";
     private static final String DECIMAL_FORMAT = "%02d.%02d";
@@ -128,7 +128,7 @@ public class Tasks extends ListActivity {
     /**
      * The model for this view
      */
-    private TaskAdapter adapter;
+    private ActivityAdapter adapter;
     /**
      * A timer for refreshing the display.
      */
@@ -138,14 +138,14 @@ public class Tasks extends ListActivity {
      */
     private TimerTask updater;
     /**
-     * The currently active task (the one that is currently being timed). There
+     * The currently active activity (the one that is currently being timed). There
      * can be only one.
      */
     private boolean running = false;
     /**
-     * The currently selected task when the context menu is invoked.
+     * The currently selected activity when the context menu is invoked.
      */
-    private Task selectedTask;
+    private Activity selectedActivity;
     private SharedPreferences preferences;
     private static int fontSize = 16;
     private boolean concurrency;
@@ -158,8 +158,8 @@ public class Tasks extends ListActivity {
     /**
      * A list of menu options, including both context and options menu items
      */
-    protected static final int ADD_TASK = 0,
-            EDIT_TASK = 1, DELETE_TASK = 2, REPORT = 3, SHOW_TIMES = 4,
+    protected static final int ADD_ACTIVITY = 0,
+            EDIT_ACTIVITY = 1, DELETE_ACTIVITY = 2, REPORT = 3, SHOW_TIMES = 4,
             CHANGE_VIEW = 5, SELECT_START_DATE = 6, SELECT_END_DATE = 7,
             HELP = 8, EXPORT_VIEW = 9, SUCCESS_DIALOG = 10, ERROR_DIALOG = 11,
             SET_WEEK_START_DAY = 12, BACKUP = 14, PREFERENCES = 15,
@@ -183,7 +183,7 @@ public class Tasks extends ListActivity {
 
         int which = preferences.getInt(VIEW_MODE, 0);
         if (adapter == null) {
-            adapter = new TaskAdapter(this);
+            adapter = new ActivityAdapter(this);
             setListAdapter(adapter);
             switchView(which);
         }
@@ -197,7 +197,7 @@ public class Tasks extends ListActivity {
                     if (running) {
                         adapter.notifyDataSetChanged();
                         setTitle();
-                        Tasks.this.getListView().invalidate();
+                        Activities.this.getListView().invalidate();
                     }
                     timer.postDelayed(this, REFRESH_MS);
                 }
@@ -217,7 +217,7 @@ public class Tasks extends ListActivity {
         }
         decimalFormat = preferences.getBoolean(TIMEDISPLAY, false);
         registerForContextMenu(getListView());
-        if (adapter.tasks.isEmpty()) {
+        if (adapter.activities.isEmpty()) {
             showDialog(HELP);
         }
         vibrateAgent = (Vibrator) getSystemService(VIBRATOR_SERVICE);
@@ -259,7 +259,7 @@ public class Tasks extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.add(0, ADD_TASK, 0, R.string.add_activity_title).setIcon(android.R.drawable.ic_menu_add);
+        menu.add(0, ADD_ACTIVITY, 0, R.string.add_activity_title).setIcon(android.R.drawable.ic_menu_add);
         menu.add(0, REPORT, 1, R.string.generate_report_title).setIcon(android.R.drawable.ic_menu_week);
         menu.add(0, CHANGE_VIEW, 2, R.string.change_date_range);
         menu.add(0, EXPORT_VIEW, 3, R.string.export_view_to_csv);
@@ -274,19 +274,19 @@ public class Tasks extends ListActivity {
     public void onCreateContextMenu(ContextMenu menu, View v,
             ContextMenuInfo menuInfo) {
         menu.setHeaderTitle("Activities menu");
-        menu.add(0, EDIT_TASK, 0, getText(R.string.edit_activity));
-        menu.add(0, DELETE_TASK, 0, getText(R.string.delete_activity));
+        menu.add(0, EDIT_ACTIVITY, 0, getText(R.string.edit_activity));
+        menu.add(0, DELETE_ACTIVITY, 0, getText(R.string.delete_activity));
         menu.add(0, SHOW_TIMES, 0, getText(R.string.show_times));
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-        selectedTask = (Task) adapter.getItem((int) info.id);
+        selectedActivity = (Activity) adapter.getItem((int) info.id);
         switch (item.getItemId()) {
             case SHOW_TIMES:
-                Intent intent = new Intent(this, TaskTimes.class);
-                intent.putExtra(TASK_ID, selectedTask.getId());
+                Intent intent = new Intent(this, ActivityTimes.class);
+                intent.putExtra(ACTIVITY_ID, selectedActivity.getId());
                 if (adapter.currentRangeStart != -1) {
                     intent.putExtra(START, adapter.currentRangeStart);
                     intent.putExtra(END, adapter.currentRangeEnd);
@@ -307,7 +307,7 @@ public class Tasks extends ListActivity {
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
-            case ADD_TASK:
+            case ADD_ACTIVITY:
             case CHANGE_VIEW:
             case EXPORT_VIEW:
             case BACKUP:
@@ -334,18 +334,18 @@ public class Tasks extends ListActivity {
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
-            case ADD_TASK:
-                return openNewTaskDialog();
-            case EDIT_TASK:
-                return openEditTaskDialog();
-            case DELETE_TASK:
-                return openDeleteTaskDialog();
+            case ADD_ACTIVITY:
+                return openNewActivityDialog();
+            case EDIT_ACTIVITY:
+                return openEditActivityDialog();
+            case DELETE_ACTIVITY:
+                return openDeleteActivityDialog();
             case CHANGE_VIEW:
                 return openChangeViewDialog();
             case HELP:
                 return openAboutDialog();
             case SUCCESS_DIALOG:
-                operationSucceed = new AlertDialog.Builder(Tasks.this)
+                operationSucceed = new AlertDialog.Builder(Activities.this)
                         .setTitle(R.string.success)
                         .setIcon(android.R.drawable.stat_notify_sdcard)
                         .setMessage(exportMessage)
@@ -353,7 +353,7 @@ public class Tasks extends ListActivity {
                         .create();
                 return operationSucceed;
             case ERROR_DIALOG:
-                operationFailed = new AlertDialog.Builder(Tasks.this)
+                operationFailed = new AlertDialog.Builder(Activities.this)
                         .setTitle(R.string.failure)
                         .setIcon(android.R.drawable.stat_notify_sdcard)
                         .setMessage(exportMessage)
@@ -372,12 +372,12 @@ public class Tasks extends ListActivity {
                 break;
             }
             case BACKUP: { // COPY DB TO SD
-                showDialog(Tasks.PROGRESS_DIALOG);
+                showDialog(Activities.PROGRESS_DIALOG);
                 if (dbBackup.exists()) {
                     // Find the database
                     SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READWRITE);
                     SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY);
-                    DBBackup backup = new DBBackup(Tasks.this, progressDialog, R.string.backup_success, R.string.backup_failed);
+                    DBBackup backup = new DBBackup(Activities.this, progressDialog, R.string.backup_success, R.string.backup_failed);
                     backup.execute(appDb, backupDb);
                 } else {
                     InputStream in = null;
@@ -391,7 +391,7 @@ public class Tasks extends ListActivity {
                         }
                         finishedCopy(DBBackup.Result.SUCCESS, dbBackup.getAbsolutePath(), R.string.backup_success, R.string.backup_failed);
                     } catch (Exception ex) {
-                        Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, null, ex);
                         exportMessage = ex.getLocalizedMessage();
                         showDialog(ERROR_DIALOG);
                     } finally {
@@ -415,25 +415,25 @@ public class Tasks extends ListActivity {
             case RESTORE: { // RESTORE FROM BACKUP
                 if (dbBackup.exists()) {
                     try {
-                        showDialog(Tasks.PROGRESS_DIALOG);
+                        showDialog(Activities.PROGRESS_DIALOG);
                         SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
                         SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
-                        DBBackup backup = new DBBackup(Tasks.this, progressDialog, R.string.restore_success, R.string.restore_failed);
+                        DBBackup backup = new DBBackup(Activities.this, progressDialog, R.string.restore_success, R.string.restore_failed);
                         backup.execute(backupDb, appDb);
                     } catch (Exception ex) {
-                        Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, null, ex);
                         exportMessage = ex.getLocalizedMessage();
                         showDialog(ERROR_DIALOG);
                     }
                 } else {
-                    Logger.getLogger(Tasks.class.getName()).log(Level.SEVERE, "Backup file does not exist: " + dbBackup.getAbsolutePath());
+                    Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, "Backup file does not exist: " + dbBackup.getAbsolutePath());
                     exportMessage = getString(R.string.restore_failed, "No backup file: " + dbBackup.getAbsolutePath());
                     showDialog(ERROR_DIALOG);
                 }
                 break;
             }
             case PREFERENCES: { // PREFERENCES
-                Intent intent = new Intent(Tasks.this, Settings.class);
+                Intent intent = new Intent(Activities.this, Settings.class);
                 startActivityForResult(intent, PREFERENCES);
                 break;
             }
@@ -458,7 +458,7 @@ public class Tasks extends ListActivity {
     }
 
     /**
-     * Creates a progressDialog to change the dates for which task times are
+     * Creates a progressDialog to change the dates for which activity times are
      * shown. Offers a short selection of pre-defined defaults, and the option
      * to choose a range from a progressDialog.
      *
@@ -466,14 +466,14 @@ public class Tasks extends ListActivity {
      * @return the progressDialog to be displayed
      */
     private Dialog openChangeViewDialog() {
-        return new AlertDialog.Builder(Tasks.this).setItems(R.array.views, new DialogInterface.OnClickListener() {
+        return new AlertDialog.Builder(Activities.this).setItems(R.array.views, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 SharedPreferences.Editor ed = preferences.edit();
                 ed.putInt(VIEW_MODE, which);
                 ed.commit();
                 if (which == 5) {
                     Calendar calInstance = Calendar.getInstance();
-                    new DatePickerDialog(Tasks.this,
+                    new DatePickerDialog(Activities.this,
                             new DatePickerDialog.OnDateSetListener() {
                         public void onDateSet(DatePicker view, int year,
                                 int monthOfYear, int dayOfMonth) {
@@ -489,7 +489,7 @@ public class Tasks extends ListActivity {
                             ed.putLong(START_DATE, start.getTime().getTime());
                             ed.commit();
 
-                            new DatePickerDialog(Tasks.this,
+                            new DatePickerDialog(Activities.this,
                                     new DatePickerDialog.OnDateSetListener() {
                                 public void onDateSet(DatePicker view, int year,
                                         int monthOfYear, int dayOfMonth) {
@@ -504,7 +504,7 @@ public class Tasks extends ListActivity {
                                     SharedPreferences.Editor ed = preferences.edit();
                                     ed.putLong(END_DATE, end.getTime().getTime());
                                     ed.commit();
-                                    Tasks.this.switchView(5);  // Update the list view
+                                    Activities.this.switchView(5);  // Update the list view
                                 }
                             },
                                     year,
@@ -530,21 +530,21 @@ public class Tasks extends ListActivity {
                 getResources().getStringArray(R.array.views)[which]);
         switch (which) {
             case 0: // today
-                adapter.loadTasks(tw);
+                adapter.loadActivity(tw);
                 break;
             case 1: // this week
-                adapter.loadTasks(weekStart(tw, startDay), weekEnd(tw, startDay));
+                adapter.loadActivities(weekStart(tw, startDay), weekEnd(tw, startDay));
                 break;
             case 2: // yesterday
                 tw.add(Calendar.DAY_OF_MONTH, -1);
-                adapter.loadTasks(tw);
+                adapter.loadActivity(tw);
                 break;
             case 3: // last week
                 tw.add(Calendar.WEEK_OF_YEAR, -1);
-                adapter.loadTasks(weekStart(tw, startDay), weekEnd(tw, startDay));
+                adapter.loadActivities(weekStart(tw, startDay), weekEnd(tw, startDay));
                 break;
             case 4: // all
-                adapter.loadTasks();
+                adapter.loadActivities();
                 break;
             case 5: // select range
                 Calendar start = Calendar.getInstance();
@@ -553,7 +553,7 @@ public class Tasks extends ListActivity {
                 Calendar end = Calendar.getInstance();
                 end.setTimeInMillis(preferences.getLong(END_DATE, 0));
                 System.err.println("END = " + end.getTime());
-                adapter.loadTasks(start, end);
+                adapter.loadActivities(start, end);
                 DateFormat f = DateFormat.getDateInstance(DateFormat.SHORT);
                 ttl = getString(R.string.title,
                         f.format(start.getTime()) + " - " + f.format(end.getTime()));
@@ -568,74 +568,74 @@ public class Tasks extends ListActivity {
 
     private void setTitle() {
         long total = 0;
-        for (Task t : adapter.tasks) {
+        for (Activity t : adapter.activities) {
             total += t.getTotal();
         }
         setTitle(baseTitle + " " + formatTotal(decimalFormat, total, 0));
     }
 
     /**
-     * Constructs a progressDialog for defining a new task. If accepted, creates
-     * a new task. If cancelled, closes the progressDialog with no affect.
+     * Constructs a progressDialog for defining a new activity. If accepted, creates
+     * a new activity. If cancelled, closes the progressDialog with no affect.
      *
      * @return the progressDialog to display
      */
-    private Dialog openNewTaskDialog() {
+    private Dialog openNewActivityDialog() {
         LayoutInflater factory = LayoutInflater.from(this);
         final View textEntryView = factory.inflate(R.layout.edit_activity, null);
-        return new AlertDialog.Builder(Tasks.this) //.setIcon(R.drawable.alert_dialog_icon)
+        return new AlertDialog.Builder(Activities.this) //.setIcon(R.drawable.alert_dialog_icon)
                 .setTitle(R.string.add_activity_title).setView(textEntryView).setPositiveButton(R.string.add_activity_ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 EditText textView = (EditText) textEntryView.findViewById(R.id.activity_edit_name_edit);
                 String name = textView.getText().toString();
-                adapter.addTask(name);
-                Tasks.this.getListView().invalidate();
+                adapter.addActivity(name);
+                Activities.this.getListView().invalidate();
             }
         }).setNegativeButton(android.R.string.cancel, null).create();
     }
 
     /**
-     * Constructs a progressDialog for editing task attributes. If accepted,
-     * alters the task being edited. If cancelled, dismissed the progressDialog
+     * Constructs a progressDialog for editing activity attributes. If accepted,
+     * alters the activity being edited. If cancelled, dismissed the progressDialog
      * with no effect.
      *
      * @return the progressDialog to display
      */
-    private Dialog openEditTaskDialog() {
-        if (selectedTask == null) {
+    private Dialog openEditActivityDialog() {
+        if (selectedActivity == null) {
             return null;
         }
         LayoutInflater factory = LayoutInflater.from(this);
         final View textEntryView = factory.inflate(R.layout.edit_activity, null);
-        return new AlertDialog.Builder(Tasks.this).setView(textEntryView).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+        return new AlertDialog.Builder(Activities.this).setView(textEntryView).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 EditText textView = (EditText) textEntryView.findViewById(R.id.activity_edit_name_edit);
                 String name = textView.getText().toString();
-                selectedTask.setTaskName(name);
+                selectedActivity.setName(name);
 
-                adapter.updateTask(selectedTask);
+                adapter.updateActivity(selectedActivity);
 
-                Tasks.this.getListView().invalidate();
+                Activities.this.getListView().invalidate();
             }
         }).setNegativeButton(android.R.string.cancel, null).create();
     }
 
     /**
      * Constructs a progressDialog asking for confirmation for a delete request.
-     * If accepted, deletes the task. If cancelled, closes the progressDialog.
+     * If accepted, deletes the activity. If cancelled, closes the progressDialog.
      *
      * @return the progressDialog to display
      */
-    private Dialog openDeleteTaskDialog() {
-        if (selectedTask == null) {
+    private Dialog openDeleteActivityDialog() {
+        if (selectedActivity == null) {
             return null;
         }
         String formattedMessage = getString(R.string.delete_activity_message,
-                selectedTask.getTaskName());
-        return new AlertDialog.Builder(Tasks.this).setTitle(R.string.delete_activity_title).setIcon(android.R.drawable.stat_sys_warning).setCancelable(true).setMessage(formattedMessage).setPositiveButton(R.string.delete_ok, new DialogInterface.OnClickListener() {
+                selectedActivity.getName());
+        return new AlertDialog.Builder(Activities.this).setTitle(R.string.delete_activity_title).setIcon(android.R.drawable.stat_sys_warning).setCancelable(true).setMessage(formattedMessage).setPositiveButton(R.string.delete_ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                adapter.deleteTask(selectedTask);
-                Tasks.this.getListView().invalidate();
+                adapter.deleteActivity(selectedActivity);
+                Activities.this.getListView().invalidate();
             }
         }).setNegativeButton(android.R.string.cancel, null).create();
     }
@@ -697,20 +697,20 @@ public class Tasks extends ListActivity {
         links = (TextView) about.findViewById(R.id.credits);
         Linkify.addLinks(links, Linkify.ALL);
 
-        return new AlertDialog.Builder(Tasks.this).setView(about).setPositiveButton(android.R.string.ok, null).create();
+        return new AlertDialog.Builder(Activities.this).setView(about).setPositiveButton(android.R.string.ok, null).create();
     }
 
     @Override
     protected void onPrepareDialog(int id, Dialog d) {
         EditText textView;
         switch (id) {
-            case ADD_TASK:
+            case ADD_ACTIVITY:
                 textView = (EditText) d.findViewById(R.id.activity_edit_name_edit);
                 textView.setText("");
                 break;
-            case EDIT_TASK:
+            case EDIT_ACTIVITY:
                 textView = (EditText) d.findViewById(R.id.activity_edit_name_edit);
-                textView.setText(selectedTask.getTaskName());
+                textView.setText(selectedActivity.getName());
                 break;
             default:
                 break;
@@ -718,29 +718,29 @@ public class Tasks extends ListActivity {
     }
 
     /**
-     * The view for an individial task in the list.
+     * The view for an individual activity in the list.
      */
-    private class TaskView extends LinearLayout {
+    private class ActivityView extends LinearLayout {
 
         /**
-         * The view of the task name displayed in the list
+         * The view of the activity name displayed in the list
          */
-        private TextView taskName;
+        private TextView name;
         /**
-         * The view of the total time of the task.
+         * The view of the total time of the activity.
          */
         private TextView total;
         private ImageView checkMark;
 
-        public TaskView(Context context, Task t) {
+        public ActivityView(Context context, Activity t) {
             super(context);
             setOrientation(LinearLayout.HORIZONTAL);
             setPadding(5, 10, 5, 10);
 
-            taskName = new TextView(context);
-            taskName.setTextSize(fontSize);
-            taskName.setText(t.getTaskName());
-            addView(taskName, new LinearLayout.LayoutParams(
+            name = new TextView(context);
+            name.setTextSize(fontSize);
+            name.setText(t.getName());
+            addView(name, new LinearLayout.LayoutParams(
                     LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT, 1f));
 
             checkMark = new ImageView(context);
@@ -758,18 +758,18 @@ public class Tasks extends ListActivity {
                     LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT, 0f));
 
             setGravity(Gravity.TOP);
-            markupSelectedTask(t);
+            markupSelectedActivity(t);
         }
 
-        public void setTask(Task t) {
-            taskName.setTextSize(fontSize);
+        public void setActivity(Activity t) {
+            name.setTextSize(fontSize);
             total.setTextSize(fontSize);
-            taskName.setText(t.getTaskName());
+            name.setText(t.getName());
             total.setText(formatTotal(decimalFormat, t.getTotal(), 0));
-            markupSelectedTask(t);
+            markupSelectedActivity(t);
         }
 
-        private void markupSelectedTask(Task t) {
+        private void markupSelectedActivity(Activity t) {
             if (t.isRunning()) {
                 checkMark.setVisibility(View.VISIBLE);
             } else {
@@ -819,19 +819,19 @@ public class Tasks extends ListActivity {
         return String.format(format, hours, minutes, seconds);
     }
 
-    private class TaskAdapter extends BaseAdapter {
+    private class ActivityAdapter extends BaseAdapter {
 
         private DBHelper dbHelper;
-        protected ArrayList<Task> tasks;
+        protected ArrayList<Activity> activities;
         private Context savedContext;
         private long currentRangeStart;
         private long currentRangeEnd;
 
-        public TaskAdapter(Context c) {
+        public ActivityAdapter(Context c) {
             savedContext = c;
             dbHelper = new DBHelper(c);
             dbHelper.getWritableDatabase();
-            tasks = new ArrayList<Task>();
+            activities = new ArrayList<Activity>();
         }
 
         public void close() {
@@ -839,20 +839,20 @@ public class Tasks extends ListActivity {
         }
 
         /**
-         * Loads all tasks.
+         * Loads all activities.
          */
-        private void loadTasks() {
+        private void loadActivities() {
             currentRangeStart = currentRangeEnd = -1;
-            loadTasks("", true);
+            loadActivities("", true);
         }
 
-        protected void loadTasks(Calendar day) {
-            loadTasks(day, (Calendar) day.clone());
+        protected void loadActivity(Calendar day) {
+            loadActivities(day, (Calendar) day.clone());
         }
 
-        protected void loadTasks(Calendar start, Calendar end) {
+        protected void loadActivities(Calendar start, Calendar end) {
             String[] res = makeWhereClause(start, end);
-            loadTasks(res[0], res[1] == null ? false : true);
+            loadActivities(res[0], res[1] == null ? false : true);
         }
 
         /**
@@ -879,52 +879,52 @@ public class Tasks extends ListActivity {
             end.add(Calendar.DAY_OF_MONTH, 1);
             currentRangeStart = start.getTimeInMillis();
             currentRangeEnd = end.getTimeInMillis();
-            boolean loadCurrentTask = today.compareTo(start) != -1
+            boolean loadCurrentActivity = today.compareTo(start) != -1
                     && today.compareTo(end) != 1;
             query = String.format(query, end.getTimeInMillis(), start.getTimeInMillis());
-            return new String[]{query, loadCurrentTask ? query : null};
+            return new String[]{query, loadCurrentActivity ? query : null};
         }
 
         /**
-         * Load tasks, given a filter. This overwrites any currently loaded
-         * tasks in the "tasks" data structure.
+         * Load activities, given a filter. This overwrites any currently loaded
+         * activites in the "tasks" data structure.
          *
          * @param whereClause A SQL where clause limiting the range of dates to
          * load. This must be a clause against the ranges table.
          * @param loadCurrent Whether or not to include data for currently
-         * active tasks.
+         * active activities.
          */
-        private void loadTasks(String whereClause, boolean loadCurrent) {
-            tasks.clear();
+        private void loadActivities(String whereClause, boolean loadCurrent) {
+            activities.clear();
 
             SQLiteDatabase db = dbHelper.getReadableDatabase();
-            Cursor c = db.query(TASK_TABLE, TASK_COLUMNS, null, null, null, null, null);
+            Cursor c = db.query(ACTIVITY_TABLE, ACTIVITY_COLUMNS, null, null, null, null, null);
 
-            Task t;
+            Activity t;
             if (c.moveToFirst()) {
                 do {
                     int tid = c.getInt(0);
                     String[] tids = {String.valueOf(tid)};
-                    t = new Task(c.getString(1), tid);
-                    Cursor r = db.rawQuery("SELECT SUM(end) - SUM(start) AS total FROM " + RANGES_TABLE + " WHERE " + TASK_ID + " = ? AND end NOTNULL " + whereClause, tids);
+                    t = new Activity(c.getString(1), tid);
+                    Cursor r = db.rawQuery("SELECT SUM(end) - SUM(start) AS total FROM " + RANGES_TABLE + " WHERE " + ACTIVITY_ID + " = ? AND end NOTNULL " + whereClause, tids);
                     if (r.moveToFirst()) {
                         t.setCollapsed(r.getLong(0));
                     }
                     r.close();
                     if (loadCurrent) {
                         r = db.query(RANGES_TABLE, RANGE_COLUMNS,
-                                TASK_ID + " = ? AND end ISNULL",
+                                ACTIVITY_ID + " = ? AND end ISNULL",
                                 tids, null, null, null);
                         if (r.moveToFirst()) {
                             t.setStartTime(r.getLong(0));
                         }
                         r.close();
                     }
-                    tasks.add(t);
+                    activities.add(t);
                 } while (c.moveToNext());
             }
             c.close();
-            Collections.sort(tasks);
+            Collections.sort(activities);
             running = !findCurrentlyActive().isEmpty();
             notifyDataSetChanged();
         }
@@ -947,40 +947,40 @@ public class Tasks extends ListActivity {
             }
             SQLiteDatabase db = dbHelper.getReadableDatabase();
             Cursor r = db.rawQuery("SELECT t.name, r.start, r.end "
-                    + " FROM " + TASK_TABLE + " t, " + RANGES_TABLE + " r "
-                    + " WHERE r." + TASK_ID + " = t.ROWID " + res[0]
+                    + " FROM " + ACTIVITY_TABLE + " t, " + RANGES_TABLE + " r "
+                    + " WHERE r." + ACTIVITY_ID + " = t.ROWID " + res[0]
                     + " ORDER BY t.name, r.start ASC", null);
             return r;
         }
 
-        public List<Task> findCurrentlyActive() {
-            List<Task> activeTasks = new ArrayList<Task>();
-            for (Task task : tasks) {
-                if (task.isRunning()) {
-                    activeTasks.add(task);
+        public List<Activity> findCurrentlyActive() {
+            List<Activity> activeActivities = new ArrayList<Activity>();
+            for (Activity a : activities) {
+                if (a.isRunning()) {
+                    activeActivities.add(a);
                 }
             }
-            return activeTasks;
+            return activeActivities;
         }
 
-        protected void addTask(String taskName) {
+        protected void addActivity(String name) {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
-            values.put(NAME, taskName);
-            long id = db.insert(TASK_TABLE, NAME, values);
-            Task t = new Task(taskName, (int) id);
-            tasks.add(t);
-            Collections.sort(tasks);
+            values.put(NAME, name);
+            long id = db.insert(ACTIVITY_TABLE, NAME, values);
+            Activity t = new Activity(name, (int) id);
+            activities.add(t);
+            Collections.sort(activities);
             notifyDataSetChanged();
         }
 
-        protected void updateTask(Task t) {
+        protected void updateActivity(Activity t) {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
-            values.put(NAME, t.getTaskName());
+            values.put(NAME, t.getName());
             String id = String.valueOf(t.getId());
             String[] vals = {id};
-            db.update(TASK_TABLE, values, "ROWID = ?", vals);
+            db.update(ACTIVITY_TABLE, values, "ROWID = ?", vals);
 
             if (t.getStartTime() != NULL) {
                 values.clear();
@@ -991,49 +991,53 @@ public class Tasks extends ListActivity {
                     values.put(END, t.getEndTime());
                 }
                 // If an update fails, then this is an insert
-                if (db.update(RANGES_TABLE, values, TASK_ID + " = ? AND " + START + " = ?", vals) == 0) {
-                    values.put(TASK_ID, t.getId());
+                if (db.update(RANGES_TABLE, values, ACTIVITY_ID + " = ? AND " + START + " = ?", vals) == 0) {
+                    values.put(ACTIVITY_ID, t.getId());
                     db.insert(RANGES_TABLE, END, values);
                 }
             }
 
-            Collections.sort(tasks);
+            Collections.sort(activities);
             notifyDataSetChanged();
         }
 
-        public void deleteTask(Task t) {
-            tasks.remove(t);
+        public void deleteActivity(Activity t) {
+            activities.remove(t);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             String[] id = {String.valueOf(t.getId())};
-            db.delete(TASK_TABLE, "ROWID = ?", id);
-            db.delete(RANGES_TABLE, TASK_ID + " = ?", id);
+            db.delete(ACTIVITY_TABLE, "ROWID = ?", id);
+            db.delete(RANGES_TABLE, ACTIVITY_ID + " = ?", id);
             notifyDataSetChanged();
         }
 
+        @Override
         public int getCount() {
-            return tasks.size();
+            return activities.size();
         }
 
+        @Override
         public Object getItem(int position) {
-            return tasks.get(position);
+            return activities.get(position);
         }
 
+        @Override
         public long getItemId(int position) {
             return position;
         }
 
+        @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            TaskView view = null;
+            ActivityView view = null;
             if (convertView == null) {
                 Object item = getItem(position);
                 if (item != null) {
-                    view = new TaskView(savedContext, (Task) item);
+                    view = new ActivityView(savedContext, (Activity) item);
                 }
             } else {
-                view = (TaskView) convertView;
+                view = (ActivityView) convertView;
                 Object item = getItem(position);
                 if (item != null) {
-                    view.setTask((Task) item);
+                    view.setActivity((Activity) item);
                 }
             }
             return view;
@@ -1059,23 +1063,23 @@ public class Tasks extends ListActivity {
             }
         }
 
-        // Stop the update.  If a task is already running and we're stopping
-        // the timer, it'll stay stopped.  If a task is already running and 
-        // we're switching to a new task, or if nothing is running and we're
+        // Stop the update.  If a activity is already running and we're stopping
+        // the timer, it'll stay stopped.  If a activity is already running and 
+        // we're switching to a new activity, or if nothing is running and we're
         // starting a new timer, then it'll be restarted.
 
         Object item = getListView().getItemAtPosition(position);
         if (item != null) {
-            Task selected = (Task) item;
+            Activity selected = (Activity) item;
             if (!concurrency) {
                 boolean startSelected = !selected.isRunning();
                 if (running) {
                     running = false;
                     timer.removeCallbacks(updater);
-                    // Disable currently running tasks
-                    for (Task task : adapter.findCurrentlyActive()) {
-                        task.stop();
-                        adapter.updateTask(task);
+                    // Disable currently running activities
+                    for (Activity a : adapter.findCurrentlyActive()) {
+                        a.stop();
+                        adapter.updateActivity(a);
                     }
                 }
                 if (startSelected) {
@@ -1098,7 +1102,7 @@ public class Tasks extends ListActivity {
                     }
                 }
             }
-            adapter.updateTask(selected);
+            adapter.updateActivity(selected);
         }
         getListView().invalidate();
         super.onListItemClick(l, v, position, id);

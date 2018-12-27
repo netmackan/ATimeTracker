@@ -8,14 +8,14 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
  <application android:icon="@drawable/icon" android:label="@string/app_name">
 
-  <activity android:name=".Tasks" android:label="A Time Tracker">
+  <activity android:name=".Activities" android:label="A Time Tracker">
    <intent-filter>
     <action android:name="android.intent.action.MAIN" />
     <category android:name="android.intent.category.LAUNCHER" />
    </intent-filter>
   </activity>
     
-  <activity android:name=".TaskTimes" android:label="Task Times">
+  <activity android:name=".ActivityTimes" android:label="Activity Times">
    <intent-filter>
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />

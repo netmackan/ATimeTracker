@@ -33,15 +33,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String END = "end";
     public static final String START = "start";
-    public static final String TASK_ID = "task_id";
+    public static final String ACTIVITY_ID = "task_id";
     public static final String[] RANGE_COLUMNS = {START, END};
     public static final String NAME = "name";
-    public static final String[] TASK_COLUMNS = new String[]{"ROWID", NAME};
+    public static final String[] ACTIVITY_COLUMNS = new String[]{"ROWID", NAME};
     public static final String TIMETRACKER_DB_NAME = "timetracker.db";
     public static final int DBVERSION = 5;
     public static final String RANGES_TABLE = "ranges";
-    public static final String TASK_TABLE = "tasks";
-    public static final String TASK_NAME = "name";
+    public static final String ACTIVITY_TABLE = "tasks";
+    public static final String ACTIVITY_NAME = "name";
     public static final String ID_NAME = "_id";
 
     public DBHelper(Context context) {
@@ -56,17 +56,17 @@ public class DBHelper extends SQLiteOpenHelper {
     public static DBHelper getInstance() {
         return instance;
     }
-    private static final String CREATE_TASK_TABLE =
+    private static final String CREATE_ACTIVITY_TABLE =
             "CREATE TABLE %s ("
             + ID_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + TASK_NAME + " TEXT COLLATE LOCALIZED NOT NULL"
+            + ACTIVITY_NAME + " TEXT COLLATE LOCALIZED NOT NULL"
             + ");";
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(String.format(CREATE_TASK_TABLE, TASK_TABLE));
+        db.execSQL(String.format(CREATE_ACTIVITY_TABLE, ACTIVITY_TABLE));
         db.execSQL("CREATE TABLE " + RANGES_TABLE + "("
-                + TASK_ID + " INTEGER NOT NULL,"
+                + ACTIVITY_ID + " INTEGER NOT NULL,"
                 + START + " INTEGER NOT NULL,"
                 + END + " INTEGER"
                 + ");");
@@ -75,22 +75,22 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase arg0, int oldVersion, int newVersion) {
         if (oldVersion < 4) {
-            arg0.execSQL(String.format(CREATE_TASK_TABLE, "temp"));
-            arg0.execSQL("insert into temp(rowid," + TASK_NAME + ") select rowid,"
-                    + TASK_NAME + " from " + TASK_TABLE + ";");
-            arg0.execSQL("drop table " + TASK_TABLE + ";");
-            arg0.execSQL(String.format(CREATE_TASK_TABLE, TASK_TABLE));
-            arg0.execSQL("insert into " + TASK_TABLE + "(" + ID_NAME + "," + TASK_NAME
-                    + ") select rowid," + TASK_NAME + " from temp;");
+            arg0.execSQL(String.format(CREATE_ACTIVITY_TABLE, "temp"));
+            arg0.execSQL("insert into temp(rowid," + ACTIVITY_NAME + ") select rowid,"
+                    + ACTIVITY_NAME + " from " + ACTIVITY_TABLE + ";");
+            arg0.execSQL("drop table " + ACTIVITY_TABLE + ";");
+            arg0.execSQL(String.format(CREATE_ACTIVITY_TABLE, ACTIVITY_TABLE));
+            arg0.execSQL("insert into " + ACTIVITY_TABLE + "(" + ID_NAME + "," + ACTIVITY_NAME
+                    + ") select rowid," + ACTIVITY_NAME + " from temp;");
             arg0.execSQL("drop table temp;");
         } else if (oldVersion < 5) {
-            arg0.execSQL(String.format(CREATE_TASK_TABLE, "temp"));
-            arg0.execSQL("insert into temp(" + ID_NAME + "," + TASK_NAME + ") select rowid,"
-                    + TASK_NAME + " from " + TASK_TABLE + ";");
-            arg0.execSQL("drop table " + TASK_TABLE + ";");
-            arg0.execSQL(String.format(CREATE_TASK_TABLE, TASK_TABLE));
-            arg0.execSQL("insert into " + TASK_TABLE + "(" + ID_NAME + "," + TASK_NAME
-                    + ") select " + ID_NAME + "," + TASK_NAME + " from temp;");
+            arg0.execSQL(String.format(CREATE_ACTIVITY_TABLE, "temp"));
+            arg0.execSQL("insert into temp(" + ID_NAME + "," + ACTIVITY_NAME + ") select rowid,"
+                    + ACTIVITY_NAME + " from " + ACTIVITY_TABLE + ";");
+            arg0.execSQL("drop table " + ACTIVITY_TABLE + ";");
+            arg0.execSQL(String.format(CREATE_ACTIVITY_TABLE, ACTIVITY_TABLE));
+            arg0.execSQL("insert into " + ACTIVITY_TABLE + "(" + ID_NAME + "," + ACTIVITY_NAME
+                    + ") select " + ID_NAME + "," + ACTIVITY_NAME + " from temp;");
             arg0.execSQL("drop table temp;");
         }
     }

@@ -27,13 +27,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import java.util.ArrayList;
 import java.util.List;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_TABLE;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_COLUMNS;
 import static com.markuspage.android.atimetracker.DBHelper.RANGES_TABLE;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_ID;
 import static com.markuspage.android.atimetracker.DBHelper.START;
 import static com.markuspage.android.atimetracker.DBHelper.END;
 import static com.markuspage.android.atimetracker.DBHelper.NAME;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_ID;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_COLUMNS;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_TABLE;
 
 /**
  *
@@ -42,7 +42,7 @@ import static com.markuspage.android.atimetracker.DBHelper.NAME;
 public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
 
     private ProgressDialog progressDialog;
-    private Tasks callback;
+    private Activities callback;
     private boolean cancel = false;
     private int success_string;
     private int fail_string;
@@ -55,7 +55,7 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
     private Result result;
     private String message = null;
 
-    public DBBackup(Tasks callback, ProgressDialog progress, int success_string, int fail_string) {
+    public DBBackup(Activities callback, ProgressDialog progress, int success_string, int fail_string) {
         this.callback = callback;
         progressDialog = progress;
         progressDialog.setProgress(0);
@@ -69,36 +69,36 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
         SQLiteDatabase source = ss[0];
         SQLiteDatabase dest = ss[1];
 
-        // Read the tasks and IDs
-        Cursor readCursor = source.query(TASK_TABLE, TASK_COLUMNS, null, null, null, null, "rowid");
-        List<Task> tasks = readTasks(readCursor);
+        // Read the activities and IDs
+        Cursor readCursor = source.query(ACTIVITY_TABLE, ACTIVITY_COLUMNS, null, null, null, null, "rowid");
+        List<Activity> activities = readActivities(readCursor);
 
-        // Match the tasks to tasks in the existing DB, and build re-index list
-        readCursor = dest.query(TASK_TABLE, TASK_COLUMNS, null, null, null, null, "rowid");
-        List<Task> toReorder = readTasks(readCursor);
+        // Match the activities to activities in the existing DB, and build re-index list
+        readCursor = dest.query(ACTIVITY_TABLE, ACTIVITY_COLUMNS, null, null, null, null, "rowid");
+        List<Activity> toReorder = readActivities(readCursor);
 
-        int step = (int) (100.0 / tasks.size());
-//        publishProgress(SETMAX, tasks.size());
+        int step = (int) (100.0 / activities.size());
+//        publishProgress(SETMAX, activities.size());
 
-        // For each task in the backup DB, see if there's a matching task in the
-        // current DB.  If there is, copy the times for the task over from the
-        // backup DB.  If there isn't, copy the task and it's times over.
-        for (Task t : tasks) {
-            boolean matchedTask = false;
+        // For each activity in the backup DB, see if there's a matching activity in the
+        // current DB.  If there is, copy the times for the activity over from the
+        // backup DB.  If there isn't, copy the activity and it's times over.
+        for (Activity t : activities) {
+            boolean matchedActivity = false;
             publishProgress(PRIMARY, step);
-            for (Task o : toReorder) {
+            for (Activity o : toReorder) {
                 if (cancel) {
                     return null;
                 }
-                if (t.getTaskName().equals(o.getTaskName())) {
+                if (t.getName().equals(o.getName())) {
                     copyTimes(source, t.getId(), dest, o.getId());
                     toReorder.remove(o);
-                    matchedTask = true;
+                    matchedActivity = true;
                     break;
                 }
             }
-            if (!matchedTask) {
-                copyTask(source, t, dest);
+            if (!matchedActivity) {
+                copyActivity(source, t, dest);
             }
         }
         result = Result.SUCCESS;
@@ -146,9 +146,9 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
     private void copyTimes(SQLiteDatabase sourceDb, int sourceId, SQLiteDatabase destDb, int destId) {
         publishProgress(SECONDARY, 0);
         Cursor source = sourceDb.query(RANGES_TABLE, DBHelper.RANGE_COLUMNS,
-                DBHelper.TASK_ID + " = ?", new String[]{String.valueOf(sourceId)}, null, null, null);
+                DBHelper.ACTIVITY_ID + " = ?", new String[]{String.valueOf(sourceId)}, null, null, null);
         Cursor dest = destDb.query(RANGES_TABLE, DBHelper.RANGE_COLUMNS,
-                DBHelper.TASK_ID + " = ?", new String[]{String.valueOf(destId)}, null, null, null);
+                DBHelper.ACTIVITY_ID + " = ?", new String[]{String.valueOf(destId)}, null, null, null);
         List<TimeRange> destTimes = new ArrayList<TimeRange>();
         int step = (int) (100.0 / (dest.getCount() + source.getCount()));
         if (dest.moveToFirst()) {
@@ -176,7 +176,7 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
                     TimeRange s = new TimeRange(start, end);
                     if (!destTimes.contains(s)) {
                         values.clear();
-                        values.put(TASK_ID, destId);
+                        values.put(ACTIVITY_ID, destId);
                         values.put(START, start);
                         values.put(END, end);
                         destDb.insert(RANGES_TABLE, null, values);
@@ -187,26 +187,26 @@ public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
         source.close();
     }
 
-    private void copyTask(SQLiteDatabase sourceDb, Task t, SQLiteDatabase destDb) {
+    private void copyActivity(SQLiteDatabase sourceDb, Activity t, SQLiteDatabase destDb) {
         if (cancel) {
             return;
         }
         ContentValues values = new ContentValues();
-        values.put(NAME, t.getTaskName());
-        long id = destDb.insert(TASK_TABLE, null, values);
+        values.put(NAME, t.getName());
+        long id = destDb.insert(ACTIVITY_TABLE, null, values);
         copyTimes(sourceDb, t.getId(), destDb, (int) id);
     }
 
-    private List<Task> readTasks(Cursor readCursor) {
-        List<Task> tasks = new ArrayList<Task>();
+    private List<Activity> readActivities(Cursor readCursor) {
+        List<Activity> activities = new ArrayList<Activity>();
         if (readCursor.moveToFirst()) {
             do {
                 int tid = readCursor.getInt(0);
-                Task t = new Task(readCursor.getString(1), tid);
-                tasks.add(t);
+                Activity t = new Activity(readCursor.getString(1), tid);
+                activities.add(t);
             } while (readCursor.moveToNext());
         }
         readCursor.close();
-        return tasks;
+        return activities;
     }
 }

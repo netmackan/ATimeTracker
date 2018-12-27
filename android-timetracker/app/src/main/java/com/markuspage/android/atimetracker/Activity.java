@@ -27,22 +27,22 @@ package com.markuspage.android.atimetracker;
 
 import static com.markuspage.android.atimetracker.TimeRange.NULL;
 
-public class Task implements Comparable<Task> {
+public class Activity implements Comparable<Activity> {
 
-    private String taskName;
-    private int id;
+    private String name;
+    private final int id;
     private long startTime = NULL;
     private long endTime = NULL;
     private long collapsed;
 
     /**
-     * Constructs a new task.
+     * Constructs a new instance of Activity.
      *
-     * @param name The title of the task. Must not be null.
-     * @param id The ID of the task. Must not be null
+     * @param name The title of the activity. Must not be null.
+     * @param id The ID of the activity. Must not be null
      */
-    public Task(String name, int id) {
-        taskName = name;
+    public Activity(String name, int id) {
+        this.name = name;
         this.id = id;
         collapsed = 0;
     }
@@ -51,12 +51,12 @@ public class Task implements Comparable<Task> {
         return id;
     }
 
-    public String getTaskName() {
-        return taskName;
+    public String getName() {
+        return name;
     }
 
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public long getTotal() {
@@ -105,12 +105,13 @@ public class Task implements Comparable<Task> {
         this.endTime = endTime;
     }
 
-    public boolean equals(Task other) {
+    public boolean equals(Activity other) {
         return other != null && other.getId() == id;
     }
 
-    public int compareTo(Task another) {
-        return taskName.toUpperCase().compareTo(another.getTaskName().toUpperCase());
+    @Override
+    public int compareTo(Activity another) {
+        return name.toUpperCase().compareTo(another.getName().toUpperCase());
     }
 
     public boolean isRunning() {

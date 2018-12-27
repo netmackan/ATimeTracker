@@ -29,11 +29,9 @@ import static com.markuspage.android.atimetracker.DBHelper.END;
 import static com.markuspage.android.atimetracker.DBHelper.RANGES_TABLE;
 import static com.markuspage.android.atimetracker.DBHelper.RANGE_COLUMNS;
 import static com.markuspage.android.atimetracker.DBHelper.START;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_ID;
 import static com.markuspage.android.atimetracker.EditTime.END_DATE;
 import static com.markuspage.android.atimetracker.EditTime.START_DATE;
 import static com.markuspage.android.atimetracker.TimeRange.NULL;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_NAME;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -68,8 +66,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_ID;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_NAME;
 
-public class TaskTimes extends ListActivity implements DialogInterface.OnClickListener {
+public class ActivityTimes extends ListActivity implements DialogInterface.OnClickListener {
 
     private TimesAdapter adapter;
     private static int FONT_SIZE;
@@ -81,20 +81,20 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences preferences = getSharedPreferences("timetracker.pref", MODE_PRIVATE);
-        FONT_SIZE = preferences.getInt(Tasks.FONTSIZE, 16);
+        FONT_SIZE = preferences.getInt(Activities.FONTSIZE, 16);
         if (adapter == null) {
             adapter = new TimesAdapter(this);
             setListAdapter(adapter);
         }
-        decimalFormat = preferences.getBoolean(Tasks.TIMEDISPLAY, false);
+        decimalFormat = preferences.getBoolean(Activities.TIMEDISPLAY, false);
         registerForContextMenu(getListView());
         Bundle extras = getIntent().getExtras();
         if (extras.get(START) != null) {
-            adapter.loadTimes(extras.getInt(TASK_ID),
+            adapter.loadTimes(extras.getInt(ACTIVITY_ID),
                     extras.getLong(START),
                     extras.getLong(END));
         } else {
-            adapter.loadTimes(extras.getInt(TASK_ID));
+            adapter.loadTimes(extras.getInt(ACTIVITY_ID));
         }
     }
 
@@ -169,13 +169,13 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
                 adapter.deleteTimeRange(selectedRange);
                 break;
             case MOVE_TIME:
-                adapter.assignTimeToTaskAt(selectedRange, whichButton);
+                adapter.assignTimeToActivityAt(selectedRange, whichButton);
                 break;
             default:
                 break;
         }
-        if (TaskTimes.this != null) {
-            TaskTimes.this.getListView().invalidate();
+        if (ActivityTimes.this != null) {
+            ActivityTimes.this.getListView().invalidate();
         }
     }
 
@@ -192,7 +192,7 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
                         .setNegativeButton(android.R.string.cancel, null).create();
             case MOVE_TIME:
                 return new AlertDialog.Builder(this)
-                        .setCursor(adapter.getTaskNames(), this, TASK_NAME)
+                        .setCursor(adapter.getActivityNames(), this, ACTIVITY_NAME)
                         .create();
             default:
                 break;
@@ -231,19 +231,19 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
         public void deleteTimeRange(TimeRange range) {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-            String whereClause = START + " = ? AND " + TASK_ID + " = ?";
+            String whereClause = START + " = ? AND " + ACTIVITY_ID + " = ?";
             String[] whereValues;
             if (range.getEnd() == NULL) {
                 whereClause += " AND " + END + " ISNULL";
                 whereValues = new String[]{
                     String.valueOf(range.getStart()),
-                    String.valueOf(getIntent().getExtras().getInt(DBHelper.TASK_ID))
+                    String.valueOf(getIntent().getExtras().getInt(DBHelper.ACTIVITY_ID))
                 };
             } else {
                 whereClause += " AND " + END + " = ?";
                 whereValues = new String[]{
                     String.valueOf(range.getStart()),
-                    String.valueOf(getIntent().getExtras().getInt(DBHelper.TASK_ID)),
+                    String.valueOf(getIntent().getExtras().getInt(DBHelper.ACTIVITY_ID)),
                     String.valueOf(range.getEnd())
                 };
             }
@@ -262,14 +262,14 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
             notifyDataSetChanged();
         }
 
-        protected void loadTimes(int selectedTaskId) {
-            loadTimes(TASK_ID + " = ?",
-                    new String[]{String.valueOf(selectedTaskId)});
+        protected void loadTimes(int selectedActivityId) {
+            loadTimes(ACTIVITY_ID + " = ?",
+                    new String[]{String.valueOf(selectedActivityId)});
         }
 
-        protected void loadTimes(int selectedTaskId, long start, long end) {
-            loadTimes(TASK_ID + " = ? AND " + START + " < ? AND " + START + " > ?",
-                    new String[]{String.valueOf(selectedTaskId),
+        protected void loadTimes(int selectedActivityId, long start, long end) {
+            loadTimes(ACTIVITY_ID + " = ? AND " + START + " < ? AND " + START + " > ?",
+                    new String[]{String.valueOf(selectedActivityId),
                 String.valueOf(end),
                 String.valueOf(start)});
         }
@@ -331,36 +331,36 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
             return position;
         }
 
-        private void assignTimeToTaskAt(TimeRange range, int which) {
-            Cursor c = getTaskNames();
+        private void assignTimeToActivityAt(TimeRange range, int which) {
+            Cursor c = getActivityNames();
             if (c.moveToFirst()) {
                 while (which > 0) {
                     c.moveToNext();
                     which--;
                 }
             }
-            int newTaskId = c.getInt(0);
+            int newActivityId = c.getInt(0);
             if (!c.isAfterLast()) {
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-                String whereClause = START + " = ? AND " + TASK_ID + " = ?";
+                String whereClause = START + " = ? AND " + ACTIVITY_ID + " = ?";
                 String[] whereValues;
                 if (range.getEnd() == NULL) {
                     whereClause += " AND " + END + " ISNULL";
                     whereValues = new String[]{
                         String.valueOf(range.getStart()),
-                        String.valueOf(getIntent().getExtras().getInt(DBHelper.TASK_ID))
+                        String.valueOf(getIntent().getExtras().getInt(DBHelper.ACTIVITY_ID))
                     };
                 } else {
                     whereClause += " AND " + END + " = ?";
                     whereValues = new String[]{
                         String.valueOf(range.getStart()),
-                        String.valueOf(getIntent().getExtras().getInt(DBHelper.TASK_ID)),
+                        String.valueOf(getIntent().getExtras().getInt(DBHelper.ACTIVITY_ID)),
                         String.valueOf(range.getEnd())
                     };
                 }
                 ContentValues values = new ContentValues();
-                values.put(TASK_ID, newTaskId);
+                values.put(ACTIVITY_ID, newActivityId);
                 db.update(RANGES_TABLE, values, whereClause, whereValues);
                 int pos = times.indexOf(range);
                 times.remove(pos);
@@ -400,7 +400,7 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
 
             public void setTimeRange(TimeRange t) {
                 dateRange.setText(t.toString());
-                total.setText(Tasks.formatTotal(decimalFormat, t.getTotal(), 0));
+                total.setText(Activities.formatTotal(decimalFormat, t.getTotal(), 0));
                 /* If the following is added, then the timer to update the
                  * display must also be added
                  if (t.getEnd() == NULL) {
@@ -421,7 +421,7 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
         public void addTimeRange(long sd, long ed) {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
-            values.put(TASK_ID, getIntent().getExtras().getInt(TASK_ID));
+            values.put(ACTIVITY_ID, getIntent().getExtras().getInt(ACTIVITY_ID));
             values.put(START, sd);
             values.put(END, ed);
             db.insert(RANGES_TABLE, END, values);
@@ -485,30 +485,30 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
             }
         }
 
-        public void updateTimeRange(long sd, long ed, int newTaskId, TimeRange old) {
+        public void updateTimeRange(long sd, long ed, int newActivityId, TimeRange old) {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put(START, sd);
-            int currentTaskId = getIntent().getExtras().getInt(TASK_ID);
-            String whereClause = START + "=? AND " + TASK_ID + "=?";
+            int currentActivityId = getIntent().getExtras().getInt(ACTIVITY_ID);
+            String whereClause = START + "=? AND " + ACTIVITY_ID + "=?";
             String[] whereValues;
             if (ed != NULL) {
                 values.put(END, ed);
                 whereClause += " AND " + END + "=?";
                 whereValues = new String[]{String.valueOf(old.getStart()),
-                    String.valueOf(currentTaskId),
+                    String.valueOf(currentActivityId),
                     String.valueOf(old.getEnd())
                 };
             } else {
                 whereClause += " AND " + END + " ISNULL";
                 whereValues = new String[]{String.valueOf(old.getStart()),
-                    String.valueOf(currentTaskId)
+                    String.valueOf(currentActivityId)
                 };
             }
             db.update(RANGES_TABLE, values,
                     whereClause,
                     whereValues);
-            if (newTaskId != currentTaskId) {
+            if (newActivityId != currentActivityId) {
                 times.remove(old);
             } else {
                 old.setStart(sd);
@@ -517,10 +517,10 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
             notifyDataSetChanged();
         }
 
-        protected Cursor getTaskNames() {
+        protected Cursor getActivityNames() {
             SQLiteDatabase db = dbHelper.getReadableDatabase();
-            Cursor c = db.query(DBHelper.TASK_TABLE, DBHelper.TASK_COLUMNS, null, null,
-                    null, null, TASK_NAME);
+            Cursor c = db.query(DBHelper.ACTIVITY_TABLE, DBHelper.ACTIVITY_COLUMNS, null, null,
+                    null, null, ACTIVITY_NAME);
             return c;
         }
     }
@@ -536,7 +536,7 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
                     break;
                 case EDIT_TIME:
                     adapter.updateTimeRange(sd, ed,
-                            getIntent().getExtras().getInt(TASK_ID), selectedRange);
+                            getIntent().getExtras().getInt(ACTIVITY_ID), selectedRange);
                     break;
             }
         }

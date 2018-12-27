@@ -50,7 +50,7 @@ public class EditTime extends Activity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        preferences = getSharedPreferences(Tasks.TIMETRACKERPREF, MODE_PRIVATE);
+        preferences = getSharedPreferences(Activities.TIMETRACKERPREF, MODE_PRIVATE);
         if (getIntent().getExtras().getLong(END_DATE) == NULL) {
             setContentView(R.layout.edit_running_time_range);
             editingRunning = true;
@@ -61,7 +61,7 @@ public class EditTime extends Activity implements OnClickListener {
         findViewById(R.id.time_edit_cancel).setOnClickListener(this);
         TimePicker startTime = (TimePicker) findViewById(R.id.start_time);
         TimePicker endTime = (TimePicker) findViewById(R.id.end_time);
-        boolean militaryTime = preferences.getBoolean(Tasks.MILITARY, false);
+        boolean militaryTime = preferences.getBoolean(Activities.MILITARY, false);
         startTime.setIs24HourView(militaryTime);
         if (endTime != null) {
             endTime.setIs24HourView(militaryTime);

@@ -25,12 +25,8 @@ import static com.markuspage.android.atimetracker.DBHelper.NAME;
 import static com.markuspage.android.atimetracker.DBHelper.RANGES_TABLE;
 import static com.markuspage.android.atimetracker.DBHelper.RANGE_COLUMNS;
 import static com.markuspage.android.atimetracker.DBHelper.START;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_COLUMNS;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_ID;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_NAME;
-import static com.markuspage.android.atimetracker.DBHelper.TASK_TABLE;
-import static com.markuspage.android.atimetracker.Tasks.REPORT_DATE;
-import static com.markuspage.android.atimetracker.Tasks.START_DAY;
+import static com.markuspage.android.atimetracker.Activities.REPORT_DATE;
+import static com.markuspage.android.atimetracker.Activities.START_DAY;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -63,6 +59,10 @@ import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_ID;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_COLUMNS;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_TABLE;
+import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_NAME;
 
 public class Report extends Activity implements OnClickListener {
 
@@ -105,7 +105,7 @@ public class Report extends Activity implements OnClickListener {
     private static final String ZERO_TIME = "  :  ";
     
     /**
-     * Defines how each task's time is displayed
+     * Defines how each activity's time is displayed
      */
     private Calendar weekStart, weekEnd;
     private final Map<Integer, TextView[]> dateViews = new TreeMap<Integer, TextView[]>();
@@ -143,9 +143,9 @@ public class Report extends Activity implements OnClickListener {
         String ending = TITLE_FORMAT.format(weekEnd.getTime());
         String title = getString(R.string.report_title, beginning, ending);
         setTitle(title);
-        decimalTime = getIntent().getExtras().getBoolean(Tasks.TIMEDISPLAY);
+        decimalTime = getIntent().getExtras().getBoolean(Activities.TIMEDISPLAY);
         
-        roundMinutes = getIntent().getExtras().getInt(Tasks.ROUND_REPORT_TIMES);
+        roundMinutes = getIntent().getExtras().getInt(Activities.ROUND_REPORT_TIMES);
 
         createHeader(mainReport);
 
@@ -162,7 +162,7 @@ public class Report extends Activity implements OnClickListener {
         createReport(mainReport);
         createTotals(mainReport);
 
-        fillInTasksAndRanges();
+        fillInActivitiesAndRanges();
     }
 
     @Override
@@ -174,7 +174,7 @@ public class Report extends Activity implements OnClickListener {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.add(0, Tasks.EXPORT_VIEW, 0, R.string.export_view)
+        menu.add(0, Activities.EXPORT_VIEW, 0, R.string.export_view)
                 .setIcon(android.R.drawable.ic_menu_save);
         return true;
     }
@@ -184,17 +184,17 @@ public class Report extends Activity implements OnClickListener {
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
-            case Tasks.EXPORT_VIEW:
+            case Activities.EXPORT_VIEW:
                 String fname = export();
                 if (fname != null) {
                     exportMessage = getString(R.string.export_csv_success, fname);
                     if (exportSucceed != null) {
                         exportSucceed.setMessage(exportMessage);
                     }
-                    showDialog(Tasks.SUCCESS_DIALOG);
+                    showDialog(Activities.SUCCESS_DIALOG);
                 } else {
                     exportMessage = getString(R.string.export_csv_fail);
-                    showDialog(Tasks.ERROR_DIALOG);
+                    showDialog(Activities.ERROR_DIALOG);
                 }
                 break;
             default:
@@ -207,7 +207,7 @@ public class Report extends Activity implements OnClickListener {
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
-            case Tasks.SUCCESS_DIALOG:
+            case Activities.SUCCESS_DIALOG:
                 exportSucceed = new AlertDialog.Builder(this)
                         .setTitle(R.string.success)
                         .setIcon(android.R.drawable.stat_notify_sdcard)
@@ -215,7 +215,7 @@ public class Report extends Activity implements OnClickListener {
                         .setPositiveButton(android.R.string.ok, null)
                         .create();
                 return exportSucceed;
-            case Tasks.ERROR_DIALOG:
+            case Activities.ERROR_DIALOG:
                 return new AlertDialog.Builder(this)
                         .setTitle(R.string.failure)
                         .setIcon(android.R.drawable.stat_notify_sdcard)
@@ -228,7 +228,7 @@ public class Report extends Activity implements OnClickListener {
         return null;
     }
     /**
-     * Yes, this _is_ a duplicate of the exact same code in Tasks. Java doesn't
+     * Yes, this _is_ a duplicate of the exact same code in Activities. Java doesn't
      * support mix-ins, which leads to bad programming practices out of
      * necessity.
      */
@@ -258,15 +258,15 @@ public class Report extends Activity implements OnClickListener {
     }
 
     private String[][] getCurrentRange() {
-        List<String[]> tasks = new ArrayList<String[]>();
+        List<String[]> activities = new ArrayList<String[]>();
 
-        Map<Integer, String> taskNames = new TreeMap<Integer, String>();
-        Cursor c = db.query(TASK_TABLE, new String[]{"ROWID", TASK_NAME}, null, null, null, null, "ROWID");
+        Map<Integer, String> activityNames = new TreeMap<Integer, String>();
+        Cursor c = db.query(ACTIVITY_TABLE, new String[]{"ROWID", ACTIVITY_NAME}, null, null, null, null, "ROWID");
         if (c.moveToFirst()) {
             do {
                 int tid = c.getInt(0);
                 String tname = c.getString(1);
-                taskNames.put(tid, tname);
+                activityNames.put(tid, tname);
             } while (c.moveToNext());
         }
         c.close();
@@ -283,31 +283,31 @@ public class Report extends Activity implements OnClickListener {
             headers[i + 1] = s.header;
         }
         headers[8] = "Total";
-        tasks.add(headers);
+        activities.add(headers);
 
         for (int tid : dateViews.keySet()) {
             if (tid == -1) {
                 continue;
             }
-            String[] rowForTask = new String[9];
-            tasks.add(rowForTask);
-            rowForTask[0] = taskNames.get(tid);
+            String[] rowForActivity = new String[9];
+            activities.add(rowForActivity);
+            rowForActivity[0] = activityNames.get(tid);
             TextView[] arryForDay = dateViews.get(tid);
             for (int i = 0; i < 8; i++) {
-                rowForTask[i + 1] = arryForDay[i].getText().toString();
+                rowForActivity[i + 1] = arryForDay[i].getText().toString();
             }
         }
 
         TextView[] totals = dateViews.get(-1);
         String[] totalsRow = new String[9];
-        tasks.add(totalsRow);
+        activities.add(totalsRow);
         totalsRow[0] = "Day total";
         for (int i = 0; i < 8; i++) {
             totalsRow[i + 1] = totals[i].getText().toString();
         }
 
         String[][] k = {{}};
-        return tasks.toArray(k);
+        return activities.toArray(k);
     }
 
     private String getRangeName() {
@@ -401,7 +401,7 @@ public class Report extends Activity implements OnClickListener {
     }
 
     private void createReport(TableLayout mainReport) {
-        Cursor c = db.query(TASK_TABLE, TASK_COLUMNS, null, null, null, null, NAME);
+        Cursor c = db.query(ACTIVITY_TABLE, ACTIVITY_COLUMNS, null, null, null, null, NAME);
         if (c.moveToFirst()) {
             do {
                 int tid = c.getInt(0);
@@ -412,10 +412,10 @@ public class Report extends Activity implements OnClickListener {
                 TableRow row = new TableRow(this);
                 mainReport.addView(row, new TableLayout.LayoutParams());
 
-                TextView taskName = new TextView(this);
-                taskName.setText(c.getString(1));
-                taskName.setPadding(PAD, PAD, RPAD, PAD);
-                row.addView(taskName, new TableRow.LayoutParams(0));
+                TextView activityName = new TextView(this);
+                activityName.setText(c.getString(1));
+                activityName.setPadding(PAD, PAD, RPAD, PAD);
+                row.addView(activityName, new TableRow.LayoutParams(0));
 
                 for (int i = 0; i < 7; i++) {
                     TextView dayTime = new TextView(this);
@@ -520,34 +520,34 @@ public class Report extends Activity implements OnClickListener {
         String ending = TITLE_FORMAT.format(weekEnd.getTime());
         String title = getString(R.string.report_title, beginning, ending);
         setTitle(title);
-        fillInTasksAndRanges();
+        fillInActivitiesAndRanges();
         weekView.setText(getString(R.string.week, WEEK_FORMAT.format(weekStart.getTime())));
     }
     
-    private void fillInTasksAndRanges() {
-        // Iterate over each task and set the day values, and accumulate the day 
+    private void fillInActivitiesAndRanges() {
+        // Iterate over each activity and set the day values, and accumulate the day 
         // and week totals
-        Cursor c = db.query(TASK_TABLE, TASK_COLUMNS, null, null, null, null, NAME);
-        // The totals for all tasks for each day, plus one for the week total.
+        Cursor c = db.query(ACTIVITY_TABLE, ACTIVITY_COLUMNS, null, null, null, null, NAME);
+        // The totals for all activities for each day, plus one for the week total.
         long dayTotals[] = {0, 0, 0, 0, 0, 0, 0, 0};
         if (c.moveToFirst()) {
             do {
                 int tid = c.getInt(0);
                 String tid_s = String.valueOf(tid);
                 TextView[] arryForDay = dateViews.get(tid);
-                // Fetch an array of times (per day) for the task
+                // Fetch an array of times (per day) for the activity
                 long[] days = getDays(tid_s);
-                // The total for this task, for the whole week
+                // The total for this activity, for the whole week
                 int weekTotal = 0;
                 for (int i = 0; i < 7; i++) {
                     weekTotal += days[i];
                     dayTotals[i] += days[i];
                     
-                    arryForDay[i].setText(days[i] == 0L ? ZERO_TIME : Tasks.formatTotal(decimalTime, FORMAT, days[i], roundMinutes));
+                    arryForDay[i].setText(days[i] == 0L ? ZERO_TIME : Activities.formatTotal(decimalTime, FORMAT, days[i], roundMinutes));
                 }
                 // Set the week total.  Since this value can be more than 24 hours,
                 // we have to format it by hand:
-                arryForDay[7].setText(weekTotal == 0L ? ZERO_TIME : Tasks.formatTotal(decimalTime, FORMAT, weekTotal, roundMinutes));
+                arryForDay[7].setText(weekTotal == 0L ? ZERO_TIME : Activities.formatTotal(decimalTime, FORMAT, weekTotal, roundMinutes));
                 dayTotals[7] += weekTotal;
             } while (c.moveToNext());
         }
@@ -555,15 +555,15 @@ public class Report extends Activity implements OnClickListener {
 
         TextView[] totals = dateViews.get(-1);
         for (int i = 0; i < 7; i++) {
-            totals[i].setText(Tasks.formatTotal(decimalTime, FORMAT, dayTotals[i], roundMinutes));
+            totals[i].setText(Activities.formatTotal(decimalTime, FORMAT, dayTotals[i], roundMinutes));
         }
-        totals[7].setText(Tasks.formatTotal(decimalTime, FORMAT, dayTotals[7], roundMinutes));
+        totals[7].setText(Activities.formatTotal(decimalTime, FORMAT, dayTotals[7], roundMinutes));
     }
 
     /**
-     * Fetch the times for a task within the currently set time range, by day.
+     * Fetch the times for a activity within the currently set time range, by day.
      *
-     * @param tid_s The ID of the task for which to fetch times
+     * @param tid_s The ID of the activity for which to fetch times
      * @return An array containinging, in each cell, the sum of the times which
      * fall within that day. Index 0 is the first day starting on the currently
      * set week. This uses TimeRange.overlap() to make sure that only time that
@@ -575,7 +575,7 @@ public class Report extends Activity implements OnClickListener {
         Calendar day = Calendar.getInstance();
         day.setFirstDayOfWeek(startDay);
         long days[] = {0, 0, 0, 0, 0, 0, 0};
-        Cursor r = db.query(RANGES_TABLE, RANGE_COLUMNS, TASK_ID + " = ? AND "
+        Cursor r = db.query(RANGES_TABLE, RANGE_COLUMNS, ACTIVITY_ID + " = ? AND "
                 + START + " < ? AND ( " + END + " > ? OR " + END + " ISNULL )",
                 new String[]{tid_s,
             String.valueOf(weekEnd.getTimeInMillis()),

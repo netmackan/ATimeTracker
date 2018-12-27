@@ -71,46 +71,46 @@ public class Settings extends ListActivity implements OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        applicationPreferences = getSharedPreferences(Tasks.TIMETRACKERPREF, MODE_PRIVATE);
+        applicationPreferences = getSharedPreferences(Activities.TIMETRACKERPREF, MODE_PRIVATE);
         prefs = new ArrayList<Map<String, String>>();
         setContentView(R.layout.preferences);
 
         Map<String, String> pref = new HashMap<String, String>();
 
         pref.put(PREFERENCE, getString(R.string.week_start_day));
-        final int weekStart = applicationPreferences.getInt(Tasks.START_DAY, 0) % 7;
+        final int weekStart = applicationPreferences.getInt(Activities.START_DAY, 0) % 7;
         pref.put(CURRENT, DateUtils.getDayOfWeekString(weekStart + 1, DateUtils.LENGTH_LONG));
         pref.put(CURRENTVALUE, String.valueOf(weekStart == 0 ? 0 : 1));
         pref.put(VALUETYPE, INT);
-        pref.put(PREFERENCENAME, Tasks.START_DAY);
+        pref.put(PREFERENCENAME, Activities.START_DAY);
         prefs.add(pref);
 
-        addBooleanPreference(R.string.hour_mode, Tasks.MILITARY,
+        addBooleanPreference(R.string.hour_mode, Activities.MILITARY,
                 R.string.military, R.string.civilian);
 
-        addBooleanPreference(R.string.concurrency, Tasks.CONCURRENT,
+        addBooleanPreference(R.string.concurrency, Activities.CONCURRENT,
                 R.string.concurrent, R.string.exclusive);
 
-        addBooleanPreference(R.string.sound, Tasks.SOUND,
+        addBooleanPreference(R.string.sound, Activities.SOUND,
                 R.string.sound_enabled, R.string.sound_disabled);
 
-        addBooleanPreference(R.string.vibrate, Tasks.VIBRATE,
+        addBooleanPreference(R.string.vibrate, Activities.VIBRATE,
                 R.string.vibrate_enabled, R.string.vibrate_disabled);
 
         pref = new HashMap<String, String>();
         pref.put(PREFERENCE, getString(R.string.font_size));
-        final int fontSize = applicationPreferences.getInt(Tasks.FONTSIZE,
+        final int fontSize = applicationPreferences.getInt(Activities.FONTSIZE,
                 SMALL);
         updateFontPrefs(pref, fontSize);
         pref.put(VALUETYPE, INT);
-        pref.put(PREFERENCENAME, Tasks.FONTSIZE);
+        pref.put(PREFERENCENAME, Activities.FONTSIZE);
         prefs.add(pref);
         fontMap = new HashMap<String, Integer>(3);
         fontMap.put(getString(R.string.small_font), SMALL);
         fontMap.put(getString(R.string.medium_font), MEDIUM);
         fontMap.put(getString(R.string.large_font), LARGE);
 
-        addBooleanPreference(R.string.time_display, Tasks.TIMEDISPLAY,
+        addBooleanPreference(R.string.time_display, Activities.TIMEDISPLAY,
                 R.string.decimal_time, R.string.standard_time);
 
         // Round times in report
@@ -124,11 +124,11 @@ public class Settings extends ListActivity implements OnClickListener {
         roundPref = new HashMap<String, String>();
 
         roundPref.put(PREFERENCE, getString(R.string.round_report_time));
-        final int roundTimes = applicationPreferences.getInt(Tasks.ROUND_REPORT_TIMES, 0);
+        final int roundTimes = applicationPreferences.getInt(Activities.ROUND_REPORT_TIMES, 0);
         roundPref.put(CURRENT, roundTimes == 0 ? getString(R.string.round_no) : getString(R.string.round_minutes, roundTimes));
         roundPref.put(CURRENTVALUE, String.valueOf(roundTimes));
         roundPref.put(VALUETYPE, INT);
-        roundPref.put(PREFERENCENAME, Tasks.ROUND_REPORT_TIMES);
+        roundPref.put(PREFERENCENAME, Activities.ROUND_REPORT_TIMES);
         prefs.add(roundPref);
         adapter = new SimpleAdapter(this,
                 prefs,
@@ -187,9 +187,9 @@ public class Settings extends ListActivity implements OnClickListener {
     public void onListItemClick(ListView l, View v, int position, long id) {
         Map<String, String> pref = prefs.get((int) id);
 
-        if (pref.get(PREFERENCENAME).equals(Tasks.START_DAY)) {
+        if (pref.get(PREFERENCENAME).equals(Activities.START_DAY)) {
             showDialog(CHOOSE_DAY);
-        } else if (pref.get(PREFERENCENAME).equals(Tasks.ROUND_REPORT_TIMES)) {
+        } else if (pref.get(PREFERENCENAME).equals(Activities.ROUND_REPORT_TIMES)) {
             showDialog(CHOOSE_ROUNDING);
         } else {
 
@@ -202,7 +202,7 @@ public class Settings extends ListActivity implements OnClickListener {
             pref.put(CURRENTVALUE, disabled_value);
             pref.put(DISABLEDVALUE, current_value);
 
-            if (pref.get(PREFERENCENAME).equals(Tasks.FONTSIZE)) {
+            if (pref.get(PREFERENCENAME).equals(Activities.FONTSIZE)) {
                 updateFontPrefs(pref, fontMap.get(disabled));  // disabled is the new enabled!
             }
         }
