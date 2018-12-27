@@ -200,8 +200,7 @@ Delete time
 
 Bugs
 ===========
-Please submit bugs by emailing the author.  You can see the list of known bugs
-and planned features at the `TimeTracker ditz page`_.
+Please submit bugs on the `ATimeTracker GitHub page`_.
 
 Credits
 =======
@@ -209,6 +208,6 @@ The TimeTracker application icon was borrowed from the excellent glyFX icon
 library by `PerthWeb Pty Ltd`_.
 
 
-.. _TimeTracker ditz page: http://ditz.germane-software.com/TimeTracker
+.. _ATimeTracker GitHub page: https://github.com/netmackan/ATimeTracker/issues
 
 .. _PerthWeb Pty Ltd: http://www.glyfx.com/ 
