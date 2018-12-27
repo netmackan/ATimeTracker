@@ -277,7 +277,7 @@ public class Report extends Activity implements OnClickListener {
         }
         // Add the headers
         String[] headers = new String[9];
-        headers[0] = "Task name";
+        headers[0] = "Activity name";
         for (int i = 0; i < 7; i++) {
             Day s = Day.fromCalEnum(weekDays[i]);
             headers[i + 1] = s.header;
@@ -368,7 +368,7 @@ public class Report extends Activity implements OnClickListener {
         mainReport.addView(row, new TableLayout.LayoutParams());
 
         TextView blank = new TextView(this);
-        blank.setText("Task");
+        blank.setText("Activity");
         blank.setPadding(PAD, PAD, RPAD, PAD);
         blank.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
         row.addView(blank, new TableRow.LayoutParams(0));

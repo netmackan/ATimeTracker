@@ -184,7 +184,7 @@ public class TaskTimes extends ListActivity implements DialogInterface.OnClickLi
         switch (id) {
             case DELETE_TIME:
                 return new AlertDialog.Builder(this)
-                        .setTitle(R.string.delete_task_title)
+                        .setTitle(R.string.delete_activity_title)
                         .setIcon(android.R.drawable.stat_sys_warning)
                         .setCancelable(true)
                         .setMessage(R.string.delete_time_message)

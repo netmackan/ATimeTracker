@@ -4,9 +4,9 @@
     <string name="app_name">A Time Tracker</string>
     
     <string name="start">Démarrer</string>
-    <string name="task_name">Nom de la tâche</string>
-    <string name="add_task_ok">Ajouter tâche</string>
-    <string name="task_name_required">Le nom de la tâche est requis</string>
+    <string name="activity_name">Activity name</string>
+    <string name="add_activity_ok">Add activity</string>
+    <string name="activity_name_required">Le nom de la activity est requis</string>
     <string name="start_time_required">L´heure de début est requis</string>
 
     <string name="change_date_range">Changer la période</string>
@@ -15,13 +15,13 @@
     <string name="restore_from_backup">Restorer depuis backup</string>
 
     <string name="delete_ok">Effacer</string>
-    <string name="delete_task_title">Effacer tâche</string>
-    <string name="delete_task_message">Voulez-vous vraiment effacer \'%s\' et les données associées ?</string>
-    <string name="add_task_title">Ajouter tâche</string>
+    <string name="delete_activity_title">Delete activity</string>
+    <string name="delete_activity_message">Voulez-vous vraiment effacer \'%s\' et les données associées ?</string>
+    <string name="add_activity_title">Add activity</string>
     <string name="change_view_title">Changer la vue</string>
     <string name="generate_report_title">Rapport</string>
     <string name="select_range">Choisir la période…</string>
-    <string name="done">Retour aux tâches</string>
+    <string name="done">Retour aux activities</string>
     <string name="add_time_title">Ajouter période</string>
     <string name="delete_time_message">Voulez-vous vraiment effacer cette période ?</string>
     <string name="delete_time_title">Effacer la période</string>
@@ -34,9 +34,9 @@
     <string name="title">A Time Tracker (%s)</string>
     <string name="help">Aide</string>
     <string name="export_view">Exporter</string>
-    <string name="move_time">Assigner cette durée à une autre tâche</string>
-    <string name="edit_task">Modifier la tâche</string>
-    <string name="delete_task">Supprimer la tâche</string>
+    <string name="move_time">Assigner cette durée à une autre activity</string>
+    <string name="edit_activity">Edit activity</string>
+    <string name="delete_activity">Delete activity</string>
     <string name="show_times">Affichage l\'heure</string>
 
     <!--    Settings strings    -->
@@ -45,7 +45,7 @@
     <string name="week_start_day">Premier jour de la semaine</string>
     <string name="hour_mode">Mode 12/24</string>
     <string name="font_size">Taille de police</string>
-    <string name="concurrency">Tâche concurentes multiples</string>
+    <string name="concurrency">Multiple concurrently running activities</string>
     <string name="sound">Son</string>
     <string name="vibrate">Vibrer</string>
     <!-- Settings values -->
@@ -56,8 +56,8 @@
     <string name="small_font">Petit</string>
     <string name="medium_font">Moyen</string>
     <string name="large_font">Grand</string>
-    <string name="concurrent">Les tâche peuvent s´executer simultanément</string>
-    <string name="exclusive">Une seule tâche à la fois</string>
+    <string name="concurrent">Activities can run at the same time</string>
+    <string name="exclusive">Only one activity can run at a time</string>
     <string name="sound_enabled">Son activé</string>
     <string name="sound_disabled">Son désactivé</string>
     <string name="vibrate_enabled">Vibration activée</string>

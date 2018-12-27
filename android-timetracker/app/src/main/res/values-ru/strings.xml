@@ -3,9 +3,9 @@
     <string name="app_name">A Time Tracker</string>
     
     <string name="start">Старт</string>
-    <string name="task_name">Название задачи</string>
-    <string name="add_task_ok">Добавить задачу</string>
-    <string name="task_name_required">Требуется указать название задачи</string>
+    <string name="activity_name">Activity name</string>
+    <string name="add_activity_ok">Add activity</string>
+    <string name="activity_name_required">The activity name is required</string>
     <string name="start_time_required">Требуется указать время старта</string>
 
     <string name="change_date_range">Изменить интервал дат</string>
@@ -14,13 +14,13 @@
     <string name="restore_from_backup">Восстановить</string>
 
     <string name="delete_ok">Удалить</string>
-    <string name="delete_task_title">Удалить задачу</string>
-    <string name="delete_task_message">Вы уверены, что хотите удалить \'%s\' и все её записи временных интервалов?</string>
-    <string name="add_task_title">Добавить задачу</string>
+    <string name="delete_activity_title">Delete activity</string>
+    <string name="delete_activity_message">Вы уверены, что хотите удалить \'%s\' и все её записи временных интервалов?</string>
+    <string name="add_activity_title">Add activity</string>
     <string name="change_view_title">Изменить вид</string>
     <string name="generate_report_title">Отчёт</string>
     <string name="select_range">Выбрать интервал…</string>
-    <string name="done">Вернуться к задачам</string>
+    <string name="done">Return to activities</string>
     <string name="add_time_title">Добавить новый временной интервал</string>
     <string name="delete_time_message">Вы уверены, что хотите удалить этот временной интервал?</string>
     <string name="delete_time_title">Удалить временной интервал</string>
@@ -33,9 +33,9 @@
     <string name="title">A Time Tracker (%s)</string>
     <string name="help">Помощь</string>
     <string name="export_view">Экспорт</string>
-    <string name="move_time">Назначить время для задачи</string>
-    <string name="edit_task">Редактирование задачи</string>
-    <string name="delete_task">Удалить задачу</string>
+    <string name="move_time">Assign time to other activity</string>
+    <string name="edit_activity">Edit activity</string>
+    <string name="delete_activity">Delete activity</string>
     <string name="show_times">Показать времена</string>
 
     <!--    Settings strings    -->
@@ -44,7 +44,7 @@
     <string name="week_start_day">Первый день недели</string>
     <string name="hour_mode">12/24 часовой режим</string>
     <string name="font_size">Размер шрифта</string>
-    <string name="concurrency">Несколько одновременно запущенных задач</string>
+    <string name="concurrency">Multiple concurrently running activities</string>
     <string name="sound">Звук</string>
     <string name="vibrate">Вибрация</string>
     <!-- Settings values -->
@@ -55,8 +55,8 @@
     <string name="small_font">Маленький</string>
     <string name="medium_font">Средний</string>
     <string name="large_font">Большой</string>
-    <string name="concurrent">Задачи могут быть запущены одновременно</string>
-    <string name="exclusive">Только одна задача может быть запущена</string>
+    <string name="concurrent">Activities can run at the same time</string>
+    <string name="exclusive">Only one activity can run at a time</string>
     <string name="sound_enabled">Звук включён</string>
     <string name="sound_disabled">Звук отключен</string>
     <string name="vibrate_enabled">Вибрация включена</string>

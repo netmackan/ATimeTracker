@@ -4,9 +4,9 @@
     <string name="app_name">A Time Tracker</string>
     
     <string name="start">Inizio</string>
-    <string name="task_name">Nome del compito</string>
-    <string name="add_task_ok">Aggiungere compito</string>
-    <string name="task_name_required">Nome del compito richiesto</string>
+    <string name="activity_name">Activity name</string>
+    <string name="add_activity_ok">Add activity</string>
+    <string name="activity_name_required">Nome del activity richiesto</string>
     <string name="start_time_required">Ora di inizio richiesta</string>
 
     <string name="change_date_range">Cambia intervallo</string>
@@ -15,9 +15,9 @@
     <string name="restore_from_backup">Rirpistina backup</string>
 
     <string name="delete_ok">Cancellare</string>
-    <string name="delete_task_title">Eliminare compito</string>
-    <string name="delete_task_message">Sei sicuro di cancellare \'%s\' e tutti dati collegati?</string>
-    <string name="add_task_title">Aggiungere compito</string>
+    <string name="delete_activity_title">Eliminare activity</string>
+    <string name="delete_activity_message">Sei sicuro di cancellare \'%s\' e tutti dati collegati?</string>
+    <string name="add_activity_title">Add activity</string>
     <string name="change_view_title">Cambia vista</string>
     <string name="generate_report_title">Rapporto</string>
     <string name="select_range">Seleziona intervallo…</string>
@@ -34,9 +34,9 @@
     <string name="title">A Time Tracker (%s)</string>
     <string name="help">Assistenza</string>
     <string name="export_view">Esportare</string>
-    <string name="move_time">Assegnare tempo per altro compito</string>
-    <string name="edit_task">Modifica compito</string>
-    <string name="delete_task">Cancellare compito</string>
+    <string name="move_time">Assign time to other activity</string>
+    <string name="edit_activity">Edit activity</string>
+    <string name="delete_activity">Delete activity</string>
     <string name="show_times">Mostrare tempi</string>
 
     <!--    Settings strings    -->
@@ -45,7 +45,7 @@
     <string name="week_start_day">Giorno d\'inizio settimana</string>
     <string name="hour_mode">Modo 12/24</string>
     <string name="font_size">Dimensione del carattere</string>
-    <string name="concurrency">Simultaneità dei compiti</string>
+    <string name="concurrency">Multiple concurrently running activities</string>
     <string name="sound">Audio</string>
     <string name="vibrate">Vibrare</string>
     <!-- Settings values -->
@@ -57,7 +57,7 @@
     <string name="medium_font">Medio</string>
     <string name="large_font">Grande</string>
     <string name="concurrent">Attività simultanee</string>
-    <string name="exclusive">Solo un compito alla volta</string>
+    <string name="exclusive">Only one activity can run at a time</string>
     <string name="sound_enabled">Audio attivo</string>
     <string name="sound_disabled">Audio spento</string>
     <string name="vibrate_enabled">Vibrazione attiva</string>

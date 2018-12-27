@@ -25,7 +25,7 @@
         <item>Set time format (%s)</item>
         <item>Audible click (%s)</item>
         <item>Vibrate on click (%s)</item>
-        <item>Concurrent task tracking (%s)</item>
+        <item>Concurrent activity tracking (%s)</item>
         <item>Font size (%s)</item>
         <item>DB location (%s)</item>
     </string-array>

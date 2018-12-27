@@ -4,9 +4,9 @@
     <string name="app_name">A Time Tracker</string>
     
     <string name="start">Iniciar</string>
-    <string name="task_name">Nombre de la actividad</string>
-    <string name="add_task_ok">Añadir actividad</string>
-    <string name="task_name_required">Nombre de la actividad obligatorio</string>
+    <string name="activity_name">Nombre de la actividad</string>
+    <string name="add_activity_ok">Añadir actividad</string>
+    <string name="activity_name_required">Nombre de la actividad obligatorio</string>
     <string name="start_time_required">Hora de la actividad obligatorio</string>
 
     <string name="change_date_range">Cambiar periodo</string>
@@ -15,9 +15,9 @@
     <string name="restore_from_backup">Restaurar copia de seguridad</string>
 
     <string name="delete_ok">Eliminar</string>
-    <string name="delete_task_title">Eliminar actividad</string>
-    <string name="delete_task_message">De verdad quiere eliminar \'%s\' y los datos asociados?</string>
-    <string name="add_task_title">Añadir actividad</string>
+    <string name="delete_activity_title">Eliminar actividad</string>
+    <string name="delete_activity_message">De verdad quiere eliminar \'%s\' y los datos asociados?</string>
+    <string name="add_activity_title">Añadir actividad</string>
     <string name="change_view_title">Cambiar vista</string>
     <string name="generate_report_title">Reporte</string>
     <string name="select_range">Elegir periodo…</string>
@@ -35,8 +35,8 @@
     <string name="help">Ayuda</string>
     <string name="export_view">Exportar</string>
     <string name="move_time">Asignar este tiempo a otra actividad</string>
-    <string name="edit_task">Modificar la actividad</string>
-    <string name="delete_task">Eliminar la actividad</string>
+    <string name="edit_activity">Modificar la actividad</string>
+    <string name="delete_activity">Eliminar la actividad</string>
     <string name="show_times">Mostrar tiempos</string>
 
     <!--    Settings strings    -->
