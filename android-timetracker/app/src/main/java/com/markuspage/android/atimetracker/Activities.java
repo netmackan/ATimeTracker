@@ -583,15 +583,26 @@ public class Activities extends ListActivity {
     private Dialog openNewActivityDialog() {
         LayoutInflater factory = LayoutInflater.from(this);
         final View textEntryView = factory.inflate(R.layout.edit_activity, null);
-        return new AlertDialog.Builder(Activities.this) //.setIcon(R.drawable.alert_dialog_icon)
+        final AlertDialog dialog = new AlertDialog.Builder(Activities.this) //.setIcon(R.drawable.alert_dialog_icon)
                 .setTitle(R.string.add_activity_title).setView(textEntryView).setPositiveButton(R.string.add_activity_ok, new DialogInterface.OnClickListener() {
+            @Override 
             public void onClick(DialogInterface dialog, int whichButton) {
-                EditText textView = (EditText) textEntryView.findViewById(R.id.activity_edit_name_edit);
-                String name = textView.getText().toString();
-                adapter.addActivity(name);
-                Activities.this.getListView().invalidate();
             }
         }).setNegativeButton(android.R.string.cancel, null).create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText textView = (EditText) textEntryView.findViewById(R.id.activity_edit_name_edit);
+                String name = textView.getText().toString();
+                if (!name.isEmpty()) {
+                    adapter.addActivity(name);
+                    Activities.this.getListView().invalidate();
+                    dialog.dismiss();
+                }
+            }
+        });
+        return dialog;
     }
 
     /**
