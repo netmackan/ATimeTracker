@@ -41,11 +41,11 @@ import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_TABLE;
  */
 public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
 
-    private ProgressDialog progressDialog;
-    private Activities callback;
+    private final ProgressDialog progressDialog;
+    private final Activities callback;
     private boolean cancel = false;
-    private int success_string;
-    private int fail_string;
+    private final int success_string;
+    private final int fail_string;
 
     public enum Result {
 

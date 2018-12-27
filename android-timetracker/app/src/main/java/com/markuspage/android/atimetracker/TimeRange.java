@@ -86,6 +86,7 @@ public class TimeRange implements Comparable<TimeRange> {
         return b.toString();
     }
 
+    @Override
     public int compareTo(TimeRange another) {
         if (start < another.start) {
             return -1;

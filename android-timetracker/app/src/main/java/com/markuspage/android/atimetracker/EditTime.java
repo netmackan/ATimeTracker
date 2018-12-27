@@ -101,6 +101,7 @@ public class EditTime extends Activity implements OnClickListener {
         }
     }
 
+    @Override
     public void onClick(View v) {
         DatePicker startDate = (DatePicker) findViewById(R.id.start_date);
         TimePicker startTime = (TimePicker) findViewById(R.id.start_time);
