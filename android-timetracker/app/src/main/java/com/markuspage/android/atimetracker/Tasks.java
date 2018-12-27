@@ -259,7 +259,7 @@ public class Tasks extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.add(0, ADD_TASK, 0, R.string.add_task_title).setIcon(android.R.drawable.ic_menu_add);
+        menu.add(0, ADD_TASK, 0, R.string.add_activity_title).setIcon(android.R.drawable.ic_menu_add);
         menu.add(0, REPORT, 1, R.string.generate_report_title).setIcon(android.R.drawable.ic_menu_week);
         menu.add(0, CHANGE_VIEW, 2, R.string.change_date_range);
         menu.add(0, EXPORT_VIEW, 3, R.string.export_view_to_csv);
@@ -273,9 +273,9 @@ public class Tasks extends ListActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
             ContextMenuInfo menuInfo) {
-        menu.setHeaderTitle("Task menu");
-        menu.add(0, EDIT_TASK, 0, getText(R.string.edit_task));
-        menu.add(0, DELETE_TASK, 0, getText(R.string.delete_task));
+        menu.setHeaderTitle("Activities menu");
+        menu.add(0, EDIT_TASK, 0, getText(R.string.edit_activity));
+        menu.add(0, DELETE_TASK, 0, getText(R.string.delete_activity));
         menu.add(0, SHOW_TIMES, 0, getText(R.string.show_times));
     }
 
@@ -582,11 +582,11 @@ public class Tasks extends ListActivity {
      */
     private Dialog openNewTaskDialog() {
         LayoutInflater factory = LayoutInflater.from(this);
-        final View textEntryView = factory.inflate(R.layout.edit_task, null);
+        final View textEntryView = factory.inflate(R.layout.edit_activity, null);
         return new AlertDialog.Builder(Tasks.this) //.setIcon(R.drawable.alert_dialog_icon)
-                .setTitle(R.string.add_task_title).setView(textEntryView).setPositiveButton(R.string.add_task_ok, new DialogInterface.OnClickListener() {
+                .setTitle(R.string.add_activity_title).setView(textEntryView).setPositiveButton(R.string.add_activity_ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                EditText textView = (EditText) textEntryView.findViewById(R.id.task_edit_name_edit);
+                EditText textView = (EditText) textEntryView.findViewById(R.id.activity_edit_name_edit);
                 String name = textView.getText().toString();
                 adapter.addTask(name);
                 Tasks.this.getListView().invalidate();
@@ -606,10 +606,10 @@ public class Tasks extends ListActivity {
             return null;
         }
         LayoutInflater factory = LayoutInflater.from(this);
-        final View textEntryView = factory.inflate(R.layout.edit_task, null);
+        final View textEntryView = factory.inflate(R.layout.edit_activity, null);
         return new AlertDialog.Builder(Tasks.this).setView(textEntryView).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                EditText textView = (EditText) textEntryView.findViewById(R.id.task_edit_name_edit);
+                EditText textView = (EditText) textEntryView.findViewById(R.id.activity_edit_name_edit);
                 String name = textView.getText().toString();
                 selectedTask.setTaskName(name);
 
@@ -630,9 +630,9 @@ public class Tasks extends ListActivity {
         if (selectedTask == null) {
             return null;
         }
-        String formattedMessage = getString(R.string.delete_task_message,
+        String formattedMessage = getString(R.string.delete_activity_message,
                 selectedTask.getTaskName());
-        return new AlertDialog.Builder(Tasks.this).setTitle(R.string.delete_task_title).setIcon(android.R.drawable.stat_sys_warning).setCancelable(true).setMessage(formattedMessage).setPositiveButton(R.string.delete_ok, new DialogInterface.OnClickListener() {
+        return new AlertDialog.Builder(Tasks.this).setTitle(R.string.delete_activity_title).setIcon(android.R.drawable.stat_sys_warning).setCancelable(true).setMessage(formattedMessage).setPositiveButton(R.string.delete_ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 adapter.deleteTask(selectedTask);
                 Tasks.this.getListView().invalidate();
@@ -705,11 +705,11 @@ public class Tasks extends ListActivity {
         EditText textView;
         switch (id) {
             case ADD_TASK:
-                textView = (EditText) d.findViewById(R.id.task_edit_name_edit);
+                textView = (EditText) d.findViewById(R.id.activity_edit_name_edit);
                 textView.setText("");
                 break;
             case EDIT_TASK:
-                textView = (EditText) d.findViewById(R.id.task_edit_name_edit);
+                textView = (EditText) d.findViewById(R.id.activity_edit_name_edit);
                 textView.setText(selectedTask.getTaskName());
                 break;
             default:

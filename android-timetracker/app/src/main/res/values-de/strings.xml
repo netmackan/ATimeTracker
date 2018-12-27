@@ -3,9 +3,9 @@
     <string name="app_name">A Time Tracker</string>
 
     <string name="start">Start</string>
-    <string name="task_name">Aufgabe</string>
-    <string name="add_task_ok">Füge Aufgabe hinzu</string>
-    <string name="task_name_required">Ein Aufgabenname ist erforderlich</string>
+    <string name="activity_name">Aktivität</string>
+    <string name="add_activity_ok">Füge Aktivität hinzu</string>
+    <string name="activity_name_required">Ein Aktivitätname ist erforderlich</string>
     <string name="start_time_required">Eine Startzeit ist erforderlich</string>
 
     <string name="change_date_range">Zeitbereich ändern</string>
@@ -14,13 +14,13 @@
     <string name="restore_from_backup">Von Speicher wiederherstellen</string>
 
     <string name="delete_ok">Löschen</string>
-    <string name="delete_task_title">Lösche Aufgabe</string>
-    <string name="delete_task_message">Bist du sicher, dass du \'%s\' und alle zugehörigen Zeiten löschen möchtest?</string>
-    <string name="add_task_title">Füge Aufgabe hinzu</string>
+    <string name="delete_activity_title">Lösche Aktivität</string>
+    <string name="delete_activity_message">Bist du sicher, dass du \'%s\' und alle zugehörigen Zeiten löschen möchtest?</string>
+    <string name="add_activity_title">Füge Aktivität hinzu</string>
     <string name="change_view_title">Wechsel Ansicht</string>
     <string name="generate_report_title">Bericht</string>
     <string name="select_range">Zeitbereich auswählen…</string>
-    <string name="done">Zurück zu Aufgaben</string>
+    <string name="done">Zurück zu activities</string>
     <string name="add_time_title">Neue Zeiten hinzufügen</string>
     <string name="delete_time_message">Bist du sicher, dass du diese Zeiten löschen möchtest?</string>
     <string name="delete_time_title">Lösche Zeiten</string>
@@ -33,9 +33,9 @@
     <string name="title">A Time Tracker (%s)</string>
     <string name="help">Hilfe</string>
     <string name="export_view">Export</string>
-    <string name="move_time">Weise Zeit einer anderen Aufgabe zu</string>
-    <string name="edit_task">Bearbeite Aufgabe</string>
-    <string name="delete_task">Lösche Aufgabe</string>
+    <string name="move_time">Weise Zeit einer anderen Aktivität zu</string>
+    <string name="edit_activity">Bearbeite Aktivität</string>
+    <string name="delete_activity">Lösche Aktivität</string>
     <string name="show_times">Zeige Zeiten</string>
 
     <!--    Settings strings    -->
@@ -44,7 +44,7 @@
     <string name="week_start_day">Start der Woche</string>
     <string name="hour_mode">12/24-Stunden-Modus</string>
     <string name="font_size">Schriftgröße</string>
-    <string name="concurrency">Mehrere gleichzeitig laufende Aufgaben</string>
+    <string name="concurrency">Mehrere gleichzeitig laufende Activities</string>
     <string name="sound">Sound</string>
     <string name="vibrate">Vibration</string>
     <!-- Settings values -->
@@ -55,8 +55,8 @@
     <string name="small_font">Klein</string>
     <string name="medium_font">Mittel</string>
     <string name="large_font">Groß</string>
-    <string name="concurrent">Aufgaben können gleichzeitig laufen</string>
-    <string name="exclusive">Nur eine Aufgabe kann gleichzeitig laufen</string>
+    <string name="concurrent">Activities can run at the same time</string>
+    <string name="exclusive">Only one activity can run at a time</string>
     <string name="sound_enabled">Sound aktiviert</string>
     <string name="sound_disabled">Sound deaktiviert</string>
     <string name="vibrate_enabled">Vibration aktiviert</string>
