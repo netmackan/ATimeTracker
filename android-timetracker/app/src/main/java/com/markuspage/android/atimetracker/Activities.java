@@ -390,7 +390,6 @@ public class Activities extends ListActivity {
                         exportMessage = ex.getLocalizedMessage();
                         showDialog(ERROR_DIALOG);
                     } finally {
-                        progressDialog.dismiss();
                         try {
                             if (in != null) {
                                 in.close();
@@ -403,6 +402,7 @@ public class Activities extends ListActivity {
                             }
                         } catch (IOException ignored) {
                         }
+                        progressDialog.dismiss();
                     }
                 }
                 break;
