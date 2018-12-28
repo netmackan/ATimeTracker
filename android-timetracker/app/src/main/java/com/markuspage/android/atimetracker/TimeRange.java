@@ -26,7 +26,6 @@
 package com.markuspage.android.atimetracker;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -71,15 +70,31 @@ public class TimeRange implements Comparable<TimeRange> {
         }
         return end - start;
     }
-    protected static DateFormat FORMAT = new SimpleDateFormat("HH:mm");
 
     @Override
     public String toString() {
         Date s = new Date(start);
-        final StringBuilder b = new StringBuilder(FORMAT.format(s));
+        final StringBuilder b = new StringBuilder(s.toString());
         b.append(" - ");
         if (end != NULL) {
-            b.append(FORMAT.format(new Date(end)));
+            b.append(new Date(end));
+        } else {
+            b.append("...");
+        }
+        return b.toString();
+    }
+
+    /**
+     * Formats this time range in textual form using the supplied date format.
+     * @param format for the times
+     * @return the textual representation
+     */
+    public String format(DateFormat format) {
+        Date s = new Date(start);
+        final StringBuilder b = new StringBuilder(format.format(s));
+        b.append(" - ");
+        if (end != NULL) {
+            b.append(format.format(new Date(end)));
         } else {
             b.append("...");
         }

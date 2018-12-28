@@ -175,11 +175,6 @@ public class Activities extends ListActivity {
         preferences = getSharedPreferences(TIMETRACKERPREF, MODE_PRIVATE);
         fontSize = preferences.getInt(FONTSIZE, 16);
         concurrency = preferences.getBoolean(CONCURRENT, false);
-        if (preferences.getBoolean(MILITARY, true)) {
-            TimeRange.FORMAT = new SimpleDateFormat("HH:mm");
-        } else {
-            TimeRange.FORMAT = new SimpleDateFormat("hh:mm a");
-        }
 
         int which = preferences.getInt(VIEW_MODE, 0);
         if (adapter == null) {
@@ -1125,13 +1120,6 @@ public class Activities extends ListActivity {
             Bundle extras = data.getExtras();
             if (extras.getBoolean(START_DAY)) {
                 switchView(preferences.getInt(VIEW_MODE, 0));
-            }
-            if (extras.getBoolean(MILITARY)) {
-                if (preferences.getBoolean(MILITARY, true)) {
-                    TimeRange.FORMAT = new SimpleDateFormat("HH:mm");
-                } else {
-                    TimeRange.FORMAT = new SimpleDateFormat("hh:mm a");
-                }
             }
             if (extras.getBoolean(CONCURRENT)) {
                 concurrency = preferences.getBoolean(CONCURRENT, false);

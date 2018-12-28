@@ -66,6 +66,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import static com.markuspage.android.atimetracker.Activities.MILITARY;
 import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_ID;
 import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_NAME;
 
@@ -76,6 +77,7 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
     private static final int ADD_TIME = 0, DELETE_TIME = 2, EDIT_TIME = 3, MOVE_TIME = 4;
     private static final int SEP = -99;
     private boolean decimalFormat;
+    private SimpleDateFormat timeFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,12 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
             setListAdapter(adapter);
         }
         decimalFormat = preferences.getBoolean(Activities.TIMEDISPLAY, false);
+        if (preferences.getBoolean(MILITARY, true)) {
+            timeFormat = new SimpleDateFormat("HH:mm");
+        } else {
+            timeFormat = new SimpleDateFormat("hh:mm a");
+        }
+
         registerForContextMenu(getListView());
         Bundle extras = getIntent().getExtras();
         if (extras.get(START) != null) {
@@ -399,7 +407,7 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
             }
 
             public void setTimeRange(TimeRange t) {
-                dateRange.setText(t.toString());
+                dateRange.setText(t.format(timeFormat));
                 total.setText(Activities.formatTotal(decimalFormat, t.getTotal(), 0));
                 /* If the following is added, then the timer to update the
                  * display must also be added

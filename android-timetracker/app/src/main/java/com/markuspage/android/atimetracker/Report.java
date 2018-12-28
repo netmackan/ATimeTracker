@@ -113,8 +113,8 @@ public class Report extends Activity implements OnClickListener {
     private static final int RPAD = 4;
     private static final String FORMAT = "%02d:%02d";
     private Button weekView;
-    private static final SimpleDateFormat WEEK_FORMAT = new SimpleDateFormat("w");
-    private static final SimpleDateFormat TITLE_FORMAT = new SimpleDateFormat("EEE, MMM d");
+    private final SimpleDateFormat WEEK_FORMAT = new SimpleDateFormat("w");
+    private final SimpleDateFormat TITLE_FORMAT = new SimpleDateFormat("EEE, MMM d");
     private DBHelper dbHelper;
     private SQLiteDatabase db;
     private int startDay;
