@@ -731,12 +731,12 @@ public class Activities extends ListActivity {
         /**
          * The view of the activity name displayed in the list
          */
-        private TextView name;
+        private final TextView name;
         /**
          * The view of the total time of the activity.
          */
-        private TextView total;
-        private ImageView checkMark;
+        private final TextView total;
+        private final ImageView checkMark;
 
         public ActivityView(Context context, Activity t) {
             super(context);
@@ -827,9 +827,9 @@ public class Activities extends ListActivity {
 
     private class ActivityAdapter extends BaseAdapter {
 
-        private DBHelper dbHelper;
+        private final DBHelper dbHelper;
         protected ArrayList<Activity> activities;
-        private Context savedContext;
+        private final Context savedContext;
         private long currentRangeStart;
         private long currentRangeEnd;
 

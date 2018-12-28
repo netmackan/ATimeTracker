@@ -209,9 +209,9 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
 
     private class TimesAdapter extends BaseAdapter {
 
-        private Context savedContext;
-        private DBHelper dbHelper;
-        private ArrayList<TimeRange> times;
+        private final Context savedContext;
+        private final DBHelper dbHelper;
+        private final ArrayList<TimeRange> times;
 
         public TimesAdapter(Context c) {
             savedContext = c;
@@ -381,8 +381,8 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
 
         private final class TimeView extends LinearLayout {
 
-            private TextView dateRange;
-            private TextView total;
+            private final TextView dateRange;
+            private final TextView total;
 
             public TimeView(Context context, TimeRange t) {
                 super(context);
