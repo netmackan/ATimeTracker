@@ -147,9 +147,9 @@ public class Activities extends ListActivity {
      */
     private Activity selectedActivity;
     private SharedPreferences preferences;
-    private static int fontSize = 16;
+    private int fontSize = 16;
     private boolean concurrency;
-    private static MediaPlayer clickPlayer;
+    private MediaPlayer clickPlayer;
     private boolean playClick = false;
     private boolean vibrateClick = true;
     private Vibrator vibrateAgent;

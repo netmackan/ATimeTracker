@@ -73,7 +73,7 @@ import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_NAME;
 public class ActivityTimes extends ListActivity implements DialogInterface.OnClickListener {
 
     private TimesAdapter adapter;
-    private static int FONT_SIZE;
+    private int fontSize;
     private static final int ADD_TIME = 0, DELETE_TIME = 2, EDIT_TIME = 3, MOVE_TIME = 4;
     private static final int SEP = -99;
     private boolean decimalFormat;
@@ -83,7 +83,7 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences preferences = getSharedPreferences("timetracker.pref", MODE_PRIVATE);
-        FONT_SIZE = preferences.getInt(Activities.FONTSIZE, 16);
+        fontSize = preferences.getInt(Activities.FONTSIZE, 16);
         if (adapter == null) {
             adapter = new TimesAdapter(this);
             setListAdapter(adapter);
@@ -307,7 +307,7 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
                 TextView headerText;
                 if (convertView == null || !(convertView instanceof TextView)) {
                     headerText = new TextView(savedContext);
-                    headerText.setTextSize(FONT_SIZE);
+                    headerText.setTextSize(fontSize);
                     headerText.setTextColor(Color.YELLOW);
                     headerText.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
                     headerText.setText(SEPFORMAT.format(new Date(range.getStart())));
@@ -392,12 +392,12 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
                 setPadding(5, 10, 5, 10);
 
                 dateRange = new TextView(context);
-                dateRange.setTextSize(FONT_SIZE);
+                dateRange.setTextSize(fontSize);
                 addView(dateRange, new LinearLayout.LayoutParams(
                         LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT, 1f));
 
                 total = new TextView(context);
-                total.setTextSize(FONT_SIZE);
+                total.setTextSize(fontSize);
                 total.setGravity(Gravity.RIGHT);
                 total.setTransformationMethod(SingleLineTransformationMethod.getInstance());
                 addView(total, new LinearLayout.LayoutParams(
