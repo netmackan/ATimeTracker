@@ -182,9 +182,7 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
             default:
                 break;
         }
-        if (ActivityTimes.this != null) {
-            ActivityTimes.this.getListView().invalidate();
-        }
+        ActivityTimes.this.getListView().invalidate();
     }
 
     @Override
