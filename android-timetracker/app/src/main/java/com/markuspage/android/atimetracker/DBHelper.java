@@ -46,16 +46,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
         super(context, TIMETRACKER_DB_NAME, null, DBVERSION);
-        instance = this;
     }
-    /**
-     * Despite the name, this is not a singleton constructor
-     */
-    private static DBHelper instance;
 
-    public static DBHelper getInstance() {
-        return instance;
-    }
     private static final String CREATE_ACTIVITY_TABLE =
             "CREATE TABLE %s ("
             + ID_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT,"
