@@ -858,7 +858,7 @@ public class Activities extends ListActivity {
 
         protected void loadActivities(Calendar start, Calendar end) {
             String[] res = makeWhereClause(start, end);
-            loadActivities(res[0], res[1] == null ? false : true);
+            loadActivities(res[0], res[1] != null);
         }
 
         /**

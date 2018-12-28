@@ -124,10 +124,7 @@ public class Activity implements Comparable<Activity> {
             return false;
         }
         final Activity other = (Activity) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
+        return this.id == other.id;
     }
 
     @Override
