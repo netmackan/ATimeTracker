@@ -165,7 +165,7 @@ public class Activities extends ListActivity {
             SET_WEEK_START_DAY = 12, BACKUP = 14, PREFERENCES = 15,
             PROGRESS_DIALOG = 16, RESTORE = 17;
     // TODO: This could be done better...
-    private static final String dbPath = "/data/data/com.markuspage.android.atimetracker/databases/timetracker.db";
+    private static final String DB_FILE = "/data/data/com.markuspage.android.atimetracker/databases/timetracker.db";
     private final File dbBackup = new File(Environment.getExternalStorageDirectory(), "timetracker.db");
 
     @Override
@@ -371,7 +371,7 @@ public class Activities extends ListActivity {
                 if (dbBackup.exists()) {
                     // Find the database
                     SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READWRITE);
-                    SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY);
+                    SQLiteDatabase appDb = SQLiteDatabase.openDatabase(DB_FILE, null, SQLiteDatabase.OPEN_READONLY);
                     DBBackup backup = new DBBackup(Activities.this, progressDialog, R.string.backup_success, R.string.backup_failed);
                     backup.execute(appDb, backupDb);
                 } else {
@@ -379,7 +379,7 @@ public class Activities extends ListActivity {
                     OutputStream out = null;
 
                     try {
-                        in = new BufferedInputStream(new FileInputStream(dbPath));
+                        in = new BufferedInputStream(new FileInputStream(DB_FILE));
                         out = new BufferedOutputStream(new FileOutputStream(dbBackup));
                         for (int c = in.read(); c != -1; c = in.read()) {
                             out.write(c);
@@ -412,7 +412,7 @@ public class Activities extends ListActivity {
                     try {
                         showDialog(Activities.PROGRESS_DIALOG);
                         SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
-                        SQLiteDatabase appDb = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
+                        SQLiteDatabase appDb = SQLiteDatabase.openDatabase(DB_FILE, null, SQLiteDatabase.OPEN_READWRITE);
                         DBBackup backup = new DBBackup(Activities.this, progressDialog, R.string.restore_success, R.string.restore_failed);
                         backup.execute(backupDb, appDb);
                     } catch (Exception ex) {
@@ -462,6 +462,7 @@ public class Activities extends ListActivity {
      */
     private Dialog openChangeViewDialog() {
         return new AlertDialog.Builder(Activities.this).setItems(R.array.views, new DialogInterface.OnClickListener() {
+            @Override
             public void onClick(DialogInterface dialog, int which) {
                 SharedPreferences.Editor ed = preferences.edit();
                 ed.putInt(VIEW_MODE, which);
@@ -470,6 +471,7 @@ public class Activities extends ListActivity {
                     Calendar calInstance = Calendar.getInstance();
                     new DatePickerDialog(Activities.this,
                             new DatePickerDialog.OnDateSetListener() {
+                        @Override
                         public void onDateSet(DatePicker view, int year,
                                 int monthOfYear, int dayOfMonth) {
                             Calendar start = Calendar.getInstance();
@@ -486,6 +488,7 @@ public class Activities extends ListActivity {
 
                             new DatePickerDialog(Activities.this,
                                     new DatePickerDialog.OnDateSetListener() {
+                                @Override
                                 public void onDateSet(DatePicker view, int year,
                                         int monthOfYear, int dayOfMonth) {
                                     Calendar end = Calendar.getInstance();

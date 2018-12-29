@@ -495,6 +495,7 @@ public class Report extends Activity implements OnClickListener {
         return ws;
     }
 
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.increment_week:

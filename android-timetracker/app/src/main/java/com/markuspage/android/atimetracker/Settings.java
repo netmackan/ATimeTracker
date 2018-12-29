@@ -211,6 +211,7 @@ public class Settings extends ListActivity implements OnClickListener {
         this.getListView().invalidate();
     }
 
+    @Override
     public void onClick(View v) {
         Intent returnIntent = getIntent();
         SharedPreferences.Editor ed = applicationPreferences.edit();
@@ -249,6 +250,7 @@ public class Settings extends ListActivity implements OnClickListener {
         switch (dialogId) {
             case CHOOSE_DAY:
                 return new AlertDialog.Builder(this).setItems(DAYS_OF_WEEK, new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface iface, int whichChoice) {
                         Map<String, String> startDay = prefs.get(DAY_OF_WEEK_PREF_IDX);
                         startDay.put(CURRENT, DAYS_OF_WEEK[whichChoice]);
@@ -259,6 +261,7 @@ public class Settings extends ListActivity implements OnClickListener {
                 }).create();
             case CHOOSE_ROUNDING:
                 return new AlertDialog.Builder(this).setItems(ROUND_NAMES, new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface iface, int whichChoice) {
                         roundPref.put(CURRENT, ROUND_NAMES[whichChoice]);
                         roundPref.put(CURRENTVALUE, String.valueOf(ROUND[whichChoice]));

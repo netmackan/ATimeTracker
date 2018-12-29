@@ -171,6 +171,7 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
     }
     private int action;
 
+    @Override
     public void onClick(DialogInterface dialog, int whichButton) {
         switch (action) {
             case DELETE_TIME:
@@ -295,6 +296,7 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
             notifyDataSetChanged();
         }
 
+        @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             Object item = getItem(position);
             if (item == null) {
@@ -325,14 +327,17 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
             return timeView;
         }
 
+        @Override
         public int getCount() {
             return times.size();
         }
 
+        @Override
         public Object getItem(int position) {
             return times.get(position);
         }
 
+        @Override
         public long getItemId(int position) {
             return position;
         }
