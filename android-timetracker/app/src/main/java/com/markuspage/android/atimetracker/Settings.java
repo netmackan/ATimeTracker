@@ -42,7 +42,7 @@ import android.text.format.DateUtils;
 /**
  * Preferences activity.
  *
- * @author Sean Russell <ser@germane-software.com>
+ * @author Sean Russell, ser@germane-software.com
  */
 public class Settings extends ListActivity implements OnClickListener {
 

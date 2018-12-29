@@ -100,7 +100,7 @@ import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_TABLE;
  * Manages and displays a list of activities, providing the ability to edit and
  * display individual activity items.
  *
- * @author ser
+ * @author Sean Russell, ser@germane-software.com
  */
 public class Activities extends ListActivity {
 
