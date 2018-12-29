@@ -583,7 +583,7 @@ public class Activities extends ListActivity {
         final View textEntryView = factory.inflate(R.layout.edit_activity, null);
         final AlertDialog dialog = new AlertDialog.Builder(Activities.this)
                 .setTitle(R.string.add_activity_title).setView(textEntryView)
-                .setPositiveButton(R.string.add_activity_ok, new EmptyOnClickListener())
+                .setPositiveButton(R.string.add_activity_ok, null)
                 .setNegativeButton(android.R.string.cancel, null)
                 .create();
         dialog.show();
@@ -617,11 +617,9 @@ public class Activities extends ListActivity {
         final View textEntryView = factory.inflate(R.layout.edit_activity, null);
         final AlertDialog dialog = new AlertDialog.Builder(Activities.this)
                 .setView(textEntryView)
-                .setPositiveButton(android.R.string.ok, new EmptyOnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int whichButton) {
-            }
-        }).setNegativeButton(android.R.string.cancel, null).create();
+                .setPositiveButton(android.R.string.ok, null)
+                .setNegativeButton(android.R.string.cancel, null)
+                .create();
         dialog.show();
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1182,13 +1180,4 @@ public class Activities extends ListActivity {
         perform(message, success_string, fail_string);
     }
 
-    private static class EmptyOnClickListener implements DialogInterface.OnClickListener {
-
-        public EmptyOnClickListener() {
-        }
-
-        @Override
-        public void onClick(DialogInterface dialog, int whichButton) {
-        }
-    }
 }
