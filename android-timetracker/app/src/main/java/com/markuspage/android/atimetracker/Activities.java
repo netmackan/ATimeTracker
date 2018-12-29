@@ -117,6 +117,8 @@ public class Activities extends ListActivity {
     protected static final String REPORT_DATE = "report_date";
     protected static final String TIMEDISPLAY = "time_display";
     protected static final String ROUND_REPORT_TIMES = "round_report_times";
+    protected static final String APP_VERSION = "app_version";
+    
     /**
      * Defines how each activity's time is displayed
      */
@@ -156,6 +158,7 @@ public class Activities extends ListActivity {
     private Vibrator vibrateAgent;
     private ProgressDialog progressDialog = null;
     private boolean decimalFormat = false;
+    private String versionName;
     /**
      * A list of menu options, including both context and options menu items
      */
@@ -212,9 +215,16 @@ public class Activities extends ListActivity {
         }
         decimalFormat = preferences.getBoolean(TIMEDISPLAY, false);
         registerForContextMenu(getListView());
-        if (adapter.activities.isEmpty()) {
+        
+        // Display help if this it the first start with this version
+        final String lastVersion = preferences.getString(APP_VERSION, "0.0");
+        if (!getVersionName().equals(lastVersion)) {
             showDialog(HELP);
+            SharedPreferences.Editor ed = preferences.edit();
+            ed.putString(APP_VERSION, getVersionName());
+            ed.commit();
         }
+
         vibrateAgent = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         vibrateClick = preferences.getBoolean(VIBRATE, true);
     }
@@ -700,16 +710,21 @@ public class Activities extends ListActivity {
         return f.format(d);
     }
 
-    private Dialog openAboutDialog() {
-        String versionName = "";
-        try {
-            PackageInfo pkginfo = this.getPackageManager().getPackageInfo("com.markuspage.android.atimetracker", 0);
-            versionName = pkginfo.versionName;
-        } catch (NameNotFoundException nnfe) {
-            // Denada
+    private String getVersionName() {
+        if (versionName == null) {
+            try {
+                PackageInfo pkginfo = this.getPackageManager().getPackageInfo("com.markuspage.android.atimetracker", 0);
+                versionName = pkginfo.versionName;
+            } catch (NameNotFoundException nnfe) {
+                nnfe.printStackTrace();
+                versionName = "n/a";
+            }
         }
+        return versionName;
+    }
 
-        String formattedVersion = getString(R.string.version, versionName);
+    private Dialog openAboutDialog() {
+        String formattedVersion = getString(R.string.version, getVersionName());
 
         LayoutInflater factory = LayoutInflater.from(this);
         View about = factory.inflate(R.layout.about, null);
