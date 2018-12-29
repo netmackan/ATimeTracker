@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Translation by Wilfried Kopp -->
 <resources>
     <string name="app_name">A Time Tracker</string>
     
@@ -29,7 +28,7 @@
     <string name="end_time_label">Heure de fin</string>
     <string name="end_not_greater_than_start">L´heure de fin doit être après l´heure de début</string>
     <string name="range_error_title">Erreur dans la période</string>
-    <string name="report_title">Rapport pour la semaine %1$s à %2$s </string>
+    <string name="report_title">Rapport pour la semaine %1$s à %2$s</string>
     <string name="week">Semaine %s</string>
     <string name="title">A Time Tracker (%s)</string>
     <string name="help">Aide</string>
@@ -65,37 +64,38 @@
     <string name="time_display">Affichage de l\'heure</string>
     <string name="standard_time">Standard (HH:MM)</string>
     <string name="decimal_time">Décimal (HH.hh)</string>
+    <string name="round_report_time">Arrondir les temps</string>
+    <string name="round_no">Non</string>
+    <string name="round_minutes">Arrondir à %d minutes</string>
 
     <!-- About dialog strings -->
     <string name="version">Version %s</string>
     <string name="author">Open Source Time Tracker</string>
     <string name="purpose">TimeTracker vous aide à enregistrer le temps passé à vos activités. Par exemple, pour enregistrer le temps passé à chaque tâche lors d´un projet professionnel. Il offre la possibilité d´afficher, d´éditer, et de filtrer les entrées et dispose d´une fonction de rapport.</string>
-    <string name="usage">
-    Instructions détaillées à https://github.com/netmackan/ATimeTracker\n\n
-    • Créer des tâches à l´aide des menus\n
-    • Cliquer sur une tâche pour démarrer l´enregistrement, cliquez de nouveau pour l´arrêter\n
-    • Utilisez le menu contextuel sur une tâche pour afficher les détails\n
-    • Changer les options de configuration à l´aide du menu\n
-    • Afficher un rapport hebdomadaire à l´aide du menu\n
-    \n
-    Cliquer sur une autre tâche bascule l´enregistrement sur cette autre tâche.\n
-    \n
-    Le menu contextuel d´une tâche permet d´éditer la tâche (changer son nom), effacer la tâche (y compris les données associées!), ou afficher le détail des enregistrements de la tâche.\n
-    \n
-    <b>Afficher les enregistrements</b>\n
-    \n
-    Le détail des enregsitrements est filtré sur la même période que la sélection faites depuis la vue principale. Donc si vous choisissez d´afficher les durées sur <i>cette semaine</i> et que vous ouvrez le détails des enregistrements, vous verrez uniquement les données de cette semaine. Utilisez le menu <i>Ajouter période</i> pour ajouter des enregistrements manuellement.  Utilisez le menu contextuel afin d´effacer ou éditer une période.\n
-    \n
-    <b>Note:</b> TimeTracker ne vous empechera pas de créer des périodes qui se recouvrent pour la tâche courante ou une autre.
-    </string>
-    <string name="credits"><b>Credits</b>\n
-    \n
-    Based on TimeTracker+ by Sean E. Russell.\n
-    Application icon from Tango Project (tango.freedesktop.org).\n
-    Tranduction en Russe par Денис Гладкий\n
-    Tranduction en Français par Wilfried Kopp
-	</string>
-    <string name="export_csv_success">Exporté avec succès du CSV vers la carte SD sous timetracker.db</string>
+    <string name="usage">Instructions détaillées à https://github.com/netmackan/ATimeTracker\n
+  \n
+       • Créer des tâches à l´aide des menus\n
+       • Cliquer sur une tâche pour démarrer l´enregistrement, cliquez de nouveau pour l´arrêter\n
+       • Utilisez le menu contextuel sur une tâche pour afficher les détails\n
+       • Changer les options de configuration à l´aide du menu\n
+       • Afficher un rapport hebdomadaire à l´aide du menu\n
+       \n
+       Cliquer sur une autre tâche bascule l´enregistrement sur cette autre tâche.\n
+       \n
+       Le menu contextuel d´une tâche permet d´éditer la tâche (changer son nom), effacer la tâche (y compris les données associées!), ou afficher le détail des enregistrements de la tâche.\n
+       \n
+       <b >Afficher les enregistrements</b>\n
+       \n
+       Le détail des enregsitrements est filtré sur la même période que la sélection faites depuis la vue principale. Donc si vous choisissez d´afficher les durées sur <i >cette semaine</i> et que vous ouvrez le détails des enregistrements, vous verrez uniquement les données de cette semaine. Utilisez le menu <i >Ajouter période</i> pour ajouter des enregistrements manuellement.  Utilisez le menu contextuel afin d´effacer ou éditer une période.\n
+       \n
+       <b >Note:</b> TimeTracker ne vous empechera pas de créer des périodes qui se recouvrent pour la tâche courante ou une autre.</string>
+    <string name="credits"><b >Credits</b>\n
+       \n
+       Based on TimeTracker+ by Sean E. Russell.\n
+       Application icon from Tango Project (tango.freedesktop.org).\n
+       Tranduction en Russe par Денис Гладкий\n
+       Tranduction en Français par Wilfried Kopp</string>
+    <string name="export_csv_success">Exporté avec succès du CSV vers la carte SD sous \'%s\'</string>
     <string name="export_csv_fail">Erreur lors de l´exportation CSV. Impossible de créer le fichier. La carte SD est-elle présente ?</string>
     <string name="success">Succès</string>
     <string name="failure">Erreur</string>
