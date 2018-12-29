@@ -473,6 +473,7 @@ public class Report extends Activity implements OnClickListener {
      * calendar data falls
      *
      * @param tw the day for which to calculate the week end
+     * @param startDay first day of week
      * @return a Calendar marking the end of the week
      */
     public static Calendar weekEnd(Calendar tw, int startDay) {
