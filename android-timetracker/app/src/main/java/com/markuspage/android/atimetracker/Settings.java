@@ -87,16 +87,16 @@ public class Settings extends ListActivity implements OnClickListener {
         prefs.add(pref);
 
         addBooleanPreference(R.string.hour_mode, Activities.MILITARY,
-                R.string.military, R.string.civilian);
+                R.string.military, R.string.civilian, true);
 
         addBooleanPreference(R.string.concurrency, Activities.CONCURRENT,
-                R.string.concurrent, R.string.exclusive);
+                R.string.concurrent, R.string.exclusive, false);
 
         addBooleanPreference(R.string.sound, Activities.SOUND,
-                R.string.sound_enabled, R.string.sound_disabled);
+                R.string.sound_enabled, R.string.sound_disabled, false);
 
         addBooleanPreference(R.string.vibrate, Activities.VIBRATE,
-                R.string.vibrate_enabled, R.string.vibrate_disabled);
+                R.string.vibrate_enabled, R.string.vibrate_disabled, true);
 
         pref = new HashMap<String, String>();
         pref.put(PREFERENCE, getString(R.string.font_size));
@@ -112,7 +112,7 @@ public class Settings extends ListActivity implements OnClickListener {
         fontMap.put(getString(R.string.large_font), LARGE);
 
         addBooleanPreference(R.string.time_display, Activities.TIMEDISPLAY,
-                R.string.decimal_time, R.string.standard_time);
+                R.string.decimal_time, R.string.standard_time, false);
 
         // Round times in report
         for (int i = 0; i < ROUND.length; i++) {
@@ -144,12 +144,12 @@ public class Settings extends ListActivity implements OnClickListener {
     }
 
     private void addBooleanPreference(int prefName, String name,
-            int enabled, int disabled) {
+            int enabled, int disabled, boolean defaultEnabled) {
         Map<String, String> pref;
         pref = new HashMap<String, String>();
         String prefNameString = getString(prefName);
         pref.put(PREFERENCE, prefNameString);
-        boolean value = applicationPreferences.getBoolean(name, false);
+        boolean value = applicationPreferences.getBoolean(name, defaultEnabled);
         String enabledString = getString(enabled);
         String disabledString = getString(disabled);
         pref.put(CURRENT, value ? enabledString : disabledString);
@@ -226,7 +226,7 @@ public class Settings extends ListActivity implements OnClickListener {
                 }
             } else if (pref.get(VALUETYPE).equals(BOOL)) {
                 final Boolean value = Boolean.valueOf(pref.get(CURRENTVALUE));
-                if (value != applicationPreferences.getBoolean(prefName, false)) {
+                if (value != applicationPreferences.getBoolean(prefName, !value)) {
                     ed.putBoolean(prefName, value);
                     returnIntent.putExtra(prefName, true);
                 }

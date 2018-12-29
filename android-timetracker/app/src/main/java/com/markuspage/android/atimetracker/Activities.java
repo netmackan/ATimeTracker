@@ -244,6 +244,7 @@ public class Activities extends ListActivity {
         }
         if (clickPlayer != null) {
             clickPlayer.release();
+            clickPlayer = null;
         }
         super.onStop();
     }
