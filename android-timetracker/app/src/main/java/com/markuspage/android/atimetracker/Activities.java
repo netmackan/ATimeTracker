@@ -207,8 +207,7 @@ public class Activities extends ListActivity {
             } catch (IllegalStateException illegalStateException) {
                 // ignore this.  There's nothing the user can do about it.
                 Logger.getLogger("TimeTracker").log(Level.SEVERE,
-                        "Failed to set up audio player: "
-                        + illegalStateException.getMessage());
+                        "Failed to set up audio player: {0}", illegalStateException.getMessage());
             }
         }
         decimalFormat = preferences.getBoolean(TIMEDISPLAY, false);
@@ -386,7 +385,7 @@ public class Activities extends ListActivity {
                             out.write(c);
                         }
                         finishedCopy(DBBackup.Result.SUCCESS, dbBackup.getAbsolutePath(), R.string.backup_success, R.string.backup_failed);
-                    } catch (Exception ex) {
+                    } catch (IOException ex) {
                         Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, null, ex);
                         exportMessage = ex.getLocalizedMessage();
                         showDialog(ERROR_DIALOG);
@@ -422,7 +421,7 @@ public class Activities extends ListActivity {
                         showDialog(ERROR_DIALOG);
                     }
                 } else {
-                    Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, "Backup file does not exist: " + dbBackup.getAbsolutePath());
+                    Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, "Backup file does not exist: {0}", dbBackup.getAbsolutePath());
                     exportMessage = getString(R.string.restore_failed, "No backup file: " + dbBackup.getAbsolutePath());
                     showDialog(ERROR_DIALOG);
                 }
@@ -1080,13 +1079,12 @@ public class Activities extends ListActivity {
             try {
                 //clickPlayer.prepare();
                 clickPlayer.start();
-            } catch (Exception exception) {
+            } catch (IllegalStateException exception) {
                 // Ignore this; it is probably because the media isn't yet ready.
                 // There's nothing the user can do about it.
                 // ignore this.  There's nothing the user can do about it.
                 Logger.getLogger("TimeTracker").log(Level.INFO,
-                        "Failed to play audio: "
-                        + exception.getMessage());
+                        "Failed to play audio: {0}", exception.getMessage());
             }
         }
 
@@ -1155,8 +1153,8 @@ public class Activities extends ListActivity {
                     } catch (IllegalStateException illegalStateException) {
                         // ignore this.  There's nothing the user can do about it.
                         Logger.getLogger("TimeTracker").log(Level.SEVERE,
-                                "Failed to set up audio player: "
-                                + illegalStateException.getMessage());
+                                "Failed to set up audio player: {0}",
+                                illegalStateException.getMessage());
                     }
                 }
             }
