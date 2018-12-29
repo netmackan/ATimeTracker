@@ -18,17 +18,18 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-/**
- * TimeTracker ©2008, 2009 Sean Russell
- *
- * @author Sean Russell <ser@germane-software.com>
- */
+
 package com.markuspage.android.atimetracker;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * Helper class for database interactions.
+ *
+ * @author Sean Russell, ser@germane-software.com
+ */
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String END = "end";

@@ -64,6 +64,11 @@ import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_COLUMNS;
 import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_TABLE;
 import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_NAME;
 
+/**
+ * Report activity.
+ *
+ * @author Sean Russell, ser@germane-software.com
+ */
 public class Report extends Activity implements OnClickListener {
 
     enum Day {

@@ -36,8 +36,9 @@ import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_COLUMNS;
 import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_TABLE;
 
 /**
+ * DB backup task.
  *
- * @author ser
+ * @author Sean Russell, ser@germane-software.com
  */
 public class DBBackup extends AsyncTask<SQLiteDatabase, Integer, Void> {
 

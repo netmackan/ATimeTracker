@@ -18,17 +18,18 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-/**
- * TimeTracker ©2008, 2009 Sean Russell
- *
- * @author Sean Russell <ser@germane-software.com>
- */
+
 package com.markuspage.android.atimetracker;
 
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Representation of a time range.
+ *
+ * @author Sean Russell, ser@germane-software.com
+ */
 public class TimeRange implements Comparable<TimeRange> {
 
     public static final long NULL = -1;

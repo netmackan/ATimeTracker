@@ -27,6 +27,11 @@ import java.util.Date;
 
 import android.database.Cursor;
 
+/**
+ * Helper class for formatting the CSV export.
+ *
+ * @author Sean Russell, ser@germane-software.com
+ */
 public class CSVExporter {
 
     private static String escape(String s) {

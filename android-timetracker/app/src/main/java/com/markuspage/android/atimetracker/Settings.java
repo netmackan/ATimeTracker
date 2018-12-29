@@ -40,8 +40,9 @@ import android.widget.SimpleAdapter;
 import android.text.format.DateUtils;
 
 /**
+ * Preferences activity.
  *
- * @author ser
+ * @author Sean Russell <ser@germane-software.com>
  */
 public class Settings extends ListActivity implements OnClickListener {
 

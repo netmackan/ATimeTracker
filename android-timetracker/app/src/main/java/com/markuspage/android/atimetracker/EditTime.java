@@ -18,11 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-/**
- * TimeTracker ©2008, 2009 Sean Russell
- *
- * @author Sean Russell <ser@germane-software.com>
- */
+
 package com.markuspage.android.atimetracker;
 
 import static com.markuspage.android.atimetracker.TimeRange.NULL;
@@ -39,6 +35,11 @@ import android.view.View.OnClickListener;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+/**
+ * Activity for editing a time.
+ *
+ * @author Sean Russell, ser@germane-software.com
+ */
 public class EditTime extends Activity implements OnClickListener {
 
     protected static final String END_DATE = "end-date";

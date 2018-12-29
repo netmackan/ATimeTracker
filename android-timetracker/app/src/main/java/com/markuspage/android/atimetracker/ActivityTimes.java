@@ -18,11 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-/**
- * TimeTracker ©2008, 2009 Sean Russell
- *
- * @author Sean Russell <ser@germane-software.com>
- */
+
 package com.markuspage.android.atimetracker;
 
 import static com.markuspage.android.atimetracker.DBHelper.END;
@@ -70,6 +66,11 @@ import static com.markuspage.android.atimetracker.Activities.MILITARY;
 import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_ID;
 import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_NAME;
 
+/**
+ * Activity listing times in activity.
+ *
+ * @author Sean Russell, ser@germane-software.com
+ */
 public class ActivityTimes extends ListActivity implements DialogInterface.OnClickListener {
 
     private TimesAdapter adapter;
