@@ -192,7 +192,7 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
         switch (id) {
             case DELETE_TIME:
                 return new AlertDialog.Builder(this)
-                        .setTitle(R.string.delete_activity_title)
+                        .setTitle(R.string.delete_time_title)
                         .setIcon(android.R.drawable.stat_sys_warning)
                         .setCancelable(true)
                         .setMessage(R.string.delete_time_message)
