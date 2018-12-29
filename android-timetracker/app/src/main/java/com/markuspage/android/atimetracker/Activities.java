@@ -578,12 +578,11 @@ public class Activities extends ListActivity {
     private Dialog openNewActivityDialog() {
         LayoutInflater factory = LayoutInflater.from(this);
         final View textEntryView = factory.inflate(R.layout.edit_activity, null);
-        final AlertDialog dialog = new AlertDialog.Builder(Activities.this) //.setIcon(R.drawable.alert_dialog_icon)
-                .setTitle(R.string.add_activity_title).setView(textEntryView).setPositiveButton(R.string.add_activity_ok, new DialogInterface.OnClickListener() {
-            @Override 
-            public void onClick(DialogInterface dialog, int whichButton) {
-            }
-        }).setNegativeButton(android.R.string.cancel, null).create();
+        final AlertDialog dialog = new AlertDialog.Builder(Activities.this)
+                .setTitle(R.string.add_activity_title).setView(textEntryView)
+                .setPositiveButton(R.string.add_activity_ok, new EmptyOnClickListener())
+                .setNegativeButton(android.R.string.cancel, null)
+                .create();
         dialog.show();
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -613,22 +612,33 @@ public class Activities extends ListActivity {
         }
         LayoutInflater factory = LayoutInflater.from(this);
         final View textEntryView = factory.inflate(R.layout.edit_activity, null);
-        return new AlertDialog.Builder(Activities.this).setView(textEntryView).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+        final AlertDialog dialog = new AlertDialog.Builder(Activities.this)
+                .setView(textEntryView)
+                .setPositiveButton(android.R.string.ok, new EmptyOnClickListener() {
+            @Override
             public void onClick(DialogInterface dialog, int whichButton) {
-                EditText textView = (EditText) textEntryView.findViewById(R.id.activity_edit_name_edit);
-                String name = textView.getText().toString();
-                selectedActivity.setName(name);
-
-                adapter.updateActivity(selectedActivity);
-
-                Activities.this.getListView().invalidate();
             }
         }).setNegativeButton(android.R.string.cancel, null).create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText textView = (EditText) textEntryView.findViewById(R.id.activity_edit_name_edit);
+                String name = textView.getText().toString();
+                if (!name.isEmpty()) {
+                    selectedActivity.setName(name);
+                    adapter.updateActivity(selectedActivity);
+                    Activities.this.getListView().invalidate();
+                    dialog.dismiss();
+                }
+            }
+        });
+        return dialog;
     }
 
     /**
      * Constructs a progressDialog asking for confirmation for a delete request.
-     * If accepted, deletes the activity. If cancelled, closes the progressDialog.
+     * If accepted, deletes the activity. If canceled, closes the progressDialog.
      *
      * @return the progressDialog to display
      */
@@ -638,12 +648,19 @@ public class Activities extends ListActivity {
         }
         String formattedMessage = getString(R.string.delete_activity_message,
                 selectedActivity.getName());
-        return new AlertDialog.Builder(Activities.this).setTitle(R.string.delete_activity_title).setIcon(android.R.drawable.stat_sys_warning).setCancelable(true).setMessage(formattedMessage).setPositiveButton(R.string.delete_ok, new DialogInterface.OnClickListener() {
+        return new AlertDialog.Builder(Activities.this)
+                .setTitle(R.string.delete_activity_title)
+                .setIcon(android.R.drawable.stat_sys_warning)
+                .setCancelable(true)
+                .setMessage(formattedMessage)
+                .setPositiveButton(R.string.delete_ok, new DialogInterface.OnClickListener() {
+            @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 adapter.deleteActivity(selectedActivity);
                 Activities.this.getListView().invalidate();
             }
-        }).setNegativeButton(android.R.string.cancel, null).create();
+        }).setNegativeButton(android.R.string.cancel, null)
+                .create();
     }
     final static String SDCARD = "/sdcard/";
 
@@ -1161,5 +1178,15 @@ public class Activities extends ListActivity {
             message = dbBackup.getAbsolutePath();
         }
         perform(message, success_string, fail_string);
+    }
+
+    private static class EmptyOnClickListener implements DialogInterface.OnClickListener {
+
+        public EmptyOnClickListener() {
+        }
+
+        @Override
+        public void onClick(DialogInterface dialog, int whichButton) {
+        }
     }
 }
