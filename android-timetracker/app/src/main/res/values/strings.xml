@@ -110,7 +110,7 @@
     German translation by Philip Gillißen
     </string>
     <string name="export_csv_success">Successfully exported CSV to memory card 
-        as timetracker.db</string>
+        as \'%s\'</string>
     <string name="export_csv_fail">Failed to export CSV.  Couldn\'t create the file.
         Is an SD card inserted?</string>
     <string name="success">Success</string>

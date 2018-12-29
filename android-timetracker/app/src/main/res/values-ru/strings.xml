@@ -107,7 +107,7 @@
     Перевод на французский язык выполнил Вильфрид Копп (Wilfried Kopp)
     </string>
     <string name="export_csv_success">Экспорт CSV на карту памяти завершён.
-        Файл timetracker.db</string>
+        Файл \'%s\'</string>
     <string name="export_csv_fail">Не удалось экспортировать в CSV. Не могу создать файл.
         Проверьте, что SD карта вставлена.</string>
     <string name="success">Успех</string>

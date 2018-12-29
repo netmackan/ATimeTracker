@@ -116,7 +116,7 @@
     Deutsche Übersetzung von Philip Gillißen
     </string>
     <string name="export_csv_success">Erfolgreich als CSV auf den Speicher als
-    \'timetracker.db\' exportiert</string>
+    \'%s\' exportiert</string>
     <string name="export_csv_fail">Export nach CSV gescheitert.  Die Datei
     konnte nicht erstellt werden.
     Ist eine SD-Karte verfügbar?</string>

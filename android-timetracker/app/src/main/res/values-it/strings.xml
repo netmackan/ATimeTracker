@@ -105,7 +105,7 @@
     Traduzzione in Francese da Wilfried Kopp\n
     Traduzzione in spagnolo e italiano da Carlos Manzo
 	</string>
-    <string name="export_csv_success">CSV esportato con successo sulla scheda SD come timetracker.db</string>
+    <string name="export_csv_success">CSV esportato con successo sulla scheda SD come \'%s\'</string>
     <string name="export_csv_fail">Errore sulla esportazione CSV. Non è possibile creare il file. La scheda SD è presente?</string>
     <string name="success">Successo</string>
     <string name="failure">Errore</string>

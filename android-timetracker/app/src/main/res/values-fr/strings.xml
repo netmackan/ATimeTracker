@@ -95,7 +95,7 @@
     Tranduction en Russe par Денис Гладкий\n
     Tranduction en Français par Wilfried Kopp
 	</string>
-    <string name="export_csv_success">Exporté avec succès du CSV vers la carte SD sous timetracker.db</string>
+    <string name="export_csv_success">Exporté avec succès du CSV vers la carte SD sous \'%s\'</string>
     <string name="export_csv_fail">Erreur lors de l´exportation CSV. Impossible de créer le fichier. La carte SD est-elle présente ?</string>
     <string name="success">Succès</string>
     <string name="failure">Erreur</string>

@@ -106,7 +106,7 @@
     Traducción en Français por Wilfried Kopp\n
     Traducción en Español e Italiano por Carlos Manzo
 	</string>
-    <string name="export_csv_success">CSV exportado con éxito a la tarjeta SD de timetracker.db</string>
+    <string name="export_csv_success">CSV exportado con éxito a la tarjeta SD de \'%s\'</string>
     <string name="export_csv_fail">Error en la exportación CSV. No se pudo crear el archivo. La tarjeta SD está presente?</string>
     <string name="success">Exito</string>
     <string name="failure">Error</string>
