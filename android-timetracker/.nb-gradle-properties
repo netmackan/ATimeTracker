@@ -11,5 +11,15 @@
       <task-args/>
       <task-jvm-args/>
     </task>
+    <task>
+      <display-name>test</display-name>
+      <non-blocking>yes</non-blocking>
+      <task-names>
+        <name must-exist="no">assemble${BuildVariant}</name>
+        <name must-exist="no">test${BuildVariant}UnitTest</name>
+      </task-names>
+      <task-args/>
+      <task-jvm-args/>
+    </task>
   </built-in-tasks>
 </gradle-project-properties>
