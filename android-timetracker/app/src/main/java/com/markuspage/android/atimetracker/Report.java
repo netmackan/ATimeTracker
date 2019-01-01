@@ -20,6 +20,7 @@
  */
 package com.markuspage.android.atimetracker;
 
+import android.Manifest;
 import static com.markuspage.android.atimetracker.DBHelper.END;
 import static com.markuspage.android.atimetracker.DBHelper.NAME;
 import static com.markuspage.android.atimetracker.DBHelper.RANGES_TABLE;
@@ -42,13 +43,18 @@ import java.util.TreeMap;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v13.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -108,6 +114,9 @@ public class Report extends Activity implements OnClickListener {
     }
     
     private static final String ZERO_TIME = "  :  ";
+    
+    /** Callback ID for exporting after asking permissions. */
+    private static final int MY_PERMISSIONS_REQUEST_EXPORT = 100;
     
     /**
      * Defines how each activity's time is displayed
@@ -173,6 +182,7 @@ public class Report extends Activity implements OnClickListener {
     @Override
     public void onStop() {
         db.close();
+        System.err.println("Closed DB");
         super.onStop();
     }
 
@@ -190,17 +200,7 @@ public class Report extends Activity implements OnClickListener {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
             case Activities.EXPORT_VIEW:
-                String fname = export();
-                if (fname != null) {
-                    exportMessage = getString(R.string.export_csv_success, fname);
-                    if (exportSucceed != null) {
-                        exportSucceed.setMessage(exportMessage);
-                    }
-                    showDialog(Activities.SUCCESS_DIALOG);
-                } else {
-                    exportMessage = getString(R.string.export_csv_fail);
-                    showDialog(Activities.ERROR_DIALOG);
-                }
+                requestExport();
                 break;
             default:
                 // Ignore the other menu items; they're context menu
@@ -239,6 +239,34 @@ public class Report extends Activity implements OnClickListener {
      */
     final static String SDCARD = "/sdcard/";
 
+    /**
+     * Check if we have permission to export and if not ask for
+     * permission to do it.
+     */
+    private void requestExport() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            // Show an explanation to the user *asynchronously* -- don't block
+            // this thread waiting for the user's response! After the user
+            // sees the explanation, try again to request the permission.
+            new AlertDialog.Builder(this)
+                    .setMessage(R.string.permission_to_export_needed)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ActivityCompat.requestPermissions(Report.this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_REQUEST_EXPORT);
+                }
+            }).create().show();
+
+        } else {
+            doExport();
+        }
+    }
+
     private String export() {
         // Export, then show a dialog
         String rangeName = getRangeName();
@@ -261,11 +289,46 @@ public class Report extends Activity implements OnClickListener {
             return null;
         }
     }
+    
+    /**
+     * Perform the export.
+     * This assumes permission has already been granted.
+     */
+    private void doExport() {
+        String fname = export();
+        if (fname != null) {
+            exportMessage = getString(R.string.export_csv_success, fname);
+            if (exportSucceed != null) {
+                exportSucceed.setMessage(exportMessage);
+            }
+            showDialog(Activities.SUCCESS_DIALOG);
+        } else {
+            exportMessage = getString(R.string.export_csv_fail);
+            showDialog(Activities.ERROR_DIALOG);
+        }
+    }
+    
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_EXPORT:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    requestExport();
+                }
+                break;
+        }
+    }
 
     private String[][] getCurrentRange() {
         List<String[]> activities = new ArrayList<String[]>();
 
         Map<Integer, String> activityNames = new TreeMap<Integer, String>();
+        
+        if (!db.isOpen()) {
+            db = dbHelper.getReadableDatabase();
+        }
+        
         Cursor c = db.query(ACTIVITY_TABLE, new String[]{"ROWID", ACTIVITY_NAME}, null, null, null, null, "ROWID");
         if (c.moveToFirst()) {
             do {

@@ -125,6 +125,7 @@
         this error.  %s</string>
     <string name="restore_failed">The database restore failed.  Please report
         this error.  %s</string>
+    <string name="permission_to_export_needed">Permission to write to the external storage is needed in order to export.</string>
     <string name="permission_to_backup_needed">Permission to write to the external storage is needed in order to create backups.</string>
     <string name="permission_to_restore_needed">Permission to read from the external storage is needed in order to restore backups.</string>
 </resources>

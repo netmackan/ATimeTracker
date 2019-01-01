@@ -134,11 +134,14 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
      */
     private static final int REFRESH_MS = 60000;
 
+    /** Callback ID for exporting after asking permissions. */
+    private static final int MY_PERMISSIONS_REQUEST_EXPORT = 100;
+    
     /** Callback ID for creating backup after asking permissions. */
-    private static final int MY_PERMISSIONS_REQUEST_CREATE_BACKUP = 100;
+    private static final int MY_PERMISSIONS_REQUEST_CREATE_BACKUP = 101;
 
     /** Callback ID for restoring backup after asking permissions. */
-    private static final int MY_PERMISSIONS_REQUEST_RESTORE_BACKUP = 101;
+    private static final int MY_PERMISSIONS_REQUEST_RESTORE_BACKUP = 102;
     
     /**
      * The model for this view
@@ -385,8 +388,7 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
                 progressDialog.setCancelable(false);
                 return progressDialog;
             case EXPORT_VIEW: {
-                String fname = export();
-                perform(fname, R.string.export_csv_success, R.string.export_csv_fail);
+                requestExport();
                 break;
             }
             case BACKUP: {
@@ -647,15 +649,17 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
             fout = new File(SDCARD + fname);
             counter++;
         }
-        try {
-            OutputStream out = new FileOutputStream(fout);
-            Cursor currentRange = adapter.getCurrentRange();
+        try (
+                OutputStream out = new FileOutputStream(fout);
+                Cursor currentRange = adapter.getCurrentRange()
+            ) {
             CSVExporter.exportRows(out, currentRange);
-            currentRange.close();
-
             return fname;
         } catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace(System.err);
+            return null;
+        } catch (IOException ex) {
+            ex.printStackTrace(System.err);
             return null;
         }
     }
@@ -715,6 +719,34 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
                 break;
         }
     }
+    
+    /**
+     * Check if we have permission to export and if not ask for
+     * permission to do it.
+     */
+    private void requestExport() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            // Show an explanation to the user *asynchronously* -- don't block
+            // this thread waiting for the user's response! After the user
+            // sees the explanation, try again to request the permission.
+            new AlertDialog.Builder(this)
+                    .setMessage(R.string.permission_to_export_needed)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ActivityCompat.requestPermissions(Activities.this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_REQUEST_EXPORT);
+                }
+            }).create().show();
+
+        } else {
+            doExport();
+        }
+    }
 
     /**
      * Check if we have permission to restore the backup and if not ask for
@@ -770,6 +802,15 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
         } else {
             doBackupCreation();
         }
+    }
+    
+    /**
+     * Perform the export.
+     * This assumes permission has already been granted.
+     */
+    private void doExport() {
+        String fname = export();
+        perform(fname, R.string.export_csv_success, R.string.export_csv_fail);
     }
 
     /**
@@ -851,7 +892,12 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
                 break;
             case MY_PERMISSIONS_REQUEST_CREATE_BACKUP:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    requestBackupCreation();
+                    requestExport();
+                }
+                break;
+            case MY_PERMISSIONS_REQUEST_EXPORT:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    requestExport();
                 }
                 break;
         }
