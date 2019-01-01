@@ -26,6 +26,7 @@
  */
 package com.markuspage.android.atimetracker;
 
+import android.Manifest;
 import static com.markuspage.android.atimetracker.DBHelper.END;
 import static com.markuspage.android.atimetracker.DBHelper.NAME;
 import static com.markuspage.android.atimetracker.DBHelper.RANGES_TABLE;
@@ -66,6 +67,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -74,6 +76,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.support.annotation.NonNull;
+import android.support.v13.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.method.SingleLineTransformationMethod;
 import android.text.util.Linkify;
 import android.view.ContextMenu;
@@ -102,7 +107,7 @@ import static com.markuspage.android.atimetracker.DBHelper.ACTIVITY_TABLE;
  *
  * @author Sean Russell, ser@germane-software.com
  */
-public class Activities extends ListActivity {
+public class Activities extends ListActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     public static final String TIMETRACKERPREF = "timetracker.pref";
     protected static final String FONTSIZE = "font-size";
@@ -128,6 +133,13 @@ public class Activities extends ListActivity {
      * How often to refresh the display, in milliseconds
      */
     private static final int REFRESH_MS = 60000;
+
+    /** Callback ID for creating backup after asking permissions. */
+    private static final int MY_PERMISSIONS_REQUEST_CREATE_BACKUP = 100;
+
+    /** Callback ID for restoring backup after asking permissions. */
+    private static final int MY_PERMISSIONS_REQUEST_RESTORE_BACKUP = 101;
+    
     /**
      * The model for this view
      */
@@ -377,65 +389,12 @@ public class Activities extends ListActivity {
                 perform(fname, R.string.export_csv_success, R.string.export_csv_fail);
                 break;
             }
-            case BACKUP: { // COPY DB TO SD
-                showDialog(Activities.PROGRESS_DIALOG);
-                if (dbBackup.exists()) {
-                    // Find the database
-                    SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READWRITE);
-                    SQLiteDatabase appDb = SQLiteDatabase.openDatabase(DB_FILE, null, SQLiteDatabase.OPEN_READONLY);
-                    DBBackup backup = new DBBackup(Activities.this, progressDialog, R.string.backup_success, R.string.backup_failed);
-                    backup.execute(appDb, backupDb);
-                } else {
-                    InputStream in = null;
-                    OutputStream out = null;
-
-                    try {
-                        in = new BufferedInputStream(new FileInputStream(DB_FILE));
-                        out = new BufferedOutputStream(new FileOutputStream(dbBackup));
-                        for (int c = in.read(); c != -1; c = in.read()) {
-                            out.write(c);
-                        }
-                        finishedCopy(DBBackup.Result.SUCCESS, dbBackup.getAbsolutePath(), R.string.backup_success, R.string.backup_failed);
-                    } catch (IOException ex) {
-                        Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, null, ex);
-                        exportMessage = ex.getLocalizedMessage();
-                        showDialog(ERROR_DIALOG);
-                    } finally {
-                        try {
-                            if (in != null) {
-                                in.close();
-                            }
-                        } catch (IOException ignored) {
-                        }
-                        try {
-                            if (out != null) {
-                                out.close();
-                            }
-                        } catch (IOException ignored) {
-                        }
-                        progressDialog.dismiss();
-                    }
-                }
+            case BACKUP: {
+                requestBackupCreation();
                 break;
             }
-            case RESTORE: { // RESTORE FROM BACKUP
-                if (dbBackup.exists()) {
-                    try {
-                        showDialog(Activities.PROGRESS_DIALOG);
-                        SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
-                        SQLiteDatabase appDb = SQLiteDatabase.openDatabase(DB_FILE, null, SQLiteDatabase.OPEN_READWRITE);
-                        DBBackup backup = new DBBackup(Activities.this, progressDialog, R.string.restore_success, R.string.restore_failed);
-                        backup.execute(backupDb, appDb);
-                    } catch (Exception ex) {
-                        Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, null, ex);
-                        exportMessage = ex.getLocalizedMessage();
-                        showDialog(ERROR_DIALOG);
-                    }
-                } else {
-                    Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, "Backup file does not exist: {0}", dbBackup.getAbsolutePath());
-                    exportMessage = getString(R.string.restore_failed, "No backup file: " + dbBackup.getAbsolutePath());
-                    showDialog(ERROR_DIALOG);
-                }
+            case RESTORE: {
+                requestBackupRestore();
                 break;
             }
             case PREFERENCES: { // PREFERENCES
@@ -753,6 +712,147 @@ public class Activities extends ListActivity {
                 textView.setText(selectedActivity.getName());
                 break;
             default:
+                break;
+        }
+    }
+
+    /**
+     * Check if we have permission to restore the backup and if not ask for
+     * permission to do it.
+     */
+    private void requestBackupRestore() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            // Show an explanation to the user *asynchronously* -- don't block
+            // this thread waiting for the user's response! After the user
+            // sees the explanation, try again to request the permission.
+            new AlertDialog.Builder(this)
+                    .setMessage(R.string.permission_to_restore_needed)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ActivityCompat.requestPermissions(Activities.this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_REQUEST_RESTORE_BACKUP);
+                }
+            }).create().show();
+
+        } else {
+            doBackupRestore();
+        }
+    }
+    
+    /**
+     * Check if we have permission to create the backup and if not ask for
+     * permission to do it.
+     */
+    private void requestBackupCreation() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            // Show an explanation to the user *asynchronously* -- don't block
+            // this thread waiting for the user's response! After the user
+            // sees the explanation, try again to request the permission.
+            new AlertDialog.Builder(this)
+                    .setMessage(R.string.permission_to_backup_needed)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ActivityCompat.requestPermissions(Activities.this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_REQUEST_CREATE_BACKUP);
+                }
+            }).create().show();
+
+        } else {
+            doBackupCreation();
+        }
+    }
+
+    /**
+     * Perform the restore.
+     * This assumes permission has already been granted.
+     */
+    private void doBackupRestore() {
+        if (dbBackup.exists()) {
+            try {
+                showDialog(Activities.PROGRESS_DIALOG);
+                SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
+                SQLiteDatabase appDb = SQLiteDatabase.openDatabase(DB_FILE, null, SQLiteDatabase.OPEN_READWRITE);
+                DBBackup backup = new DBBackup(Activities.this, progressDialog, R.string.restore_success, R.string.restore_failed);
+                backup.execute(backupDb, appDb);
+            } catch (Exception ex) {
+                Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, null, ex);
+                exportMessage = ex.getLocalizedMessage();
+                showDialog(ERROR_DIALOG);
+            }
+        } else {
+            Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, "Backup file does not exist: {0}", dbBackup.getAbsolutePath());
+            exportMessage = getString(R.string.restore_failed, "No backup file: " + dbBackup.getAbsolutePath());
+            showDialog(ERROR_DIALOG);
+        }
+    }
+    
+    /**
+     * Perform the backup creation.
+     * This assumes permission has already been granted.
+     */
+    private void doBackupCreation() {
+        showDialog(Activities.PROGRESS_DIALOG);
+        if (dbBackup.exists()) {
+            // Find the database
+            SQLiteDatabase backupDb = SQLiteDatabase.openDatabase(dbBackup.getAbsolutePath(), null, SQLiteDatabase.OPEN_READWRITE);
+            SQLiteDatabase appDb = SQLiteDatabase.openDatabase(DB_FILE, null, SQLiteDatabase.OPEN_READONLY);
+            DBBackup backup = new DBBackup(Activities.this, progressDialog, R.string.backup_success, R.string.backup_failed);
+            backup.execute(appDb, backupDb);
+        } else {
+            InputStream in = null;
+            OutputStream out = null;
+
+            try {
+                in = new BufferedInputStream(new FileInputStream(DB_FILE));
+                out = new BufferedOutputStream(new FileOutputStream(dbBackup));
+                for (int c = in.read(); c != -1; c = in.read()) {
+                    out.write(c);
+                }
+                finishedCopy(DBBackup.Result.SUCCESS, dbBackup.getAbsolutePath(), R.string.backup_success, R.string.backup_failed);
+            } catch (IOException ex) {
+                Logger.getLogger(Activities.class.getName()).log(Level.SEVERE, null, ex);
+                exportMessage = ex.getLocalizedMessage();
+                showDialog(ERROR_DIALOG);
+            } finally {
+                try {
+                    if (in != null) {
+                        in.close();
+                    }
+                } catch (IOException ignored) {
+                }
+                try {
+                    if (out != null) {
+                        out.close();
+                    }
+                } catch (IOException ignored) {
+                }
+                progressDialog.dismiss();
+            }
+        }
+    }
+    
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_RESTORE_BACKUP:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    requestBackupRestore();
+                }
+                break;
+            case MY_PERMISSIONS_REQUEST_CREATE_BACKUP:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    requestBackupCreation();
+                }
                 break;
         }
     }
