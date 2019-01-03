@@ -1,4 +1,28 @@
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = '0.8.2'
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    def debugTree = fileTree(dir: "${buildDir}/intermediates/javac/debug/compileDebugJavaWithJavac/classes", excludes: fileFilter)
+    def mainSrc = "${project.projectDir}/src/main/java"
+    
+    print mainSrc
+    print debugTree
+
+    sourceDirectories = files([mainSrc])
+    classDirectories = files([debugTree])
+    executionData = files("${buildDir}/jacoco/testDebugUnitTest.exec")
+}
 
 android {
     compileSdkVersion 26
@@ -15,12 +39,24 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+        debug {
+            testCoverageEnabled true
+        }
     }
 
     lintOptions {
         abortOnError false
     }
     
+    testOptions {
+        unitTests.returnDefaultValues = true
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
+        }
+    }
+
     dependencies {
         implementation "com.android.support:support-v13:26.0.0"
         implementation 'com.android.support:appcompat-v7:26.0.0'
@@ -30,6 +66,7 @@ android {
 }
 
 tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
     testLogging {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
