@@ -9,6 +9,7 @@ A Time Tracker
 - Spanish and Italian translation by Carlos Manzo
 
 [![Build Status](https://travis-ci.com/netmackan/ATimeTracker.svg?branch=master)](https://travis-ci.com/netmackan/ATimeTracker)
+[![Coverage Status](https://coveralls.io/repos/github/netmackan/ATimeTracker/badge.svg?branch=master)](https://coveralls.io/github/netmackan/ATimeTracker?branch=master)
 [![License](https://img.shields.io/badge/license-GPLv2%2B-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html)
 
 ### Source code on [GitHub](https://github.com/netmackan/ATimeTracker)
