@@ -11,4 +11,4 @@ before_install:
 script:
    - cd ./android-timetracker
    - ./gradlew build connectedCheck
-   - ./gradlew test
+   - ./gradlew test jacocoTestReport
