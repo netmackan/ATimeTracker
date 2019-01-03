@@ -21,6 +21,7 @@
 package com.markuspage.android.atimetracker;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
@@ -83,8 +84,24 @@ public class TimeRangeTest {
                 actual >= 1000 && actual <= (1000 + 60000));
     }
     
-    // TODO testToString()
-    
+    /**
+     * Tests the toString() method.
+     */
+    @Test
+    public void testToString() {
+        // No end date
+        TimeRange instance = new TimeRange(3000, TimeRange.NULL);
+        String actual = instance.toString();
+        assertTrue("toString() should end with \"...\" but was \"" + actual + "\"", 
+                actual.endsWith("..."));
+        
+        // With end date
+        instance = new TimeRange(3000, 4000);
+        actual = instance.toString();
+        assertFalse("toString() should not end with \"...\" but was \"" + actual + "\"", 
+                actual.endsWith("..."));
+    }
+
     // TODO testFormat()
     
     // TODO testCompareTo()
