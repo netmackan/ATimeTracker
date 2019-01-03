@@ -28,3 +28,10 @@ android {
         testImplementation 'junit:junit:4.12'
     }
 }
+
+tasks.withType(Test) {
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+}
