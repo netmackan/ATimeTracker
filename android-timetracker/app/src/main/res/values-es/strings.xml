@@ -67,7 +67,7 @@
     <string name="decimal_time">Decimal (HH.hh)</string>
     <string name="round_report_time">Arrotondar hora</string>
     <string name="round_no">No</string>
-    <string name="round_minutes">Arrotondar a %d minutos</string>
+    <string name="round_minutes">Redondear a %d minutos</string>
 
     <!-- About dialog strings -->
     <string name="version">Versión %s</string>
