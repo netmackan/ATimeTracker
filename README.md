@@ -14,7 +14,7 @@ A Time Tracker
 
 ### Source code on [GitHub](https://github.com/netmackan/ATimeTracker)
 
-### Install on Android using [F-Droid](https://f-droid.org/packages/com.markuspage.android.atimetracker/)
+### Install on Android using [F-Droid](https://f-droid.org/packages/com.markuspage.android.atimetracker/) or [Google Play](https://play.google.com/store/apps/details?id=com.markuspage.android.atimetracker)
 
 <a href="https://f-droid.org/packages/com.markuspage.android.atimetracker/">
 <img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
