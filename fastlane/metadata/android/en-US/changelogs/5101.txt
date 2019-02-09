@@ -1,0 +1,1 @@
+* Bad contrast between chosen colors (bug #118)
