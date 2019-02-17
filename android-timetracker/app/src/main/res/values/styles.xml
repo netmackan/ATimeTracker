@@ -1,5 +1,10 @@
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Holo" />
+    <style name="AppTheme" parent="android:Theme.Holo">
+        <item name="android:contextPopupMenuStyle">@style/myContextPopupMenuStyle</item>
+    </style>
+    <style name="myContextPopupMenuStyle" parent="@android:style/Widget.Holo.PopupMenu">
+        <item name="android:overlapAnchor">true</item>
+    </style>
 
 </resources>
