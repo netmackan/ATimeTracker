@@ -17,10 +17,12 @@
          android:text="@string/start_time_label"/>
      <DatePicker android:id="@+id/start_date"
          android:layout_height="wrap_content"
-         android:layout_width="wrap_content"/>
+         android:layout_width="wrap_content"
+         android:datePickerMode="calendar"/>
      <TimePicker android:id="@+id/start_time"
          android:layout_height="wrap_content"
-         android:layout_width="wrap_content"/>
+         android:layout_width="wrap_content"
+         android:timePickerMode="clock"/>
  
      <TextView android:id="@+id/end_time_label"
          android:layout_height="wrap_content"
@@ -30,10 +32,12 @@
          android:text="@string/end_time_label"/>
      <DatePicker  android:id="@+id/end_date"
          android:layout_height="wrap_content"
-         android:layout_width="wrap_content"/>
+         android:layout_width="wrap_content"
+         android:datePickerMode="calendar"/>
      <TimePicker android:id="@+id/end_time"
          android:layout_height="wrap_content"
-         android:layout_width="wrap_content"/>
+         android:layout_width="wrap_content"
+         android:timePickerMode="clock"/>
  
      <LinearLayout android:orientation="horizontal"
                    android:layout_width="fill_parent"
