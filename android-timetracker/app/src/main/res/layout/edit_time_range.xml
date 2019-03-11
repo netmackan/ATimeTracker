@@ -1,59 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:scrollbars="vertical">
 
- <LinearLayout 
-     xmlns:android="http://schemas.android.com/apk/res/android"
-     android:orientation="vertical"
-     android:layout_width="fill_parent"
-     android:layout_height="fill_parent">
-     
-     <TextView android:id="@+id/start_time_label"
-         android:layout_height="wrap_content"
-         android:layout_width="wrap_content"
-         android:textSize="20sp"
-         android:text="@string/start_time_label"/>
-     <DatePicker android:id="@+id/start_date"
-         android:layout_height="wrap_content"
-         android:layout_width="wrap_content"
-         android:datePickerMode="calendar"/>
-     <TimePicker android:id="@+id/start_time"
-         android:layout_height="wrap_content"
-         android:layout_width="wrap_content"
-         android:timePickerMode="clock"/>
- 
-     <TextView android:id="@+id/end_time_label"
-         android:layout_height="wrap_content"
-         android:layout_width="wrap_content"
-         android:textSize="20sp"
-         android:paddingTop="20sp"
-         android:text="@string/end_time_label"/>
-     <DatePicker  android:id="@+id/end_date"
-         android:layout_height="wrap_content"
-         android:layout_width="wrap_content"
-         android:datePickerMode="calendar"/>
-     <TimePicker android:id="@+id/end_time"
-         android:layout_height="wrap_content"
-         android:layout_width="wrap_content"
-         android:timePickerMode="clock"/>
- 
-     <LinearLayout android:orientation="horizontal"
-                   android:layout_width="fill_parent"
-                   android:layout_height="fill_parent">
-         <Button android:id="@+id/accept" 
-             android:layout_width="fill_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="40px"
-             android:layout_marginRight="40px"
-             android:text="@android:string/ok"/>
-         <Button android:id="@+id/time_edit_cancel" 
-             android:layout_width="fill_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="40px"
-             android:layout_marginRight="40px"
-             android:text="@android:string/cancel"/>
-     </LinearLayout>
- </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/start_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/start_time_label"
+            android:textSize="24sp" />
+
+        <View
+            android:id="@+id/start_time_divider"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginBottom="25dp"
+            android:background="@android:color/holo_blue_dark" />
+
+        <DatePicker
+            android:id="@+id/start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:datePickerMode="calendar" />
+
+        <TimePicker
+            android:id="@+id/start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:timePickerMode="clock" />
+
+        <View
+            android:id="@+id/end_time_divider_before"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/holo_blue_dark" />
+
+        <TextView
+            android:id="@+id/end_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/end_time_label"
+            android:textSize="24sp" />
+
+        <View
+            android:id="@+id/end_time_divider_after"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginBottom="25dp"
+            android:background="@android:color/holo_blue_dark" />
+
+        <DatePicker
+            android:id="@+id/end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:datePickerMode="calendar" />
+
+        <TimePicker
+            android:id="@+id/end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:timePickerMode="clock" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:id="@+id/accept"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40px"
+                android:layout_marginRight="40px"
+                android:text="@android:string/ok" />
+
+            <Button
+                android:id="@+id/time_edit_cancel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40px"
+                android:layout_marginRight="40px"
+                android:text="@android:string/cancel" />
+        </LinearLayout>
+    </LinearLayout>
 </ScrollView>
