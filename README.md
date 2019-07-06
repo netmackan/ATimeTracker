@@ -2,12 +2,6 @@ A Time Tracker
 ==============
 *Open Source Time Tracker for Android*
 
-- Based on TimeTracker+ by Sean E. Russell.
-- Application icon from Tango Project (tango.freedesktop.org)
-- Russian translation by Denis Gladkiy
-- French translation by Wilfried Kopp
-- Spanish and Italian translation by Carlos Manzo
-
 [![Build Status](https://travis-ci.com/netmackan/ATimeTracker.svg?branch=master)](https://travis-ci.com/netmackan/ATimeTracker)
 [![Coverage Status](https://coveralls.io/repos/github/netmackan/ATimeTracker/badge.svg?branch=master)](https://coveralls.io/github/netmackan/ATimeTracker?branch=master)
 [![License](https://img.shields.io/badge/license-GPLv2%2B-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html)
@@ -33,6 +27,23 @@ A Time Tracker
 
 ![report_screen](../master/screenshots/report_screen.png)
 
+### Credits
+- Markus Kilås (netmackan), Maintainer
+- Ivan Romanov (drizt), Russian translation update
+- pixelistik, Improved icon quality
+- splondike, Edit time UI improvement
+- Pablo Hinojosa (Pablohn26), Spanish translation update
+- David J Patrick (linuxcaffe), Documentation and script updates
+- Paul Beckingham (pbeckingham), Script
+- Carlos Manzo (gelahcem), Spanish, Italian translations
+- Philip Gillißen (guerda), German translation
+- Vadik (sirekanyan), Backup message improvement
+- Niels (opensource21), Bug fix
+- Vladimir Rutsky (rutsky), Russian translation
+- Tango Project (https://tango.freedesktop.org), Application icon
+- Denis Gladkiy, Russian translation
+- Wilfried Kopp, French translation
+- Sean E. Russell, TimeTracker+, the base for ATimeTracker
 
 ### Development
 
