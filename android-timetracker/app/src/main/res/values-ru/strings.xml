@@ -3,9 +3,9 @@
     <string name="app_name">A Time Tracker</string>
     
     <string name="start">Старт</string>
-    <string name="activity_name">Activity name</string>
-    <string name="add_activity_ok">Add activity</string>
-    <string name="activity_name_required">The activity name is required</string>
+    <string name="activity_name">Имя активности</string>
+    <string name="add_activity_ok">Добавить активность</string>
+    <string name="activity_name_required">Требуется имя активности</string>
     <string name="start_time_required">Требуется указать время старта</string>
 
     <string name="change_date_range">Изменить интервал дат</string>
@@ -14,14 +14,14 @@
     <string name="restore_from_backup">Восстановить</string>
 
     <string name="delete_ok">Удалить</string>
-    <string name="delete_activity_title">Delete activity</string>
+    <string name="delete_activity_title">Удалить активность</string>
     <string name="delete_activity_message">Вы уверены, что хотите удалить \'%s\' и все её записи временных интервалов?</string>
-    <string name="add_activity_title">Add activity</string>
+    <string name="add_activity_title">Добавить активность</string>
     <string name="change_view_title">Изменить вид</string>
     <string name="generate_report_title">Отчёт</string>
     <string name="select_range">Выбрать интервал…</string>
-    <string name="done">Return to activities</string>
-    <string name="add_time_title">Добавить новый временной интервал</string>
+    <string name="done">Вернуться к активностям</string>
+    <string name="add_time_title">Добавить временной интервал</string>
     <string name="delete_time_message">Вы уверены, что хотите удалить этот временной интервал?</string>
     <string name="delete_time_title">Удалить временной интервал</string>
     <string name="start_time_label">Время начала</string>
@@ -33,9 +33,9 @@
     <string name="title">A Time Tracker (%s)</string>
     <string name="help">Помощь</string>
     <string name="export_view">Экспорт</string>
-    <string name="move_time">Assign time to other activity</string>
-    <string name="edit_activity">Edit activity</string>
-    <string name="delete_activity">Delete activity</string>
+    <string name="move_time">Назначить время другой активности</string>
+    <string name="edit_activity">Редактировать активность</string>
+    <string name="delete_activity">Удалить активность</string>
     <string name="show_times">Показать времена</string>
 
     <!--    Settings strings    -->
@@ -44,7 +44,7 @@
     <string name="week_start_day">Первый день недели</string>
     <string name="hour_mode">12/24 часовой режим</string>
     <string name="font_size">Размер шрифта</string>
-    <string name="concurrency">Multiple concurrently running activities</string>
+    <string name="concurrency">Множесто одновременно запущенных активностей</string>
     <string name="sound">Звук</string>
     <string name="vibrate">Вибрация</string>
     <!-- Settings values -->
@@ -55,8 +55,8 @@
     <string name="small_font">Маленький</string>
     <string name="medium_font">Средний</string>
     <string name="large_font">Большой</string>
-    <string name="concurrent">Activities can run at the same time</string>
-    <string name="exclusive">Only one activity can run at a time</string>
+    <string name="concurrent">Активности могут быть запущены одновременно</string>
+    <string name="exclusive">Можно запустить только одну активность</string>
     <string name="sound_enabled">Звук включён</string>
     <string name="sound_disabled">Звук отключен</string>
     <string name="vibrate_enabled">Вибрация включена</string>
@@ -110,12 +110,15 @@
         Файл \'%s\'</string>
     <string name="export_csv_fail">Не удалось экспортировать в CSV. Не могу создать файл.
         Проверьте, что SD карта вставлена.</string>
-    <string name="success">Успех</string>
-    <string name="failure">Неудача</string>
+    <string name="success">Успешно</string>
+    <string name="failure">Неудачно</string>
     <string name="set_start_day_of_week">Установите день с которого начинается неделя</string>
     <string name="more">Ещё…</string>
     <string name="backup_success">Сохранение резервной копии базы данных завершилось. Файл %s</string>
     <string name="restore_success">Успешное восстановление из резервной копии. %s</string>
     <string name="backup_failed">Не удалось сохранить резервную копию базы данных. Пожалуйста, сообщите об этой ошибке. %s</string>
     <string name="restore_failed">Не удалось восстановить базу данных. Пожалуйста, сообщите об этой ошибке. %s</string>
+    <string name="permission_to_backup_needed">Для создания резервной копии необходимо разрешение на запись во внешнее хранилище</string>
+    <string name="permission_to_export_needed">Для экспорта необходимо разрешение на запись во внешнее хранилище</string>
+    <string name="permission_to_restore_needed">Для восстановления резервной копии необходимо разрешение на запись во внешнее хранилище</string>
 </resources>
