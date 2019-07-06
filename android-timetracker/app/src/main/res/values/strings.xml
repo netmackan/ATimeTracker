@@ -100,14 +100,24 @@
     <b>Note</b> that TimeTracker will not prevent you from creating times that overlap
     with times in other (or the same) activity.
     </string>
-    <string name="credits"><b>Credits</b>\n
+    <string name="credits">\n<b>Credits</b>\n
     \n
-    Based on TimeTracker+ by Sean E. Russell.\n
-    Application icon from Tango Project (tango.freedesktop.org).\n
-    Russian translation by Denis Gladkiy\n
-    French translation by Wilfried Kopp\n
-    Spanish and Italian translation by Carlos Manzo\n
-    German translation by Philip Gillißen
+    • Markus Kilås (netmackan), Maintainer\n
+    • Ivan Romanov (drizt), Russian translation update\n
+    • pixelistik, Improved icon quality\n
+    • splondike, Edit time UI improvement\n
+    • Pablo Hinojosa (Pablohn26), Spanish translation update\n
+    • David J Patrick (linuxcaffe), Documentation and script updates\n
+    • Paul Beckingham (pbeckingham), Script\n
+    • Carlos Manzo (gelahcem), Spanish, Italian translations\n
+    • Philip Gillißen (guerda), German translation\n
+    • Vadik (sirekanyan), Backup message improvement\n
+    • Niels (opensource21), Bug fix\n
+    • Vladimir Rutsky (rutsky), Russian translation\n
+    • Tango Project (Denis Gladkiy), Application icon\n
+    • Denis Gladkiy, Russian translation\n
+    • Wilfried Kopp, French translation\n
+    • Sean E. Russell, TimeTracker+, the base for ATimeTracker
     </string>
     <string name="export_csv_success">Successfully exported CSV to memory card 
         as \'%s\'</string>
