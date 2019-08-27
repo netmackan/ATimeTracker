@@ -1084,27 +1084,20 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
             activities.clear();
 
             SQLiteDatabase db = dbHelper.getReadableDatabase();
-            Cursor c = db.query(ACTIVITY_TABLE, ACTIVITY_COLUMNS, null, null, null, null, null);
+            String totalQuery = "SELECT task_id, SUM(end - start) AS total FROM " + RANGES_TABLE + " WHERE end NOTNULL " + whereClause + " GROUP BY task_id";
+            String currentQuery = "SELECT task_id, MIN(start) AS start FROM " + RANGES_TABLE + " WHERE end ISNULL GROUP BY task_id";
+            String query = "SELECT _id, name, total, start FROM " + ACTIVITY_TABLE + " LEFT JOIN (" + totalQuery + ") AS tt ON _id = tt.task_id LEFT JOIN (" + currentQuery + ") AS tc ON _id = tc.task_id";
 
-            Activity t;
+            Cursor c = db.rawQuery(query, new String[]{});
+
             if (c.moveToFirst()) {
                 do {
-                    int tid = c.getInt(0);
-                    String[] tids = {String.valueOf(tid)};
-                    t = new Activity(c.getString(1), tid);
-                    Cursor r = db.rawQuery("SELECT SUM(end) - SUM(start) AS total FROM " + RANGES_TABLE + " WHERE " + ACTIVITY_ID + " = ? AND end NOTNULL " + whereClause, tids);
-                    if (r.moveToFirst()) {
-                        t.setCollapsed(r.getLong(0));
+                    Activity t = new Activity(c.getString(1), c.getInt(0));
+                    if (!c.isNull(2)) {
+                        t.setCollapsed(c.getLong(2));
                     }
-                    r.close();
-                    if (loadCurrent) {
-                        r = db.query(RANGES_TABLE, RANGE_COLUMNS,
-                                ACTIVITY_ID + " = ? AND end ISNULL",
-                                tids, null, null, null);
-                        if (r.moveToFirst()) {
-                            t.setStartTime(r.getLong(0));
-                        }
-                        r.close();
+                    if (loadCurrent && !c.isNull(3)) {
+                        t.setStartTime(c.getLong(3));
                     }
                     activities.add(t);
                 } while (c.moveToNext());
