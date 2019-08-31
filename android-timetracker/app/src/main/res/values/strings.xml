@@ -103,6 +103,7 @@
     <string name="credits">\n<b>Credits</b>\n
     \n
     • Markus Kilås (netmackan), Maintainer\n
+    • heinrich5991, Optimized main view database queries\n
     • Ivan Romanov (drizt), Russian translation update\n
     • pixelistik, Improved icon quality\n
     • splondike, Edit time UI improvement\n

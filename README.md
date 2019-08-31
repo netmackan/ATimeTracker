@@ -29,6 +29,7 @@ A Time Tracker
 
 ### Credits
 - Markus Kilås (netmackan), Maintainer
+- heinrich5991, Optimized main view database queries
 - Ivan Romanov (drizt), Russian translation update
 - pixelistik, Improved icon quality
 - splondike, Edit time UI improvement
