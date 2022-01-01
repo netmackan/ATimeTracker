@@ -62,7 +62,7 @@
     <string name="vibrate_enabled">Вибрация включена</string>
     <string name="vibrate_disabled">Вибрация выключена</string>
     <string name="time_display">Формат времени</string>
-    <string name="standard_time">стандартный (ЧЧ:ММ)</string>
+    <string name="standard_time">Cтандартный (ЧЧ:ММ)</string>
     <string name="decimal_time">Десятичная дробь (ЧЧ.чч)</string>
     <string name="round_report_time">Округлять время в отчётах</string>
     <string name="round_no">Нет</string>
