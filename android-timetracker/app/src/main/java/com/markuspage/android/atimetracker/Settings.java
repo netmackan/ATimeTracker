@@ -114,6 +114,9 @@ public class Settings extends ListActivity implements OnClickListener {
         addBooleanPreference(R.string.time_display, Activities.TIMEDISPLAY,
                 R.string.decimal_time, R.string.standard_time, false);
 
+        addBooleanPreference(R.string.show_seconds, Activities.SHOW_SECONDS,
+                R.string.seconds_enabled, R.string.seconds_disabled, false);
+
         // Round times in report
         for (int i = 0; i < ROUND.length; i++) {
             if (ROUND[i] == 0) {

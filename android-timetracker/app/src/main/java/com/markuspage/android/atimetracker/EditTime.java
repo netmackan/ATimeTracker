@@ -33,7 +33,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.DatePicker;
-import android.widget.TimePicker;
+import com.ikovac.timepickerwithseconds.TimePicker;
 
 /**
  * Activity for editing a time.
@@ -52,6 +52,7 @@ public class EditTime extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferences = getSharedPreferences(Activities.TIMETRACKERPREF, MODE_PRIVATE);
+
         if (getIntent().getExtras().getLong(END_DATE) == NULL) {
             setContentView(R.layout.edit_running_time_range);
             editingRunning = true;
@@ -84,6 +85,7 @@ public class EditTime extends Activity implements OnClickListener {
                 sd.get(Calendar.DAY_OF_MONTH));
         startTime.setCurrentHour(sd.get(Calendar.HOUR_OF_DAY));
         startTime.setCurrentMinute(sd.get(Calendar.MINUTE));
+        startTime.setCurrentSecond(sd.get(Calendar.SECOND));
 
         if (!editingRunning) {
             DatePicker endDate = (DatePicker) findViewById(R.id.end_date);
@@ -99,6 +101,7 @@ public class EditTime extends Activity implements OnClickListener {
                     ed.get(Calendar.DAY_OF_MONTH));
             endTime.setCurrentHour(ed.get(Calendar.HOUR_OF_DAY));
             endTime.setCurrentMinute(ed.get(Calendar.MINUTE));
+            endTime.setCurrentSecond(ed.get(Calendar.SECOND));
         }
     }
 
@@ -109,7 +112,7 @@ public class EditTime extends Activity implements OnClickListener {
         Calendar s = Calendar.getInstance();
         s.setFirstDayOfWeek(Calendar.MONDAY);
         s.set(startDate.getYear(), startDate.getMonth(), startDate.getDayOfMonth(),
-                startTime.getCurrentHour(), startTime.getCurrentMinute());
+                startTime.getCurrentHour(), startTime.getCurrentMinute(), startTime.getCurrentSeconds());
         getIntent().putExtra(START_DATE, s.getTime().getTime());
 
         if (!editingRunning) {
@@ -118,7 +121,7 @@ public class EditTime extends Activity implements OnClickListener {
             Calendar e = Calendar.getInstance();
             e.setFirstDayOfWeek(Calendar.MONDAY);
             e.set(endDate.getYear(), endDate.getMonth(), endDate.getDayOfMonth(),
-                    endTime.getCurrentHour(), endTime.getCurrentMinute());
+                    endTime.getCurrentHour(), endTime.getCurrentMinute(), endTime.getCurrentSeconds());
             if (e.compareTo(s) < 1) {
                 showDialog(0);
                 return;
