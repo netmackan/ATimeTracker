@@ -121,4 +121,7 @@
     <string name="permission_to_backup_needed">Для создания резервной копии необходимо разрешение на запись во внешнее хранилище</string>
     <string name="permission_to_export_needed">Для экспорта необходимо разрешение на запись во внешнее хранилище</string>
     <string name="permission_to_restore_needed">Для восстановления резервной копии необходимо разрешение на запись во внешнее хранилище</string>
+    <string name="show_seconds">Показывать секунды</string>
+    <string name="seconds_enabled">Секунды включены</string>
+    <string name="seconds_disabled">Секунды выключены</string>
 </resources>

@@ -78,6 +78,7 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
     private static final int ADD_TIME = 0, DELETE_TIME = 2, EDIT_TIME = 3, MOVE_TIME = 4;
     private static final int SEP = -99;
     private boolean decimalFormat;
+    private boolean showSeconds;
     private SimpleDateFormat timeFormat;
 
     @Override
@@ -90,10 +91,19 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
             setListAdapter(adapter);
         }
         decimalFormat = preferences.getBoolean(Activities.TIMEDISPLAY, false);
+        showSeconds = preferences.getBoolean(Activities.SHOW_SECONDS, false);
         if (preferences.getBoolean(MILITARY, true)) {
-            timeFormat = new SimpleDateFormat("HH:mm");
+            if (showSeconds) {
+                timeFormat = new SimpleDateFormat("HH:mm:ss");
+            } else {
+                timeFormat = new SimpleDateFormat("HH:mm");
+            }
         } else {
-            timeFormat = new SimpleDateFormat("hh:mm a");
+            if (showSeconds) {
+                timeFormat = new SimpleDateFormat("hh:mm:ss a");
+            } else {
+                timeFormat = new SimpleDateFormat("hh:mm a");
+            }
         }
 
         registerForContextMenu(getListView());
@@ -412,7 +422,7 @@ public class ActivityTimes extends ListActivity implements DialogInterface.OnCli
 
             public void setTimeRange(TimeRange t) {
                 dateRange.setText(t.format(timeFormat));
-                total.setText(Activities.formatTotal(decimalFormat, t.getTotal(), 0));
+                total.setText(Activities.formatTotal(decimalFormat, t.getTotal(), 0, showSeconds));
                 /* If the following is added, then the timer to update the
                  * display must also be added
                  if (t.getEnd() == NULL) {

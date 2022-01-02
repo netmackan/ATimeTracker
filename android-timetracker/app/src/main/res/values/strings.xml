@@ -67,6 +67,10 @@
     <string name="round_report_time">Round report times</string>
     <string name="round_no">No</string>
     <string name="round_minutes">Round to %d minutes</string>
+    <string name="show_seconds">Show seconds</string>
+    <string name="seconds_enabled">Seconds enabled</string>
+    <string name="seconds_disabled">Seconds disabled</string>
+
 
     <!-- About dialog strings -->
     <string name="version">Version %s</string>

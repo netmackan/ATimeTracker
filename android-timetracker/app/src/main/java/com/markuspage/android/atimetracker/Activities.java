@@ -121,6 +121,7 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
     protected static final String VIEW_MODE = "view_mode";
     protected static final String REPORT_DATE = "report_date";
     protected static final String TIMEDISPLAY = "time_display";
+    protected static final String SHOW_SECONDS = "show_seconds";
     protected static final String ROUND_REPORT_TIMES = "round_report_times";
     protected static final String APP_VERSION = "app_version";
     
@@ -129,10 +130,12 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
      */
     private static final String FORMAT = "%02d:%02d";
     private static final String DECIMAL_FORMAT = "%02d.%02d";
+    private static final String SECONDS_FORMAT = "%02d:%02d:%02d";
     /**
      * How often to refresh the display, in milliseconds
      */
     private static final int REFRESH_MS = 60000;
+    private static final int REFRESH_WITH_SECONDS_MS = 1000;
 
     /** Callback ID for exporting after asking permissions. */
     private static final int MY_PERMISSIONS_REQUEST_EXPORT = 100;
@@ -173,6 +176,7 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
     private Vibrator vibrateAgent;
     private ProgressDialog progressDialog = null;
     private boolean decimalFormat = false;
+    private boolean showSeconds = false;
     private String versionName;
     /**
      * A list of menu options, including both context and options menu items
@@ -213,7 +217,12 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
                         setTitle();
                         Activities.this.getListView().invalidate();
                     }
-                    timer.postDelayed(this, REFRESH_MS);
+                    if (showSeconds) {
+                        timer.postDelayed(this, REFRESH_WITH_SECONDS_MS);
+                    } else {
+                        timer.postDelayed(this, REFRESH_MS);
+                    }
+
                 }
             };
         }
@@ -229,6 +238,7 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
             }
         }
         decimalFormat = preferences.getBoolean(TIMEDISPLAY, false);
+        showSeconds = preferences.getBoolean(SHOW_SECONDS, false);
         registerForContextMenu(getListView());
         
         // Display help if this it the first start with this version
@@ -342,6 +352,7 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
                 intent.putExtra(REPORT_DATE, System.currentTimeMillis());
                 intent.putExtra(START_DAY, preferences.getInt(START_DAY, 0) + 1);
                 intent.putExtra(TIMEDISPLAY, decimalFormat);
+                intent.putExtra(SHOW_SECONDS, showSeconds);
                 intent.putExtra(ROUND_REPORT_TIMES, preferences.getInt(ROUND_REPORT_TIMES, 0));
                 startActivity(intent);
                 break;
@@ -541,7 +552,7 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
         for (Activity t : adapter.activities) {
             total += t.getTotal();
         }
-        setTitle(baseTitle + " " + formatTotal(decimalFormat, total, 0));
+        setTitle(baseTitle + " " + formatTotal(decimalFormat, total, 0, showSeconds));
     }
 
     /**
@@ -939,7 +950,7 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
             total.setTextSize(fontSize);
             total.setGravity(Gravity.RIGHT);
             total.setTransformationMethod(SingleLineTransformationMethod.getInstance());
-            total.setText(formatTotal(decimalFormat, t.getTotal(), 0));
+            total.setText(formatTotal(decimalFormat, t.getTotal(), 0, showSeconds));
             addView(total, new LinearLayout.LayoutParams(
                     LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT, 0f));
 
@@ -951,7 +962,7 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
             name.setTextSize(fontSize);
             total.setTextSize(fontSize);
             name.setText(t.getName());
-            total.setText(formatTotal(decimalFormat, t.getTotal(), 0));
+            total.setText(formatTotal(decimalFormat, t.getTotal(), 0, showSeconds));
             markupSelectedActivity(t);
         }
 
@@ -975,11 +986,11 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
      * expensive) if we want to re-use code.  Notice that a call to this method
      * actually filters down through four methods before it returns.
      */
-    static String formatTotal(boolean decimalFormat, long ttl, long roundMinutes) {
-        return formatTotal(decimalFormat, FORMAT, ttl, roundMinutes);
+    static String formatTotal(boolean decimalFormat, long ttl, long roundMinutes, boolean showSeconds) {
+        return formatTotal(decimalFormat, FORMAT, ttl, roundMinutes, showSeconds);
     }
 
-    static String formatTotal(boolean decimalFormat, String format, long ttl, long roundMinutes) {
+    static String formatTotal(boolean decimalFormat, String format, long ttl, long roundMinutes, boolean showSeconds) {
         if (roundMinutes > 0) {
             long totalMinutes = ttl / MS_M;
             ttl = roundMinutes * Math.round((float) totalMinutes / roundMinutes) * MS_M;
@@ -989,15 +1000,18 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
         long minutes = (ttl - hours_in_ms) / MS_M;
         long minutes_in_ms = minutes * MS_M;
         long seconds = (ttl - hours_in_ms - minutes_in_ms) / MS_S;
-        return formatTotal(decimalFormat, format, hours, minutes, seconds, roundMinutes);
+        return formatTotal(decimalFormat, format, hours, minutes, seconds, roundMinutes, showSeconds);
     }
 
-    static String formatTotal(boolean decimalFormat, long hours, long minutes, long seconds, long roundMinutes) {
-        return formatTotal(decimalFormat, FORMAT, hours, minutes, seconds, roundMinutes);
+    static String formatTotal(boolean decimalFormat, long hours, long minutes, long seconds, long roundMinutes, boolean showSeconds) {
+        return formatTotal(decimalFormat, FORMAT, hours, minutes, seconds, roundMinutes, showSeconds);
     }
 
-    static String formatTotal(boolean decimalFormat, String format, long hours, long minutes, long seconds, long roundMinutes) {
-        if (decimalFormat) {
+    static String formatTotal(boolean decimalFormat, String format, long hours, long minutes, long seconds, long roundMinutes, boolean showSeconds) {
+        if (!decimalFormat && showSeconds) {
+            format = SECONDS_FORMAT;
+        }
+        else if (decimalFormat) {
             format = DECIMAL_FORMAT;
             minutes = Math.round((D_M * minutes) + (D_S * seconds));
             seconds = 0;
@@ -1319,6 +1333,9 @@ public class Activities extends ListActivity implements ActivityCompat.OnRequest
             }
             if (extras.getBoolean(TIMEDISPLAY)) {
                 decimalFormat = preferences.getBoolean(TIMEDISPLAY, false);
+            }
+            if (extras.getBoolean(SHOW_SECONDS)) {
+                showSeconds = preferences.getBoolean(SHOW_SECONDS, false);
             }
         }
 

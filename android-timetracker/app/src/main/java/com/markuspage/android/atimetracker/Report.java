@@ -126,6 +126,7 @@ public class Report extends Activity implements OnClickListener {
     private static final int PAD = 2;
     private static final int RPAD = 4;
     private static final String FORMAT = "%02d:%02d";
+    private static final String SECONDS_FORMAT = "%02d:%02d:%02d";
     private Button weekView;
     private final SimpleDateFormat WEEK_FORMAT = new SimpleDateFormat("w");
     private final SimpleDateFormat TITLE_FORMAT = new SimpleDateFormat("EEE, MMM d");
@@ -133,6 +134,7 @@ public class Report extends Activity implements OnClickListener {
     private SQLiteDatabase db;
     private int startDay;
     private boolean decimalTime = false;
+    private boolean showSeconds = false;
     private SharedPreferences mPrefs;
     private int roundMinutes;
 
@@ -158,6 +160,7 @@ public class Report extends Activity implements OnClickListener {
         String title = getString(R.string.report_title, beginning, ending);
         setTitle(title);
         decimalTime = getIntent().getExtras().getBoolean(Activities.TIMEDISPLAY);
+        showSeconds = getIntent().getExtras().getBoolean(Activities.SHOW_SECONDS);
         
         roundMinutes = getIntent().getExtras().getInt(Activities.ROUND_REPORT_TIMES);
 
@@ -613,11 +616,11 @@ public class Report extends Activity implements OnClickListener {
                     weekTotal += days[i];
                     dayTotals[i] += days[i];
                     
-                    arryForDay[i].setText(days[i] == 0L ? ZERO_TIME : Activities.formatTotal(decimalTime, FORMAT, days[i], roundMinutes));
+                    arryForDay[i].setText(days[i] == 0L ? ZERO_TIME : Activities.formatTotal(decimalTime, FORMAT, days[i], roundMinutes, showSeconds));
                 }
                 // Set the week total.  Since this value can be more than 24 hours,
                 // we have to format it by hand:
-                arryForDay[7].setText(weekTotal == 0L ? ZERO_TIME : Activities.formatTotal(decimalTime, FORMAT, weekTotal, roundMinutes));
+                arryForDay[7].setText(weekTotal == 0L ? ZERO_TIME : Activities.formatTotal(decimalTime, FORMAT, weekTotal, roundMinutes, showSeconds));
                 dayTotals[7] += weekTotal;
             } while (c.moveToNext());
         }
@@ -625,9 +628,9 @@ public class Report extends Activity implements OnClickListener {
 
         TextView[] totals = dateViews.get(-1);
         for (int i = 0; i < 7; i++) {
-            totals[i].setText(Activities.formatTotal(decimalTime, FORMAT, dayTotals[i], roundMinutes));
+            totals[i].setText(Activities.formatTotal(decimalTime, FORMAT, dayTotals[i], roundMinutes, showSeconds));
         }
-        totals[7].setText(Activities.formatTotal(decimalTime, FORMAT, dayTotals[7], roundMinutes));
+        totals[7].setText(Activities.formatTotal(decimalTime, FORMAT, dayTotals[7], roundMinutes, showSeconds));
     }
 
     /**
