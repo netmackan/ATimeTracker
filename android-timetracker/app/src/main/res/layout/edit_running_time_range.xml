@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:datePickerMode="calendar" />
 
-        <TimePicker
+        <com.ikovac.timepickerwithseconds.TimePicker
             android:id="@+id/start_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
