@@ -566,25 +566,19 @@ public class Report extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.increment_week:
-                weekStart.add(Calendar.WEEK_OF_YEAR, 1);
-                weekEnd.add(Calendar.WEEK_OF_YEAR, 1);
-                break;
-            case R.id.week:
-                long now = System.currentTimeMillis();
-                Calendar c = Calendar.getInstance();
-                c.setFirstDayOfWeek(Calendar.MONDAY);
-                c.setTimeInMillis(now);
-                weekStart = weekStart(c, startDay);
-                weekEnd = weekEnd(c, startDay);
-                break;
-            case R.id.decrement_week:
-                weekStart.add(Calendar.WEEK_OF_YEAR, -1);
-                weekEnd.add(Calendar.WEEK_OF_YEAR, -1);
-                break;
-            default:
-                break;
+        if (v.getId() == R.id.increment_week) {
+            weekStart.add(Calendar.WEEK_OF_YEAR, 1);
+            weekEnd.add(Calendar.WEEK_OF_YEAR, 1);
+        } else if (v.getId() == R.id.week) {
+            long now = System.currentTimeMillis();
+            Calendar c = Calendar.getInstance();
+            c.setFirstDayOfWeek(Calendar.MONDAY);
+            c.setTimeInMillis(now);
+            weekStart = weekStart(c, startDay);
+            weekEnd = weekEnd(c, startDay);
+        } else if (v.getId() == R.id.decrement_week) {
+            weekStart.add(Calendar.WEEK_OF_YEAR, -1);
+            weekEnd.add(Calendar.WEEK_OF_YEAR, -1);
         }
         String beginning = TITLE_FORMAT.format(weekStart.getTime());
         String ending = TITLE_FORMAT.format(weekEnd.getTime());
